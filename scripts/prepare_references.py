@@ -20,10 +20,10 @@ ROOT = Path(__file__).resolve().parents[1]
 PRIVATE = ROOT / 'references/private'
 INPUTS = {
     'adt': {
-        'filename': 'ADT_R83_3D.zip',
-        'url': 'https://www.adtlink.cn/Uploads/download/ADT_R83_3D.zip',
-        'sha256': '10d914c2fd31f081c9dc8c8d6bb5b5b48d283d560bfc82932b4a4a48363e5065',
-        'bytes': 8470296,
+        'filename': 'ADT_R23_3D.zip',
+        'url': 'https://www.adtlink.cn/Uploads/download/ADT_R23_3D.zip',
+        'sha256': '227d64324a5d49b440ffbe7c01bea4c7cc162d9b05a6b5b20bc370cf0c083be8',
+        'bytes': 21188109,
     },
     'psu': {
         'filename': 'enp7660b-official-spec-20251008.pdf',
@@ -32,7 +32,8 @@ INPUTS = {
         'bytes': 325319,
     },
 }
-STEP_MEMBER = 'R83SL 20190922.step'
+STEP_MEMBER = 'R23SR 20230514.step'
+STEP_SHA256 = 'daea4402f8c8652474d4e57de4ae1d59c219e5d86f5db2b2c6fc56857e8fb018'
 
 
 def verified_input(spec: dict, supplied: Path | None) -> Path:
@@ -60,35 +61,43 @@ def extract_endpoints(archive: Path) -> dict:
     with zipfile.ZipFile(archive) as bundle:
         matching = [item for item in bundle.infolist() if item.filename == STEP_MEMBER]
         if len(matching) != 1 or matching[0].is_dir() or matching[0].file_size > 80_000_000:
-            raise ValueError('Unexpected vendor archive: R83SL STEP member is missing, duplicated, or oversized')
+            raise ValueError('Unexpected vendor archive: R23SR STEP member is missing, duplicated, or oversized')
         raw_data = bundle.read(matching[0])
+    if hashlib.sha256(raw_data).hexdigest() != STEP_SHA256:
+        raise ValueError('Unexpected R23SR source STEP checksum')
     raw_step = PRIVATE / STEP_MEMBER
     raw_step.write_bytes(raw_data)
     shape = cq.importers.importStep(str(raw_step)).val()
     solids = shape.Solids()
+    if len(solids) != 263:
+        raise ValueError('Unexpected R23SR solid decomposition; stop and inspect vendor geometry')
     result = {'source_step_sha256': hashlib.sha256(raw_data).hexdigest(), 'endpoints': {}}
     for name, pcb_lo, pcb_hi, lo, hi in (
-        ('male', 200, 222.879394523, 200, 226),
-        ('female', 265.879395778, 300, 262, 300),
+        ('male', -100, -21.70125, -100, -10),
+        ('female', 21.29875, 100, 10, 100),
     ):
         pieces = []
+        source_indices = []
         for index, solid in enumerate(solids):
             bounds = solid.BoundingBox()
             if index == 0:
-                pieces += solid.intersect(box((300, pcb_hi - pcb_lo, 100), (0, pcb_lo, -50))).Solids()
+                pieces += solid.intersect(box((400, pcb_hi - pcb_lo, 100), (-200, pcb_lo, -50))).Solids()
+                source_indices.append(index)
             elif bounds.ymin >= lo - .001 and bounds.ymax <= hi + .001:
                 pieces.append(solid)
+                source_indices.append(index)
         endpoint = cq.Compound.makeCompound(pieces)
-        expected = {'male': 88, 'female': 252}
+        expected = {'male': 47, 'female': 215}
         if not endpoint.isValid() or len(pieces) != expected[name]:
             raise ValueError(f'Unexpected {name} endpoint: {len(pieces)} solids; stop and inspect vendor geometry')
-        output = PRIVATE / f'R83SL_official_{name}_endpoint.step'
+        output = PRIVATE / f'R23SR_official_{name}_endpoint.step'
         cq.exporters.export(endpoint, str(output))
         result['endpoints'][name] = {
             'filename': output.name,
             'sha256': hashlib.sha256(output.read_bytes()).hexdigest(),
             'valid': True,
             'solids': len(pieces),
+            'source_indices': source_indices,
             'bbox_mm': bbox(endpoint),
         }
     return result
@@ -107,7 +116,7 @@ def main() -> None:
     receipt['redistribution'] = 'VENDOR_INPUTS_LOCAL_ONLY_NOT_COVERED_BY_PROJECT_LICENSES'
     (PRIVATE / 'preparation-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
     print('Verified manufacturer inputs prepared in references/private/ (gitignored).')
-    print('Next: python design/r6_export.py. R6 remains an unresolved geometry prototype.')
+    print('Next: python design/r6_export.py. CAD export does not establish physical/manufacturing acceptance.')
 
 
 if __name__ == '__main__':

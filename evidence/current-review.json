@@ -1,0 +1,2562 @@
+{
+  "revision": "R7",
+  "source_report_sha256": "edcebf0cd989dfa29a0a849c3276fcdec4b13f24b496f5c8b771e2cf85699350",
+  "stage": "CAD_CHECKS_PASSED_PHYSICAL_VALIDATION_PENDING",
+  "geometric_checks_passed": true,
+  "thermal_or_physical_acceptance_completed": false,
+  "manufacturing_release": false,
+  "body_mm": [
+    250,
+    250,
+    255
+  ],
+  "overall_target_mm": [
+    250,
+    250,
+    275
+  ],
+  "known_blocker": null,
+  "checks": {
+    "invalid_shapes": [],
+    "disconnected_prints": [],
+    "print_print": [],
+    "print_hardware": [],
+    "print_heads": [],
+    "print_wires": [],
+    "hardware_hardware": [],
+    "hardware_heads": [],
+    "hardware_wires": [],
+    "heads_heads": [],
+    "heads_wires": [],
+    "wires_wires": [],
+    "stock_length_or_storage_volume": [],
+    "CPU40_hard_clearance": [],
+    "GPU_factory_cable_parking": [],
+    "GPU_extension_cable_parking": [],
+    "GPU_extension_head_parking_motion": [],
+    "GPU_upward_removal": [],
+    "GPU_body_ear_vs_entire_socket": [],
+    "protected_air": [],
+    "drive_forward_removal": [],
+    "EPS_wire_roof_opening": [],
+    "outside_target": []
+  },
+  "parts": {
+    "FRAME_R6_corner_10_10": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          6.0,
+          6.0,
+          5.0
+        ],
+        "max": [
+          14.0,
+          14.0,
+          247.0
+        ],
+        "size": [
+          8.0,
+          8.0,
+          242.0
+        ]
+      },
+      "volume_mm3": 12801.507356998618,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1814,
+        "faces": 3684,
+        "bounds_mm": [
+          [
+            6.0,
+            6.0,
+            5.0
+          ],
+          [
+            14.0,
+            14.0,
+            247.0
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_corner_10_240": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          6.0,
+          236.0,
+          5.0
+        ],
+        "max": [
+          14.0,
+          244.0,
+          247.0
+        ],
+        "size": [
+          8.0,
+          8.0,
+          242.0
+        ]
+      },
+      "volume_mm3": 12801.507357000273,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1816,
+        "faces": 3688,
+        "bounds_mm": [
+          [
+            6.0,
+            236.0,
+            5.0
+          ],
+          [
+            14.0,
+            244.0,
+            247.0
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_corner_240_10": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          236.0,
+          6.0,
+          5.0
+        ],
+        "max": [
+          244.0,
+          14.0,
+          247.0
+        ],
+        "size": [
+          8.0,
+          8.0,
+          242.0
+        ]
+      },
+      "volume_mm3": 12800.327360064797,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1812,
+        "faces": 3680,
+        "bounds_mm": [
+          [
+            236.0,
+            6.0,
+            5.0
+          ],
+          [
+            244.0,
+            14.0,
+            247.0
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_corner_240_240": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          236.0,
+          236.0,
+          5.0
+        ],
+        "max": [
+          244.0,
+          244.0,
+          247.0
+        ],
+        "size": [
+          8.0,
+          8.0,
+          242.0
+        ]
+      },
+      "volume_mm3": 12753.896404325,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 2090,
+        "faces": 4244,
+        "bounds_mm": [
+          [
+            236.0,
+            236.0,
+            5.0
+          ],
+          [
+            244.0,
+            244.0,
+            247.0
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_feet20": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          2.0,
+          2.0,
+          -20.0
+        ],
+        "max": [
+          248.0,
+          248.0,
+          0.0
+        ],
+        "size": [
+          246.0,
+          246.0,
+          20.0
+        ]
+      },
+      "volume_mm3": 55373.567109598545,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1868,
+        "faces": 3768,
+        "bounds_mm": [
+          [
+            2.0,
+            2.0,
+            -20.0
+          ],
+          [
+            248.0,
+            248.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "BOTTOM_R6_shim1mm_1": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          113.0,
+          79.0,
+          5.0
+        ],
+        "max": [
+          122.0,
+          88.0,
+          6.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          1.0
+        ]
+      },
+      "volume_mm3": 45.521677550516095,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            113.0055923461914,
+            79.00139617919922,
+            5.0
+          ],
+          [
+            122.0,
+            87.99860382080078,
+            6.0
+          ]
+        ]
+      }
+    },
+    "BOTTOM_R6_shim1mm_2": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          113.0,
+          184.0,
+          5.0
+        ],
+        "max": [
+          122.0,
+          193.0,
+          6.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          1.0
+        ]
+      },
+      "volume_mm3": 45.52167755051613,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            113.0055923461914,
+            184.00140380859375,
+            5.0
+          ],
+          [
+            122.0,
+            192.99859619140625,
+            6.0
+          ]
+        ]
+      }
+    },
+    "BOTTOM_R6_shim1mm_3": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          218.0,
+          79.0,
+          5.0
+        ],
+        "max": [
+          227.0,
+          88.0,
+          6.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          1.0
+        ]
+      },
+      "volume_mm3": 45.52167755051605,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            218.00559997558594,
+            79.00139617919922,
+            5.0
+          ],
+          [
+            227.0,
+            87.99860382080078,
+            6.0
+          ]
+        ]
+      }
+    },
+    "BOTTOM_R6_shim1mm_4": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          218.0,
+          184.0,
+          5.0
+        ],
+        "max": [
+          227.0,
+          193.0,
+          6.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          1.0
+        ]
+      },
+      "volume_mm3": 45.521677550516095,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            218.00559997558594,
+            184.00140380859375,
+            5.0
+          ],
+          [
+            227.0,
+            192.99859619140625,
+            6.0
+          ]
+        ]
+      }
+    },
+    "TOP_R6_spacer5mm_1": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          109.75,
+          53.25,
+          246.0
+        ],
+        "max": [
+          118.75,
+          62.25,
+          251.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          5.0
+        ]
+      },
+      "volume_mm3": 227.60838775258043,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            109.7555923461914,
+            53.251399993896484,
+            246.0
+          ],
+          [
+            118.75,
+            62.248600006103516,
+            251.0
+          ]
+        ]
+      }
+    },
+    "TOP_R6_spacer5mm_2": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          109.75,
+          177.75,
+          246.0
+        ],
+        "max": [
+          118.75,
+          186.75,
+          251.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          5.0
+        ]
+      },
+      "volume_mm3": 227.60838775258054,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            109.7555923461914,
+            177.75140380859375,
+            246.0
+          ],
+          [
+            118.75,
+            186.74859619140625,
+            251.0
+          ]
+        ]
+      }
+    },
+    "TOP_R6_spacer5mm_3": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          234.25,
+          53.25,
+          246.0
+        ],
+        "max": [
+          243.25,
+          62.25,
+          251.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          5.0
+        ]
+      },
+      "volume_mm3": 227.60838775258017,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            234.25559997558594,
+            53.251399993896484,
+            246.0
+          ],
+          [
+            243.25,
+            62.248600006103516,
+            251.0
+          ]
+        ]
+      }
+    },
+    "TOP_R6_spacer5mm_4": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          234.25,
+          177.75,
+          246.0
+        ],
+        "max": [
+          243.25,
+          186.75,
+          251.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          5.0
+        ]
+      },
+      "volume_mm3": 227.60838775258034,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            234.25559997558594,
+            177.75140380859375,
+            246.0
+          ],
+          [
+            243.25,
+            186.74859619140625,
+            251.0
+          ]
+        ]
+      }
+    },
+    "TOP_R6_lid": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          251.0
+        ],
+        "max": [
+          250.0,
+          250.0,
+          255.0
+        ],
+        "size": [
+          250.0,
+          250.0,
+          4.0
+        ]
+      },
+      "volume_mm3": 196875.0788392327,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 2375,
+        "faces": 4850,
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            251.0
+          ],
+          [
+            250.0,
+            250.0,
+            255.0
+          ]
+        ]
+      }
+    },
+    "SKIN_R6_front": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          3.0,
+          -1.7763568394002505e-15,
+          5.0
+        ],
+        "max": [
+          247.0,
+          2.4,
+          251.0
+        ],
+        "size": [
+          244.0,
+          2.4000000000000017,
+          246.0
+        ]
+      },
+      "volume_mm3": 123864.8179258706,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1843,
+        "faces": 4126,
+        "bounds_mm": [
+          [
+            3.0,
+            0.0,
+            5.0
+          ],
+          [
+            247.0,
+            2.4000000953674316,
+            251.0
+          ]
+        ]
+      }
+    },
+    "SKIN_R6_back": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          3.0,
+          247.6,
+          5.0
+        ],
+        "max": [
+          247.0,
+          250.0,
+          251.0
+        ],
+        "size": [
+          244.0,
+          2.4000000000000057,
+          246.0
+        ]
+      },
+      "volume_mm3": 96553.9336985641,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1044,
+        "faces": 2112,
+        "bounds_mm": [
+          [
+            3.0,
+            247.60000610351562,
+            5.0
+          ],
+          [
+            247.0,
+            250.0,
+            251.0
+          ]
+        ]
+      }
+    },
+    "SKIN_R6_left": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          0.0,
+          3.0,
+          5.0
+        ],
+        "max": [
+          2.4,
+          247.0,
+          251.0
+        ],
+        "size": [
+          2.4,
+          244.0,
+          246.0
+        ]
+      },
+      "volume_mm3": 130072.3336985638,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1644,
+        "faces": 3612,
+        "bounds_mm": [
+          [
+            0.0,
+            3.0,
+            5.0
+          ],
+          [
+            2.4000000953674316,
+            247.0,
+            251.0
+          ]
+        ]
+      }
+    },
+    "SKIN_R6_right": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          247.6,
+          3.0,
+          5.0
+        ],
+        "max": [
+          250.0,
+          247.0,
+          251.0
+        ],
+        "size": [
+          2.4000000000000057,
+          244.0,
+          246.0
+        ]
+      },
+      "volume_mm3": 126645.13369856414,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1740,
+        "faces": 3852,
+        "bounds_mm": [
+          [
+            247.60000610351562,
+            3.0,
+            5.0
+          ],
+          [
+            250.0,
+            247.0,
+            251.0
+          ]
+        ]
+      }
+    },
+    "FILTER_R6_inset_front_pull": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          103.3,
+          10.0,
+          -8.4
+        ],
+        "max": [
+          236.7,
+          202.7,
+          -6.4
+        ],
+        "size": [
+          133.39999999999998,
+          192.7,
+          2.0
+        ]
+      },
+      "volume_mm3": 16589.28462664786,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 142,
+        "faces": 284,
+        "bounds_mm": [
+          [
+            103.30000305175781,
+            10.0,
+            -8.399999618530273
+          ],
+          [
+            236.6999969482422,
+            202.6999969482422,
+            -6.400000095367432
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_base": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          3.0,
+          3.0,
+          -10.0
+        ],
+        "max": [
+          248.0,
+          247.0,
+          45.0
+        ],
+        "size": [
+          245.0,
+          244.0,
+          55.0
+        ]
+      },
+      "volume_mm3": 84368.82008088536,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 6264,
+        "faces": 12672,
+        "bounds_mm": [
+          [
+            3.0,
+            3.0,
+            -10.0
+          ],
+          [
+            248.0,
+            247.0,
+            45.0
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_top": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          3.0,
+          3.0,
+          210.0
+        ],
+        "max": [
+          247.0,
+          247.0,
+          251.0
+        ],
+        "size": [
+          244.0,
+          244.0,
+          41.0
+        ]
+      },
+      "volume_mm3": 42853.876131218436,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 2467,
+        "faces": 4974,
+        "bounds_mm": [
+          [
+            3.0,
+            3.0,
+            210.0
+          ],
+          [
+            247.0,
+            247.0,
+            251.0
+          ]
+        ]
+      }
+    },
+    "R6_STORAGE_TRAY_1_native4_open_U": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          5.399999999999999,
+          20.0,
+          9.4
+        ],
+        "max": [
+          35.1,
+          136.4,
+          122.725
+        ],
+        "size": [
+          29.700000000000003,
+          116.4,
+          113.32499999999999
+        ]
+      },
+      "volume_mm3": 9137.01767112598,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1178,
+        "faces": 2376,
+        "bounds_mm": [
+          [
+            5.400000095367432,
+            20.0,
+            9.399999618530273
+          ],
+          [
+            35.099998474121094,
+            136.39999389648438,
+            122.7249984741211
+          ]
+        ]
+      }
+    },
+    "R6_STORAGE_TRAY_2_native4_open_U": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          36.5,
+          20.0,
+          9.4
+        ],
+        "max": [
+          66.2,
+          136.4,
+          122.725
+        ],
+        "size": [
+          29.700000000000003,
+          116.4,
+          113.32499999999999
+        ]
+      },
+      "volume_mm3": 9137.017671125977,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1178,
+        "faces": 2376,
+        "bounds_mm": [
+          [
+            36.5,
+            20.0,
+            9.399999618530273
+          ],
+          [
+            66.19999694824219,
+            136.39999389648438,
+            122.7249984741211
+          ]
+        ]
+      }
+    },
+    "R6_STORAGE_TRAY_3_native4_open_U": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          67.60000000000001,
+          20.0,
+          9.4
+        ],
+        "max": [
+          97.30000000000001,
+          136.4,
+          122.725
+        ],
+        "size": [
+          29.700000000000003,
+          116.4,
+          113.32499999999999
+        ]
+      },
+      "volume_mm3": 9137.017671125983,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1178,
+        "faces": 2376,
+        "bounds_mm": [
+          [
+            67.5999984741211,
+            20.0,
+            9.399999618530273
+          ],
+          [
+            97.30000305175781,
+            136.39999389648438,
+            122.7249984741211
+          ]
+        ]
+      }
+    },
+    "R6_STORAGE_COMMON_CAGE_open_floor_rear_skeleton": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          3.9999999999999996,
+          17.999999999999968,
+          5.0
+        ],
+        "max": [
+          105.0,
+          236.0,
+          151.0
+        ],
+        "size": [
+          101.0,
+          218.00000000000003,
+          146.0
+        ]
+      },
+      "volume_mm3": 47632.76414750174,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 3041,
+        "faces": 6214,
+        "bounds_mm": [
+          [
+            4.0,
+            18.0,
+            5.0
+          ],
+          [
+            105.0,
+            236.0,
+            151.0
+          ]
+        ]
+      }
+    },
+    "MAINBOARD_MOUNT_R6_DS2501_open_tray": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          172.0,
+          38.0,
+          5.0
+        ],
+        "max": [
+          184.0,
+          247.4,
+          247.0
+        ],
+        "size": [
+          12.0,
+          209.4,
+          242.0
+        ]
+      },
+      "volume_mm3": 12629.288813236284,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1964,
+        "faces": 3996,
+        "bounds_mm": [
+          [
+            172.0,
+            38.0,
+            5.0
+          ],
+          [
+            184.0,
+            247.39999389648438,
+            247.0
+          ]
+        ]
+      }
+    },
+    "GPU_R6_TPU_front_end_pad_1": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          158.0,
+          13.2,
+          72.0
+        ],
+        "max": [
+          169.6,
+          14.0,
+          78.0
+        ],
+        "size": [
+          11.599999999999994,
+          0.8000000000000007,
+          6.0
+        ]
+      },
+      "volume_mm3": 55.680000000000014,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 8,
+        "faces": 12,
+        "bounds_mm": [
+          [
+            158.0,
+            13.199999809265137,
+            72.0
+          ],
+          [
+            169.60000610351562,
+            14.0,
+            78.0
+          ]
+        ]
+      }
+    },
+    "GPU_R6_TPU_front_end_pad_2": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          158.0,
+          13.2,
+          160.0
+        ],
+        "max": [
+          169.6,
+          14.0,
+          166.0
+        ],
+        "size": [
+          11.599999999999994,
+          0.8000000000000007,
+          6.0
+        ]
+      },
+      "volume_mm3": 55.680000000000014,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 8,
+        "faces": 12,
+        "bounds_mm": [
+          [
+            158.0,
+            13.199999809265137,
+            160.0
+          ],
+          [
+            169.60000610351562,
+            14.0,
+            166.0
+          ]
+        ]
+      }
+    },
+    "GPU_R6_fixed_open_spine": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          128.0,
+          10.0,
+          5.0
+        ],
+        "max": [
+          182.0,
+          244.0,
+          218.0
+        ],
+        "size": [
+          54.0,
+          234.0,
+          213.0
+        ]
+      },
+      "volume_mm3": 12792.854204558436,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 862,
+        "faces": 1740,
+        "bounds_mm": [
+          [
+            128.0,
+            10.0,
+            5.0
+          ],
+          [
+            182.0,
+            244.0,
+            218.0
+          ]
+        ]
+      }
+    },
+    "GPU_R6_removable_IO_jaw": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          128.0,
+          229.1,
+          185.25
+        ],
+        "max": [
+          169.6,
+          234.5,
+          193.25
+        ],
+        "size": [
+          41.599999999999994,
+          5.400000000000006,
+          8.0
+        ]
+      },
+      "volume_mm3": 1671.1672673322796,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 512,
+        "faces": 1028,
+        "bounds_mm": [
+          [
+            128.0,
+            229.10000610351562,
+            185.25
+          ],
+          [
+            169.60000610351562,
+            234.5,
+            193.25
+          ]
+        ]
+      }
+    },
+    "PSU_R6_rear_TOP_ONLY_suspension": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          11.0,
+          237.0,
+          240.8
+        ],
+        "max": [
+          102.5,
+          246.0,
+          247.0
+        ],
+        "size": [
+          91.5,
+          9.0,
+          6.199999999999989
+        ]
+      },
+      "volume_mm3": 4417.113857977201,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1052,
+        "faces": 2132,
+        "bounds_mm": [
+          [
+            11.0,
+            237.0,
+            240.8000030517578
+          ],
+          [
+            102.5,
+            246.0,
+            247.0
+          ]
+        ]
+      }
+    },
+    "PSU_R6_front_open_cradle_storage_bolted": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          8.0,
+          120.0,
+          151.0
+        ],
+        "max": [
+          105.0,
+          146.5,
+          200.0
+        ],
+        "size": [
+          97.0,
+          26.5,
+          49.0
+        ]
+      },
+      "volume_mm3": 3880.691161235755,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 324,
+        "faces": 652,
+        "bounds_mm": [
+          [
+            8.0,
+            120.0,
+            151.0
+          ],
+          [
+            105.0,
+            146.5,
+            200.0
+          ]
+        ]
+      }
+    },
+    "PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          11.0,
+          4.9999999,
+          192.9999999
+        ],
+        "max": [
+          103.30000000000001,
+          244.0,
+          245.0000001
+        ],
+        "size": [
+          92.30000000000001,
+          239.0000001,
+          52.00000019999999
+        ]
+      },
+      "volume_mm3": 75160.6577552099,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 3182,
+        "faces": 6420,
+        "bounds_mm": [
+          [
+            11.0,
+            5.0,
+            193.0
+          ],
+          [
+            103.30000305175781,
+            244.0,
+            245.0
+          ]
+        ]
+      }
+    },
+    "PSU_R6_cold_sleeve_REMOVABLE_roof": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          11.0,
+          5.0,
+          243.5
+        ],
+        "max": [
+          102.5,
+          236.8,
+          245.0
+        ],
+        "size": [
+          91.5,
+          231.8,
+          1.5
+        ]
+      },
+      "volume_mm3": 27768.63574006409,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1088,
+        "faces": 2204,
+        "bounds_mm": [
+          [
+            11.0,
+            5.0,
+            243.5
+          ],
+          [
+            102.5,
+            236.8000030517578,
+            245.0
+          ]
+        ]
+      }
+    },
+    "PSU_R6_fixed_wire_gutter_REMOVABLE_roof": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          11.0,
+          14.5,
+          205.5
+        ],
+        "max": [
+          40.75,
+          96.0,
+          245.0
+        ],
+        "size": [
+          29.75,
+          81.5,
+          39.5
+        ]
+      },
+      "volume_mm3": 4207.632598758519,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 573,
+        "faces": 1150,
+        "bounds_mm": [
+          [
+            11.0,
+            14.5,
+            205.5
+          ],
+          [
+            40.75,
+            96.0,
+            245.0
+          ]
+        ]
+      }
+    },
+    "R6_RISER_FEMALE_LOW_BRIDGE_FRAME_FEET": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          156.0,
+          64.0,
+          5.0
+        ],
+        "max": [
+          171.5,
+          216.0,
+          52.300000000000004
+        ],
+        "size": [
+          15.5,
+          152.0,
+          47.300000000000004
+        ]
+      },
+      "volume_mm3": 5998.475059198661,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 624,
+        "faces": 1260,
+        "bounds_mm": [
+          [
+            156.0,
+            64.0,
+            5.0
+          ],
+          [
+            171.5,
+            216.0,
+            52.29999923706055
+          ]
+        ]
+      }
+    },
+    "R7_RISER_MALE_UPPER_REAR_FRAME_SUPPORT": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          202.142,
+          130.0,
+          209.0
+        ],
+        "max": [
+          244.0,
+          236.0,
+          219.0
+        ],
+        "size": [
+          41.858000000000004,
+          106.0,
+          10.0
+        ]
+      },
+      "volume_mm3": 2390.801328988605,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 552,
+        "faces": 1116,
+        "bounds_mm": [
+          [
+            202.14199829101562,
+            130.0,
+            209.0
+          ],
+          [
+            244.0,
+            236.0,
+            219.0
+          ]
+        ]
+      }
+    },
+    "POWER_R6_front_fixed_lacing_ear_1": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          99.0,
+          14.0,
+          35.0
+        ],
+        "max": [
+          111.0,
+          18.0,
+          47.0
+        ],
+        "size": [
+          12.0,
+          4.0,
+          12.0
+        ]
+      },
+      "volume_mm3": 369.2291161235755,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 276,
+        "faces": 560,
+        "bounds_mm": [
+          [
+            99.0,
+            14.0,
+            35.0
+          ],
+          [
+            111.0,
+            18.0,
+            47.0
+          ]
+        ]
+      }
+    },
+    "POWER_R6_front_fixed_lacing_ear_2": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          219.0,
+          14.0,
+          35.0
+        ],
+        "max": [
+          231.0,
+          18.0,
+          47.0
+        ],
+        "size": [
+          12.0,
+          4.0,
+          12.0
+        ]
+      },
+      "volume_mm3": 369.22911612357564,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 276,
+        "faces": 560,
+        "bounds_mm": [
+          [
+            219.0,
+            14.0,
+            35.0
+          ],
+          [
+            231.0,
+            18.0,
+            47.0
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_stock_lead_basket_FIXED": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          44.0,
+          139.0,
+          5.0
+        ],
+        "max": [
+          98.0,
+          244.0,
+          140.00000000000077
+        ],
+        "size": [
+          54.0,
+          105.0,
+          135.00000000000077
+        ]
+      },
+      "volume_mm3": 9495.960866069308,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 706,
+        "faces": 1456,
+        "bounds_mm": [
+          [
+            44.0,
+            139.0,
+            5.0
+          ],
+          [
+            98.0,
+            244.0,
+            140.0
+          ]
+        ]
+      }
+    }
+  },
+  "source_step_roundtrip": {
+    "valid": true,
+    "solids": 623,
+    "expected": 623,
+    "passed": true
+  },
+  "original_print_meshes_watertight": true,
+  "public_geometry": {
+    "nodes": 360,
+    "parts": 40,
+    "excluded_vendor_nodes": [
+      "R7_R23SR_OFFICIAL_x16_FEMALE_ASSEMBLED",
+      "R7_R23SR_OFFICIAL_x4_MALE_ASSEMBLED"
+    ],
+    "sha256": "26563846d6d46786392eaee98349c791895ca5fd8a3361046dce5a722bbc3a99",
+    "scope": "Original chassis, hardware and cable planning proxies. Vendor endpoint geometry omitted. Not a new collision or manufacturing acceptance."
+  },
+  "remaining_physical_gates": [
+    "Photo-derived board/socket dimensions and revision require measured fit-up",
+    "Factory cable exit, usable lengths, bend behavior, surplus packing and pin grouping require received-hardware verification",
+    "Printed strength, creep, vibration, electrical insulation, thermal and noise tests remain incomplete"
+  ],
+  "EPS_complete_length_budgets": {
+    "CABLE_R6_EPS_FACTORY300": {
+      "modeled_complete_centerline_mm": 247.2822971502571,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 286.28229715025714,
+      "nominal_stock_mm": 300,
+      "remaining_length_margin_mm": 13.717702849742864,
+      "geometric_length_budget_passed": true,
+      "factory_measurement_origin_and_installed_flex_verified": false,
+      "connector_allowance_is_engineering_assumption": true
+    },
+    "CABLE_R7_EPS_PHANTEKS_PH_CB4P_BK500": {
+      "modeled_complete_centerline_mm": 434.320923152153,
+      "connector_allowance_mm": 48.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 497.320923152153,
+      "nominal_stock_mm": 500,
+      "remaining_length_margin_mm": 2.679076847847,
+      "geometric_length_budget_passed": true,
+      "factory_measurement_origin_and_installed_flex_verified": false,
+      "connector_allowance_is_engineering_assumption": true
+    }
+  },
+  "EPS_isolated_factory_exit_transition": {
+    "part": "PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE",
+    "removable_half_part": "PSU_R6_fixed_wire_gutter_REMOVABLE_roof",
+    "centerline_xyz_mm": [
+      [
+        37.0,
+        82.0,
+        218.0
+      ],
+      [
+        37.0,
+        96,
+        218.0
+      ]
+    ],
+    "outer_diameter_mm": 7.5,
+    "inner_diameter_mm": 5.5,
+    "wire_proxy_diameter_mm": 4.5,
+    "nominal_radial_clearance_mm": 0.5,
+    "minimum_wire_to_wall_distance_mm": 0.4999999999999931,
+    "factory_face_reference_area_mm2": 3300.75,
+    "wall_material_projected_area_mm2": 20.420352248333657,
+    "wall_material_fraction_of_reference_face": 0.006186579489005122,
+    "isolated_outer_envelope_projected_area_mm2": 44.178646691106465,
+    "cold_air_face_area_fraction_displaced": 0.01338442677909762,
+    "source_exit_coordinates_status": "EngineeringXYZassumption;measurefactorywireexitbeforemanufacture.",
+    "thermal_or_physical_acceptance_completed": false,
+    "attached_single_solid": true,
+    "removable_roof_single_solid": true,
+    "fixed_moving_parts_overlap_mm3": 0.0,
+    "service": {
+      "sweep_key": "SERVICE_POWER_R7_WIRE_ROOF_open_plusZ7p5",
+      "translation_mm": [
+        0,
+        0,
+        7.5
+      ],
+      "method": "Exactcontinuousleading-faceandsemicircularsliceconstruction;notdiscreteposes.",
+      "removed_parts_for_access": [
+        "TOP_R6_lid",
+        "SKIN_R6_left",
+        "top_fan_body",
+        "FRAME_R6_top"
+      ],
+      "remove_bolts_and_captured_nuts": [
+        "PSU_R6_WIRE_COVER_M3x8_9",
+        "PSU_R6_WIRE_COVER_M3x8_10",
+        "PSU_R6_WIRE_COVER_DIN562_M3_9",
+        "PSU_R6_WIRE_COVER_DIN562_M3_10",
+        "PSU_R6_TOP_M3x10_CSK_1",
+        "PSU_R6_TOP_M3x10_CSK_2",
+        "PSU_R6_TOP_DIN562_M3_1",
+        "PSU_R6_TOP_DIN562_M3_2",
+        "MAINBOARD_MOUNT_R6_frame_top_M3x10_1",
+        "MAINBOARD_MOUNT_R6_frame_top_M3x10_2",
+        "MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_1",
+        "MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_2"
+      ],
+      "remove_access_fastener_prefixes": [
+        "TOP_R6_lid_",
+        "PANEL_R6_left_"
+      ],
+      "top_frame_may_remain_for_opening": false,
+      "temporary_support_required": "SupportPSUandmainboardbeforeunfasteningtopframe;releaseGPUcableanchorandcontrolbuttonleadsbeforeliftingframe.",
+      "assembly_order": "LayfinishedfactoryEPS/GPUleadsintolowerhalvesbeforetopframeinstallation;lowerroofupperhalves,fitbothWIREFastener/nutpairs,sealjoinsafterfit-up.",
+      "service_order": "ACoff;supportPSUandmainboard;removeaccesspanelsandalltopframeconnectionsincludingGPUlacing/controlleads;removetopframe;removebothWIREbolt/nutpairs;liftwire-roof+Z7.5.",
+      "whole_top_frame_extraction_verified": false,
+      "clip_strength_and_seal_verified": false
+    },
+    "total_protected_air_removed_mm3": 1150.6083093782072,
+    "exact_combined_outer_envelope_overlap_mm3": 1150.6083093772618,
+    "air_change_scope": "Onlythetwoexplicitwiretransitionouterenvelopes;allbridges/necksintheexistingwire-onlybay."
+  },
+  "PSU_structural_air_boundaries": {
+    "fixed_structural_boundaries": [
+      {
+        "physical_boundary": "FRAME_R6_corner_10_240",
+        "occupied_volume_mm3": 366.9971161235763
+      },
+      {
+        "physical_boundary": "PANEL_R6_back_10_225_DIN562_M3",
+        "occupied_volume_mm3": 1.4850000000000128
+      }
+    ],
+    "module_air_volume_mm3": 378692.43832609704,
+    "remaining_air_volume_mm3": 378323.956209973,
+    "connected_regions": 1,
+    "local_rear_left_side_gap_mm": 2.0,
+    "scope": "Exact fixed structural surfaces at existing duct notches;no cable or movable part is excluded from air checks",
+    "nominal_all_face_unobstructed_claim": false,
+    "thermal_or_physical_acceptance_completed": false
+  },
+  "complete_length_budgets": {
+    "CABLE_R6_ATX_FACTORY300": {
+      "modeled_complete_centerline_mm": 131.79193191576223,
+      "modeled_connector_length_lower_bound_mm": 12.0,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "unmodeled_factory_face_transition_length_allowance_mm": 14.0,
+      "required_with_allowances_mm": 184.79193191576223,
+      "nominal_stock_mm": 300,
+      "remaining_length_margin_mm": 115.20806808423777,
+      "geometric_length_budget_passed": true,
+      "factory_measurement_origin_and_installed_flex_verified": false,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_face_transition_geometry_verified": false,
+      "scope": "ATXface-to-engineeringglandtransitionhaslengthallowanceonly;itsroutingandisolationremainunmodeled."
+    },
+    "CABLE_R6_ATX_PHANTEKS_PH_CB24P_BK500": {
+      "modeled_complete_centerline_mm": 423.2304059301588,
+      "modeled_connector_length_lower_bound_mm": 36.0,
+      "connector_allowance_mm": 40.0,
+      "assembly_slack_mm": 15.0,
+      "unmodeled_factory_face_transition_length_allowance_mm": 0.0,
+      "required_with_allowances_mm": 478.2304059301588,
+      "nominal_stock_mm": 500,
+      "remaining_length_margin_mm": 21.76959406984122,
+      "geometric_length_budget_passed": true,
+      "factory_measurement_origin_and_installed_flex_verified": false,
+      "connector_allowance_is_engineering_assumption": true
+    },
+    "CABLE_R6_EPS_FACTORY300": {
+      "modeled_complete_centerline_mm": 247.2822971502571,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 286.28229715025714,
+      "nominal_stock_mm": 300,
+      "remaining_length_margin_mm": 13.717702849742864,
+      "geometric_length_budget_passed": true,
+      "factory_measurement_origin_and_installed_flex_verified": false,
+      "connector_allowance_is_engineering_assumption": true
+    },
+    "CABLE_R6_GPU_FACTORY300": {
+      "modeled_complete_centerline_mm": 258.0209413740893,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 297.0209413740893,
+      "nominal_stock_mm": 300,
+      "remaining_length_margin_mm": 2.9790586259106817,
+      "geometric_length_budget_passed": true,
+      "factory_measurement_origin_and_installed_flex_verified": false,
+      "connector_allowance_is_engineering_assumption": true
+    },
+    "CABLE_R6_GPU_FACTORY_SECOND150": {
+      "modeled_complete_centerline_mm": 98.31587640034358,
+      "modeled_connector_length_lower_bound_mm": 18.0,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "unmodeled_factory_face_transition_length_allowance_mm": 0.0,
+      "required_with_allowances_mm": 137.3158764003436,
+      "nominal_stock_mm": 150,
+      "remaining_length_margin_mm": 12.684123599656402,
+      "geometric_length_budget_passed": true,
+      "factory_measurement_origin_and_installed_flex_verified": false,
+      "connector_allowance_is_engineering_assumption": true
+    },
+    "CABLE_R7_EPS_PHANTEKS_PH_CB4P_BK500": {
+      "modeled_complete_centerline_mm": 434.320923152153,
+      "connector_allowance_mm": 48.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 497.320923152153,
+      "nominal_stock_mm": 500,
+      "remaining_length_margin_mm": 2.679076847847,
+      "geometric_length_budget_passed": true,
+      "factory_measurement_origin_and_installed_flex_verified": false,
+      "connector_allowance_is_engineering_assumption": true
+    },
+    "GPU8_R6_Phanteks_extension": {
+      "modeled_complete_centerline_mm": 413.34272190948786,
+      "connector_allowance_mm": 48.0,
+      "assembly_slack_mm": 15.0,
+      "nominal_stock_mm": 500,
+      "required_with_allowances_mm": 476.34272190948786,
+      "remaining_length_margin_mm": 23.657278090512136,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    }
+  },
+  "GPU_isolated_factory_exit_transition": {
+    "part": "PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE",
+    "removable_half_part": "PSU_R6_fixed_wire_gutter_REMOVABLE_roof",
+    "centerline_xyz_mm": [
+      [
+        26.0,
+        85.8,
+        205.5
+      ],
+      [
+        26.0,
+        96,
+        205.5
+      ]
+    ],
+    "outer_diameter_mm": 9.5,
+    "inner_diameter_mm": 7.5,
+    "wire_proxy_diameter_mm": 6.5,
+    "nominal_radial_clearance_mm": 0.5,
+    "minimum_wire_to_wall_distance_mm": 0.08541601603159236,
+    "factory_face_reference_area_mm2": 3300.75,
+    "wall_material_projected_area_mm2": 26.703537555513243,
+    "wall_material_fraction_of_reference_face": 0.008090142408699005,
+    "isolated_outer_envelope_projected_area_mm2": 70.8821842466197,
+    "cold_air_face_area_fraction_displaced": 0.02147456918779662,
+    "source_exit_coordinates_status": "EngineeringXYZassumption;measurefactorywireexitbeforemanufacture.",
+    "thermal_or_physical_acceptance_completed": false,
+    "attached_single_solid": true,
+    "removable_roof_single_solid": true,
+    "fixed_moving_parts_overlap_mm3": 0.0,
+    "service": {
+      "sweep_key": "SERVICE_POWER_R7_WIRE_ROOF_open_plusZ7p5",
+      "translation_mm": [
+        0,
+        0,
+        7.5
+      ],
+      "method": "Exactcontinuousleading-faceandsemicircularsliceconstruction;notdiscreteposes.",
+      "removed_parts_for_access": [
+        "TOP_R6_lid",
+        "SKIN_R6_left",
+        "top_fan_body",
+        "FRAME_R6_top"
+      ],
+      "remove_bolts_and_captured_nuts": [
+        "PSU_R6_WIRE_COVER_M3x8_9",
+        "PSU_R6_WIRE_COVER_M3x8_10",
+        "PSU_R6_WIRE_COVER_DIN562_M3_9",
+        "PSU_R6_WIRE_COVER_DIN562_M3_10",
+        "PSU_R6_TOP_M3x10_CSK_1",
+        "PSU_R6_TOP_M3x10_CSK_2",
+        "PSU_R6_TOP_DIN562_M3_1",
+        "PSU_R6_TOP_DIN562_M3_2",
+        "MAINBOARD_MOUNT_R6_frame_top_M3x10_1",
+        "MAINBOARD_MOUNT_R6_frame_top_M3x10_2",
+        "MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_1",
+        "MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_2"
+      ],
+      "remove_access_fastener_prefixes": [
+        "TOP_R6_lid_",
+        "PANEL_R6_left_"
+      ],
+      "top_frame_may_remain_for_opening": false,
+      "temporary_support_required": "SupportPSUandmainboardbeforeunfasteningtopframe;releaseGPUcableanchorandcontrolbuttonleadsbeforeliftingframe.",
+      "assembly_order": "LayfinishedfactoryEPS/GPUleadsintolowerhalvesbeforetopframeinstallation;lowerroofupperhalves,fitbothWIREFastener/nutpairs,sealjoinsafterfit-up.",
+      "service_order": "ACoff;supportPSUandmainboard;removeaccesspanelsandalltopframeconnectionsincludingGPUlacing/controlleads;removetopframe;removebothWIREbolt/nutpairs;liftwire-roof+Z7.5.",
+      "whole_top_frame_extraction_verified": false,
+      "clip_strength_and_seal_verified": false
+    },
+    "total_protected_air_removed_mm3": 1150.6083093782072,
+    "exact_combined_outer_envelope_overlap_mm3": 1150.6083093772618,
+    "air_change_scope": "Onlythetwoexplicitwiretransitionouterenvelopes;allbridges/necksintheexistingwire-onlybay."
+  },
+  "GPU_factory_bottom_open_arch": {
+    "part": "PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE",
+    "centerline_mm": [
+      [
+        35,
+        65,
+        193
+      ],
+      [
+        35,
+        16,
+        193
+      ],
+      [
+        103.3,
+        16,
+        193
+      ]
+    ],
+    "outer_diameter_mm": 9.5,
+    "inner_diameter_mm": 7.5,
+    "opening": "bottom atZ193;finishedheadneednotthreadthroughbore",
+    "wall_thickness_mm": 1.0,
+    "outer_upper_Z_mm": 197.75,
+    "wire_proxy_diameter_mm": 6.5,
+    "minimum_wire_to_arch_wall_mm": 0.4999999999999848,
+    "fixed_attached_single_solid": true,
+    "soft_strap_ears": [
+      {
+        "center_X_mm": 43.0,
+        "slot_mm": [
+          4,
+          3,
+          2
+        ],
+        "bbox_mm": {
+          "min": [
+            40.0,
+            20.0,
+            193.0
+          ],
+          "max": [
+            46.0,
+            25.0,
+            195.0
+          ],
+          "size": [
+            6.0,
+            5.0,
+            2.0
+          ]
+        }
+      },
+      {
+        "center_X_mm": 97.0,
+        "slot_mm": [
+          4,
+          3,
+          2
+        ],
+        "bbox_mm": {
+          "min": [
+            94.0,
+            20.0,
+            193.0
+          ],
+          "max": [
+            100.0,
+            25.0,
+            195.0
+          ],
+          "size": [
+            6.0,
+            5.0,
+            2.0
+          ]
+        }
+      }
+    ],
+    "strap_material_and_installed_retention_verified": false,
+    "protected_air_removed_mm3": 154.48422356758965,
+    "exact_outer_upper_overlap_mm3": 154.48422356546683,
+    "inner_upper_overlap_with_protected_air_mm3": 0.0,
+    "thermal_or_physical_acceptance_completed": false
+  },
+  "wire_bay_floor_open_edges": {
+    "part": "PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE",
+    "openings": [
+      {
+        "loom": "EPS",
+        "origin_mm": [
+          10.5,
+          39.25,
+          195.3
+        ],
+        "size_mm": [
+          14.75,
+          5.5,
+          1.8
+        ],
+        "actual_material_removed_mm3": 27.280001050356077,
+        "protected_air_removed_mm3": 0.0,
+        "GPU_arch_wall_removed_mm3": 0.0
+      },
+      {
+        "loom": "ATX",
+        "origin_mm": [
+          14.0,
+          54.0,
+          195.3
+        ],
+        "size_mm": [
+          16.5,
+          12.0,
+          1.8
+        ],
+        "actual_material_removed_mm3": 1.0186340659856796e-10,
+        "protected_air_removed_mm3": 0.0,
+        "GPU_arch_wall_removed_mm3": 0.0
+      }
+    ],
+    "assembly": "Layfinishedloomsfromopenleftedge;donotthreadconnectorsthroughsmallclosedholes.",
+    "part_single_solid": true,
+    "physical_fit_strength_and_insulation_verified": false
+  },
+  "PSU_final_cold_air_domain": {
+    "connected_regions": 1,
+    "volume_mm3": 377018.8636770272,
+    "thermal_or_physical_acceptance_completed": false
+  },
+  "GPU_factory_service_parking": {
+    "normal_wire": "CABLE_R6_GPU_FACTORY300",
+    "parked_service": "SERVICE_GPU_R7_factory300_FRONT_PARKED",
+    "path_mm": [
+      [
+        26,
+        96,
+        205.5
+      ],
+      [
+        26,
+        82,
+        205.5
+      ],
+      [
+        35,
+        73,
+        205.5
+      ],
+      [
+        35,
+        73,
+        193
+      ],
+      [
+        35,
+        16,
+        193
+      ],
+      [
+        110,
+        16,
+        193
+      ],
+      [
+        118,
+        16,
+        198.5
+      ],
+      [
+        126,
+        5.8,
+        198.5
+      ],
+      [
+        178,
+        5.8,
+        198.5
+      ],
+      [
+        185.5,
+        18,
+        198.5
+      ],
+      [
+        185.5,
+        18,
+        176
+      ],
+      [
+        185.5,
+        24.2,
+        176
+      ]
+    ],
+    "normal_centerline_mm": 258.0209413740893,
+    "parked_centerline_mm": 274.05083175725133,
+    "connector_allowance_mm": 24.0,
+    "normal_assembly_slack_mm": 15.0,
+    "required_stock_for_both_states_mm": 298.05083175725133,
+    "nominal_stock_mm": 300.0,
+    "geometric_length_budget_passed": true,
+    "park_extra_uses_existing_assembly_slack": false,
+    "extra_centerline_for_park_mm": 16.029890383162012,
+    "park_extra_beyond_normal_assembly_slack_mm": 1.0298903831620123,
+    "remaining_stock_margin_for_both_states_mm": 1.9491682427486694,
+    "normal_and_parked_states_share_the_same_factory_lead": true,
+    "prerequisite": "Releaseunderfloorsoftstrapsandfeedreservedslack;parkfreefactoryspanforwardbeforeliftingGPU.Originalcouplingstaysfixed.",
+    "physical_flexible_deformation_verified": false,
+    "factory_measurement_origin_and_usable_length_verified": false
+  },
+  "GPU_extension_service_parking": {
+    "normal_paths": [
+      [
+        [
+          189,
+          60.5,
+          176
+        ],
+        [
+          189,
+          68.6,
+          176
+        ],
+        [
+          243.3,
+          68.6,
+          176
+        ],
+        [
+          243.3,
+          68.6,
+          214.5
+        ],
+        [
+          243.3,
+          150,
+          214.5
+        ],
+        [
+          243.3,
+          178,
+          207.5
+        ],
+        [
+          243.3,
+          210,
+          207.5
+        ],
+        [
+          236,
+          210,
+          225
+        ],
+        [
+          236,
+          210,
+          238
+        ]
+      ],
+      [
+        [
+          143,
+          190,
+          203.25
+        ],
+        [
+          143,
+          190,
+          211.5
+        ],
+        [
+          143,
+          210,
+          211.5
+        ],
+        [
+          143,
+          210,
+          247
+        ],
+        [
+          236,
+          210,
+          247
+        ],
+        [
+          236,
+          210,
+          238
+        ]
+      ]
+    ],
+    "modeled_wire_centerline_mm": 413.34272190948786,
+    "free_tail_mm": 152.01548245743663,
+    "parked_tail_mm": 152.01548245881793,
+    "fixed_anchor_mm": [
+      236,
+      210,
+      238
+    ],
+    "park_path_mm": [
+      [
+        236,
+        210,
+        238
+      ],
+      [
+        236,
+        210,
+        246.001
+      ],
+      [
+        218,
+        210,
+        246.001
+      ],
+      [
+        218,
+        210,
+        304.50000000069065
+      ],
+      [
+        218,
+        230,
+        304.50000000069065
+      ],
+      [
+        218,
+        230,
+        243.25
+      ]
+    ],
+    "wire_diameter_mm": 8,
+    "engineering_radius_mm": 8,
+    "cap_interface_intersections_mm3": {
+      "card_head_vs_free_tail_mm3": 0.0,
+      "coupling_head_vs_fixed_wire_mm3": 0.0,
+      "fixed_vs_free_tail_mm3": 0.0,
+      "parked_head_vs_parked_tail_mm3": 0.0
+    },
+    "physical_flexible_deformation_verified": false
+  },
+  "EPS_standard_extension": {
+    "SKU": "PhanteksPH-CB4P_BK",
+    "nominal_length_mm": 500,
+    "source_url": "https://phanteks.com.tw/Extension-Cables.html",
+    "connector": "4pinmotherboardfemale-to-4pinmotherboardmale",
+    "stock_availability_confirmed": false,
+    "not_PSU_proprietary_modular_cable": true
+  },
+  "factory_exit_engineering_assumptions": {
+    "source_points_mm": {
+      "EPS": [
+        37,
+        96,
+        218
+      ],
+      "GPU": [
+        26,
+        96,
+        205.5
+      ]
+    },
+    "gland_status": "EPSY82/GPUY85.8areengineeringinletassumptions;bothfaceY96sourceXYZremainunmeasured.",
+    "received_hardware_verified": false
+  },
+  "measured_physical_bbox_mm": {
+    "min": [
+      0.0,
+      -1.7763568394002505e-15,
+      -20.0
+    ],
+    "max": [
+      250.0,
+      250.0,
+      255.0
+    ],
+    "size": [
+      250.0,
+      250.0,
+      275.0
+    ]
+  },
+  "measured_litres": 17.1875,
+  "geometry_source_hashes": {
+    "design/build_r6.py": "08453087985c39a59a98405d8175f29332a3824ab3d6f0cb06e06864c1486bbc",
+    "design/build.py": "7597eabfa096c507bc41d3308157119b9663146d60631f993d9ebf6d2fdada67",
+    "design/r6_export.py": "d9e933badc83570237655e4dab82fba827db1947672d63fbe96064b25537d368",
+    "design/r6_frame.py": "a27131ed066d9dc270f3df10b7fd19d08182c1b73f40dfb3228e0512852d25fd",
+    "design/r6_storage.py": "1ee68c5fe01bdb0268f65dee0ce23eb59b48181130e000d17e3d1a193c7ebf4c",
+    "design/r6_mainboard.py": "805c93cfc89463dc5208f61848274e15a21aa9d4e2d1a49c25852a0e791769cc",
+    "design/r6_gpu.py": "e1fa31e59412396f3b8f7f08b7a87adf7698c971435db2b0fd81d5975ab34c0b",
+    "design/r5_gpu.py": "45fe1a2d4443a63dacc41091f96521d67e62b48a4d3a2ed0f1001577337bef21",
+    "design/r6_psu.py": "61b7d3a52c63b7fb6f62387c04ce468817c7542539004023e6c45a5ca3a3ec25",
+    "design/r6_riser.py": "2c9c26aa79fa3a7730c0af418c3525ef456bee0fda09e0fc6567e2302d4b44e9",
+    "design/r6_controls.py": "7985a97197d69e28f03e686e8caf6e62035a8a2ad2e8847c10edd896c5b83f4b",
+    "design/r6_power.py": "a90872aae0d776924a689375a3dcae46bd7dac409d2db5328f715e3873de0436",
+    "design/r6_atx_refine.py": "87063dc2d2c6cf1b73aaa996b73820cc3c16597f7bb9c0887e94e88fbfb9cefa",
+    "design/r6_sata_refine.py": "6d85481ba861185181a7367119b06af6844e4158fa861be9f8c78342a43a8502",
+    "design/r6_packing.py": "ce9f650e74f6747949f351b977aba7ab0394b0f4dd20d7a0e84c9737eaba4bcd",
+    "design/r2_cables.py": "ab486adc4451213ec1ffbba2270d05cc6ce28486ded86a7141d5d43b9b1a7f88",
+    "design/r4_drive_mount.py": "690d8dc55b6986f55b74bc7f43c4b8d32d9c73a45331872c51a5aae48380f4a8",
+    "design/r4_riser_route.py": "ca41de8ca7b5a236f75ce7f6de96c79c3cfce7a117c224f18be46661ba6c7504",
+    "references/original/gpu_body.step": "b83f214d71139a880dd041b633a793ccea23648bab664f14e408840512f4a820",
+    "references/original/GPU_R5_IO_ear_PLACEMENT_REFERENCE.step": "9e385695a9281fefafd7e97a1a358a46f77e7798ea73675aa22699c7ffd91a01",
+    "references/original/GPU_R6_CEM_correct1p57_notch1p90_REFERENCE.step": "8959d6a505c77df5ddb30b2dad5a6710348539608edc82a1f00121526fbac76e",
+    "references/original/native-mechanical.json": "5adb137fa587bdb3d7b5dd09045c24cce50593dcda64499afcaafc9ab099e211",
+    "references/private/enp7660b-official-spec-20251008.pdf": "8df699a26d42f0849d06c9cd043733581196acea124f6a97b5c515b07cce7c4e",
+    "references/private/R23SR_official_male_endpoint.step": "9a9c4c3922584475a4eb0a9154a7f206620ee60fdc9eede7cdc18b1e7156bbdb",
+    "references/private/R23SR_official_female_endpoint.step": "06cd609341f778e7c4fdede2d0863f6c9ecf36aa996d715c77b8550295ab1328"
+  },
+  "service_procedures": {
+    "wire_roof": {
+      "sweep_key": "SERVICE_POWER_R7_WIRE_ROOF_open_plusZ7p5",
+      "translation_mm": [
+        0,
+        0,
+        7.5
+      ],
+      "method": "Exactcontinuousleading-faceandsemicircularsliceconstruction;notdiscreteposes.",
+      "removed_parts_for_access": [
+        "TOP_R6_lid",
+        "SKIN_R6_left",
+        "top_fan_body",
+        "FRAME_R6_top"
+      ],
+      "remove_bolts_and_captured_nuts": [
+        "PSU_R6_WIRE_COVER_M3x8_9",
+        "PSU_R6_WIRE_COVER_M3x8_10",
+        "PSU_R6_WIRE_COVER_DIN562_M3_9",
+        "PSU_R6_WIRE_COVER_DIN562_M3_10",
+        "PSU_R6_TOP_M3x10_CSK_1",
+        "PSU_R6_TOP_M3x10_CSK_2",
+        "PSU_R6_TOP_DIN562_M3_1",
+        "PSU_R6_TOP_DIN562_M3_2",
+        "MAINBOARD_MOUNT_R6_frame_top_M3x10_1",
+        "MAINBOARD_MOUNT_R6_frame_top_M3x10_2",
+        "MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_1",
+        "MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_2"
+      ],
+      "remove_access_fastener_prefixes": [
+        "TOP_R6_lid_",
+        "PANEL_R6_left_"
+      ],
+      "top_frame_may_remain_for_opening": false,
+      "temporary_support_required": "SupportPSUandmainboardbeforeunfasteningtopframe;releaseGPUcableanchorandcontrolbuttonleadsbeforeliftingframe.",
+      "assembly_order": "LayfinishedfactoryEPS/GPUleadsintolowerhalvesbeforetopframeinstallation;lowerroofupperhalves,fitbothWIREFastener/nutpairs,sealjoinsafterfit-up.",
+      "service_order": "ACoff;supportPSUandmainboard;removeaccesspanelsandalltopframeconnectionsincludingGPUlacing/controlleads;removetopframe;removebothWIREbolt/nutpairs;liftwire-roof+Z7.5.",
+      "whole_top_frame_extraction_verified": false,
+      "clip_strength_and_seal_verified": false
+    },
+    "GPU_card_only": {
+      "moving_hardware": [
+        "gpu_body",
+        "GPU_R6_CEM_keyed_edge_PLACEMENT_REFERENCE",
+        "GPU_R6_IO_ear_PLACEMENT_REFERENCE"
+      ],
+      "stage_service_names": [
+        "SERVICE_GPU_R6_disengage_plusZ12",
+        "SERVICE_GPU_R6_lift_plusZ300_AFTER12"
+      ],
+      "stage_translations_mm": [
+        [
+          0,
+          0,
+          12
+        ],
+        [
+          0,
+          0,
+          300
+        ]
+      ],
+      "remove_parts_before_service": [
+        "GPU_R6_removable_IO_jaw",
+        "TOP_R6_lid",
+        "top_fan_body"
+      ],
+      "remove_hardware_before_service": [
+        "GPU_R6_IO_M3x10_1",
+        "GPU_R6_IO_insert_OD4_L4_fitup_1",
+        "GPU_R6_IO_M3x10_2",
+        "GPU_R6_IO_insert_OD4_L4_fitup_2"
+      ],
+      "removal_order": [
+        "断电拔显示器线，拆顶盖/顶扇及对应紧固件",
+        "拔GPU8pin并解除线夹，将线头停到右后侧",
+        "松开电源底部软绑带，送出原厂300mm线预留余量，将自由段移至前侧停放；中转接头保持固定",
+        "拆两颗IO螺钉，前夹与嵌件向-Y12再上提取出",
+        "显卡+Z12脱槽，再上提300；三盘、电源和主板留位"
+      ],
+      "scope": "Actual continuous boundary sweep of CEM reference and conservative GPU body; real Zotac PCB/shroud/ports must be fitted",
+      "power_head": "GPU8_R6_card_8pin_HEAD_ENGINEERING_PROXY",
+      "free_wire": "GPU8_R6_free_service_tail",
+      "parked_head_service": "SERVICE_GPU_R6_power_head_PARKED",
+      "parked_tail_service": "SERVICE_GPU_R6_power_tail_PARKED",
+      "power_head_park_delta_mm": [
+        75,
+        40,
+        40
+      ],
+      "power_head_parking_stages_mm": [
+        [
+          0,
+          0,
+          40
+        ],
+        [
+          75,
+          0,
+          0
+        ],
+        [
+          0,
+          40,
+          0
+        ]
+      ],
+      "remove_tail_from_normal_obstacles_only_after_park": true,
+      "free_tail_park_condition": "Top/fan off;unplug40up,move75right then40rear; release tail tie,keep fixed vertical anchor; reserve open space above chassis for the equal-length free tail.",
+      "native_power_parking": {
+        "normal_wire": "CABLE_R6_GPU_FACTORY300",
+        "parked_service": "SERVICE_GPU_R7_factory300_FRONT_PARKED",
+        "path_mm": [
+          [
+            26,
+            96,
+            205.5
+          ],
+          [
+            26,
+            82,
+            205.5
+          ],
+          [
+            35,
+            73,
+            205.5
+          ],
+          [
+            35,
+            73,
+            193
+          ],
+          [
+            35,
+            16,
+            193
+          ],
+          [
+            110,
+            16,
+            193
+          ],
+          [
+            118,
+            16,
+            198.5
+          ],
+          [
+            126,
+            5.8,
+            198.5
+          ],
+          [
+            178,
+            5.8,
+            198.5
+          ],
+          [
+            185.5,
+            18,
+            198.5
+          ],
+          [
+            185.5,
+            18,
+            176
+          ],
+          [
+            185.5,
+            24.2,
+            176
+          ]
+        ],
+        "normal_centerline_mm": 258.0209413740893,
+        "parked_centerline_mm": 274.05083175725133,
+        "connector_allowance_mm": 24.0,
+        "normal_assembly_slack_mm": 15.0,
+        "required_stock_for_both_states_mm": 298.05083175725133,
+        "nominal_stock_mm": 300.0,
+        "geometric_length_budget_passed": true,
+        "park_extra_uses_existing_assembly_slack": false,
+        "extra_centerline_for_park_mm": 16.029890383162012,
+        "park_extra_beyond_normal_assembly_slack_mm": 1.0298903831620123,
+        "remaining_stock_margin_for_both_states_mm": 1.9491682427486694,
+        "normal_and_parked_states_share_the_same_factory_lead": true,
+        "prerequisite": "Releaseunderfloorsoftstrapsandfeedreservedslack;parkfreefactoryspanforwardbeforeliftingGPU.Originalcouplingstaysfixed.",
+        "physical_flexible_deformation_verified": false,
+        "factory_measurement_origin_and_usable_length_verified": false
+      }
+    }
+  },
+  "riser_selection": {
+    "model": "ADT-Link R23SR30cm",
+    "electrical_lanes": 4,
+    "link_generation": 3,
+    "bandwidth_tradeoff": "DeliberatePCIe3x4 link in original physicalx8 motherboard slot;notx8performance",
+    "release_status": "CAD_CANDIDATE_NOT_PHYSICALLY_OR_THERMALLY_ACCEPTED",
+    "actual_male_CPU_guard_minimum_distance_mm": 8.088873790384326,
+    "male_mount_CPU40_minimum_clearances_mm": {
+      "R6_RISER_MALE_M3x8_UP_1": 5.982905583979445,
+      "R6_RISER_MALE_M3_hex_1": 13.180472363769754,
+      "R6_RISER_MALE_M3x8_UP_2": 42.19006078849162,
+      "R6_RISER_MALE_M3_hex_2": 46.65946867324967
+    }
+  }
+}

@@ -15,30 +15,56 @@ def apply_controls(m):
     mates=[];routes={}
     # Original GPU cable mates to the standard extension at the front-right.
     head='GPU8_R6_card_8pin_HEAD_ENGINEERING_PROXY';joint='GPU8_R6_Phanteks_extension_FEMALE_HEAD_PROXY'
-    hd[head]=box((14,12,18),(136,184,185.25));hd[joint]=box((14,18,18.3),(178,16,185))
-    tail=[(143,190,203.05),(143,190,211.5),(143,210,211.5),(143,210,238),(236,210,238)]
-    fixed=[(185,25,203.05),(185,25,211.5),(243.3,25,211.5),(243.3,50,207.5),(243.3,210,207.5),(236,210,225),(236,210,238)]
+    hd[head]=box((14,12,18),(136,184,185.25));hd[joint]=box((14,18.3,18),(182,42.2,167))
+    # The tail starts exactly on the card-head top and approaches the fixed
+    # anchor from above. The fixed lead ends there from below: shared caps,
+    # not a long overlapping pair of independently swept cable volumes.
+    tail=[(143,190,203.25),(143,190,211.5),(143,210,211.5),
+      (143,210,247),(236,210,247),(236,210,238)]
+    # The standard coupling faces +Y. Cross in front of the board atY68.6,
+    # then rise outside the CPU inlet before traversing above its top edge.
+    # Preserve full8mm/R8, the rear anchor and the top-fan nut clearance.
+    fixed=[(189,60.5,176),(189,68.6,176),(243.3,68.6,176),
+      (243.3,68.6,214.5),(243.3,150,214.5),
+      (243.3,178,207.5),(243.3,210,207.5),(236,210,225),(236,210,238)]
     tn='GPU8_R6_free_service_tail';fn='GPU8_R6_Phanteks_fixed_extension_route'
     w[tn]=_pipe(tail,8,8)
     fp=rounded_wire(fixed,8)
-    w[fn]=cq.Workplane(cq.Plane(origin=fixed[0],normal=(0,0,1))).circle(4).sweep(cq.Workplane().newObject([fp]),isFrenet=True).val().clean()
+    tangent=fp._r4_edges[0].tangentAt(0)
+    w[fn]=cq.Workplane(cq.Plane(origin=fixed[0],normal=tangent)).circle(4).sweep(cq.Workplane().newObject([fp]),isFrenet=True).val().clean()
     target=_rounded_wire(tail,8).Length()
-    def parking(a):return [(236,210,238),(236,228,238),(a,228,238),(a,228,218),(222,228,218),(222,210,218),(222,210,243.05)]
-    lo,hi=185.,205.
+    # Bend inward below the retained right-hand top ring before rising into
+    # the open service space. Rise and return on separate20mm-spaced legs;
+    # the return ends on the parked head top, never through its body.
+    def parking(u):return [(236,210,238),(236,210,246.001),(218,210,246.001),
+      (218,210,u),(218,230,u),(218,230,243.25)]
+    # The lower inward dogleg needs two R8 tangent lengths before its next
+    # turn. A lower bound at251.251 would include unconstructible spines.
+    lo,hi=262.002,330.
+    if not _rounded_wire(parking(lo),8).Length()<=target<=_rounded_wire(parking(hi),8).Length():
+        raise ValueError('GPU tail cannot retain its full length in the bounded parked service route')
     for _ in range(35):
-        a=(lo+hi)/2
-        if _rounded_wire(parking(a),8).Length()>target:lo=a
-        else:hi=a
+        u=(lo+hi)/2
+        if _rounded_wire(parking(u),8).Length()<target:lo=u
+        else:hi=u
     park=parking((lo+hi)/2)
     sh='SERVICE_GPU_R6_power_head_PARKED';st='SERVICE_GPU_R6_power_tail_PARKED'
-    delta=(79,20,40);sv[sh]=hd[head].translate(delta);sv[st]=_pipe(park,8,8)
+    delta=(75,40,40);sv[sh]=hd[head].translate(delta);sv[st]=_pipe(park,8,8)
     sv['SERVICE_GPU_R6_power_unplug_plusZ40']=sweep_box(hd[head],(0,0,40))
-    sv['SERVICE_GPU_R6_power_head_side79_AFTER_up40']=sweep_box(hd[head].translate((0,0,40)),(79,0,0))
-    sv['SERVICE_GPU_R6_power_head_rear20_AFTER_side']=sweep_box(hd[head].translate((79,0,40)),(0,20,0))
+    sv['SERVICE_GPU_R6_power_head_side75_AFTER_up40']=sweep_box(hd[head].translate((0,0,40)),(75,0,0))
+    sv['SERVICE_GPU_R6_power_head_rear40_AFTER_side']=sweep_box(hd[head].translate((75,0,40)),(0,40,0))
     card=m['gpu_meta']['gpu_card_only'];card.update({'power_head':head,'free_wire':tn,'parked_head_service':sh,'parked_tail_service':st,'power_head_park_delta_mm':delta,
-      'power_head_parking_stages_mm':[[0,0,40],[79,0,0],[0,20,0]],'remove_tail_from_normal_obstacles_only_after_park':True,
-      'free_tail_park_condition':'Top/fan off;unplug40up,move79right then20rear; release tail tie,keep fixed vertical anchor.'})
-    mates += [[head,tn],[joint,fn],[tn,fn]]
+      'power_head_parking_stages_mm':[[0,0,40],[75,0,0],[0,40,0]],'remove_tail_from_normal_obstacles_only_after_park':True,
+      'free_tail_park_condition':'Top/fan off;unplug40up,move75right then40rear; release tail tie,keep fixed vertical anchor; reserve open space above chassis for the equal-length free tail.'})
+    # These cap interfaces remain in the normal collision checks; no whole
+    # head/tail or fixed/free cable-pair overlap exemption is required.
+    contact_checks={
+      'card_head_vs_free_tail_mm3':hd[head].intersect(w[tn]).Volume(),
+      'coupling_head_vs_fixed_wire_mm3':hd[joint].intersect(w[fn]).Volume(),
+      'fixed_vs_free_tail_mm3':w[fn].intersect(w[tn]).Volume(),
+      'parked_head_vs_parked_tail_mm3':sv[sh].intersect(sv[st]).Volume()}
+    if any(volume>1e-4 for volume in contact_checks.values()):
+        raise ValueError('GPU cable cap interfaces must touch without volumetric overlap')
     # Fixed clip is below the horizontal free tail and attached to the top
     # frame. The free lead's equal-length parked pose stays right of the card.
     clip=cylinder(6.4,6,(236,210,224)).cut(cylinder(4.8,6,(236,210,224)))
@@ -48,6 +74,8 @@ def apply_controls(m):
     m['gpu_power_meta']={'extension':'Phanteks PH-CB8V_BK 500mm standardPCIe6+2 extension,18AWG','normal_paths':[fixed,tail],
       'modeled_wire_centerline_mm':fp.Length()+target,'free_tail_mm':target,'parked_tail_mm':_rounded_wire(park,8).Length(),
       'fixed_anchor_mm':[236,210,238],'park_path_mm':park,'wire_diameter_mm':8,'engineering_radius_mm':8,
+      'cap_interface_intersections_mm3':contact_checks,
+      'parked_tail_service_above_chassis':True,
       'source':'https://phanteks.com.tw/Extension-Cables.html',
       'length_limit':'Published500mm covers route plus heads;retain excess in right-front gutter.Actual exposed-wire length/head dimensions and stock packing still require sample acceptance.',
       'physical_flexible_deformation_verified':False}
@@ -79,7 +107,14 @@ def apply_controls(m):
     # Photo-derived SYS header, small straight4pin plug clears CPU40 circle.
     socket='PWM_R6_DS2501_SYS_HEADER_PHOTO_PROXY';plug='PWM_R6_DS2501_SYS_HEAD_PROXY'
     h[socket]=box((10,8,6),(188.3,71.67,183.63));hd[plug]=box((10,8,6),(198.3,71.67,183.63))
-    path=[(208.1,75.67,186.63),(236,75.67,186.63),(236,224,186.63),(236,224,41.6),(44,224,41.6),(44,224,84),(44,194,84),(38.3,194,84)]
+    # Leave the header forward of the round CPU inlet, then descend outside
+    # its front edge before crossing below it. The full3mm/R2.5 wire remains
+    # explicit;Y60 separates the descent from the GPU power lead atY68.6,
+    # andX226 keeps it inboard of the DATA2 diagonal atX238.5.
+    # Neither the CPU40 reserve nor the side intake is reduced.
+    path=[(208.1,75.67,186.63),(226,75.67,186.63),(226,60,186.63),
+      (226,60,110),(226,224,110),(226,224,41.6),
+      (44,224,41.6),(44,224,84),(44,194,84),(38.3,194,84)]
     cn='PWM_R6_SYS_to_powered_hub_control_route';w[cn]=_pipe(path,3,2.5);mates += [[cn,plug],[cn,hn['input']]]
     routes[cn]={'path_mm':path,'stock_mm':900,'modeled_mm':_rounded_wire(path,2.5).Length(),
       'stock':'NA-FH1 includedNA-EC1 300+twoadditionalNA-EC1 300;two coupling heads/stock surplus require sample packing',

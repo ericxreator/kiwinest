@@ -3,6 +3,6 @@ __pycache__/
 *.py[cod]
 .DS_Store
 references/private/
-out-r6/
+out-r*/
 analysis/
 *.log

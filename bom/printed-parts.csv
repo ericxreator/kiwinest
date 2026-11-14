@@ -1,41 +1,41 @@
 ﻿CAD打印件,CAD数量／实配补量,材料,包络mm,制造条件
-FRAME_R6_corner_10_10,1,PETG／PETG HF,8.000 × 8.000 × 242.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-FRAME_R6_corner_10_240,1,PETG／PETG HF,8.000 × 8.000 × 242.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-FRAME_R6_corner_240_10,1,PETG／PETG HF,8.000 × 8.000 × 242.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-FRAME_R6_corner_240_240,1,PETG／PETG HF,8.000 × 8.000 × 242.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-FRAME_R6_feet20,1,PETG／PETG HF,246.000 × 246.000 × 20.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-BOTTOM_R6_shim1mm_1,1 CAD；25mm实扇每孔需2片,PETG／PETG HF,9.000 × 9.000 × 1.000,当前26mm扇代理+1mm垫；真实25mm扇保持顶Z32需总2mm底垫，实测后叠垫
-BOTTOM_R6_shim1mm_2,1 CAD；25mm实扇每孔需2片,PETG／PETG HF,9.000 × 9.000 × 1.000,当前26mm扇代理+1mm垫；真实25mm扇保持顶Z32需总2mm底垫，实测后叠垫
-BOTTOM_R6_shim1mm_3,1 CAD；25mm实扇每孔需2片,PETG／PETG HF,9.000 × 9.000 × 1.000,当前26mm扇代理+1mm垫；真实25mm扇保持顶Z32需总2mm底垫，实测后叠垫
-BOTTOM_R6_shim1mm_4,1 CAD；25mm实扇每孔需2片,PETG／PETG HF,9.000 × 9.000 × 1.000,当前26mm扇代理+1mm垫；真实25mm扇保持顶Z32需总2mm底垫，实测后叠垫
-TOP_R6_spacer5mm_1,1,PETG／PETG HF,9.000 × 9.000 × 5.000,当前26mm代理配5mm隔距；25mm实扇需总6mm，上下层/额外1mm调厚垫制造前落实
-TOP_R6_spacer5mm_2,1,PETG／PETG HF,9.000 × 9.000 × 5.000,当前26mm代理配5mm隔距；25mm实扇需总6mm，上下层/额外1mm调厚垫制造前落实
-TOP_R6_spacer5mm_3,1,PETG／PETG HF,9.000 × 9.000 × 5.000,当前26mm代理配5mm隔距；25mm实扇需总6mm，上下层/额外1mm调厚垫制造前落实
-TOP_R6_spacer5mm_4,1,PETG／PETG HF,9.000 × 9.000 × 5.000,当前26mm代理配5mm隔距；25mm实扇需总6mm，上下层/额外1mm调厚垫制造前落实
-TOP_R6_lid,1,PETG／PETG HF,250.000 × 250.000 × 4.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-SKIN_R6_front,1,PETG／PETG HF,244.000 × 2.400 × 246.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-SKIN_R6_back,1,PETG／PETG HF,244.000 × 2.400 × 246.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-SKIN_R6_left,1,PETG／PETG HF,2.400 × 244.000 × 246.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-SKIN_R6_right,1,PETG／PETG HF,2.400 × 244.000 × 246.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-FILTER_R6_inset_front_pull,1,PETG／PETG HF,133.400 × 192.700 × 2.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-FRAME_R6_base,1,PETG／PETG HF,245.000 × 244.000 × 55.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-FRAME_R6_top,1,PETG／PETG HF,244.000 × 244.000 × 41.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-R6_STORAGE_TRAY_1_native4_open_U,1,PETG／PETG HF,29.700 × 116.400 × 113.325,审查原型；切片／公差／刚度／蠕变／试装未接受
-R6_STORAGE_TRAY_2_native4_open_U,1,PETG／PETG HF,29.700 × 116.400 × 113.325,审查原型；切片／公差／刚度／蠕变／试装未接受
-R6_STORAGE_TRAY_3_native4_open_U,1,PETG／PETG HF,29.700 × 116.400 × 113.325,审查原型；切片／公差／刚度／蠕变／试装未接受
-R6_STORAGE_COMMON_CAGE_open_floor_rear_skeleton,1,PETG／PETG HF,101.000 × 218.000 × 146.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-MAINBOARD_MOUNT_R6_DS2501_open_tray,1,PETG／PETG HF,12.000 × 209.400 × 242.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-GPU_R6_TPU_front_end_pad_1,1,TPU95A,11.600 × 0.800 × 6.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-GPU_R6_TPU_front_end_pad_2,1,TPU95A,11.600 × 0.800 × 6.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-GPU_R6_fixed_open_spine,1,PETG／PETG HF,54.000 × 234.000 × 213.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-GPU_R6_removable_IO_jaw,1,PETG／PETG HF,41.600 × 5.400 × 8.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-PSU_R6_rear_TOP_ONLY_suspension,1,PETG／PETG HF,91.500 × 9.000 × 6.200,审查原型；切片／公差／刚度／蠕变／试装未接受
-PSU_R6_front_open_cradle_storage_bolted,1,PETG／PETG HF,97.000 × 26.500 × 49.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE,1,PETG／PETG HF,91.500 × 239.000 × 49.600,审查原型；切片／公差／刚度／蠕变／试装未接受
-PSU_R6_cold_sleeve_REMOVABLE_roof,1,PETG／PETG HF,91.500 × 231.800 × 1.500,审查原型；切片／公差／刚度／蠕变／试装未接受
-PSU_R6_fixed_wire_gutter_REMOVABLE_roof,1,PETG／PETG HF,28.800 × 80.800 × 1.500,审查原型；切片／公差／刚度／蠕变／试装未接受
-R6_RISER_FEMALE_LOW_BRIDGE_FRAME_FEET,1,PETG／PETG HF,15.500 × 152.000 × 47.400,审查原型；切片／公差／刚度／蠕变／试装未接受
-R6_RISER_MALE_UPPER_REAR_FRAME_SUPPORT_BLOCKED,1,PETG／PETG HF,41.822 × 106.000 × 10.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-POWER_R6_front_fixed_lacing_ear_1,1,PETG／PETG HF,12.000 × 4.000 × 12.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-POWER_R6_front_fixed_lacing_ear_2,1,PETG／PETG HF,12.000 × 4.000 × 12.000,审查原型；切片／公差／刚度／蠕变／试装未接受
-FRAME_R6_stock_lead_basket_FIXED,1,PETG／PETG HF,54.000 × 105.000 × 135.000,审查原型；切片／公差／刚度／蠕变／试装未接受
+FRAME_R6_corner_10_10,1,PETG／PETG HF,8.000 × 8.000 × 242.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+FRAME_R6_corner_10_240,1,PETG／PETG HF,8.000 × 8.000 × 242.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+FRAME_R6_corner_240_10,1,PETG／PETG HF,8.000 × 8.000 × 242.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+FRAME_R6_corner_240_240,1,PETG／PETG HF,8.000 × 8.000 × 242.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+FRAME_R6_feet20,1,PETG／PETG HF,246.000 × 246.000 × 20.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+BOTTOM_R6_shim1mm_1,1,PETG／PETG HF,9.000 × 9.000 × 1.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+BOTTOM_R6_shim1mm_2,1,PETG／PETG HF,9.000 × 9.000 × 1.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+BOTTOM_R6_shim1mm_3,1,PETG／PETG HF,9.000 × 9.000 × 1.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+BOTTOM_R6_shim1mm_4,1,PETG／PETG HF,9.000 × 9.000 × 1.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+TOP_R6_spacer5mm_1,1,PETG／PETG HF,9.000 × 9.000 × 5.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+TOP_R6_spacer5mm_2,1,PETG／PETG HF,9.000 × 9.000 × 5.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+TOP_R6_spacer5mm_3,1,PETG／PETG HF,9.000 × 9.000 × 5.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+TOP_R6_spacer5mm_4,1,PETG／PETG HF,9.000 × 9.000 × 5.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+TOP_R6_lid,1,PETG／PETG HF,250.000 × 250.000 × 4.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+SKIN_R6_front,1,PETG／PETG HF,244.000 × 2.400 × 246.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+SKIN_R6_back,1,PETG／PETG HF,244.000 × 2.400 × 246.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+SKIN_R6_left,1,PETG／PETG HF,2.400 × 244.000 × 246.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+SKIN_R6_right,1,PETG／PETG HF,2.400 × 244.000 × 246.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+FILTER_R6_inset_front_pull,1,PETG／PETG HF,133.400 × 192.700 × 2.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+FRAME_R6_base,1,PETG／PETG HF,245.000 × 244.000 × 55.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+FRAME_R6_top,1,PETG／PETG HF,244.000 × 244.000 × 41.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+R6_STORAGE_TRAY_1_native4_open_U,1,PETG／PETG HF,29.700 × 116.400 × 113.325,工程原型；切片／公差／刚度／蠕变／试装待验证
+R6_STORAGE_TRAY_2_native4_open_U,1,PETG／PETG HF,29.700 × 116.400 × 113.325,工程原型；切片／公差／刚度／蠕变／试装待验证
+R6_STORAGE_TRAY_3_native4_open_U,1,PETG／PETG HF,29.700 × 116.400 × 113.325,工程原型；切片／公差／刚度／蠕变／试装待验证
+R6_STORAGE_COMMON_CAGE_open_floor_rear_skeleton,1,PETG／PETG HF,101.000 × 218.000 × 146.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+MAINBOARD_MOUNT_R6_DS2501_open_tray,1,PETG／PETG HF,12.000 × 209.400 × 242.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+GPU_R6_TPU_front_end_pad_1,1,TPU,11.600 × 0.800 × 6.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+GPU_R6_TPU_front_end_pad_2,1,TPU,11.600 × 0.800 × 6.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+GPU_R6_fixed_open_spine,1,PETG／PETG HF,54.000 × 234.000 × 213.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+GPU_R6_removable_IO_jaw,1,PETG／PETG HF,41.600 × 5.400 × 8.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+PSU_R6_rear_TOP_ONLY_suspension,1,PETG／PETG HF,91.500 × 9.000 × 6.200,工程原型；切片／公差／刚度／蠕变／试装待验证
+PSU_R6_front_open_cradle_storage_bolted,1,PETG／PETG HF,97.000 × 26.500 × 49.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE,1,PETG／PETG HF,92.300 × 239.000 × 52.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+PSU_R6_cold_sleeve_REMOVABLE_roof,1,PETG／PETG HF,91.500 × 231.800 × 1.500,工程原型；切片／公差／刚度／蠕变／试装待验证
+PSU_R6_fixed_wire_gutter_REMOVABLE_roof,1,PETG／PETG HF,29.750 × 81.500 × 39.500,工程原型；切片／公差／刚度／蠕变／试装待验证
+R6_RISER_FEMALE_LOW_BRIDGE_FRAME_FEET,1,PETG／PETG HF,15.500 × 152.000 × 47.300,工程原型；切片／公差／刚度／蠕变／试装待验证
+R7_RISER_MALE_UPPER_REAR_FRAME_SUPPORT,1,PETG／PETG HF,41.858 × 106.000 × 10.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+POWER_R6_front_fixed_lacing_ear_1,1,PETG／PETG HF,12.000 × 4.000 × 12.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+POWER_R6_front_fixed_lacing_ear_2,1,PETG／PETG HF,12.000 × 4.000 × 12.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+FRAME_R6_stock_lead_basket_FIXED,1,PETG／PETG HF,54.000 × 105.000 × 135.000,工程原型；切片／公差／刚度／蠕变／试装待验证

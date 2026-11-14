@@ -20,6 +20,7 @@ def main() -> None:
     assert tracked, 'No tracked publication files'
     for name in tracked:
         assert not name.startswith(('references/private/', 'out-r6/', 'analysis/', '.venv/'))
+        assert not Path(name).parts[0].startswith('out-r')
         assert Path(name).suffix.lower() not in ('.pdf', '.zip', '.jpg', '.jpeg', '.webp')
         content = (ROOT / name).read_bytes()
         markers = (b'/' + b'home/' + b'eric/', b'/' + b'tmp/' + b'codex',
@@ -35,21 +36,27 @@ def main() -> None:
         actual = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
         assert actual == expected, f'Changed publication file: {name}'
     assert set(manifest['files']) == set(tracked) - {'MANIFEST.json'}
-    review = json.loads((ROOT / 'evidence/r6-review.json').read_text())
-    assert review['geometric_checks_passed'] is False and review['manufacturing_release'] is False
-    assert len(list((ROOT / 'cad/parts').glob('*.step'))) == 40
-    assert len(list((ROOT / 'cad/parts').glob('*.stl'))) == 40
-    data = (ROOT / 'cad/kiwinest-r6-public.glb').read_bytes()
+    review_path = ROOT / 'evidence/current-review.json'
+    review = json.loads(review_path.read_text())
+    assert isinstance(review['geometric_checks_passed'], bool)
+    assert review['geometric_checks_passed'] == (not any(review['checks'].values()))
+    assert review['manufacturing_release'] is False
+    assert review['thermal_or_physical_acceptance_completed'] is False
+    part_count = len(review['parts'])
+    assert len(list((ROOT / 'cad/parts').glob('*.step'))) == part_count
+    assert len(list((ROOT / 'cad/parts').glob('*.stl'))) == part_count
+    data = (ROOT / 'cad/kiwinest-public.glb').read_bytes()
     length = struct.unpack_from('<I', data, 12)[0]
     document = json.loads(data[20:20 + length])
     names = {node.get('name') for node in document['nodes']}
-    assert not any(name and name.startswith('R6_R83SL_OFFICIAL_') for name in names)
+    assert not (names & set(review['public_geometry']['excluded_vendor_nodes']))
+    assert not any(name and '_OFFICIAL_' in name for name in names)
     html = (ROOT / 'docs/preview.html').read_text()
     encoded = re.search(r"atob\('([A-Za-z0-9+/=]+)'\)", html)
     assert encoded and base64.b64decode(encoded.group(1)) == data
     print(json.dumps({'tracked_files': len(tracked), 'sha256_files': len(manifest['files']),
-                      'original_parts': 40, 'public_model_nodes': len(names) - 1,
-                      'geometry_passed': False, 'publication_checks_passed': True}))
+                      'original_parts': part_count, 'public_model_nodes': len(names) - 1,
+                      'geometry_passed': review['geometric_checks_passed'], 'publication_checks_passed': True}))
 
 
 if __name__ == '__main__':

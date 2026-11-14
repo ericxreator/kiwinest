@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-14",
+  "timezone": "Asia/Singapore",
+  "scope": "R6 four400mm x8 vs R7 two300mm x4 lower ribbon geometric projection; bandwidth tradeoff is explicit",
+  "baseline_public_commit": "4f775b591586942e09c5b722bba3d39dd46f1d4d",
+  "algorithm_file": "scripts/airflow_projection.py",
+  "algorithm_sha256": "960a40b170447d19af693af9c46586f628b7bed71aee2668a994aa4684065765",
+  "candidate_parameter_file": "design/r6_riser.py",
+  "candidate_parameter_file_sha256": "2c9c26aa79fa3a7730c0af418c3525ef456bee0fda09e0fc6567e2302d4b44e9",
+  "baseline": {
+    "method": "Union of rasterized XY projections of Z-clipped STEP-solid surface triangles",
+    "units": "mm",
+    "center_xy_mm": [
+      170.0,
+      136.0
+    ],
+    "disk_radius_mm": 56.0,
+    "z_clip_mm": [
+      32.0,
+      65.0
+    ],
+    "raster_step_mm": 0.25,
+    "mesh_tolerance_mm": 0.1,
+    "angular_tolerance_rad": 0.15,
+    "occupied_pixels": 46604,
+    "disk_pixels": 157648,
+    "projected_fraction": 0.29562062316045873,
+    "projected_area_mm2": 2912.75,
+    "projected_triangles": 1944,
+    "input_files": [
+      {
+        "filename": "CABLE_R6_R83SL_band_1_400mm_13p2x1p4_PLANNING.step",
+        "sha256": "ec7219b65e69df5cae0d20349bbc6af337085cc40ee9d32f061406ba4e0cc1bd",
+        "bytes": 169846,
+        "intersects_z_interval": true
+      },
+      {
+        "filename": "CABLE_R6_R83SL_band_2_400mm_13p2x1p4_PLANNING.step",
+        "sha256": "3f242f0e2e07976ceccce43efa9cc80165250195365318ff7eba156644a58d8a",
+        "bytes": 169759,
+        "intersects_z_interval": true
+      },
+      {
+        "filename": "CABLE_R6_R83SL_band_3_400mm_13p2x1p4_PLANNING.step",
+        "sha256": "6682021f1300de8f5cb9a7e31253cac06fb69f7fcfe40103529d848cf2a00fb6",
+        "bytes": 169791,
+        "intersects_z_interval": true
+      },
+      {
+        "filename": "CABLE_R6_R83SL_band_4_400mm_13p2x1p4_PLANNING.step",
+        "sha256": "99b9bf41d7141b6176d50765a356a8bd42e1d315e59dbfbdd6954d8fdedb67c6",
+        "bytes": 169836,
+        "intersects_z_interval": true
+      }
+    ],
+    "geometry_is_thermal_validation": false,
+    "interpretation": "Geometric projection estimate only; not pressure drop, airflow loss, or thermal acceptance. Raster and tessellation error are not a certified uncertainty bound."
+  },
+  "candidate": {
+    "method": "Union of rasterized XY projections of Z-clipped STEP-solid surface triangles",
+    "units": "mm",
+    "center_xy_mm": [
+      170.0,
+      136.0
+    ],
+    "disk_radius_mm": 56.0,
+    "z_clip_mm": [
+      32.0,
+      65.0
+    ],
+    "raster_step_mm": 0.25,
+    "mesh_tolerance_mm": 0.1,
+    "angular_tolerance_rad": 0.15,
+    "occupied_pixels": 11607,
+    "disk_pixels": 157648,
+    "projected_fraction": 0.07362605297878819,
+    "projected_area_mm2": 725.4375,
+    "projected_triangles": 972,
+    "input_files": [
+      {
+        "filename": "CABLE_R7_R23SR_band_1_300mm_13p2x1p4_PLANNING.step",
+        "sha256": "8c66df6dc583f3399749f82a9d88201e8733b3d7cec480f7de0480403b7514e3",
+        "bytes": 171359,
+        "intersects_z_interval": true
+      },
+      {
+        "filename": "CABLE_R7_R23SR_band_2_300mm_13p2x1p4_PLANNING.step",
+        "sha256": "6b977ec0d424015420ba138bfa74a7f4e756c195dd9ce04ede89030aeb793f48",
+        "bytes": 171308,
+        "intersects_z_interval": true
+      }
+    ],
+    "geometry_is_thermal_validation": false,
+    "interpretation": "Geometric projection estimate only; not pressure drop, airflow loss, or thermal acceptance. Raster and tessellation error are not a certified uncertainty bound."
+  },
+  "projected_fraction_reduction_percentage_points": 22.199457018167053,
+  "projected_area_relative_reduction": 0.7509441249678139,
+  "geometry_is_thermal_validation": false,
+  "limits": [
+    "No pressure-drop, airflow-loss or thermal/noise acceptance",
+    "R7 changes electrical link from planned x8 to x4; this is not a cost-free bandwidth comparison",
+    "Manufacturer minimum bend radius and received-cable behavior remain unconfirmed",
+    "STEP serialization timestamps may change hashes; projection values compare geometry"
+  ]
+}

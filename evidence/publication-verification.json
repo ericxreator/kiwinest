@@ -1,29 +1,61 @@
 {
+  "revision": "R7",
   "date": "2026-11-14",
   "timezone": "Asia/Singapore",
-  "scope": "Open-source publication checks; not manufacturing acceptance",
-  "source_modules_imported": 18,
-  "helper_algorithms_match_original": true,
-  "vendor_inputs_checksum_and_endpoint_extraction_passed": true,
+  "scope": "Fresh integrated CAD, export, publication geometry and browser checks; physical manufacturing acceptance remains pending",
+  "source_report_sha256": "edcebf0cd989dfa29a0a849c3276fcdec4b13f24b496f5c8b771e2cf85699350",
+  "source_modules_hashed": 18,
+  "all_source_hashes_match": true,
+  "full_integrated_CAD_rebuild_rerun": true,
+  "geometry_checks_passed": true,
+  "check_groups": 23,
+  "failed_groups": {},
+  "step_roundtrip": {
+    "valid": true,
+    "solids": 623,
+    "expected": 623,
+    "passed": true
+  },
+  "all_40_print_meshes_watertight": true,
   "original_part_files_sha256_match": 80,
-  "public_glb_selected_accessors_byte_matched": 16167,
-  "vendor_accessor_overlap": 0,
-  "unused_binary_bytes_zero_only": true,
+  "measured_overall_mm": [
+    250.0,
+    250.0,
+    275.0
+  ],
+  "public_geometry_audit": {
+    "source_report_sha256": "edcebf0cd989dfa29a0a849c3276fcdec4b13f24b496f5c8b771e2cf85699350",
+    "raw_glb_sha256": "07c0824512d99831c091342b711aeb78f8c83a4da8e9ad91985878ab61b15485",
+    "public_glb_sha256": "26563846d6d46786392eaee98349c791895ca5fd8a3361046dce5a722bbc3a99",
+    "public_nodes": 360,
+    "excluded_vendor_nodes": [
+      "R7_R23SR_OFFICIAL_x16_FEMALE_ASSEMBLED",
+      "R7_R23SR_OFFICIAL_x4_MALE_ASSEMBLED"
+    ],
+    "selected_accessors_byte_matched": 16227,
+    "vendor_accessor_overlap": 0,
+    "unused_binary_bytes_zero_only": true,
+    "geometry_is_physical_acceptance": false
+  },
   "browser": {
     "desktop": [
       1440,
       960
     ],
-    "mesh_count": 5389,
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "mesh_count": 5409,
     "shell_meshes": 1170,
     "shell_toggle": true,
     "reset_view": true,
-    "mobile_width": 390,
+    "mobile_shell_toggle": true,
     "mobile_horizontal_overflow": false,
     "uncaught_errors": 0,
-    "renderer": "Headless Chromium with SwiftShader"
+    "renderer": "Headless Chromium with SwiftShader",
+    "physical_phone_test": false
   },
-  "full_integrated_CAD_rebuild_rerun": false,
-  "geometry_checks_passed": false,
-  "physical_thermal_acceptance": false
+  "physical_thermal_acceptance": false,
+  "manufacturing_release": false
 }

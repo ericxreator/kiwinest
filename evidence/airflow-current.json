@@ -1,0 +1,37 @@
+{
+  "method": "Union of rasterized XY projections of Z-clipped STEP-solid surface triangles",
+  "units": "mm",
+  "center_xy_mm": [
+    170.0,
+    136.0
+  ],
+  "disk_radius_mm": 56.0,
+  "z_clip_mm": [
+    32.0,
+    65.0
+  ],
+  "raster_step_mm": 0.25,
+  "mesh_tolerance_mm": 0.1,
+  "angular_tolerance_rad": 0.15,
+  "occupied_pixels": 11607,
+  "disk_pixels": 157648,
+  "projected_fraction": 0.07362605297878819,
+  "projected_area_mm2": 725.4375,
+  "projected_triangles": 972,
+  "input_files": [
+    {
+      "filename": "CABLE_R7_R23SR_band_1_300mm_13p2x1p4_PLANNING.step",
+      "sha256": "8c66df6dc583f3399749f82a9d88201e8733b3d7cec480f7de0480403b7514e3",
+      "bytes": 171359,
+      "intersects_z_interval": true
+    },
+    {
+      "filename": "CABLE_R7_R23SR_band_2_300mm_13p2x1p4_PLANNING.step",
+      "sha256": "6b977ec0d424015420ba138bfa74a7f4e756c195dd9ce04ede89030aeb793f48",
+      "bytes": 171308,
+      "intersects_z_interval": true
+    }
+  ],
+  "geometry_is_thermal_validation": false,
+  "interpretation": "Geometric projection estimate only; not pressure drop, airflow loss, or thermal acceptance. Raster and tessellation error are not a certified uncertainty bound."
+}

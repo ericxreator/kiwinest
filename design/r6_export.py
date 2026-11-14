@@ -1,24 +1,42 @@
 # SPDX-License-Identifier: MIT
-"""R6 traceable review export. Failed checks remain failed in every artifact."""
+"""Traceable review export. Failed checks remain failed in every artifact."""
 from pathlib import Path
-import hashlib,json,time
+import argparse,hashlib,json,time
 import cadquery as cq
 from build import bbox,export_mesh
 from build_r6 import build,check
 ROOT=Path(__file__).resolve().parents[1]
 
 def main():
-    required = [ROOT/'references/private'/name for name in ('R83SL_official_male_endpoint.step', 'R83SL_official_female_endpoint.step', 'enp7660b-official-spec-20251008.pdf')]
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--out-dir',type=Path,default=ROOT/'out-r6')
+    parser.add_argument('--checks-only',action='store_true',help='Write actual checks without STEP/STL export')
+    args=parser.parse_args()
+    required = [ROOT/'references/private'/name for name in ('R23SR_official_male_endpoint.step', 'R23SR_official_female_endpoint.step', 'enp7660b-official-spec-20251008.pdf')]
     if any(not path.is_file() for path in required):
         raise SystemExit('Missing local manufacturer references. Run: python scripts/prepare_references.py')
-    t=time.time();m=build();checks=check(m);out=ROOT/'out-r6';out.mkdir(exist_ok=True)
+    t=time.time();print('Building complete chassis including local manufacturer endpoints',flush=True)
+    m=build();print('Checking complete chassis, service sweeps and protected clearances',flush=True)
+    checks=check(m);out=args.out_dir;out.mkdir(parents=True,exist_ok=True)
+    geometry_passed=not any(checks.values())
+    failures={name:len(values) for name,values in checks.items() if values}
     print('built; exporting review with actual issues '+json.dumps({k:len(v) for k,v in checks.items() if v}),flush=True)
     for rel,sha in m['geometry_source_hashes'].items():assert hashlib.sha256((ROOT/rel).read_bytes()).hexdigest()==sha,rel
     report={k:v for k,v in m.items() if k.endswith('_meta') or k in ('params','geometry_source_hashes')}
-    report.update({'stage':'GEOMETRY_REVIEW_BLOCKED_RISER_CPU40_NOT_MANUFACTURING_RELEASE',
-      'checks':checks,'body_mm':[250,250,255],'overall_target_mm':[250,250,275],
-      'thermal_or_physical_acceptance_completed':False,'geometric_checks_passed':False,
-      'known_blocker':'R83SL male vs user40mm CPU envelope;do not move photo-derived socket or shrink40mm guard to hide collision'})
+    riser=m.get('riser_meta',{})
+    external=[riser[key] for key in ('female_hardware','male_hardware') if key in riser]
+    report.update({'stage':'CAD_CHECKS_PASSED_PHYSICAL_VALIDATION_PENDING' if geometry_passed else 'GEOMETRY_REVIEW_BLOCKED_NOT_MANUFACTURING_RELEASE',
+      'checks':checks,'body_mm':m['params']['body_mm'],'overall_target_mm':m['params']['target_overall_mm'],
+      'thermal_or_physical_acceptance_completed':False,'geometric_checks_passed':geometry_passed,
+      'manufacturing_release':False,'external_geometry_names':external,
+      'known_blocker':'; '.join(f'{name}: {count}' for name,count in failures.items()) if failures else None,
+      'remaining_physical_gates':['Photo-derived board/socket dimensions and revision require measured fit-up',
+        'Factory cable exit, usable lengths, bend behavior, surplus packing and pin grouping require received-hardware verification',
+        'Printed strength, creep, vibration, electrical insulation, thermal and noise tests remain incomplete']})
+    if args.checks_only:
+        (out/'checks-only.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+        print(json.dumps({'seconds':round(time.time()-t,1),'geometry_passed':geometry_passed,'issues':failures}),flush=True)
+        return report
     groups=(('parts',m['parts']),('envelopes',m['hardware']|m['refs']),('cables',m['heads']|m['wires']),('inspection',m['air']|m['reserves']|m['service']))
     a=cq.Assembly(name=m['params']['name']);physical=[]
     for folder,group in groups:
@@ -54,5 +72,5 @@ def main():
     if flange:
         flat=flange.rotate((0,0,0),(1,0,0),90)
         cq.exporters.export(cq.Workplane('XY').newObject([flat]).faces('>Z').wires(),str(out/'PSU-flange-1mm-REVIEW.dxf'))
-    print(json.dumps({'seconds':round(time.time()-t,1),'counts':{f:len(g) for f,g in groups},'roundtrip':report['step_roundtrip'],'bbox':report['measured_physical_bbox_mm'],'geometry_passed':False},ensure_ascii=False),flush=True)
+    print(json.dumps({'seconds':round(time.time()-t,1),'counts':{f:len(g) for f,g in groups},'roundtrip':report['step_roundtrip'],'bbox':report['measured_physical_bbox_mm'],'geometry_passed':geometry_passed},ensure_ascii=False),flush=True)
 if __name__=='__main__':main()

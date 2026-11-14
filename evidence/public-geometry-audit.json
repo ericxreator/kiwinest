@@ -1,0 +1,14 @@
+{
+  "source_report_sha256": "edcebf0cd989dfa29a0a849c3276fcdec4b13f24b496f5c8b771e2cf85699350",
+  "raw_glb_sha256": "07c0824512d99831c091342b711aeb78f8c83a4da8e9ad91985878ab61b15485",
+  "public_glb_sha256": "26563846d6d46786392eaee98349c791895ca5fd8a3361046dce5a722bbc3a99",
+  "public_nodes": 360,
+  "excluded_vendor_nodes": [
+    "R7_R23SR_OFFICIAL_x16_FEMALE_ASSEMBLED",
+    "R7_R23SR_OFFICIAL_x4_MALE_ASSEMBLED"
+  ],
+  "selected_accessors_byte_matched": 16227,
+  "vendor_accessor_overlap": 0,
+  "unused_binary_bytes_zero_only": true,
+  "geometry_is_physical_acceptance": false
+}
