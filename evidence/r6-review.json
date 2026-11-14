@@ -1,0 +1,1707 @@
+{
+  "revision": "R6",
+  "source_report_sha256": "80a26c719cc7e9b090e1f9afc126f3912a9da9871d9c4d2c579104ce4fc7c5b5",
+  "stage": "GEOMETRY_REVIEW_BLOCKED_RISER_CPU40_NOT_MANUFACTURING_RELEASE",
+  "geometric_checks_passed": false,
+  "thermal_or_physical_acceptance_completed": false,
+  "manufacturing_release": false,
+  "body_mm": [
+    250,
+    250,
+    255
+  ],
+  "overall_target_mm": [
+    250,
+    250,
+    275
+  ],
+  "known_blocker": "R83SL male vs user40mm CPU envelope;do not move photo-derived socket or shrink40mm guard to hide collision",
+  "checks": {
+    "invalid_shapes": [],
+    "disconnected_prints": [],
+    "print_print": [],
+    "print_hardware": [],
+    "print_heads": [],
+    "print_wires": [],
+    "hardware_hardware": [
+      {
+        "a": "CPU_DS2501_stock_round_copper_25mm_TOTAL_PHOTO_PROXY",
+        "b": "R6_R83SL_OFFICIAL_x8_MALE_ASSEMBLED",
+        "volume_mm3": 2.89665
+      },
+      {
+        "a": "CPU_DS2501_stock_round_copper_25mm_TOTAL_PHOTO_PROXY",
+        "b": "R6_RISER_MALE_M3x8_UP_1",
+        "volume_mm3": 62.18032
+      }
+    ],
+    "hardware_heads": [],
+    "hardware_wires": [],
+    "heads_heads": [],
+    "heads_wires": [],
+    "wires_wires": [],
+    "stock_length_or_storage_volume": [],
+    "CPU40_hard_clearance": [
+      {
+        "a": "CPU40",
+        "b": "R6_R83SL_OFFICIAL_x8_MALE_ASSEMBLED",
+        "volume_mm3": 2.89665
+      },
+      {
+        "a": "CPU40",
+        "b": "R6_RISER_MALE_M3x8_UP_1",
+        "volume_mm3": 62.18032
+      }
+    ],
+    "GPU_upward_removal": [],
+    "GPU_body_ear_vs_entire_socket": [],
+    "protected_air": [
+      {
+        "a": "AIR_gpu_lower_supply",
+        "b": "CABLE_R6_R83SL_band_1_400mm_13p2x1p4_PLANNING",
+        "volume_mm3": 628.5579
+      },
+      {
+        "a": "AIR_gpu_lower_supply",
+        "b": "CABLE_R6_R83SL_band_2_400mm_13p2x1p4_PLANNING",
+        "volume_mm3": 628.5579
+      },
+      {
+        "a": "AIR_gpu_lower_supply",
+        "b": "CABLE_R6_R83SL_band_3_400mm_13p2x1p4_PLANNING",
+        "volume_mm3": 628.5579
+      },
+      {
+        "a": "AIR_gpu_lower_supply",
+        "b": "CABLE_R6_R83SL_band_4_400mm_13p2x1p4_PLANNING",
+        "volume_mm3": 614.0447
+      }
+    ],
+    "drive_forward_removal": [],
+    "outside_target": []
+  },
+  "parts": {
+    "FRAME_R6_corner_10_10": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          6.0,
+          6.0,
+          5.0
+        ],
+        "max": [
+          14.0,
+          14.0,
+          247.0
+        ],
+        "size": [
+          8.0,
+          8.0,
+          242.0
+        ]
+      },
+      "volume_mm3": 12801.507356998618,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1814,
+        "faces": 3684,
+        "bounds_mm": [
+          [
+            6.0,
+            6.0,
+            5.0
+          ],
+          [
+            14.0,
+            14.0,
+            247.0
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_corner_10_240": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          6.0,
+          236.0,
+          5.0
+        ],
+        "max": [
+          14.0,
+          244.0,
+          247.0
+        ],
+        "size": [
+          8.0,
+          8.0,
+          242.0
+        ]
+      },
+      "volume_mm3": 12801.507357000273,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1816,
+        "faces": 3688,
+        "bounds_mm": [
+          [
+            6.0,
+            236.0,
+            5.0
+          ],
+          [
+            14.0,
+            244.0,
+            247.0
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_corner_240_10": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          236.0,
+          6.0,
+          5.0
+        ],
+        "max": [
+          244.0,
+          14.0,
+          247.0
+        ],
+        "size": [
+          8.0,
+          8.0,
+          242.0
+        ]
+      },
+      "volume_mm3": 12800.327360064797,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1812,
+        "faces": 3680,
+        "bounds_mm": [
+          [
+            236.0,
+            6.0,
+            5.0
+          ],
+          [
+            244.0,
+            14.0,
+            247.0
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_corner_240_240": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          236.0,
+          236.0,
+          5.0
+        ],
+        "max": [
+          244.0,
+          244.0,
+          247.0
+        ],
+        "size": [
+          8.0,
+          8.0,
+          242.0
+        ]
+      },
+      "volume_mm3": 12753.896404325,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 2090,
+        "faces": 4244,
+        "bounds_mm": [
+          [
+            236.0,
+            236.0,
+            5.0
+          ],
+          [
+            244.0,
+            244.0,
+            247.0
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_feet20": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          2.0,
+          2.0,
+          -20.0
+        ],
+        "max": [
+          248.0,
+          248.0,
+          0.0
+        ],
+        "size": [
+          246.0,
+          246.0,
+          20.0
+        ]
+      },
+      "volume_mm3": 55373.567109598545,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1868,
+        "faces": 3768,
+        "bounds_mm": [
+          [
+            2.0,
+            2.0,
+            -20.0
+          ],
+          [
+            248.0,
+            248.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "BOTTOM_R6_shim1mm_1": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          113.0,
+          79.0,
+          5.0
+        ],
+        "max": [
+          122.0,
+          88.0,
+          6.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          1.0
+        ]
+      },
+      "volume_mm3": 45.521677550516095,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            113.0055923461914,
+            79.00139617919922,
+            5.0
+          ],
+          [
+            122.0,
+            87.99860382080078,
+            6.0
+          ]
+        ]
+      }
+    },
+    "BOTTOM_R6_shim1mm_2": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          113.0,
+          184.0,
+          5.0
+        ],
+        "max": [
+          122.0,
+          193.0,
+          6.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          1.0
+        ]
+      },
+      "volume_mm3": 45.52167755051613,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            113.0055923461914,
+            184.00140380859375,
+            5.0
+          ],
+          [
+            122.0,
+            192.99859619140625,
+            6.0
+          ]
+        ]
+      }
+    },
+    "BOTTOM_R6_shim1mm_3": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          218.0,
+          79.0,
+          5.0
+        ],
+        "max": [
+          227.0,
+          88.0,
+          6.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          1.0
+        ]
+      },
+      "volume_mm3": 45.52167755051605,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            218.00559997558594,
+            79.00139617919922,
+            5.0
+          ],
+          [
+            227.0,
+            87.99860382080078,
+            6.0
+          ]
+        ]
+      }
+    },
+    "BOTTOM_R6_shim1mm_4": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          218.0,
+          184.0,
+          5.0
+        ],
+        "max": [
+          227.0,
+          193.0,
+          6.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          1.0
+        ]
+      },
+      "volume_mm3": 45.521677550516095,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            218.00559997558594,
+            184.00140380859375,
+            5.0
+          ],
+          [
+            227.0,
+            192.99859619140625,
+            6.0
+          ]
+        ]
+      }
+    },
+    "TOP_R6_spacer5mm_1": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          109.75,
+          53.25,
+          246.0
+        ],
+        "max": [
+          118.75,
+          62.25,
+          251.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          5.0
+        ]
+      },
+      "volume_mm3": 227.60838775258043,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            109.7555923461914,
+            53.251399993896484,
+            246.0
+          ],
+          [
+            118.75,
+            62.248600006103516,
+            251.0
+          ]
+        ]
+      }
+    },
+    "TOP_R6_spacer5mm_2": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          109.75,
+          177.75,
+          246.0
+        ],
+        "max": [
+          118.75,
+          186.75,
+          251.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          5.0
+        ]
+      },
+      "volume_mm3": 227.60838775258054,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            109.7555923461914,
+            177.75140380859375,
+            246.0
+          ],
+          [
+            118.75,
+            186.74859619140625,
+            251.0
+          ]
+        ]
+      }
+    },
+    "TOP_R6_spacer5mm_3": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          234.25,
+          53.25,
+          246.0
+        ],
+        "max": [
+          243.25,
+          62.25,
+          251.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          5.0
+        ]
+      },
+      "volume_mm3": 227.60838775258017,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            234.25559997558594,
+            53.251399993896484,
+            246.0
+          ],
+          [
+            243.25,
+            62.248600006103516,
+            251.0
+          ]
+        ]
+      }
+    },
+    "TOP_R6_spacer5mm_4": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          234.25,
+          177.75,
+          246.0
+        ],
+        "max": [
+          243.25,
+          186.75,
+          251.0
+        ],
+        "size": [
+          9.0,
+          9.0,
+          5.0
+        ]
+      },
+      "volume_mm3": 227.60838775258034,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 252,
+        "faces": 504,
+        "bounds_mm": [
+          [
+            234.25559997558594,
+            177.75140380859375,
+            246.0
+          ],
+          [
+            243.25,
+            186.74859619140625,
+            251.0
+          ]
+        ]
+      }
+    },
+    "TOP_R6_lid": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          251.0
+        ],
+        "max": [
+          250.0,
+          250.0,
+          255.0
+        ],
+        "size": [
+          250.0,
+          250.0,
+          4.0
+        ]
+      },
+      "volume_mm3": 196875.0788392327,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 2375,
+        "faces": 4850,
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            251.0
+          ],
+          [
+            250.0,
+            250.0,
+            255.0
+          ]
+        ]
+      }
+    },
+    "SKIN_R6_front": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          3.0,
+          -1.7763568394002505e-15,
+          5.0
+        ],
+        "max": [
+          247.0,
+          2.4,
+          251.0
+        ],
+        "size": [
+          244.0,
+          2.4000000000000017,
+          246.0
+        ]
+      },
+      "volume_mm3": 123864.8179258706,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1843,
+        "faces": 4126,
+        "bounds_mm": [
+          [
+            3.0,
+            0.0,
+            5.0
+          ],
+          [
+            247.0,
+            2.4000000953674316,
+            251.0
+          ]
+        ]
+      }
+    },
+    "SKIN_R6_back": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          3.0,
+          247.6,
+          5.0
+        ],
+        "max": [
+          247.0,
+          250.0,
+          251.0
+        ],
+        "size": [
+          244.0,
+          2.4000000000000057,
+          246.0
+        ]
+      },
+      "volume_mm3": 96553.9336985641,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1044,
+        "faces": 2112,
+        "bounds_mm": [
+          [
+            3.0,
+            247.60000610351562,
+            5.0
+          ],
+          [
+            247.0,
+            250.0,
+            251.0
+          ]
+        ]
+      }
+    },
+    "SKIN_R6_left": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          0.0,
+          3.0,
+          5.0
+        ],
+        "max": [
+          2.4,
+          247.0,
+          251.0
+        ],
+        "size": [
+          2.4,
+          244.0,
+          246.0
+        ]
+      },
+      "volume_mm3": 130072.3336985638,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1644,
+        "faces": 3612,
+        "bounds_mm": [
+          [
+            0.0,
+            3.0,
+            5.0
+          ],
+          [
+            2.4000000953674316,
+            247.0,
+            251.0
+          ]
+        ]
+      }
+    },
+    "SKIN_R6_right": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          247.6,
+          3.0,
+          5.0
+        ],
+        "max": [
+          250.0,
+          247.0,
+          251.0
+        ],
+        "size": [
+          2.4000000000000057,
+          244.0,
+          246.0
+        ]
+      },
+      "volume_mm3": 126645.13369856414,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1740,
+        "faces": 3852,
+        "bounds_mm": [
+          [
+            247.60000610351562,
+            3.0,
+            5.0
+          ],
+          [
+            250.0,
+            247.0,
+            251.0
+          ]
+        ]
+      }
+    },
+    "FILTER_R6_inset_front_pull": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          103.3,
+          10.0,
+          -8.4
+        ],
+        "max": [
+          236.7,
+          202.7,
+          -6.4
+        ],
+        "size": [
+          133.39999999999998,
+          192.7,
+          2.0
+        ]
+      },
+      "volume_mm3": 16589.28462664786,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 142,
+        "faces": 284,
+        "bounds_mm": [
+          [
+            103.30000305175781,
+            10.0,
+            -8.399999618530273
+          ],
+          [
+            236.6999969482422,
+            202.6999969482422,
+            -6.400000095367432
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_base": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          3.0,
+          3.0,
+          -10.0
+        ],
+        "max": [
+          248.0,
+          247.0,
+          45.0
+        ],
+        "size": [
+          245.0,
+          244.0,
+          55.0
+        ]
+      },
+      "volume_mm3": 84368.82008088536,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 6264,
+        "faces": 12672,
+        "bounds_mm": [
+          [
+            3.0,
+            3.0,
+            -10.0
+          ],
+          [
+            248.0,
+            247.0,
+            45.0
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_top": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          3.0,
+          3.0,
+          210.0
+        ],
+        "max": [
+          247.0,
+          247.0,
+          251.0
+        ],
+        "size": [
+          244.0,
+          244.0,
+          41.0
+        ]
+      },
+      "volume_mm3": 42853.876131218436,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 2467,
+        "faces": 4974,
+        "bounds_mm": [
+          [
+            3.0,
+            3.0,
+            210.0
+          ],
+          [
+            247.0,
+            247.0,
+            251.0
+          ]
+        ]
+      }
+    },
+    "R6_STORAGE_TRAY_1_native4_open_U": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          5.399999999999999,
+          20.0,
+          9.4
+        ],
+        "max": [
+          35.1,
+          136.4,
+          122.725
+        ],
+        "size": [
+          29.700000000000003,
+          116.4,
+          113.32499999999999
+        ]
+      },
+      "volume_mm3": 9137.01767112598,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1178,
+        "faces": 2376,
+        "bounds_mm": [
+          [
+            5.400000095367432,
+            20.0,
+            9.399999618530273
+          ],
+          [
+            35.099998474121094,
+            136.39999389648438,
+            122.7249984741211
+          ]
+        ]
+      }
+    },
+    "R6_STORAGE_TRAY_2_native4_open_U": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          36.5,
+          20.0,
+          9.4
+        ],
+        "max": [
+          66.2,
+          136.4,
+          122.725
+        ],
+        "size": [
+          29.700000000000003,
+          116.4,
+          113.32499999999999
+        ]
+      },
+      "volume_mm3": 9137.017671125977,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1178,
+        "faces": 2376,
+        "bounds_mm": [
+          [
+            36.5,
+            20.0,
+            9.399999618530273
+          ],
+          [
+            66.19999694824219,
+            136.39999389648438,
+            122.7249984741211
+          ]
+        ]
+      }
+    },
+    "R6_STORAGE_TRAY_3_native4_open_U": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          67.60000000000001,
+          20.0,
+          9.4
+        ],
+        "max": [
+          97.30000000000001,
+          136.4,
+          122.725
+        ],
+        "size": [
+          29.700000000000003,
+          116.4,
+          113.32499999999999
+        ]
+      },
+      "volume_mm3": 9137.017671125983,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1178,
+        "faces": 2376,
+        "bounds_mm": [
+          [
+            67.5999984741211,
+            20.0,
+            9.399999618530273
+          ],
+          [
+            97.30000305175781,
+            136.39999389648438,
+            122.7249984741211
+          ]
+        ]
+      }
+    },
+    "R6_STORAGE_COMMON_CAGE_open_floor_rear_skeleton": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          3.9999999999999996,
+          17.999999999999968,
+          5.0
+        ],
+        "max": [
+          105.0,
+          236.0,
+          151.0
+        ],
+        "size": [
+          101.0,
+          218.00000000000003,
+          146.0
+        ]
+      },
+      "volume_mm3": 47632.76414750174,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 3041,
+        "faces": 6214,
+        "bounds_mm": [
+          [
+            4.0,
+            18.0,
+            5.0
+          ],
+          [
+            105.0,
+            236.0,
+            151.0
+          ]
+        ]
+      }
+    },
+    "MAINBOARD_MOUNT_R6_DS2501_open_tray": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          172.0,
+          38.0,
+          5.0
+        ],
+        "max": [
+          184.0,
+          247.4,
+          247.0
+        ],
+        "size": [
+          12.0,
+          209.4,
+          242.0
+        ]
+      },
+      "volume_mm3": 12629.288813236284,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1964,
+        "faces": 3996,
+        "bounds_mm": [
+          [
+            172.0,
+            38.0,
+            5.0
+          ],
+          [
+            184.0,
+            247.39999389648438,
+            247.0
+          ]
+        ]
+      }
+    },
+    "GPU_R6_TPU_front_end_pad_1": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          158.0,
+          13.2,
+          72.0
+        ],
+        "max": [
+          169.6,
+          14.0,
+          78.0
+        ],
+        "size": [
+          11.599999999999994,
+          0.8000000000000007,
+          6.0
+        ]
+      },
+      "volume_mm3": 55.680000000000014,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 8,
+        "faces": 12,
+        "bounds_mm": [
+          [
+            158.0,
+            13.199999809265137,
+            72.0
+          ],
+          [
+            169.60000610351562,
+            14.0,
+            78.0
+          ]
+        ]
+      }
+    },
+    "GPU_R6_TPU_front_end_pad_2": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          158.0,
+          13.2,
+          160.0
+        ],
+        "max": [
+          169.6,
+          14.0,
+          166.0
+        ],
+        "size": [
+          11.599999999999994,
+          0.8000000000000007,
+          6.0
+        ]
+      },
+      "volume_mm3": 55.680000000000014,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 8,
+        "faces": 12,
+        "bounds_mm": [
+          [
+            158.0,
+            13.199999809265137,
+            160.0
+          ],
+          [
+            169.60000610351562,
+            14.0,
+            166.0
+          ]
+        ]
+      }
+    },
+    "GPU_R6_fixed_open_spine": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          128.0,
+          10.0,
+          5.0
+        ],
+        "max": [
+          182.0,
+          244.0,
+          218.0
+        ],
+        "size": [
+          54.0,
+          234.0,
+          213.0
+        ]
+      },
+      "volume_mm3": 12792.854204558436,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 862,
+        "faces": 1740,
+        "bounds_mm": [
+          [
+            128.0,
+            10.0,
+            5.0
+          ],
+          [
+            182.0,
+            244.0,
+            218.0
+          ]
+        ]
+      }
+    },
+    "GPU_R6_removable_IO_jaw": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          128.0,
+          229.1,
+          185.25
+        ],
+        "max": [
+          169.6,
+          234.5,
+          193.25
+        ],
+        "size": [
+          41.599999999999994,
+          5.400000000000006,
+          8.0
+        ]
+      },
+      "volume_mm3": 1671.1672673322796,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 512,
+        "faces": 1028,
+        "bounds_mm": [
+          [
+            128.0,
+            229.10000610351562,
+            185.25
+          ],
+          [
+            169.60000610351562,
+            234.5,
+            193.25
+          ]
+        ]
+      }
+    },
+    "PSU_R6_rear_TOP_ONLY_suspension": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          11.0,
+          237.0,
+          240.8
+        ],
+        "max": [
+          102.5,
+          246.0,
+          247.0
+        ],
+        "size": [
+          91.5,
+          9.0,
+          6.199999999999989
+        ]
+      },
+      "volume_mm3": 4417.113857977201,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1052,
+        "faces": 2132,
+        "bounds_mm": [
+          [
+            11.0,
+            237.0,
+            240.8000030517578
+          ],
+          [
+            102.5,
+            246.0,
+            247.0
+          ]
+        ]
+      }
+    },
+    "PSU_R6_front_open_cradle_storage_bolted": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          8.0,
+          120.0,
+          151.0
+        ],
+        "max": [
+          105.0,
+          146.5,
+          200.0
+        ],
+        "size": [
+          97.0,
+          26.5,
+          49.0
+        ]
+      },
+      "volume_mm3": 3880.691161235755,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 324,
+        "faces": 652,
+        "bounds_mm": [
+          [
+            8.0,
+            120.0,
+            151.0
+          ],
+          [
+            105.0,
+            146.5,
+            200.0
+          ]
+        ]
+      }
+    },
+    "PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          11.0,
+          5.0,
+          195.4
+        ],
+        "max": [
+          102.5,
+          244.0,
+          245.0
+        ],
+        "size": [
+          91.5,
+          239.0,
+          49.599999999999994
+        ]
+      },
+      "volume_mm3": 74355.48915247536,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1694,
+        "faces": 3440,
+        "bounds_mm": [
+          [
+            11.0,
+            5.0,
+            195.39999389648438
+          ],
+          [
+            102.5,
+            244.0,
+            245.0
+          ]
+        ]
+      }
+    },
+    "PSU_R6_cold_sleeve_REMOVABLE_roof": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          11.0,
+          5.0,
+          243.5
+        ],
+        "max": [
+          102.5,
+          236.8,
+          245.0
+        ],
+        "size": [
+          91.5,
+          231.8,
+          1.5
+        ]
+      },
+      "volume_mm3": 27768.63574006409,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 1088,
+        "faces": 2204,
+        "bounds_mm": [
+          [
+            11.0,
+            5.0,
+            243.5
+          ],
+          [
+            102.5,
+            236.8000030517578,
+            245.0
+          ]
+        ]
+      }
+    },
+    "PSU_R6_fixed_wire_gutter_REMOVABLE_roof": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          11.0,
+          5.0,
+          243.5
+        ],
+        "max": [
+          39.8,
+          85.8,
+          245.0
+        ],
+        "size": [
+          28.799999999999997,
+          80.8,
+          1.5
+        ]
+      },
+      "volume_mm3": 3371.281435016026,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 284,
+        "faces": 572,
+        "bounds_mm": [
+          [
+            11.0,
+            5.0,
+            243.5
+          ],
+          [
+            39.79999923706055,
+            85.80000305175781,
+            245.0
+          ]
+        ]
+      }
+    },
+    "R6_RISER_FEMALE_LOW_BRIDGE_FRAME_FEET": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          156.0,
+          64.0,
+          5.0
+        ],
+        "max": [
+          171.5,
+          216.0,
+          52.4
+        ],
+        "size": [
+          15.5,
+          152.0,
+          47.4
+        ]
+      },
+      "volume_mm3": 5999.441765102928,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 636,
+        "faces": 1284,
+        "bounds_mm": [
+          [
+            156.0,
+            64.0,
+            5.0
+          ],
+          [
+            171.5,
+            216.0,
+            52.400001525878906
+          ]
+        ]
+      }
+    },
+    "R6_RISER_MALE_UPPER_REAR_FRAME_SUPPORT_BLOCKED": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          202.17842368555,
+          130.0,
+          209.0
+        ],
+        "max": [
+          244.0,
+          236.0,
+          219.0
+        ],
+        "size": [
+          41.82157631445,
+          106.0,
+          10.0
+        ]
+      },
+      "volume_mm3": 2472.218928988606,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 560,
+        "faces": 1132,
+        "bounds_mm": [
+          [
+            202.1784210205078,
+            130.0,
+            209.0
+          ],
+          [
+            244.0,
+            236.0,
+            219.0
+          ]
+        ]
+      }
+    },
+    "POWER_R6_front_fixed_lacing_ear_1": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          99.0,
+          14.0,
+          35.0
+        ],
+        "max": [
+          111.0,
+          18.0,
+          47.0
+        ],
+        "size": [
+          12.0,
+          4.0,
+          12.0
+        ]
+      },
+      "volume_mm3": 369.2291161235755,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 276,
+        "faces": 560,
+        "bounds_mm": [
+          [
+            99.0,
+            14.0,
+            35.0
+          ],
+          [
+            111.0,
+            18.0,
+            47.0
+          ]
+        ]
+      }
+    },
+    "POWER_R6_front_fixed_lacing_ear_2": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          219.0,
+          14.0,
+          35.0
+        ],
+        "max": [
+          231.0,
+          18.0,
+          47.0
+        ],
+        "size": [
+          12.0,
+          4.0,
+          12.0
+        ]
+      },
+      "volume_mm3": 369.22911612357564,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 276,
+        "faces": 560,
+        "bounds_mm": [
+          [
+            219.0,
+            14.0,
+            35.0
+          ],
+          [
+            231.0,
+            18.0,
+            47.0
+          ]
+        ]
+      }
+    },
+    "FRAME_R6_stock_lead_basket_FIXED": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          44.0,
+          139.0,
+          5.0
+        ],
+        "max": [
+          98.0,
+          244.0,
+          140.00000000000077
+        ],
+        "size": [
+          54.0,
+          105.0,
+          135.00000000000077
+        ]
+      },
+      "volume_mm3": 9495.960866069308,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 706,
+        "faces": 1456,
+        "bounds_mm": [
+          [
+            44.0,
+            139.0,
+            5.0
+          ],
+          [
+            98.0,
+            244.0,
+            140.0
+          ]
+        ]
+      }
+    }
+  },
+  "source_step_roundtrip": {
+    "valid": true,
+    "solids": 705,
+    "expected": 705,
+    "passed": true
+  },
+  "original_print_meshes_watertight": true,
+  "public_geometry": {
+    "nodes": 364,
+    "parts": 40,
+    "excluded_vendor_nodes": [
+      "R6_R83SL_OFFICIAL_x16_FEMALE_ASSEMBLED",
+      "R6_R83SL_OFFICIAL_x8_MALE_ASSEMBLED"
+    ],
+    "sha256": "7ee3f177e7ac5b3562f35d763f7adf04c1b91fcd138eca06a56d0f70f806067a",
+    "scope": "Original chassis, hardware and cable planning proxies. Vendor endpoint geometry omitted. Not a new collision or manufacturing acceptance."
+  },
+  "additional_blockers": [
+    "Factory EPS300mm not accepted: minimum complete route >=308.309mm before connector allowance; confirm >=350mm, preferably400mm, or reroute.",
+    "Board socket and mounting coordinates are photo-derived; physical fit-up remains required.",
+    "Lower riser bands intersect protected supply air; no CFD, thermal or noise acceptance."
+  ]
+}

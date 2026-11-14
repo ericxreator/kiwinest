@@ -1,0 +1,4 @@
+# R6 model/export direct dependencies; frozen environment: requirements.lock
+cadquery==2.8.0
+trimesh==5.2.1
+numpy==2.5.4

@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-14",
+  "timezone": "Asia/Singapore",
+  "scope": "Open-source publication checks; not manufacturing acceptance",
+  "source_modules_imported": 18,
+  "helper_algorithms_match_original": true,
+  "vendor_inputs_checksum_and_endpoint_extraction_passed": true,
+  "original_part_files_sha256_match": 80,
+  "public_glb_selected_accessors_byte_matched": 16167,
+  "vendor_accessor_overlap": 0,
+  "unused_binary_bytes_zero_only": true,
+  "browser": {
+    "desktop": [
+      1440,
+      960
+    ],
+    "mesh_count": 5389,
+    "shell_meshes": 1170,
+    "shell_toggle": true,
+    "reset_view": true,
+    "mobile_width": 390,
+    "mobile_horizontal_overflow": false,
+    "uncaught_errors": 0,
+    "renderer": "Headless Chromium with SwiftShader"
+  },
+  "full_integrated_CAD_rebuild_rerun": false,
+  "geometry_checks_passed": false,
+  "physical_thermal_acceptance": false
+}

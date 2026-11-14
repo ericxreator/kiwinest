@@ -1,0 +1,314 @@
+{
+  "model": "Enhance ENP-7660B, manufacturer reference fixed-wire harness",
+  "manufacturer_source_url": "https://www.enhanceusa.com/upload/DM/202510080638420.pdf",
+  "source_file": "references/private/enp7660b-official-spec-20251008.pdf",
+  "source_sha256": "8df699a26d42f0849d06c9cd043733581196acea124f6a97b5c515b07cce7c4e",
+  "PDF_page": 2,
+  "status": "MANUFACTURER_2D_DRAWING_TRANSCRIPTION_NOT_MEASURED_SAMPLE_OR_3D_CAD",
+  "units": "mm",
+  "native_coordinates": {
+    "U": "0 at AC/fan sheet end; positive along150mm body toward cable/intake end",
+    "W": "0 at bottom of the tall81.5mm AC-face view; positive toward its top",
+    "T": "0 at left edge of the40.5mm AC-face view; positive to its right",
+    "body_bbox_UWT_mm": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        150,
+        81.5,
+        40.5
+      ]
+    ],
+    "view_distinction": "AC/fan end is the left small view on sourcep2; cable/intake end is the right small view; central broadside is150x81.5. They must not be interchanged."
+  },
+  "body_dimensions_UWT_mm": [
+    150,
+    81.5,
+    40.5
+  ],
+  "dimension_conflict": "Specificationp1 rounded width82mm; drawingp2 explicitly81.5. Nominal CAD81.5 with at least0.5mm locating clearance is recommended.",
+  "AC_fan_end_mounts": {
+    "view": "Source left small view, outside-looking-in at U0; coordinates(T horizontal,W vertical), origin lower-left outer corner.",
+    "thread": "UNC6-32",
+    "nominal_thread_major_mm": 3.5052,
+    "pitch_mm": 0.79375,
+    "holes": [
+      {
+        "id": "AC_lower_left",
+        "point_UWT_mm": [
+          0,
+          5.5,
+          4
+        ],
+        "point_TW_in_view_mm": [
+          4,
+          5.5
+        ],
+        "axis_UWT": [
+          1,
+          0,
+          0
+        ],
+        "dimension_basis": "4mm left offset and5.5mm lower offset"
+      },
+      {
+        "id": "AC_lower_right",
+        "point_UWT_mm": [
+          0,
+          5.5,
+          36
+        ],
+        "point_TW_in_view_mm": [
+          36,
+          5.5
+        ],
+        "axis_UWT": [
+          1,
+          0,
+          0
+        ],
+        "dimension_basis": "4+32=36mm; lower row same5.5"
+      },
+      {
+        "id": "AC_upper_right",
+        "point_UWT_mm": [
+          0,
+          77.19,
+          36
+        ],
+        "point_TW_in_view_mm": [
+          36,
+          77.19
+        ],
+        "axis_UWT": [
+          1,
+          0,
+          0
+        ],
+        "dimension_basis": "36mm horizontal;5.5+71.69=77.19mm vertical"
+      }
+    ],
+    "do_not_use_as_native_mount": "The37mm/60.89mm dimensions point to a separate housing assembly screw/fastener; exclude it from the three UNC6-32 mounting axes.",
+    "allowed_screw_penetration_mm": null,
+    "screw_length_status": "Not specified by this source. A6-32x3/16in pan reference may be modeled through1mm flange, giving3.7625mm nominal intrusion, but must be checked against supplied screws/PSU manufacturer before manufacture."
+  },
+  "cable_intake_end": {
+    "body_end_U_mm": 150,
+    "front_mounting_tongue_max_U_mm": 160,
+    "front_mounting_profile_center_U_mm": 156,
+    "front_mounting_profile_centers_W_mm": [
+      6,
+      77
+    ],
+    "W_pitch_mm": 71,
+    "profile_radius_callout_mm": 2.5,
+    "native_profile_centers_UW_mm": [
+      [
+        156,
+        6
+      ],
+      [
+        156,
+        77
+      ]
+    ],
+    "T_plane_mm": null,
+    "T_plane_status": "Exact side of40.5mm thickness supporting the integral tongue not frozen from current2D transcription; do not fabricate a3D front-tab bolt axis from an assumed T value.",
+    "profile_status": "R2.5 geometry drawn on integral mounting tongue; not a UNC thread callout. Profile type/plate gauge require separate verification before using as a bolted mounting feature.",
+    "total_length_including_mounting_tongue_mm": 160,
+    "wire_exit_center": null,
+    "wire_exit_note": "F symbol at lower part of cable-end view is shown without measured XYZ or diameter. Cable-exit location from photograph/drawing scaling is illustrative only."
+  },
+  "airflow": {
+    "official_arrow_direction_UWT": [
+      -1,
+      0,
+      0
+    ],
+    "meaning": "From cable/intake end toward AC/fan end, along150mm length. Cable end requires unobstructed intake; AC/fan end discharges outside."
+  },
+  "manufacturer_harness_table": [
+    {
+      "ID": "P1",
+      "connector": "24pinATX",
+      "quantity": 1,
+      "first_segment_mm": 300,
+      "part": "Molex39-01-2245 or equivalent"
+    },
+    {
+      "ID": "P2",
+      "connector": "EPSCPU4+4 /8pin",
+      "quantity": 1,
+      "first_segment_mm": 300,
+      "part": "Molex39-01-2085 or equivalent"
+    },
+    {
+      "ID": "P3/P4",
+      "connector": "PCIe6+2",
+      "quantity": 2,
+      "strings": 1,
+      "segments_mm": [
+        300,
+        150
+      ],
+      "total_last_head_mm": 450,
+      "part": "Molex45587-0004 or equivalent",
+      "note": "P4=150mm additional branch segment, not375mm; read from the high-resolution original drawing."
+    },
+    {
+      "ID": "P5/P6/P7/P8",
+      "connector": "3Molex4pin+1FDD",
+      "quantity": 4,
+      "strings": 1,
+      "segments_mm": [
+        300,
+        150,
+        150,
+        150
+      ],
+      "total_last_head_mm": 750,
+      "parts": {
+        "P5-P7": "Molex8981-04P or equivalent",
+        "P8": "AMP171822-4 or equivalent"
+      }
+    },
+    {
+      "ID": "P9/P10",
+      "connector": "SATA15",
+      "quantity": 2,
+      "strings": 1,
+      "segments_mm": [
+        300,
+        150
+      ],
+      "total_last_head_mm": 450,
+      "part": "Molex88751 or equivalentSATA"
+    },
+    {
+      "ID": "P11/P12",
+      "connector": "SATA15",
+      "quantity": 2,
+      "strings": 1,
+      "segments_mm": [
+        300,
+        150
+      ],
+      "total_last_head_mm": 450,
+      "part": "Molex88751 or equivalentSATA"
+    }
+  ],
+  "loom_release": {
+    "native_GPU8pin_available": true,
+    "native_EPS8pin_available": true,
+    "native_SATA_total": 4,
+    "three_HDD_connection_plan": "Two original factory SATA strings,2+1disks; park fourth SATA. No adapter/backplane is needed for connector count.",
+    "manufacturer_note3": "Mechanical drawing is reference only; cable configuration may vary in customized models. Exact purchased original fixed-wire configuration must match the frozen loom table.",
+    "reject_variants": [
+      "Densium loom with no SATA",
+      "aftermarket modular conversions",
+      "replaced-fan versions",
+      "stock retailer loom containing4SATA on a single string unless CAD/BOM is explicitly changed"
+    ],
+    "capacity_note": "600W/+12V50A/+5V15A,3.3+5V80W; enough connector/rating margin for current180W GPU+65W PPT target scenario; actual selected-HDD startup and branch current still require checking."
+  },
+  "proposed_R6_placement": {
+    "global_body_bbox_XYZ_mm": [
+      [
+        16,
+        96,
+        200
+      ],
+      [
+        97.5,
+        246,
+        240.5
+      ]
+    ],
+    "transform": "X=16+W;Y=246-U;Z=200+T",
+    "global_airflow_axis": [
+      0,
+      1,
+      0
+    ],
+    "AC_face_Y_mm": 246,
+    "cable_intake_face_Y_mm": 96,
+    "AC_mounts_global": [
+      {
+        "id": "AC_lower_left",
+        "point_XYZ_mm": [
+          21.5,
+          246,
+          204
+        ],
+        "axis_XYZ": [
+          0,
+          1,
+          0
+        ],
+        "screw_insertion_direction_XYZ": [
+          0,
+          -1,
+          0
+        ]
+      },
+      {
+        "id": "AC_lower_right",
+        "point_XYZ_mm": [
+          21.5,
+          246,
+          236
+        ],
+        "axis_XYZ": [
+          0,
+          1,
+          0
+        ],
+        "screw_insertion_direction_XYZ": [
+          0,
+          -1,
+          0
+        ]
+      },
+      {
+        "id": "AC_upper_right",
+        "point_XYZ_mm": [
+          93.19,
+          246,
+          236
+        ],
+        "axis_XYZ": [
+          0,
+          1,
+          0
+        ],
+        "screw_insertion_direction_XYZ": [
+          0,
+          -1,
+          0
+        ]
+      }
+    ],
+    "front_tongue_global_UW_transcribed": [
+      {
+        "X_mm": 22,
+        "Y_mm": 90,
+        "Z_mm": null
+      },
+      {
+        "X_mm": 93,
+        "Y_mm": 90,
+        "Z_mm": null
+      }
+    ],
+    "front_tongue_global_min_Y_mm": 86,
+    "duct_conflicts": "Proposed ductX14..100/Y5..96/Z198..243 must allow integral tongueY86..96 and fixed-wire exit. Split/removable duct and a separate wire takeoff are necessary; do not cap the entire cable-end face with a solid plate."
+  },
+  "limits": [
+    "No current production noise curve or physical airflow/thermal/strength validation performed.",
+    "No precise grille,IEC,fan-hole cutout or wire-exit XYZ dimensions released in this extraction. Keep broad AC-face cutout with three measured mounting islands instead of inventing exact IEC outline.",
+    "An upstream integral mounting tongue can add10mm beyond nominal150mm body; its unverified T-plane must remain explicit."
+  ]
+}

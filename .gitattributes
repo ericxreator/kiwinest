@@ -1,0 +1,13 @@
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.step text eol=lf
+*.dxf text eol=lf
+*.stl binary
+*.glb binary
+*.png binary
+docs/preview.html linguist-generated=true
+cad/** linguist-generated=true
+*.step -whitespace
+*.dxf -whitespace
+*.csv whitespace=cr-at-eol

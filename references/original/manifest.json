@@ -1,0 +1,9 @@
+{
+  "scope": "Original dimensioned engineering proxies and factual mechanical transcription; no manufacturer CAD or PDF included.",
+  "files": {
+    "GPU_R5_IO_ear_PLACEMENT_REFERENCE.step": "9e385695a9281fefafd7e97a1a358a46f77e7798ea73675aa22699c7ffd91a01",
+    "GPU_R6_CEM_correct1p57_notch1p90_REFERENCE.step": "8959d6a505c77df5ddb30b2dad5a6710348539608edc82a1f00121526fbac76e",
+    "gpu_body.step": "b83f214d71139a880dd041b633a793ccea23648bab664f14e408840512f4a820",
+    "native-mechanical.json": "5adb137fa587bdb3d7b5dd09045c24cce50593dcda64499afcaafc9ab099e211"
+  }
+}
