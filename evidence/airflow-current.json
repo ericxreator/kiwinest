@@ -13,22 +13,16 @@
   "raster_step_mm": 0.25,
   "mesh_tolerance_mm": 0.1,
   "angular_tolerance_rad": 0.15,
-  "occupied_pixels": 11607,
+  "occupied_pixels": 14810,
   "disk_pixels": 157648,
-  "projected_fraction": 0.07362605297878819,
-  "projected_area_mm2": 725.4375,
-  "projected_triangles": 972,
+  "projected_fraction": 0.09394346899421496,
+  "projected_area_mm2": 925.625,
+  "projected_triangles": 11506,
   "input_files": [
     {
-      "filename": "CABLE_R7_R23SR_band_1_300mm_13p2x1p4_PLANNING.step",
-      "sha256": "8c66df6dc583f3399749f82a9d88201e8733b3d7cec480f7de0480403b7514e3",
-      "bytes": 171359,
-      "intersects_z_interval": true
-    },
-    {
-      "filename": "CABLE_R7_R23SR_band_2_300mm_13p2x1p4_PLANNING.step",
-      "sha256": "6b977ec0d424015420ba138bfa74a7f4e756c195dd9ce04ede89030aeb793f48",
-      "bytes": 171308,
+      "filename": "CABLE_R8_K83_x8_SINGLE_BUNDLE_500mm_D9p4_PLANNING.step",
+      "sha256": "b5cdc8bab2db60248c93862766219092bbaa39d35f960e0627e5b71efa6fb726",
+      "bytes": 79388,
       "intersects_z_interval": true
     }
   ],

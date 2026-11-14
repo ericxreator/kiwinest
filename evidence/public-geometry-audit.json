@@ -1,13 +1,14 @@
 {
-  "source_report_sha256": "edcebf0cd989dfa29a0a849c3276fcdec4b13f24b496f5c8b771e2cf85699350",
-  "raw_glb_sha256": "07c0824512d99831c091342b711aeb78f8c83a4da8e9ad91985878ab61b15485",
-  "public_glb_sha256": "26563846d6d46786392eaee98349c791895ca5fd8a3361046dce5a722bbc3a99",
-  "public_nodes": 360,
+  "source_report_sha256": "ba4dd297f32b29356117de27b970dbf2806e9d80595a0c258c1f7f63e8f6e319",
+  "raw_glb_sha256": "825a7c5745f0c6991a10a8e2ddfc90de0a686b4ab3b049340e215b4c33c97f23",
+  "public_glb_sha256": "13aca9ccd52cdaffb63f03f0a126b5310e64fe3c1b02599807afcc2587317c4a",
+  "public_nodes": 370,
   "excluded_vendor_nodes": [
-    "R7_R23SR_OFFICIAL_x16_FEMALE_ASSEMBLED",
-    "R7_R23SR_OFFICIAL_x4_MALE_ASSEMBLED"
+    "R8_K83UP_TL_OFFICIAL_x8_MALE_ASSEMBLED_MODIFIED_CLAMP",
+    "R8_K83UP_TL_x16_FEMALE_FACTORY_LATCH_PARKED",
+    "R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4"
   ],
-  "selected_accessors_byte_matched": 16227,
+  "selected_accessors_byte_matched": 16494,
   "vendor_accessor_overlap": 0,
   "unused_binary_bytes_zero_only": true,
   "geometry_is_physical_acceptance": false

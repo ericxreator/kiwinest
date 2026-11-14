@@ -82,6 +82,40 @@ def build_mainboard():
         service[f'SERVICE_MAINBOARD_R6_rear_screw_{i}_unthread_minusX8']=_sweep(rear,(-1,0,0),8)
         service[f'SERVICE_MAINBOARD_R6_front_tool_{i}_RIGHT_SKIN_REMOVED']=cylinder(2.75,55,(190.7,y,z),(1,0,0))
         service[f'SERVICE_MAINBOARD_R6_rear_tool_{i}_TRAY_OUTSIDE_CASE']=cylinder(2.75,40,(170.3,y,z),(-1,0,0))
+    # Preserve the complete x8 female PCB, including its small +X tabs.
+    # Its measured maximum is X173.5572. Open a shallow rear-face relief,
+    # and recess both lower rear fasteners without moving the board datum.
+    tray=tray.cut(box((.9,152,2.4),(173.1,64,51.9)))
+    flush_joints=[];fabrication=[]
+    for i in (2,4):
+        y,z=HOLES_YZ[i-1]
+        washer_key=f'MAINBOARD_MOUNT_R8_lower_{i}_FLUSH_OD9_STEEL_CSK_WASHER'
+        screw_key=f'MAINBOARD_MOUNT_R8_rear_M3x8_CSK_{i}'
+        # D11.2 pocket retains +/-1mm radial adjustment with an OD9 washer.
+        # The continuous 0.9mm floor and perimeter ribs need load/creep tests.
+        tray=tray.cut(cylinder(5.6,2.2,(173.1,y,z),(1,0,0)))
+        washer=cylinder(4.5,1.5,(173.8,y,z),(1,0,0))
+        washer=washer.cut(cylinder(1.6,1.7,(173.7,y,z),(1,0,0)))
+        washer=washer.cut(cq.Solid.makeCone(3.,1.6,1.4,cq.Vector(173.8,y,z),cq.Vector(1,0,0)))
+        hw.pop(f'MAINBOARD_MOUNT_R6_rear_loadwasher_M3_9mm_{i}')
+        hw.pop(f'MAINBOARD_MOUNT_R6_rear_M3x6_pan_{i}')
+        hw[washer_key]=_one(washer,washer_key)
+        hw[screw_key]=_one(merge(
+          cq.Solid.makeCone(3.,1.5,1.5,cq.Vector(173.8,y,z),cq.Vector(1,0,0)),
+          cylinder(1.45,6.5,(175.3,y,z),(1,0,0))),screw_key)
+        service[f'SERVICE_MAINBOARD_R6_rear_screw_{i}_unthread_minusX8']=_sweep(hw[screw_key],(-1,0,0),8)
+        service[f'SERVICE_MAINBOARD_R6_rear_tool_{i}_TRAY_OUTSIDE_CASE']=cylinder(3.,40,(173.8,y,z),(-1,0,0))
+        flush_joints.append({'mount_index':i,'axis_yz_mm':[y,z],
+          'washer':washer_key,'screw':screw_key,'flush_face_x_mm':173.8,
+          'custom_steel_washer_OD_mm':9.,'washer_thickness_mm':1.5,
+          'washer_bore_mm':3.2,'washer_90deg_countersink_major_D_mm':6.,
+          'tray_recess_diameter_mm':11.2,'tray_recess_floor_x_mm':175.3,
+          'remaining_tray_bearing_thickness_mm':.9,'radial_adjustment_mm':1.,
+          'screw_nominal_length_including_head_mm':8.,'nominal_standoff_engagement_mm':5.1,
+          'factory_female_PCB_max_x_mm':173.5572137,'nominal_PCB_face_clearance_mm':.2427863,
+          'physical_fit_torque_creep_and_bearing_load_verified':False})
+        fabrication.append({'hardware_key':washer_key,'material':'steel load washer',
+          'thickness_mm':1.5,'flat_axis':'X','manufacturing_notes':'Custom OD9 / bore3.2 / 90deg D6 countersink; STEP is the authoritative stepped profile. Verify material, tolerances, bearing and clamp load before manufacture.'})
     # Four real tray feet and M3x10/nut references. Root must cut its bottom/top
     # frames at these points; bolts are removed before tray extraction.
     frame_screws=[];frame_nuts=[]
@@ -187,6 +221,8 @@ def build_mainboard():
         'standoff':'M3 F/F 10mm AF5.5 reference,thread teeth not modeled; procurement SKU not locked',
         'tray_x_mm':[173.2,176.2],'nylon_washer_x_mm':[176.2,176.7],'standoff_x_mm':[176.7,186.7],
         'rear_loadwasher_x_mm':[172.7,173.2],'rear_gap_mm':10.5,'rear_M2_reserve_depth_mm':7,
+        'lower_flush_joints':flush_joints,
+        'female_PCB_rear_face_relief_mm':{'X':[173.1,174.0],'Y':[64,216],'Z':[51.9,54.3]},
         'frame_points_xy_mm':[list(p) for p in FRAME_POINTS],
         'top_frame_points_xy_mm':[list(p) for p in TOP_FRAME_POINTS],
         'frame_required_cuts':{'bottom_through_D_mm':3.4,'bottom_frame_z_mm':[0,5], 'upper_bridge_z_mm':[247,251],
@@ -208,6 +244,7 @@ def build_mainboard():
       'SATA':{'ports':sata,'selected_ports':sorted(selected,key=lambda v:v['drive']),'direct_to_HDD':True,'backplane':False,
         'axis_evidence':'enlarged photo shows complete L-shaped cavities on component face; +X top entry',
         'head_body_dimensions_engineering_assumption_mm':[20,14.5,6.4],'unplug_before_HDD_draw':True},
+      'original_fabrication_parts':fabrication,
       'power':power,'new_parts':list(parts),'new_hardware':list(hw),'new_heads':list(heads),
       'service_names':list(service),'reserve_names':list(reserves),'tray_moving_nodes_after_unplug':all_moving,
       'service_conditions':['Remove right skin and unplug SATA/ATX24/ATX4/PCIe riser/fan/front I-O before tray removal',

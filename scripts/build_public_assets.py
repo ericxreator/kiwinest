@@ -22,6 +22,36 @@ EXCLUDED = {
     'R6_R83SL_OFFICIAL_x16_FEMALE_ASSEMBLED',
     'R6_R83SL_OFFICIAL_x8_MALE_ASSEMBLED',
 }
+PRESSED_FOAM = 'R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4'
+
+
+def publish_foam_stock(fabrication: Path, report: dict) -> dict:
+    """Publish only an independently drawn flat blank, never OEM imprint faces."""
+    import cadquery as cq
+    info = report['envelopes'][PRESSED_FOAM]
+    origin = info['bbox_mm']['min']
+    width, length = info['bbox_mm']['size'][:2]
+    raw = next(item for item in report['riser_meta']['original_fabrication_parts']
+               if item['hardware_key'] == PRESSED_FOAM)
+    thickness = raw['stock_thickness_mm']
+    stock = cq.Solid.makeBox(width, length, thickness)
+    holes = [[axis[0]-origin[0], axis[1]-origin[1]]
+             for axis in report['riser_meta']['male_mounts']['axes']]
+    for x, y in holes:
+        stock = stock.cut(cq.Solid.makeCylinder(1.2, thickness+.2,
+                          cq.Vector(x, y, -.1)))
+    assert stock.isValid() and len(stock.Solids()) == 1
+    stem = 'R8_RISER_MALE_SILICONE_FOAM_FLAT_STOCK_1p5'
+    step, dxf = stem+'.step', stem+'.dxf'
+    cq.exporters.export(stock, str(fabrication/step))
+    cq.exporters.export(cq.Workplane('XY').newObject([stock]).faces('>Z').wires(),
+                        str(fabrication/dxf))
+    return dict(raw, asset_role='FLAT_RAW_STOCK_NOT_INSTALLED_CONTACT_ENVELOPE',
+        stock_outline_mm=[width, length], stock_hole_centers_xy_mm=holes,
+        stock_hole_diameter_mm=2.4, coordinate_frame='Local stock XY, Z0..1.5',
+        scope='Original rectangle and two round holes only. Manufacturer-derived compressed contact surfaces are not distributed.',
+        files={name:hashlib.sha256((fabrication/name).read_bytes()).hexdigest()
+               for name in (step, dxf)}, manufacturing_release=False)
 
 
 def prune_glb(data: bytes, allowed: set[str]) -> tuple[bytes, dict]:
@@ -106,7 +136,7 @@ def prune_glb(data: bytes, allowed: set[str]) -> tuple[bytes, dict]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--input', type=Path, default=ROOT / 'out-r6')
+    parser.add_argument('--input', type=Path, default=ROOT / 'out-r8')
     args = parser.parse_args()
     source = args.input
     report_data = (source / 'report.json').read_bytes()
@@ -114,6 +144,8 @@ def main() -> None:
     excluded = EXCLUDED | set(report.get('external_geometry_names', []))
     riser = report.get('riser_meta', {})
     excluded |= {riser[key] for key in ('female_hardware', 'male_hardware') if key in riser}
+    derived_excluded = {PRESSED_FOAM} & set(report['envelopes'])
+    excluded |= derived_excluded
     allowed = set(report['parts']) | set(report['envelopes']) | set(report['cables'])
     excluded &= allowed
     allowed -= excluded
@@ -129,6 +161,22 @@ def main() -> None:
     shutil.copyfile(source / 'PSU-flange-1mm-REVIEW.dxf', cad / 'PSU-flange-1mm-REVIEW.dxf')
     flange = 'PSU_R6_REPLACEABLE_1mm_METAL_FLANGE_NOT_PRINT.step'
     shutil.copyfile(source / 'envelopes' / flange, cad / flange)
+    fabrication = cad / 'fabrication'
+    fabrication.mkdir(exist_ok=True)
+    public_fabrication_assets = []
+    # Remove only the previously generated, unpublished compressed envelope.
+    for suffix in ('.step', '.dxf'):
+        (fabrication/(PRESSED_FOAM+suffix)).unlink(missing_ok=True)
+    for item in report.get('original_fabrication_assets', []):
+        if item['hardware_key'] == PRESSED_FOAM:
+            public_fabrication_assets.append(publish_foam_stock(fabrication, report))
+            continue
+        for name, digest in item['files'].items():
+            assert Path(name).name == name and Path(name).suffix in ('.step', '.dxf')
+            data = (source / 'fabrication' / name).read_bytes()
+            assert hashlib.sha256(data).hexdigest() == digest
+            (fabrication / name).write_bytes(data)
+        public_fabrication_assets.append(item)
     glb, document = prune_glb((source / 'assembly.glb').read_bytes(), allowed)
     (cad / 'kiwinest-public.glb').write_bytes(glb)
     evidence = {
@@ -147,6 +195,8 @@ def main() -> None:
         'public_geometry': {
             'nodes': len(document['nodes']) - 1, 'parts': len(report['parts']),
             'excluded_vendor_nodes': sorted(excluded),
+            'vendor_endpoint_nodes': sorted(set(report['external_geometry_names'])),
+            'vendor_derived_contact_nodes': sorted(derived_excluded),
             'sha256': hashlib.sha256(glb).hexdigest(),
             'scope': 'Original chassis, hardware and cable planning proxies. Vendor endpoint geometry omitted. Not a new collision or manufacturing acceptance.',
         },
@@ -167,19 +217,26 @@ def main() -> None:
         if 'complete_length_budget' in route
     }
     if report.get('gpu_power_meta', {}).get('complete_length_budget'):
-        evidence['complete_length_budgets']['GPU8_R6_Phanteks_extension'] = report['gpu_power_meta']['complete_length_budget']
+        route_key = report.get('gpu_power_meta', {}).get('route_key', 'GPU_standard_extension')
+        evidence['complete_length_budgets'][route_key] = report['gpu_power_meta']['complete_length_budget']
     gpu_channel = report.get('psu_meta', {}).get('GPU_isolated_factory_exit_transition')
     if gpu_channel:
         evidence['GPU_isolated_factory_exit_transition'] = gpu_channel
     evidence['GPU_factory_bottom_open_arch'] = report.get('psu_meta', {}).get('GPU_factory_bottom_open_arch')
     evidence['wire_bay_floor_open_edges'] = report.get('psu_meta', {}).get('wire_bay_floor_open_edges')
     evidence['PSU_final_cold_air_domain'] = report.get('psu_meta', {}).get('final_cold_air_domain')
+    evidence['ATX_isolated_factory_exit_transition'] = report.get('psu_meta', {}).get('ATX_isolated_factory_exit_transition')
+    evidence['ATX_GPU_shared_factory_exit_gland'] = report.get('psu_meta', {}).get('ATX_GPU_shared_factory_exit_gland')
     evidence['GPU_factory_service_parking'] = report.get('power_meta', {}).get('GPU_factory_service_parking')
     evidence['GPU_extension_service_parking'] = {key: report.get('gpu_power_meta', {}).get(key) for key in (
         'normal_paths', 'modeled_wire_centerline_mm', 'free_tail_mm', 'parked_tail_mm',
         'fixed_anchor_mm', 'park_path_mm', 'wire_diameter_mm', 'engineering_radius_mm',
         'cap_interface_intersections_mm3', 'physical_flexible_deformation_verified')}
     evidence['EPS_standard_extension'] = report.get('atx_refine_meta', {}).get('EPS_standard_extension')
+    evidence['SATA_hub_extension'] = report.get('power_meta', {}).get('SATA_hub_extension')
+    evidence['controls_complete_length_budgets'] = report.get('controls_meta', {}).get('complete_length_budgets')
+    evidence['retained_stock_packing'] = report.get('power_meta', {}).get('surplus_packing')
+    evidence['original_fabrication_assets'] = public_fabrication_assets
     evidence['factory_exit_engineering_assumptions'] = {
         'source_points_mm': report.get('power_meta', {}).get('native_factory_exit_points_engineering'),
         'gland_status': report.get('atx_refine_meta', {}).get('gland_y_status'),
@@ -199,7 +256,11 @@ def main() -> None:
     evidence['riser_selection'] = {key: riser[key] for key in (
         'model', 'catalog_length_source', 'catalog_option_not_inventory_or_delivery_confirmation',
         'electrical_lanes', 'link_generation', 'bandwidth_tradeoff', 'release_status',
-        'actual_male_CPU_guard_minimum_distance_mm', 'male_mount_CPU40_minimum_clearances_mm') if key in riser}
+        'actual_male_CPU_guard_minimum_distance_mm', 'male_mount_CPU40_minimum_clearances_mm',
+        'modified_factory_parts','spring_contact_proof','validated_local_mechanical_contacts',
+        'CPU_clearance_component_keys','selected_model','wire_paths','female_latch_pose',
+        'native_braid_transition','male_mounts','limits') if key in riser}
+    evidence['mainboard_lower_flush_joints'] = report.get('mainboard_meta', {}).get('mount', {}).get('lower_flush_joints')
     evidence_dir = ROOT / 'evidence'
     evidence_dir.mkdir(exist_ok=True)
     (evidence_dir / 'current-review.json').write_text(json.dumps(evidence, ensure_ascii=False, indent=2) + '\n')
@@ -218,11 +279,15 @@ def main() -> None:
         limits.append('整机检查仍有失败项，详见仓库报告')
     limits.append('实物接口、线缆安装、承载、热和噪声尚待验证')
     template = template.replace('__REVISION__', html.escape(revision))
+    lanes = riser.get('electrical_lanes', 'unknown')
+    generation = report.get('params', {}).get('target_pcie_generation', 3)
+    template = template.replace('__PCIE_LINK__', html.escape(f'PCIe {generation}.0 x{lanes}（设计目标）'))
     template = template.replace('__CAD_RESULT__', 'CAD检查通过 · 待实物验证' if report['geometric_checks_passed'] else '未制造放行')
-    template = template.replace('__CURRENT_LIMITS__', html.escape('；'.join(limits) + '。公开预览省略第三方端头CAD。'))
+    template = template.replace('__CURRENT_LIMITS__', html.escape('；'.join(limits) + '。公开预览省略第三方端头、原厂锁扣及泡棉压接曲面。'))
     (docs / 'preview.html').write_text(template.replace('__MODEL_BASE64__', base64.b64encode(glb).decode()))
     print(json.dumps({'original_parts': len(report['parts']), 'public_nodes': len(allowed),
-                      'vendor_nodes_removed': len(excluded), 'public_glb_bytes': len(glb),
+                      'vendor_endpoints_removed': len(report['external_geometry_names']),
+                      'derived_contact_nodes_removed': len(derived_excluded), 'public_glb_bytes': len(glb),
                       'geometry_passed': report['geometric_checks_passed']}))
 
 

@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 """KiwiNest integration and retained-geometry checks (stable R6 module names)."""
 from pathlib import Path
-import hashlib,itertools,json,argparse,time
+import hashlib,itertools,json,argparse,time,math,sys
 import cadquery as cq
 from build import box,cylinder,merge,bbox
 ROOT=Path(__file__).resolve().parents[1]
@@ -17,7 +17,9 @@ def build(include_power=True):
     gp,gh,gs,gr,gm=build_gpu();p.update(gp);h.update(gh);sv.update(gs);res.update(gr)
     m={'parts':p,'hardware':h,'refs':refs,'air':air,'service':sv,'reserves':res,'heads':heads,'wires':{},
       'frame_meta':fm,'drive_meta':dm,'mainboard_meta':mm,'gpu_meta':gm,
-      'params':{'name':'kiwinest-r7','revision':'R7_5825U_CPU40_FLEX_THREE_BAY','release_revision':'R7',
+      'params':{'name':'kiwinest-r8','revision':'R8_X8_FULL_ATX_EXIT_CABLE_HEADROOM','release_revision':'R8',
+      'required_electrical_lanes':8,'target_pcie_generation':3,'minimum_complete_cable_margin_mm':20.,
+      'collision_volume_method':'Sum of exact component BRep intersections; conservative for internally overlapping vendor materials',
       'body_mm':[250,250,255],'target_overall_mm':[250,250,275],
       'printing_build_volume_mm':[256,256,256],'stage':'GEOMETRY_PROTOTYPE_NOT_MANUFACTURING_RELEASE',
       'source_qnas8_commit':'492cbcc55a5f0c1f36b2798a21b64ffed85c3c4a'},'geometry_source_hashes':{}}
@@ -45,22 +47,81 @@ def build(include_power=True):
         if (ROOT/'design/r6_sata_refine.py').exists():
             from r6_sata_refine import apply_sata_refine
             apply_sata_refine(m)
+        # Count the complete standard GPU extension and its retained stock in
+        # the same packing calculation as native power and EPS/SATA leads.
+        gpu=m['gpu_power_meta'];stock=gpu['nominal_stock_mm']
+        route_key='CABLE_R8_GPU_MODDIY_CAB534_700';gpu['route_key']=route_key
+        m['power_meta']['extensions']['GPU']=gpu['extension']
+        m['power_meta']['status']='R8_COMPLETE_MODELED_POWER_ROUTES_PHYSICAL_VALIDATION_PENDING'
+        length=gpu['modeled_wire_centerline_mm']
+        m['power_meta']['routes'][route_key]={
+          'keys':[gpu['fixed_wire_key'],gpu['free_wire_key']],
+          'paths_mm':gpu['normal_paths'],'modeled_centerline_mm':length,
+          'engineering_diameter_mm':gpu['wire_diameter_mm'],
+          'engineering_bend_R_mm':gpu['engineering_radius_mm'],
+          'nominal_stock_mm':stock,'unmodeled_surplus_mm':stock-length,
+          'surplus_insulated_material_mm3':max(0.,stock-length)*math.pi*(gpu['wire_diameter_mm']/2)**2,
+          'full_length_installed_and_flex_verified':False,
+          'packing_is_conservative_connector_length_not_deducted':True}
+        # Every purchased PWM/button lead shares the same retained-stock
+        # basket. Count it here before computing the available packing volume.
+        for name,info in m['controls_meta']['routes'].items():
+            m['power_meta']['routes'][name]={
+              'keys':[name],'vertices_mm':info['path_mm'],
+              'modeled_centerline_mm':info['modeled_mm'],
+              'engineering_diameter_mm':info['engineering_diameter_mm'],
+              'engineering_bend_R_mm':info['engineering_bend_R_mm'],
+              'nominal_stock_mm':info['stock_mm'],
+              'unmodeled_surplus_mm':info['unmodeled_surplus_mm'],
+              'surplus_insulated_material_mm3':info['surplus_insulated_material_mm3'],
+              'complete_length_budget':info['complete_length_budget'],
+              'full_length_installed_and_flex_verified':False}
         from r6_packing import apply_packing
         apply_packing(m)
+        # SATA data stock is selected by apply_packing (24in). Add connector
+        # and assembly allowances only after that final stock selection.
+        for name,route in m['power_meta']['routes'].items():
+            stock_length=route.get('nominal_stock_mm')
+            if stock_length is None:continue
+            if 'complete_length_budget' not in route and name!=route_key:
+                allowance=40. if name.startswith('CABLE_R6_SATA_DATA_') else 24.
+                source_allowance=10.5 if name in ('CABLE_R6_SATA_A_FACTORY300','CABLE_R6_SATA_B_FACTORY300') else 0.
+                needed=route['modeled_centerline_mm']+source_allowance+allowance+15.
+                route['complete_length_budget']={
+                  'modeled_complete_centerline_mm':route['modeled_centerline_mm'],
+                  'unmodeled_factory_face_to_gland_allowance_mm':source_allowance,
+                  'factory_face_to_gland_geometry_complete':not bool(source_allowance),
+                  'connector_allowance_mm':allowance,'assembly_slack_mm':15.,
+                  'nominal_stock_mm':stock_length,'required_with_allowances_mm':needed,
+                  'remaining_length_margin_mm':stock_length-needed,
+                  'geometric_length_budget_passed':needed<=stock_length,
+                  'connector_allowance_is_engineering_assumption':True,
+                  'factory_measurement_origin_and_installed_flex_verified':False}
+            if 'complete_length_budget' in route:
+                m['power_meta']['complete_stock_length_budgets'][name]=route['complete_length_budget']
         integrate_gpu_factory_parking(m)
-        gpu=m['gpu_power_meta'];required=gpu['modeled_wire_centerline_mm']+48+15
+        required=gpu['modeled_wire_centerline_mm']+48+15
         gpu['complete_length_budget']={
           'modeled_complete_centerline_mm':gpu['modeled_wire_centerline_mm'],
-          'connector_allowance_mm':48.,'assembly_slack_mm':15.,'nominal_stock_mm':500,
-          'required_with_allowances_mm':required,'remaining_length_margin_mm':500-required,
-          'geometric_length_budget_passed':required<=500,
+          'connector_allowance_mm':48.,'assembly_slack_mm':15.,'nominal_stock_mm':stock,
+          'required_with_allowances_mm':required,'remaining_length_margin_mm':stock-required,
+          'geometric_length_budget_passed':required<=stock,
           'connector_allowance_is_engineering_assumption':True,
           'factory_measurement_origin_and_installed_flex_verified':False}
-        if required>500:
-            m['power_meta']['checks'].append({'route':'GPU8_R6_Phanteks_extension',
-              'kind':'complete_stock_length_short','required_mm':required,'available_mm':500})
+        m['power_meta']['routes'][route_key]['complete_length_budget']=gpu['complete_length_budget']
+        m['power_meta']['complete_stock_length_budgets'][route_key]=gpu['complete_length_budget']
+        if required>stock:
+            m['power_meta']['checks'].append({'route':route_key,
+              'kind':'complete_stock_length_short','required_mm':required,'available_mm':stock})
     for f in ['build_r6.py','build.py','r6_export.py','r6_frame.py','r6_storage.py','r6_mainboard.py','r6_gpu.py','r5_gpu.py','r6_psu.py','r6_riser.py','r6_controls.py','r6_power.py','r6_atx_refine.py','r6_sata_refine.py','r6_packing.py','r2_cables.py','r4_drive_mount.py','r4_riser_route.py']:
         if (ROOT/'design'/f).exists():m['geometry_source_hashes']['design/'+f]=hashlib.sha256((ROOT/'design'/f).read_bytes()).hexdigest()
+    # Include newly introduced local helpers as well as the stable modules.
+    for module in tuple(sys.modules.values()):
+        filename=getattr(module,'__file__',None)
+        if not filename:continue
+        source=Path(filename).resolve()
+        if source.parent==ROOT/'design' and source.suffix=='.py':
+            m['geometry_source_hashes'][str(source.relative_to(ROOT))]=hashlib.sha256(source.read_bytes()).hexdigest()
     external=[str(Path(m['riser_meta'][key]).resolve().relative_to(ROOT))
               for key in ('male_source','female_source')]
     for rel in ['references/original/gpu_body.step','references/original/GPU_R5_IO_ear_PLACEMENT_REFERENCE.step',
@@ -70,36 +131,34 @@ def build(include_power=True):
     return m
 
 def integrate_gpu_factory_parking(m):
-    """Explicit parked replacement for the native lead crossing the card lift."""
-    from r6_power import _tube
+    """Keep the complete factory lead in its installed pose during card lift."""
     key='CABLE_R6_GPU_FACTORY300'
-    # Rise before entering the front data-cable plane, then pass below the
-    # raised EPS front span. Keep the standard coupling and its cap fixed.
-    points=[[26,96,205.5],[26,82,205.5],[35,73,205.5],[35,73,193],
-      [35,16,193],[110,16,193],[118,16,198.5],[126,5.8,198.5],
-      [178,5.8,198.5],[185.5,18,198.5],[185.5,18,176],[185.5,24.2,176]]
-    parked,length=_tube(points,6.5,6)
-    service='SERVICE_GPU_R7_factory300_FRONT_PARKED'
-    m['service'][service]=parked
-    normal=m['power_meta']['routes'][key]['modeled_centerline_mm']
-    required=max(normal+15.,length)+24.
-    meta={'normal_wire':key,'parked_service':service,'path_mm':points,
-      'normal_centerline_mm':normal,'parked_centerline_mm':length,
+    route=m['power_meta']['routes'][key]
+    normal=route['modeled_centerline_mm']
+    # The R8 standard coupling and the whole native lead lie left of the GPU
+    # lift column. Reuse the exact installed shape in the service checks, so
+    # the established obstacle-replacement mechanism retains every wire mm.
+    service='SERVICE_GPU_R8_factory300_RETAINED_INSTALLED'
+    m['service'][service]=m['wires'][key]
+    required=normal+15.+24.
+    meta={'normal_wire':key,'parked_service':service,'path_mm':route['vertices_mm'],
+      'normal_centerline_mm':normal,'parked_centerline_mm':normal,
       'connector_allowance_mm':24.,'normal_assembly_slack_mm':15.,
       'required_stock_for_both_states_mm':required,'nominal_stock_mm':300.,
       'geometric_length_budget_passed':required<=300.,
-      'park_extra_uses_existing_assembly_slack':length-normal<=15.,
-      'extra_centerline_for_park_mm':max(0.,length-normal),
-      'park_extra_beyond_normal_assembly_slack_mm':max(0.,length-normal-15.),
+      'park_extra_uses_existing_assembly_slack':True,
+      'extra_centerline_for_park_mm':0.,
+      'park_extra_beyond_normal_assembly_slack_mm':0.,
       'remaining_stock_margin_for_both_states_mm':300.-required,
       'normal_and_parked_states_share_the_same_factory_lead':True,
-      'prerequisite':'Releaseunderfloorsoftstrapsandfeedreservedslack;parkfreefactoryspanforwardbeforeliftingGPU.Originalcouplingstaysfixed.',
+      'native_lead_remains_in_installed_pose':True,
+      'service_replacement_is_exact_same_shape':True,
+      'requires_factory_cable_repositioning':False,
+      'prerequisite':'Keepfactory300mmandunused150mmleadscoupledandretainedatthePSU-sidecouplingduringGPUcardextraction.',
       'physical_flexible_deformation_verified':False,
       'factory_measurement_origin_and_usable_length_verified':False}
     m['power_meta']['GPU_factory_service_parking']=meta
     m['gpu_meta']['gpu_card_only']['native_power_parking']=meta
-    m['gpu_meta']['gpu_card_only']['removal_order'].insert(2,
-      '松开电源底部软绑带，送出原厂300mm线预留余量，将自由段移至前侧停放；中转接头保持固定')
     if required>300.:
         m['power_meta']['checks'].append({'route':key,'kind':'service_stock_length_short',
           'required_mm':required,'available_mm':300.})
@@ -124,14 +183,16 @@ def integrate_riser(m):
     from r6_frame import pan
     p,h=m['parts'],m['hardware'];base=p['FRAME_R6_base']
     saddle='R6_RISER_FEMALE_LOW_BRIDGE_FRAME_FEET'
+    rm=m['riser_meta']
     for i,y in enumerate((68.,212.),1):
         # Narrow the front/rear feet and move their bolt centres left2.5mm,
         # leaving a0.5mm gap to the separate motherboard tray feet atX172.
-        p[saddle]=p[saddle].cut(box((18,8,5.1),(155,y-4,4.9)))
-        foot=box((15.5,8,5),(156,y-4,5)).cut(cylinder(1.7,7,(167.5,y,4)))
-        p[saddle]=merge(p[saddle],foot)
-        for suffix in ('M3x10','M3_hex'):
-            n=f'R6_RISER_FOOT_{suffix}_{i}';h[n]=h[n].translate((-2.5,0,0))
+        if not rm.get('female_feet_already_narrowed'):
+            p[saddle]=p[saddle].cut(box((18,8,5.1),(155,y-4,4.9)))
+            foot=box((15.5,8,5),(156,y-4,5)).cut(cylinder(1.7,7,(167.5,y,4)))
+            p[saddle]=merge(p[saddle],foot)
+            for suffix in ('M3x10','M3_hex'):
+                n=f'R6_RISER_FOOT_{suffix}_{i}';h[n]=h[n].translate((-2.5,0,0))
         base=merge(base,box((14,14,5),(163,y-7,0)))
         base=base.cut(cylinder(1.7,7,(167.5,y,-1))).cut(box((7,7,2.6),(164,y-3.5,1.1)))
     female_mount=m['riser_meta']['female_mounts']
@@ -148,24 +209,45 @@ def integrate_riser(m):
     h['R6_RISER_FRAME_REAR_M3_square_2p4']=box((5.5,2.4,5.5),(237.25,231.1,212.25)).cut(cylinder(1.6,2.6,(240,231,215),(0,1,0)))
     m['riser_meta']['root_integration']={'female_base_lands':'14x14x5,through3.4 and7x7x2.6 nut pockets at167.5/68,167.5/212;feet narrowed toX171.5',
       'male_rear_joint':'M3x16pan seatY245,direction-Y,nutY231.1..233.5 in existing holder;post240/240 drilled3.4'}
+    for axis in rm.get('frame_mount_axes',[]):
+        if axis.get('point') in ([170,68.,10],[170,212.,10]):axis['point'][0]=167.5
     rm=m['riser_meta'];guard=m['reserves']['KEEP_DS2501_CPU_40mm_FROM_COMPONENT_FACE_HARD_LIMIT']
-    conflict=h[rm['male_hardware']].intersect(guard)
+    conflict_volume=overlap(h[rm['male_hardware']],guard)
     rm['module_rounded_CPU_center_intersection_mm3']=rm['actual_male_CPU_guard_intersection_mm3']
-    rm['actual_male_CPU_guard_intersection_mm3']=conflict.Volume()
-    rm['actual_male_CPU_guard_intersection_bbox']=bbox(conflict) if conflict.Volume()>1e-4 else None
-    if rm.get('conflict_reserve') and conflict.Volume()>1e-4:
+    rm['actual_male_CPU_guard_intersection_mm3']=conflict_volume
+    conflict=h[rm['male_hardware']].intersect(guard) if conflict_volume>1e-4 else None
+    rm['actual_male_CPU_guard_intersection_bbox']=bbox(conflict) if conflict is not None else None
+    if rm.get('conflict_reserve') and conflict is not None:
         m['reserves'][rm['conflict_reserve']]=conflict
     solids=h[rm['female_hardware']].Solids()
     assert len(solids)==rm.get('female_solid_count',252),'Unexpected female endpoint model'
-    contacts=set(rm.get('female_spring_contact_indices',range(3,167)))
-    assert len(contacts)==164 and all(0<=i<len(solids) for i in contacts),'Invalid spring contact selection'
-    # Retain all actual PCB/plastic/FFC/fastener material. Only the explicitly
-    # identified physical spring contacts may meet the nominal GPU card edge.
-    noncontact=cq.Compound.makeCompound([s for i,s in enumerate(solids) if i not in contacts])
-    nk='CHECK_R7_FEMALE_NON_SPRING_MATERIAL'
-    m['reserves'][nk]=noncontact;rm['non_spring_material_check_shape']=nk
-    rm['spring_contact_indices_excluded_only_for_edge_mating']=sorted(contacts)
-    rm['actual_male_CPU_guard_minimum_distance_mm']=h[rm['male_hardware']].distance(guard)
+    if rm.get('spring_contact_domain_key'):
+        # New vendor sockets fuse housing and contacts into one solid. Permit
+        # only the 164 actual spring-tip intersections, never the whole slot.
+        caps=m['reserves'][rm['spring_contact_domain_key']]
+        assert len(caps.Solids())==164,'Expected 164 actual spring-tip contact caps'
+        noncontact=m['reserves'][rm['non_spring_material_check_shape']]
+        actual=h[rm['female_hardware']]
+        proof=rm['spring_contact_proof']
+        assert proof['contact_count']==164 and proof['row_counts']==[82,82]
+        assert abs(caps.Volume()-proof['normal_contact_common_mm3'])<1e-4
+        # _spring_domain computes caps=actual.intersect(card), then subtracts
+        # exactly those caps. Check conservation without repeating a costly
+        # difference of two nearly identical 10,000-face socket bodies.
+        before=sum(s.Volume() for s in actual.Solids())
+        after=sum(s.Volume() for s in noncontact.Solids())
+        assert abs(before-after-sum(s.Volume() for s in caps.Solids()))<.01,'Removed non-contact female volume'
+    else:
+        contacts=set(rm.get('female_spring_contact_indices',range(3,167)))
+        assert len(contacts)==164 and all(0<=i<len(solids) for i in contacts),'Invalid spring contact selection'
+        noncontact=cq.Compound.makeCompound([s for i,s in enumerate(solids) if i not in contacts])
+        nk='CHECK_R7_FEMALE_NON_SPRING_MATERIAL'
+        m['reserves'][nk]=noncontact;rm['non_spring_material_check_shape']=nk
+        rm['spring_contact_indices_excluded_only_for_edge_mating']=sorted(contacts)
+    if rm.get('actual_male_CPU40_minimum_clearance_mm') is not None:
+        rm['actual_male_CPU_guard_minimum_distance_mm']=rm['actual_male_CPU40_minimum_clearance_mm']
+    else:
+        rm['actual_male_CPU_guard_minimum_distance_mm']=h[rm['male_hardware']].distance(guard)
     m['mainboard_meta']['PCIe']['required_fieldgate']='Confirm actual board socket/key/insertion depth and selected riser lane negotiation on hardware; preserve CPU40 reserve'
 
 def integrate_psu(m):
@@ -234,20 +316,57 @@ def integrate_psu(m):
       'nominal_all_face_unobstructed_claim':False,'thermal_or_physical_acceptance_completed':False}
 
 _bounds={}
+_solid_bounds={}
+_overlap_results={}
+_common_shapes={}
 def bounds(s):
     k=id(s)
     if k not in _bounds:_bounds[k]=(s,bbox(s))
     return _bounds[k][1]
 def overlap(a,b):
+    key=frozenset((id(a),id(b)))
+    if key in _overlap_results:return _overlap_results[key][2]
+    original_a,original_b=a,b
     aa,bb=bounds(a),bounds(b)
     if any(aa['max'][i]<=bb['min'][i]+1e-6 or bb['max'][i]<=aa['min'][i]+1e-6 for i in range(3)):return 0.
+    # Preserve exact BRep tests while avoiding remote socket details when a
+    # compound's overall box overlaps only a small PCB or one fastener.
+    def candidates(shape,other):
+        key=id(shape)
+        if key not in _solid_bounds:_solid_bounds[key]=(shape,[(s,bbox(s)) for s in shape.Solids()])
+        solids=_solid_bounds[key][1]
+        if len(solids)<=1:return shape
+        selected=[s for s,bb in solids if all(bb['max'][i]>other['min'][i]+1e-6 and bb['min'][i]<other['max'][i]-1e-6 for i in range(3))]
+        return cq.Compound.makeCompound(selected) if selected else None
+    a=candidates(a,bb);b=candidates(b,aa)
+    if a is None or b is None:return 0.
     from OCP.BRepAlgoAPI import BRepAlgoAPI_Common
-    op=BRepAlgoAPI_Common(a.wrapped,b.wrapped);op.SetFuzzyValue(1e-5);op.Build()
-    if not op.IsDone():raise ValueError('OCC common failed;not counted as clear')
-    result=op.Shape()
-    if result.IsNull():return 0.
-    volume=cq.Shape.cast(result).Volume()
-    if volume < -1e-5:raise ValueError('Negative OCC common volume;not counted as clear')
+    from OCP.TopTools import TopTools_ListOfShape
+    # Check each actual material solid independently. A compound-wide Boolean
+    # can spend minutes splitting overlapping vendor subassemblies unrelated
+    # to this obstacle. The sum is conservative if vendor materials overlap;
+    # a clear result still requires every exact component Common to be zero.
+    pieces=[];volume=0.
+    for x in a.Solids():
+        xb=bounds(x)
+        for y in b.Solids():
+            yb=bounds(y)
+            if any(xb['max'][i]<=yb['min'][i]+1e-6 or yb['max'][i]<=xb['min'][i]+1e-6 for i in range(3)):continue
+            arguments=TopTools_ListOfShape();arguments.Append(x.wrapped)
+            tools=TopTools_ListOfShape();tools.Append(y.wrapped)
+            # The two-shape constructor executes immediately. Set tolerance
+            # before the single Build, matching CadQuery's Boolean workflow.
+            op=BRepAlgoAPI_Common();op.SetArguments(arguments);op.SetTools(tools)
+            op.SetFuzzyValue(1e-5);op.Build()
+            if not op.IsDone():raise ValueError('OCC common failed;not counted as clear')
+            result=op.Shape()
+            if result.IsNull():continue
+            common=cq.Shape.cast(result);value=common.Volume()
+            if value < -1e-5:raise ValueError('Negative OCC common volume;not counted as clear')
+            volume+=max(0.,value)
+            if value>0.:pieces.extend(common.Solids())
+    _overlap_results[key]=(original_a,original_b,max(0.,volume))
+    if volume>1e-4:_common_shapes[key]=cq.Compound.makeCompound(pieces)
     return max(0.,volume)
 def cross(a,b,same=False,allow=()):
     out=[];allow={frozenset(v) for v in allow}
@@ -268,6 +387,23 @@ def check(m):
        'print_print':cross(p,p,True),'print_hardware':cross(p,h),
        'print_heads':cross(p,hd),'print_wires':cross(p,w),'hardware_hardware':cross(h,h,True,allow=mates),
        'hardware_heads':cross(h,hd,allow=mates),'hardware_wires':cross(h,w,allow=mates),'heads_heads':cross(hd,hd,True,allow=mates),'heads_wires':cross(hd,w,allow=mates),'wires_wires':cross(w,w,True,allow=mates)}
+    # A grooved silicone clamp may preload only the actual coax inside its
+    # explicitly bounded pad. Rigid, CPU, air and service checks stay strict.
+    rm['validated_local_mechanical_contacts']=[]
+    for contact in rm.get('mechanical_local_contacts',[]):
+        a,b=contact['a'],contact['b'];domain=m['reserves'][contact['domain_key']]
+        volume=overlap(allphys[a],allphys[b])
+        common=_common_shapes.get(frozenset((id(allphys[a]),id(allphys[b]))))
+        outside=common.cut(domain).Volume() if common is not None else 0.
+        if outside>1e-4 or volume>contact['maximum_overlap_mm3']+1e-4:
+            raise ValueError('Riser clamp contact escaped its bounded elastic pad')
+        for group in ('hardware_hardware','hardware_wires','print_hardware','print_wires'):
+            c[group]=[q for q in c[group] if {q['a'],q['b']}!={a,b}]
+        rm['validated_local_mechanical_contacts'].append({
+          'pair':[a,b],'domain_key':contact['domain_key'],
+          'overlap_mm3':volume,'outside_domain_mm3':outside,
+          'maximum_overlap_mm3':contact['maximum_overlap_mm3'],
+          'physical_clamping_and_retention_verified':False})
     # Permit only the measured local intersection inside a declared electrical
     #fork sphere. Any material outside that sphere remains a collision.
     for fork in m.get('power_meta',{}).get('exact_same_net_junction_spheres',[]):
@@ -280,6 +416,40 @@ def check(m):
                 c['wires_wires'].remove(q)
                 m['power_meta'].setdefault('validated_local_electrical_forks',[]).append({'pair':[q['a'],q['b']],'overlap_mm3':q['volume_mm3'],'outside_allowed_sphere_mm3':outside,'sphere':fork})
     c['stock_length_or_storage_volume']=m.get('power_meta',{}).get('checks',[])
+    c['design_requirements']=[]
+    required_lanes=m['params'].get('required_electrical_lanes')
+    if required_lanes and rm.get('electrical_lanes',0)<required_lanes:
+        c['design_requirements'].append({'requirement':'electrical_lanes',
+          'required':required_lanes,'modeled':rm.get('electrical_lanes')})
+    if required_lanes and m.get('power_meta'):
+        exit_transition=m.get('psu_meta',{}).get('ATX_isolated_factory_exit_transition',{})
+        if not exit_transition.get('complete_source_segment_modeled'):
+            c['design_requirements'].append({'requirement':'complete_ATX_factory_exit',
+              'modeled':False})
+    margin=m['params'].get('minimum_complete_cable_margin_mm')
+    if margin:
+        if rm.get('electrical_lanes')==8:
+            if not rm.get('wire_paths'):
+                c['design_requirements'].append({'requirement':'complete_riser_stock_length','modeled':False})
+            for name,path in rm.get('wire_paths',{}).items():
+                loop=path.get('geometric_service_loop_allocation_mm',0.)
+                if loop<margin-1e-5:
+                    c['design_requirements'].append({'requirement':'riser_geometric_service_loop',
+                      'route':name,'minimum_mm':margin,'modeled_mm':loop})
+                if abs(path['centerline_mm']+path['factory_sleeve_allowance_mm']-path['wire_only_nominal_mm'])>1e-3:
+                    c['design_requirements'].append({'requirement':'complete_riser_stock_length','route':name})
+        budgets={name:route['complete_length_budget']
+          for name,route in m.get('power_meta',{}).get('routes',{}).items()
+          if 'complete_length_budget' in route}
+        if m.get('gpu_power_meta',{}).get('complete_length_budget'):
+            budgets['GPU_standard_extension']=m['gpu_power_meta']['complete_length_budget']
+        for name,budget in budgets.items():
+            if budget['remaining_length_margin_mm']<margin-1e-5:
+                c['design_requirements'].append({'requirement':'complete_cable_margin',
+                  'route':name,'minimum_mm':margin,'modeled_mm':budget['remaining_length_margin_mm']})
+        for name,route in m.get('power_meta',{}).get('routes',{}).items():
+            if route.get('nominal_stock_mm') is not None and 'complete_length_budget' not in route:
+                c['design_requirements'].append({'requirement':'complete_length_budget_missing','route':name})
     cpu=m['reserves']['KEEP_DS2501_CPU_40mm_FROM_COMPONENT_FACE_HARD_LIMIT']
     c['CPU40_hard_clearance']=cross({'CPU40':cpu},{n:s for n,s in allphys.items() if n!='CPU_DS2501_stock_round_copper_25mm_TOTAL_PHOTO_PROXY'})
     card=m['gpu_meta']['gpu_card_only']
@@ -345,6 +515,23 @@ def check(m):
         c['EPS_wire_roof_opening']=cross(
             {opening['sweep_key']:sv[opening['sweep_key']]},
             {name:shape for name,shape in allphys.items() if name not in removed})
+    c['riser_latch_park_service']=[]
+    latch=rm.get('female_latch_pose',{})
+    if latch.get('pin_service_sweep_key'):
+        # Opening access skins changes no structural support. The moving pin
+        # is excluded only from its own motion, with the whole socket retained.
+        access={n for n in p if n.startswith(('SKIN_R6_front','SKIN_R6_left'))}
+        access|={n for n in h if n.startswith(('PANEL_R6_front','PANEL_R6_left'))}
+        pin=latch['pin_hardware_key']
+        obstacles={n:s for n,s in allphys.items() if n not in access|{pin}}
+        c['riser_latch_park_service']+=cross(
+          {latch['pin_service_sweep_key']:sv[latch['pin_service_sweep_key']]},obstacles)
+        # Only the detached latch leaves in the second step; the other 218
+        # actual female components remain as exact service obstacles.
+        obstacles.pop(rm['female_hardware'])
+        obstacles['FEMALE_RETAINED_WITHOUT_PARKED_LATCH']=m['reserves'][latch['retained_female_without_latch_check_key']]
+        c['riser_latch_park_service']+=cross(
+          {latch['latch_service_sweep_key']:sv[latch['latch_service_sweep_key']]},obstacles)
     c['outside_target']=[{'name':n,'bbox':bounds(s)} for n,s in allphys.items() if any(bounds(s)['min'][i]<[0,0,-20][i]-1e-5 or bounds(s)['max'][i]>[250,250,255][i]+1e-5 for i in range(3))]
     return c
 

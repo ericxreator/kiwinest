@@ -8,6 +8,7 @@ This audit does not validate physical fit or manufacturing readiness.
 """
 import hashlib
 import json
+import argparse
 from pathlib import Path
 import struct
 
@@ -53,17 +54,25 @@ def accessor(doc, blob, index):
 
 
 def main():
-    raw = ROOT / 'out-r6/assembly.glb'
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--input', type=Path, default=ROOT / 'out-r8')
+    args = parser.parse_args()
+    raw = args.input / 'assembly.glb'
     public = ROOT / 'cad/kiwinest-public.glb'
     source, sb = read_glb(raw)
     target, tb = read_glb(public)
-    report = json.loads((ROOT / 'out-r6/report.json').read_text())
+    report_file = args.input / 'report.json'
+    report = json.loads(report_file.read_text())
     review = json.loads((ROOT / 'evidence/current-review.json').read_text())
-    report_sha = hashlib.sha256((ROOT / 'out-r6/report.json').read_bytes()).hexdigest()
+    report_sha = hashlib.sha256(report_file.read_bytes()).hexdigest()
     assert review['source_report_sha256'] == report_sha
     assert review['public_geometry']['sha256'] == hashlib.sha256(public.read_bytes()).hexdigest()
     excluded = set(report['external_geometry_names'])
     assert len(excluded) == 2
+    pressed_foam = 'R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4'
+    if pressed_foam in report['envelopes']:
+        excluded.add(pressed_foam)
+    assert excluded == set(review['public_geometry']['excluded_vendor_nodes'])
     sn = {n['name']: n for n in source['nodes'] if 'mesh' in n}
     tn = {n['name']: n for n in target['nodes'] if 'mesh' in n}
     assert set(tn) == set(sn) - excluded

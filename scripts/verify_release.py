@@ -45,6 +45,14 @@ def main() -> None:
     part_count = len(review['parts'])
     assert len(list((ROOT / 'cad/parts').glob('*.step'))) == part_count
     assert len(list((ROOT / 'cad/parts').glob('*.stl'))) == part_count
+    fabrication_names=set()
+    for item in review.get('original_fabrication_assets', []):
+        for name, expected in item['files'].items():
+            fabrication_names.add(name)
+            assert hashlib.sha256((ROOT/'cad/fabrication'/name).read_bytes()).hexdigest() == expected
+    actual_fabrication={p.name for p in (ROOT/'cad/fabrication').glob('*') if p.suffix in ('.step','.dxf')}
+    assert actual_fabrication==fabrication_names
+    assert not (ROOT/'cad/fabrication/R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4.step').exists()
     data = (ROOT / 'cad/kiwinest-public.glb').read_bytes()
     length = struct.unpack_from('<I', data, 12)[0]
     document = json.loads(data[20:20 + length])

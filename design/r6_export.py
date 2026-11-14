@@ -9,10 +9,13 @@ ROOT=Path(__file__).resolve().parents[1]
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--out-dir',type=Path,default=ROOT/'out-r6')
+    parser.add_argument('--out-dir',type=Path,default=ROOT/'out-r8')
     parser.add_argument('--checks-only',action='store_true',help='Write actual checks without STEP/STL export')
     args=parser.parse_args()
-    required = [ROOT/'references/private'/name for name in ('R23SR_official_male_endpoint.step', 'R23SR_official_female_endpoint.step', 'enp7660b-official-spec-20251008.pdf')]
+    import r6_riser
+    reference_files = getattr(r6_riser, 'REFERENCE_FILES',
+      ('R23SR_official_male_endpoint.step', 'R23SR_official_female_endpoint.step'))
+    required = [ROOT/'references/private'/name for name in (*reference_files, 'enp7660b-official-spec-20251008.pdf')]
     if any(not path.is_file() for path in required):
         raise SystemExit('Missing local manufacturer references. Run: python scripts/prepare_references.py')
     t=time.time();print('Building complete chassis including local manufacturer endpoints',flush=True)
@@ -24,7 +27,8 @@ def main():
     for rel,sha in m['geometry_source_hashes'].items():assert hashlib.sha256((ROOT/rel).read_bytes()).hexdigest()==sha,rel
     report={k:v for k,v in m.items() if k.endswith('_meta') or k in ('params','geometry_source_hashes')}
     riser=m.get('riser_meta',{})
-    external=[riser[key] for key in ('female_hardware','male_hardware') if key in riser]
+    external=sorted(set([riser[key] for key in ('female_hardware','male_hardware') if key in riser]
+      +riser.get('external_hardware_names',[])))
     report.update({'stage':'CAD_CHECKS_PASSED_PHYSICAL_VALIDATION_PENDING' if geometry_passed else 'GEOMETRY_REVIEW_BLOCKED_NOT_MANUFACTURING_RELEASE',
       'checks':checks,'body_mm':m['params']['body_mm'],'overall_target_mm':m['params']['target_overall_mm'],
       'thermal_or_physical_acceptance_completed':False,'geometric_checks_passed':geometry_passed,
@@ -53,6 +57,26 @@ def main():
             a.add(s,name=n,color=cq.Color(*color))
     a.export(str(out/'assembly.step'))
     a.export(str(out/'assembly.glb'),tolerance=.4,angularTolerance=.28)
+    # Original machined/laminated parts are fabrication assets, not prints.
+    # Keep the allowlist explicit so vendor endpoint geometry cannot enter it.
+    fabrication=out/'fabrication';fabrication.mkdir(exist_ok=True)
+    report['original_fabrication_assets']=[]
+    own_fabrication={'R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8',
+      'R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4',
+      'MAINBOARD_MOUNT_R8_lower_2_FLUSH_OD9_STEEL_CSK_WASHER',
+      'MAINBOARD_MOUNT_R8_lower_4_FLUSH_OD9_STEEL_CSK_WASHER'}
+    for item in riser.get('original_fabrication_parts',[])+m['mainboard_meta'].get('original_fabrication_parts',[]):
+        name=item['hardware_key'];assert name in own_fabrication
+        shape=m['hardware'][name];filename=name+'.step'
+        cq.exporters.export(shape,str(fabrication/filename))
+        files=[filename]
+        if item.get('thickness_mm')==.8 and item.get('flat_axis')=='Z':
+            dxf=name+'.dxf'
+            cq.exporters.export(cq.Workplane('XY').newObject([shape]).faces('>Z').wires(),str(fabrication/dxf))
+            files.append(dxf)
+        report['original_fabrication_assets'].append(dict(item,files={
+          f:hashlib.sha256((fabrication/f).read_bytes()).hexdigest() for f in files},
+          manufacturing_release=False))
     # Meshing may inflate OCC's later bounding box by its tessellation gap.
     # Use the recorded pre-mesh BRep bounds for authoritative CAD dimensions.
     b=[v['bbox_mm'] for f in ('parts','envelopes','cables') for v in report[f].values()]

@@ -114,8 +114,8 @@ def project_cables(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--cables-dir', type=Path, default=ROOT / 'out-r6/cables')
-    parser.add_argument('--pattern', default='*_band_*.step')
+    parser.add_argument('--cables-dir', type=Path, default=ROOT / 'out-r8/cables')
+    parser.add_argument('--pattern', default='CABLE_R8_K83*.step')
     parser.add_argument('--output', type=Path)
     parser.add_argument('--center-x', type=float, default=170.0)
     parser.add_argument('--center-y', type=float, default=136.0)

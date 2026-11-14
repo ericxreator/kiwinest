@@ -69,16 +69,18 @@ def build_frame():
     lid=box((250,250,4),(0,0,251)).cut(cylinder(69,6,(176.5,120,250)))
     grille=[box((140,2,2),(106.5,y,253)) for y in range(54,189,8)]
     lid=merge(lid,*grille)
-    tf=box((140,140,26),(106.5,50,220))
+    # Raise the intact fan one millimetre above the x8 cable fan-out. A
+    # shorter spacer preserves the lid, frame and external case dimensions.
+    tf=box((140,140,26),(106.5,50,221))
     fan_nodes=['TOP_R6_lid','top_fan_body']
     for i,(x,y) in enumerate(itertools.product((114.25,238.75),(57.75,182.25)),1):
         #4.8 clearance permits the124.5/125mm catalogue-drawing difference.
         tf=tf.cut(cylinder(2.4,30,(x,y,218)))
         top=top.cut(cylinder(4.75,8,(x,y,245)))
         lid=lid.cut(cylinder(2.4,6,(x,y,250))).cut(cylinder(3.95,2.5,(x,y,252.6)))
-        sn=f'TOP_R6_spacer5mm_{i}';p[sn]=cylinder(4.5,5,(x,y,246)).cut(cylinder(2.4,5,(x,y,246)))
+        sn=f'TOP_R8_spacer4mm_{i}';p[sn]=cylinder(4.5,4,(x,y,247)).cut(cylinder(2.4,4,(x,y,247)))
         a=f'TOP_R6_M4x40_{i}';b=f'TOP_R6_M4_hex_nut_{i}'
-        hw[a]=pan(40,(x,y,252.6),(0,0,-1),4);hw[b]=nut4(x,y,216.8)
+        hw[a]=pan(40,(x,y,252.6),(0,0,-1),4);hw[b]=nut4(x,y,217.8)
         fan_nodes +=[sn,a,b]
     for i,(x,y) in enumerate(POSTS,1):
         lid=lid.cut(cylinder(1.7,6,(x,y,250))).cut(cq.Solid.makeCone(3,1.5,1.5,cq.Vector(x,y,255),cq.Vector(0,0,-1)))
@@ -170,13 +172,16 @@ def build_frame():
     p['FRAME_R6_base']=one(base,'base');p['FRAME_R6_top']=one(top,'top')
     air['AIR_bottom_fan_intake']=cylinder(56,24,(170,136,-18))
     air['AIR_gpu_intake22']=box((22,220.5,120.25),(105,14,65))
-    air['AIR_top_rotor_keepout']=cylinder(68,26,(176.5,120,220))
+    air['AIR_top_rotor_keepout']=cylinder(68,26,(176.5,120,221))
     air['AIR_top_external_exhaust']=cylinder(67,45,(176.5,120,255))
     # The GPU occupies X128..169.6.  Protect its actual fan-face supply gap,
     # rather than claiming an empty vertical column through the card itself.
     air['AIR_gpu_lower_supply']=box((17,110,30),(110,78,35))
     meta={'body_mm':[250,250,255],'feet_mm':20,'target_static_overall_mm':[250,250,275],
-      'top_module_nodes':fan_nodes,'fan_proxy_note':'25mm nominal,26mm conservative; shim sets top faces32/246',
+      'top_module_nodes':fan_nodes,'fan_proxy_note':'25mm nominal,26mm conservative; top fan raised1mm; shim sets top faces32/247',
+      'top_fan_Z_mm':[221,247],'top_spacer_proxy_mm':4.,
+      'actual_25mm_top_fan_Z_mm':[221,246],
+      'top_spacer_for_actual_25mm_fan_mm':5.,
       'top_fan_axes':list(itertools.product((114.25,238.75),(57.75,182.25))),
       'bottom_fan_axes':list(itertools.product((117.5,222.5),(83.5,188.5))),
       'first_drive_removal_precondition':['remove front/left skins and their screws/nuts/spacers','remove front-left post base bolt and its lid bolt','move front-left post-Y16,retain other3posts/topframe'],

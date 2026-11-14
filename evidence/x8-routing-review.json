@@ -1,0 +1,450 @@
+{
+  "revision": "R8",
+  "source_report_sha256": "ba4dd297f32b29356117de27b970dbf2806e9d80595a0c258c1f7f63e8f6e319",
+  "nominal_stock_mm": 500.0,
+  "factory_sleeve_allowance_mm": 36.0,
+  "free_bundle_centerline_mm": 463.9999999999724,
+  "compact_reference_centerline_mm": 414.78712464413013,
+  "geometric_service_loop_allocation_mm": 49.21287535586987,
+  "full_reference": {
+    "vertices_mm": [
+      [
+        170.75327763324424,
+        110.346318897128,
+        43.87137293917623
+      ],
+      [
+        170.75327763324424,
+        95,
+        43.87137293917623
+      ],
+      [
+        186,
+        95,
+        38
+      ],
+      [
+        233,
+        178,
+        38
+      ],
+      [
+        233,
+        208,
+        38
+      ],
+      [
+        233,
+        208,
+        125
+      ],
+      [
+        230.5,
+        241.2,
+        125
+      ],
+      [
+        230.5,
+        241.2,
+        190
+      ],
+      [
+        230.5,
+        200.5925623220789,
+        190
+      ],
+      [
+        213,
+        200.5925623220789,
+        190
+      ],
+      [
+        213,
+        241.2,
+        190
+      ],
+      [
+        213,
+        241.2,
+        217.4664906488225
+      ],
+      [
+        195.23006373431764,
+        241.2,
+        217.4664906488225
+      ],
+      [
+        195.23006373431764,
+        228.094469162773,
+        217.4664906488225
+      ]
+    ],
+    "tuning_u": 200.5925623220789,
+    "free_bundle_centerline_mm": 463.9999999999724,
+    "nominal_stock_mm": 500.0,
+    "factory_sleeve_allowance_mm": 36.0,
+    "free_bundle_nominal_mm": 464.0,
+    "engineering_radius_mm": 8.0,
+    "outer_envelope_diameter_mm": 9.4,
+    "minimum_family_centerline_mm": 414.78712464413013,
+    "geometric_service_loop_allocation_mm": 49.21287535586987,
+    "compact_reference_vertices_mm": [
+      [
+        170.75327763324424,
+        110.346318897128,
+        43.87137293917623
+      ],
+      [
+        170.75327763324424,
+        95,
+        43.87137293917623
+      ],
+      [
+        186,
+        95,
+        38
+      ],
+      [
+        233,
+        178,
+        38
+      ],
+      [
+        233,
+        208,
+        38
+      ],
+      [
+        233,
+        208,
+        125
+      ],
+      [
+        230.5,
+        241.2,
+        125
+      ],
+      [
+        230.5,
+        241.2,
+        190
+      ],
+      [
+        230.5,
+        225.199,
+        190
+      ],
+      [
+        213,
+        225.199,
+        190
+      ],
+      [
+        213,
+        241.2,
+        190
+      ],
+      [
+        213,
+        241.2,
+        217.4664906488225
+      ],
+      [
+        195.23006373431764,
+        241.2,
+        217.4664906488225
+      ],
+      [
+        195.23006373431764,
+        228.094469162773,
+        217.4664906488225
+      ]
+    ],
+    "wire_valid": true,
+    "wire_solids": 1,
+    "wire_bbox_mm": {
+      "min": [
+        166.05327753324426,
+        90.29999989999999,
+        33.29999989999997
+      ],
+      "max": [
+        237.70000009999998,
+        245.90000009999997,
+        222.16649074882247
+      ],
+      "size": [
+        71.64672256675573,
+        155.60000019999998,
+        188.8664908488225
+      ]
+    },
+    "physical_objects_checked": 369,
+    "protected_regions_checked": 8,
+    "GPU_service_shapes_checked": 7,
+    "physical_collisions": [],
+    "protected_region_collisions": [],
+    "GPU_service_collisions": [],
+    "seconds": 28.488311767578125,
+    "nominal_clearances_only_physical_fit_unverified": true
+  },
+  "compact_reference": {
+    "vertices_mm": [
+      [
+        170.75327763324424,
+        110.346318897128,
+        43.87137293917623
+      ],
+      [
+        170.75327763324424,
+        95,
+        43.87137293917623
+      ],
+      [
+        186,
+        95,
+        38
+      ],
+      [
+        233,
+        178,
+        38
+      ],
+      [
+        233,
+        208,
+        38
+      ],
+      [
+        233,
+        208,
+        125
+      ],
+      [
+        230.5,
+        241.2,
+        125
+      ],
+      [
+        230.5,
+        241.2,
+        190
+      ],
+      [
+        230.5,
+        225.199,
+        190
+      ],
+      [
+        213,
+        225.199,
+        190
+      ],
+      [
+        213,
+        241.2,
+        190
+      ],
+      [
+        213,
+        241.2,
+        217.4664906488225
+      ],
+      [
+        195.23006373431764,
+        241.2,
+        217.4664906488225
+      ],
+      [
+        195.23006373431764,
+        228.094469162773,
+        217.4664906488225
+      ]
+    ],
+    "tuning_u": 225.199,
+    "free_bundle_centerline_mm": 414.78712464413013,
+    "nominal_stock_mm": 500.0,
+    "factory_sleeve_allowance_mm": 36.0,
+    "free_bundle_nominal_mm": 464.0,
+    "engineering_radius_mm": 8.0,
+    "outer_envelope_diameter_mm": 9.4,
+    "minimum_family_centerline_mm": 414.78712464413013,
+    "geometric_service_loop_allocation_mm": 49.21287535586987,
+    "compact_reference_vertices_mm": [
+      [
+        170.75327763324424,
+        110.346318897128,
+        43.87137293917623
+      ],
+      [
+        170.75327763324424,
+        95,
+        43.87137293917623
+      ],
+      [
+        186,
+        95,
+        38
+      ],
+      [
+        233,
+        178,
+        38
+      ],
+      [
+        233,
+        208,
+        38
+      ],
+      [
+        233,
+        208,
+        125
+      ],
+      [
+        230.5,
+        241.2,
+        125
+      ],
+      [
+        230.5,
+        241.2,
+        190
+      ],
+      [
+        230.5,
+        225.199,
+        190
+      ],
+      [
+        213,
+        225.199,
+        190
+      ],
+      [
+        213,
+        241.2,
+        190
+      ],
+      [
+        213,
+        241.2,
+        217.4664906488225
+      ],
+      [
+        195.23006373431764,
+        241.2,
+        217.4664906488225
+      ],
+      [
+        195.23006373431764,
+        228.094469162773,
+        217.4664906488225
+      ]
+    ],
+    "wire_valid": true,
+    "wire_solids": 1,
+    "wire_bbox_mm": {
+      "min": [
+        166.05327753324426,
+        90.29999989999999,
+        33.29999989999997
+      ],
+      "max": [
+        237.70000009999998,
+        245.90000009999997,
+        222.16649074882247
+      ],
+      "size": [
+        71.64672256675573,
+        155.60000019999998,
+        188.8664908488225
+      ]
+    },
+    "physical_objects_checked": 371,
+    "protected_regions_checked": 8,
+    "GPU_service_shapes_checked": 7,
+    "physical_collisions": [],
+    "protected_region_collisions": [],
+    "GPU_service_collisions": [],
+    "seconds": 29.558127641677856,
+    "nominal_clearances_only_physical_fit_unverified": true,
+    "is_compact_reference": true
+  },
+  "nominal_clearance_review": {
+    "minimum_distance_mm": 0.300000000000516,
+    "nearest": [
+      {
+        "name": "CABLE_R6_ATX_PHANTEKS_PH_CB24P_BK500",
+        "aabb_lower_bound_mm": 0.0,
+        "distance_mm": 0.300000000000516
+      },
+      {
+        "name": "FRAME_R6_corner_240_240",
+        "aabb_lower_bound_mm": 0.0,
+        "distance_mm": 0.8000000000000114
+      },
+      {
+        "name": "mini_itx_pcb",
+        "aabb_lower_bound_mm": 0.0,
+        "distance_mm": 0.9728267703518816
+      },
+      {
+        "name": "R8_RISER_MALE_UPPER_REAR_FRAME_SUPPORT",
+        "aabb_lower_bound_mm": 0.0,
+        "distance_mm": 1.3033324079214408
+      },
+      {
+        "name": "GPU_R6_fixed_open_spine",
+        "aabb_lower_bound_mm": 0.0,
+        "distance_mm": 2.152120669032566
+      },
+      {
+        "name": "CABLE_R8_EPS_MODDIY_CO581_600",
+        "aabb_lower_bound_mm": 0.0,
+        "distance_mm": 2.8500000000000756
+      },
+      {
+        "name": "R6_RISER_FEMALE_LOW_BRIDGE_FRAME_FEET",
+        "aabb_lower_bound_mm": 0.0,
+        "distance_mm": 3.0532776332442495
+      },
+      {
+        "name": "MAINBOARD_MOUNT_R6_DS2501_open_tray",
+        "aabb_lower_bound_mm": 0.0,
+        "distance_mm": 5.598125384129636
+      },
+      {
+        "name": "PWM_R6_bottom_route",
+        "aabb_lower_bound_mm": 0.0,
+        "distance_mm": 11.799999999999997
+      },
+      {
+        "name": "PWM_R6_top_route",
+        "aabb_lower_bound_mm": 0.0,
+        "distance_mm": 13.307539719353317
+      },
+      {
+        "name": "GPU8_R8_MODDIY_CAB534_fixed_extension_route",
+        "aabb_lower_bound_mm": 0.0,
+        "distance_mm": 13.410915597267655
+      },
+      {
+        "name": "CABLE_R6_SATA_DATA_3_STARTECH_LSATA24_609p6",
+        "aabb_lower_bound_mm": 0.0,
+        "distance_mm": 16.547326256499606
+      }
+    ],
+    "exact_distance_objects_evaluated": 15,
+    "objects_bounded": 386,
+    "method": "Each C1 path edge AABB inflated by4.7 bounds its complete circular tube; sorted lower bounds exclude every farther retained obstacle. Exact OCC distance for all closer candidates; expected vendor endpoint mating parts excluded.",
+    "shared_frame_rear_hardware_overlap_mm3": {
+      "R6_RISER_FRAME_REAR_M3x16_pan": 0.0,
+      "R6_RISER_FRAME_REAR_M3_square_2p4": 0.0
+    },
+    "seconds": 0.41003990173339844,
+    "nominal_geometry_only_physical_acceptance": false
+  },
+  "scope": "Supplementary conservative outer-envelope route checks; current full integrated CAD remains authoritative. Engineering distances and geometric loop reallocation are not received-cable fit, bend or signal validation.",
+  "physical_acceptance": false
+}

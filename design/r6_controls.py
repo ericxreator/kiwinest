@@ -13,21 +13,24 @@ from r5_gpu import sweep_box
 def apply_controls(m):
     p,h,w,hd,sv,res=(m[k] for k in ('parts','hardware','wires','heads','service','reserves'))
     mates=[];routes={}
-    # Original GPU cable mates to the standard extension at the front-right.
-    head='GPU8_R6_card_8pin_HEAD_ENGINEERING_PROXY';joint='GPU8_R6_Phanteks_extension_FEMALE_HEAD_PROXY'
-    hd[head]=box((14,12,18),(136,184,185.25));hd[joint]=box((14,18.3,18),(182,42.2,167))
+    # The factory GPU lead now mates to a standard extension beside the PSU,
+    # left of the card extraction column and above its intake air domain.
+    head='GPU8_R6_card_8pin_HEAD_ENGINEERING_PROXY';joint='GPU8_R8_MODDIY_CAB534_FEMALE_HEAD_PROXY'
+    hd[head]=box((14,12,18),(136,184,185.25));hd[joint]=box((14,18.3,18),(106,43.7,193.5))
     # The tail starts exactly on the card-head top and approaches the fixed
     # anchor from above. The fixed lead ends there from below: shared caps,
     # not a long overlapping pair of independently swept cable volumes.
     tail=[(143,190,203.25),(143,190,211.5),(143,210,211.5),
       (143,210,247),(236,210,247),(236,210,238)]
-    # The standard coupling faces +Y. Cross in front of the board atY68.6,
-    # then rise outside the CPU inlet before traversing above its top edge.
-    # Preserve full8mm/R8, the rear anchor and the top-fan nut clearance.
-    fixed=[(189,60.5,176),(189,68.6,176),(243.3,68.6,176),
-      (243.3,68.6,214.5),(243.3,150,214.5),
+    # The coupling faces -Y. Rise ahead of its EPS neighbor, cross the front
+    # above the switch, then descend beyond the GPU extraction column. Pass
+    # outside the SYS lead before rising beyond the fan's front fixing bolt.
+    # Keep the full8mm/R8 envelope, rear anchor and existing free service tail.
+    fixed=[(113,43.7,202.5),(113,35.5,202.5),(113,35.5,234),
+      (113,9,234),(180,9,234),(180,30,234),(180,30,190),
+      (232,30,190),(232,68.6,190),(243.3,80,214.5),(243.3,150,214.5),
       (243.3,178,207.5),(243.3,210,207.5),(236,210,225),(236,210,238)]
-    tn='GPU8_R6_free_service_tail';fn='GPU8_R6_Phanteks_fixed_extension_route'
+    tn='GPU8_R6_free_service_tail';fn='GPU8_R8_MODDIY_CAB534_fixed_extension_route'
     w[tn]=_pipe(tail,8,8)
     fp=rounded_wire(fixed,8)
     tangent=fp._r4_edges[0].tangentAt(0)
@@ -71,13 +74,15 @@ def apply_controls(m):
     clip=clip.cut(box((8,2,6.2),(228,209,223.9)))
     arm=box((4,8,25),(242,206,224))
     p['FRAME_R6_top']=merge(p['FRAME_R6_top'],clip,arm).cut(cylinder(2,12,(246,204,233),(0,1,0))).clean()
-    m['gpu_power_meta']={'extension':'Phanteks PH-CB8V_BK 500mm standardPCIe6+2 extension,18AWG','normal_paths':[fixed,tail],
+    m['gpu_power_meta']={'extension':'MODDIY CAB534 configured70cm standard8pinPCIe male-to-female extension','nominal_stock_mm':700.,'extension_SKU':'CAB534','normal_paths':[fixed,tail],
       'modeled_wire_centerline_mm':fp.Length()+target,'free_tail_mm':target,'parked_tail_mm':_rounded_wire(park,8).Length(),
       'fixed_anchor_mm':[236,210,238],'park_path_mm':park,'wire_diameter_mm':8,'engineering_radius_mm':8,
       'cap_interface_intersections_mm3':contact_checks,
       'parked_tail_service_above_chassis':True,
-      'source':'https://phanteks.com.tw/Extension-Cables.html',
-      'length_limit':'Published500mm covers route plus heads;retain excess in right-front gutter.Actual exposed-wire length/head dimensions and stock packing still require sample acceptance.',
+      'source':'https://www.moddiy.com/products/3281/Premium-Custom-PSU-Extension-Cable-8-Pin-PCIE-Power.html',
+      'fixed_wire_key':fn,'free_wire_key':tn,
+      'catalog_length_range_mm':[100,1000],
+      'length_limit':'Selected700mm covers route plus heads;retain full surplus in the assigned stock-lead basket.Actual connector-inclusive usable length,wire dimensions and installed packing still require sample acceptance.',
       'physical_flexible_deformation_verified':False}
     # Hub uses the fourth factory SATA connector. Two case fans draw their
     #12V from SATA, while the unknown board header supplies PWM/tach only.
@@ -96,14 +101,29 @@ def apply_controls(m):
     hn={}
     for tag,y,z in (('bottom',180.,74.),('top',210.,92.),('input',194.,84.)):
         n='PWM_R6_hub_'+tag+'_HEAD_PROXY';hd[n]=box((10,12,8),(28.5,y-6,z-4));hn[tag]=n
-    # Stock fan400mm leads, routes use only the required length. Remaining
-    # stock length is a declared fixed storage reserve in the rear-left bay.
+    # Use the third NA-EC1 from the existing NA-SEC1 kit for the top fan.
+    # The400mm factory lead ends above the basket; the standard joint is
+    # unplugged before lifting the top module. Both full stock lengths stay
+    # represented in the route and surplus budgets.
     paths={
       'PWM_R6_bottom_route':([(230,196,20),(236,196,20),(236,218,20),(38,218,20),(38,218,74),(38,180,74)],400,'bottom'),
-      'PWM_R6_top_route':([(243,190,233),(246,190,233),(246,218,233),(108,218,233),(108,218,188),(50,218,188),(50,218,92),(50,210,92),(38.3,210,92)],400,'top')}
+      'PWM_R6_top_route':([(243,190,233),(246,190,233),(246,218,233),(108,218,233),(108,218,188),(50,218,188),(50,218,166)],400,'top')}
     for n,(path,stock,tag) in paths.items():
         w[n]=_pipe(path,3,2.5);routes[n]={'path_mm':path,'stock_mm':stock,'modeled_mm':_rounded_wire(path,2.5).Length(),'excess':'retained in rear-left reserve;full loose stock packing not certified'}
-        mates.append([n,hn[tag]]);mates.append([n,'top_fan_body' if tag=='top' else 'bottom_fan_body'])
+        if tag=='bottom':mates.append([n,hn[tag]])
+        mates.append([n,'top_fan_body' if tag=='top' else 'bottom_fan_body'])
+    top_native='PWM_R8_top_factory_4pin_MALE_ENGINEERING_PROXY'
+    top_extension_head='PWM_R8_top_EC1_4pin_FEMALE_ENGINEERING_PROXY'
+    hd[top_native]=box((10,12,8),(45,212,158))
+    hd[top_extension_head]=box((10,12,8),(45,212,150))
+    top_extension='PWM_R8_top_NA_EC1_300_extension'
+    top_extension_path=[(50,218,150),(50,218,92),(50,210,92),(38.5,210,92)]
+    w[top_extension]=_pipe(top_extension_path,3,2.5)
+    routes[top_extension]={'path_mm':top_extension_path,'stock_mm':300,
+      'modeled_mm':_rounded_wire(top_extension_path,2.5).Length(),
+      'stock':'ThirdNA-EC1fromtheexistingNA-SEC1threepack;other2kitcablesplusNA-FH1includedcableformSYSchain.',
+      'connector_shapes_are_engineering_proxies':True,
+      'excess':'Retainwholeunusedstocklengthintheassignedleadbasket;physicalcoilpackingunverified.'}
     # Photo-derived SYS header, small straight4pin plug clears CPU40 circle.
     socket='PWM_R6_DS2501_SYS_HEADER_PHOTO_PROXY';plug='PWM_R6_DS2501_SYS_HEAD_PROXY'
     h[socket]=box((10,8,6),(188.3,71.67,183.63));hd[plug]=box((10,8,6),(198.3,71.67,183.63))
@@ -112,14 +132,28 @@ def apply_controls(m):
     # explicit;Y60 separates the descent from the GPU power lead atY68.6,
     # andX226 keeps it inboard of the DATA2 diagonal atX238.5.
     # Neither the CPU40 reserve nor the side intake is reduced.
-    path=[(208.1,75.67,186.63),(226,75.67,186.63),(226,60,186.63),
-      (226,60,110),(226,224,110),(226,224,41.6),
-      (44,224,41.6),(44,224,84),(44,194,84),(38.3,194,84)]
-    cn='PWM_R6_SYS_to_powered_hub_control_route';w[cn]=_pipe(path,3,2.5);mates += [[cn,plug],[cn,hn['input']]]
-    routes[cn]={'path_mm':path,'stock_mm':900,'modeled_mm':_rounded_wire(path,2.5).Length(),
-      'stock':'NA-FH1 includedNA-EC1 300+twoadditionalNA-EC1 300;two coupling heads/stock surplus require sample packing',
-      'header':'photo-derived4pin pinout/PWM mode needs actual board documentation;do not energize guessed pinout'}
-    m['frame_meta']['top_module_nodes'] += ['PWM_R6_top_route',hn['top']]
+    # Model each of the three actual300mm cables and both intermediate joints.
+    # The new caps touch their head faces exactly; the stock lengths cannot be
+    # pooled to hide a short individual segment or a missing coupling body.
+    sys_paths={
+      'PWM_R8_SYS_NA_EC1_1_route':[(208.3,75.67,186.63),(226,75.67,186.63),(226,60,186.63),(226,60,110),(226,186,110)],
+      'PWM_R8_SYS_NA_EC1_2_route':[(226,202,110),(226,224,110),(226,224,41.6),(108,224,41.6)],
+      'PWM_R8_SYS_NA_EC1_3_route':[(92,224,41.6),(44,224,41.6),(44,224,84),(44,194,84),(38.5,194,84)]}
+    sys_heads={
+      'PWM_R8_SYS_J1_NATIVE_HEAD_ENGINEERING_PROXY':((10,8,8),(221,186,106)),
+      'PWM_R8_SYS_J1_EXT_HEAD_ENGINEERING_PROXY':((10,8,8),(221,194,106)),
+      'PWM_R8_SYS_J2_NATIVE_HEAD_ENGINEERING_PROXY':((8,12,8),(100,218,37.6)),
+      'PWM_R8_SYS_J2_EXT_HEAD_ENGINEERING_PROXY':((8,12,8),(92,218,37.6))}
+    for name,(size,origin) in sys_heads.items():hd[name]=box(size,origin)
+    for name,path in sys_paths.items():
+        w[name]=_pipe(path,3,2.5)
+        routes[name]={'path_mm':path,'stock_mm':300,
+          'modeled_mm':_rounded_wire(path,2.5).Length(),
+          'stock':'NA-FH1includedNA-EC1plus2NA-EC1fromNA-SEC1kit;3individual300mmsegments.',
+          'connector_shapes_are_engineering_proxies':True,
+          'header':'Photo-derived4pin pinout/PWM mode needs actual board documentation;do not energize guessed pinout.',
+          'excess':'Retainall3individualstocklengthsurplusesintheassignedleadbasket;physicalcoilpackingunverified.'}
+    m['frame_meta']['top_module_nodes'] += ['PWM_R6_top_route',top_native]
     res['RESERVE_PWM_R6_original_leads_and_control_excess_NOT_PACKED']=box((47,50,53),(45,174,75))
     # Recessed ITW switch; front of the dome stays atY0.1 within the250mm cube.
     cx,cz=215.,224.;normal=(0,1,0)
@@ -139,8 +173,52 @@ def apply_controls(m):
     bn='CONTROL_R6_ITW_original500mm_lead_route';w[bn]=_pipe(bp,2,3);mates += [[bn,sw],[bn,hp]]
     routes[bn]={'path_mm':bp,'stock_mm':500,'modeled_mm':_rounded_wire(bp,3).Length(),'pinout':'DS2501 two power-switch pins must be confirmed;not MSI JFP1 mapping'}
     res['RESERVE_CONTROL_R6_button_lead_excess_NOT_PACKED']=box((14,25,30),(218,35,110))
+    complete_budgets={}
+    for name,info in routes.items():
+        diameter,radius=(2.,3.) if name==bn else (3.,2.5)
+        head_allowance=16. if name==bn else 24.
+        required=info['modeled_mm']+head_allowance+15.
+        budget={'modeled_complete_centerline_mm':info['modeled_mm'],
+          'connector_allowance_mm':head_allowance,'assembly_slack_mm':15.,
+          'required_with_allowances_mm':required,'nominal_stock_mm':info['stock_mm'],
+          'remaining_length_margin_mm':info['stock_mm']-required,
+          'geometric_length_budget_passed':required<=info['stock_mm'],
+          'connector_allowance_is_engineering_assumption':True,
+          'factory_measurement_origin_and_installed_flex_verified':False}
+        info.update(engineering_diameter_mm=diameter,engineering_bend_R_mm=radius,
+          complete_length_budget=budget,
+          unmodeled_surplus_mm=info['stock_mm']-info['modeled_mm'],
+          surplus_insulated_material_mm3=max(0.,info['stock_mm']-info['modeled_mm'])*math.pi*(diameter/2)**2)
+        complete_budgets[name]=budget
+    cap_pairs=[
+      ('top_factory_to_head',w['PWM_R6_top_route'],hd[top_native]),
+      ('top_joint',hd[top_native],hd[top_extension_head]),
+      ('top_EC1_to_head',w[top_extension],hd[top_extension_head]),
+      ('top_EC1_to_hub',w[top_extension],hd[hn['top']]),
+      ('SYS1_to_header',w['PWM_R8_SYS_NA_EC1_1_route'],hd[plug]),
+      ('SYS1_to_J1',w['PWM_R8_SYS_NA_EC1_1_route'],hd['PWM_R8_SYS_J1_NATIVE_HEAD_ENGINEERING_PROXY']),
+      ('SYS_J1',hd['PWM_R8_SYS_J1_NATIVE_HEAD_ENGINEERING_PROXY'],hd['PWM_R8_SYS_J1_EXT_HEAD_ENGINEERING_PROXY']),
+      ('SYS2_to_J1',w['PWM_R8_SYS_NA_EC1_2_route'],hd['PWM_R8_SYS_J1_EXT_HEAD_ENGINEERING_PROXY']),
+      ('SYS2_to_J2',w['PWM_R8_SYS_NA_EC1_2_route'],hd['PWM_R8_SYS_J2_NATIVE_HEAD_ENGINEERING_PROXY']),
+      ('SYS_J2',hd['PWM_R8_SYS_J2_NATIVE_HEAD_ENGINEERING_PROXY'],hd['PWM_R8_SYS_J2_EXT_HEAD_ENGINEERING_PROXY']),
+      ('SYS3_to_J2',w['PWM_R8_SYS_NA_EC1_3_route'],hd['PWM_R8_SYS_J2_EXT_HEAD_ENGINEERING_PROXY']),
+      ('SYS3_to_hub',w['PWM_R8_SYS_NA_EC1_3_route'],hd[hn['input']])]
+    pwm_caps={name:{'overlap_mm3':a.intersect(b).Volume(),'distance_mm':a.distance(b)}
+              for name,a,b in cap_pairs}
+    if any(v['overlap_mm3']>1e-4 or v['distance_mm']>1e-5 for v in pwm_caps.values()):
+        raise ValueError('PWM segment caps must touch their explicit heads without overlap')
     m['controls_meta']={'powered_fan_hub':{'model':'Noctua NA-FH1','body_mm':[93,43,12.5],'hardware':hub,'SATA_head_bbox_mm':[[28.5,143,96],[43,171,108]],
       'mount':'fixed-cage rear backing and two retained soft straps,not adhesive to removable side panel','power':'fourthfactorySATA,casefans12V;PWM/tachonlyfromSYS'},
+      'complete_length_budgets':complete_budgets,'PWM_new_cap_interfaces':pwm_caps,
+      'PWM_standard_joint_shapes_are_engineering_proxies':True,
+      'NA_EC1_stock_allocation':{'NA_FH1_included_300mm':1,'NA_SEC1_kit_300mm':3,
+        'SYS_chain_segments_300mm':3,'top_fan_extension_segments_300mm':1,
+        'allocation':'SYSuseshubincluded1+kit2;topfanusestheremainingkit1.Noadditionalkit.'},
+      'top_fan_standard_joint':{'factory_head':top_native,'extension_head':top_extension_head,
+        'mating_plane_Z_mm':158.,'source_wire':'PWM_R6_top_route','extension_wire':top_extension,
+        'extension_stays_installed_during_top_module_removal':True,
+        'service':'Unplugthestandard4pinjointbeforeliftingtopfan;factoryheadand400mmleadgowithtopmodule,EC1andhubheadremaininstalled.',
+        'received_connector_dimensions_and_physical_fit_verified':False},
       'routes':routes,'expected_mating_pairs':mates,'button':{'model':'ITW49-59111','center_XZ_mm':[cx,cz],'frontmost_Y_mm':.1,'recess_mm':6,'double_D_hole_mm':[16.1,14.95]},
-      'CPUfan':'reuse complete original cooler/fan/lead on originalCPUFAN;not a new AM5 kit','limits':['Lead/connector detailed seating and unknown pinouts require board sample','Wire diameter/radii are engineering proxies;remaining factory wire reserves are not proof of physical packing','Top fan wire and its hub head are unplugged and removed with top module before GPU extraction']}
+      'CPUfan':'reuse complete original cooler/fan/lead on originalCPUFAN;not a new AM5 kit','limits':['Lead/connector detailed seating and unknown pinouts require board sample','Wire diameter/radii are engineering proxies;remaining factory wire reserves are not proof of physical packing','Unplugtopfanatmodeledinline4pinjoint;EC1extensionandhubheadstayinstalledbeforeGPUextraction']}
     return m['controls_meta']

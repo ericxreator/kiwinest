@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+from io import BytesIO
 import json
 from pathlib import Path
 import sys
@@ -20,10 +21,10 @@ ROOT = Path(__file__).resolve().parents[1]
 PRIVATE = ROOT / 'references/private'
 INPUTS = {
     'adt': {
-        'filename': 'ADT_R23_3D.zip',
-        'url': 'https://www.adtlink.cn/Uploads/download/ADT_R23_3D.zip',
-        'sha256': '227d64324a5d49b440ffbe7c01bea4c7cc162d9b05a6b5b20bc370cf0c083be8',
-        'bytes': 21188109,
+        'filename': 'ADT_K83UP-TL_3D.zip',
+        'url': 'https://www.adtlink.cn/download/ADT_K83UP-TL_3D.zip',
+        'sha256': '1971eca32a1d68b7ef9b86890fe03d989d0ddb1659a6031c6fe1f2e425eb2c56',
+        'bytes': 36635266,
     },
     'psu': {
         'filename': 'enp7660b-official-spec-20251008.pdf',
@@ -32,8 +33,8 @@ INPUTS = {
         'bytes': 325319,
     },
 }
-STEP_MEMBER = 'R23SR 20230514.step'
-STEP_SHA256 = 'daea4402f8c8652474d4e57de4ae1d59c219e5d86f5db2b2c6fc56857e8fb018'
+STEP_MEMBER = 'K83UP-TL 5.0 20260707.step'
+STEP_SHA256 = 'e156ba5c03c742bebcb18983eb98ac41141be0d495ccd572c6015d496692b309'
 
 
 def verified_input(spec: dict, supplied: Path | None) -> Path:
@@ -60,46 +61,76 @@ def extract_endpoints(archive: Path) -> dict:
     # Select one exact regular ZIP member, with no archive-wide extraction.
     with zipfile.ZipFile(archive) as bundle:
         matching = [item for item in bundle.infolist() if item.filename == STEP_MEMBER]
-        if len(matching) != 1 or matching[0].is_dir() or matching[0].file_size > 80_000_000:
-            raise ValueError('Unexpected vendor archive: R23SR STEP member is missing, duplicated, or oversized')
+        if len(matching) != 1 or matching[0].is_dir() or matching[0].file_size != 96_869_926:
+            raise ValueError('Unexpected vendor archive: K83UP-TL STEP member is missing, duplicated, or changed')
         raw_data = bundle.read(matching[0])
     if hashlib.sha256(raw_data).hexdigest() != STEP_SHA256:
-        raise ValueError('Unexpected R23SR source STEP checksum')
+        raise ValueError('Unexpected K83UP-TL source STEP checksum')
     raw_step = PRIVATE / STEP_MEMBER
     raw_step.write_bytes(raw_data)
     shape = cq.importers.importStep(str(raw_step)).val()
     solids = shape.Solids()
-    if len(solids) != 263:
-        raise ValueError('Unexpected R23SR solid decomposition; stop and inspect vendor geometry')
-    result = {'source_step_sha256': hashlib.sha256(raw_data).hexdigest(), 'endpoints': {}}
-    for name, pcb_lo, pcb_hi, lo, hi in (
-        ('male', -100, -21.70125, -100, -10),
-        ('female', 21.29875, 100, 10, 100),
+    if len(solids) != 1012:
+        raise ValueError('Unexpected K83UP-TL solid decomposition; stop and inspect vendor geometry')
+    serialized = []
+    for solid in solids:
+        stream = BytesIO(); solid.exportBrep(stream)
+        serialized.append(hashlib.sha256(stream.getvalue()).hexdigest())
+    # These are exact repeated source instances, not equal-volume guesses.
+    assert serialized[33] == serialized[34] == serialized[35], 'Changed coax core instances'
+    result = {'step_sha256': STEP_SHA256, 'source_solids': 1012,
+              'source_core_index': 33, 'source_wrapper_index': 36,
+              'method': 'Exact serialized BREP SHA-256 identity only; natural PCB split; retain coax core stubs inside both complete factory sleeves',
+              'endpoints': {}}
+    for name, pcb_lo, pcb_hi, core_lo, core_hi in (
+        ('male', 65.143, 200., 43.655531002198, 200.),
+        ('female', -200., -16.143, -200., -61.79632251401),
     ):
-        pieces = []
-        source_indices = []
-        for index, solid in enumerate(solids):
+        pieces = solids[0].intersect(box((pcb_hi-pcb_lo,100,100),(pcb_lo,-50,-50))).Solids()
+        source_indices = [0]; indices = {'0':0}; duplicates = []; seen = {}
+        assert len(pieces) == 1
+        for index, solid in enumerate(solids[1:],1):
             bounds = solid.BoundingBox()
-            if index == 0:
-                pieces += solid.intersect(box((400, pcb_hi - pcb_lo, 100), (-200, pcb_lo, -50))).Solids()
-                source_indices.append(index)
-            elif bounds.ymin >= lo - .001 and bounds.ymax <= hi + .001:
-                pieces.append(solid)
-                source_indices.append(index)
+            if index in (33,34,35):
+                if index != 33:
+                    if name == 'male': duplicates.append([index,33])
+                    continue
+                stub = solid.intersect(box((core_hi-core_lo,100,100),(core_lo,-50,-50))).Solids()
+                if stub:
+                    assert len(stub) == 1
+                    indices[str(index)] = len(pieces); pieces.extend(stub); source_indices.append(index)
+                continue
+            # Only the free demo braid is replaced by the routed harness.
+            if index in (36,37,38): continue
+            # Natural gap separates endpoints. Keep even the tiny braid-end
+            # fragments just outside the sleeve rather than clipping them.
+            selected = bounds.xmin > 0 if name == 'male' else bounds.xmax < 0
+            if not selected: continue
+            digest = serialized[index]
+            if digest in seen:
+                duplicates.append([index,seen[digest]]); continue
+            seen[digest] = index; indices[str(index)] = len(pieces)
+            pieces.append(solid); source_indices.append(index)
         endpoint = cq.Compound.makeCompound(pieces)
-        expected = {'male': 47, 'female': 215}
+        expected = {'male': 143, 'female': 219}
         if not endpoint.isValid() or len(pieces) != expected[name]:
             raise ValueError(f'Unexpected {name} endpoint: {len(pieces)} solids; stop and inspect vendor geometry')
-        output = PRIVATE / f'R23SR_official_{name}_endpoint.step'
+        output = PRIVATE / f'K83UP_TL_official_{name}_endpoint.step'
         cq.exporters.export(endpoint, str(output))
+        brep = output.with_suffix('.brep'); endpoint.exportBrep(str(brep))
         result['endpoints'][name] = {
             'filename': output.name,
             'sha256': hashlib.sha256(output.read_bytes()).hexdigest(),
+            'brep_sha256': hashlib.sha256(brep.read_bytes()).hexdigest(),
             'valid': True,
             'solids': len(pieces),
-            'source_indices': source_indices,
+            'unique_source_indices': source_indices,
+            'endpoint_indices_by_source': indices,
+            'duplicates_exact_brep_pairs': duplicates,
+            'selected_before_dedup': len(pieces)+len(duplicates),
             'bbox_mm': bbox(endpoint),
         }
+    assert sum(v['selected_before_dedup'] for v in result['endpoints'].values())-1+3 == 1012, 'Source solid attribution is incomplete'
     return result
 
 

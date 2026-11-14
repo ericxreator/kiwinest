@@ -1,38 +1,107 @@
 {
-  "revision": "R7",
+  "revision": "R8",
   "date": "2026-11-14",
-  "timezone": "Asia/Singapore",
-  "scope": "Fresh integrated CAD, export, publication geometry and browser checks; physical manufacturing acceptance remains pending",
-  "source_report_sha256": "edcebf0cd989dfa29a0a849c3276fcdec4b13f24b496f5c8b771e2cf85699350",
+  "timezone": "UTC",
+  "verified_at_utc": "2026-11-14T18:13:41.570584+00:00",
+  "scope": "Fresh STEP-derived integrated CAD, source hashes, exports, public geometry audit and desktop/mobile browser checks; physical manufacturing acceptance remains pending",
+  "source_report_sha256": "ba4dd297f32b29356117de27b970dbf2806e9d80595a0c258c1f7f63e8f6e319",
   "source_modules_hashed": 18,
   "all_source_hashes_match": true,
   "full_integrated_CAD_rebuild_rerun": true,
   "geometry_checks_passed": true,
-  "check_groups": 23,
+  "check_groups": 25,
   "failed_groups": {},
   "step_roundtrip": {
     "valid": true,
-    "solids": 623,
-    "expected": 623,
+    "solids": 731,
+    "expected": 731,
     "passed": true
   },
-  "all_40_print_meshes_watertight": true,
+  "print_count": 40,
+  "all_print_meshes_watertight": true,
   "original_part_files_sha256_match": 80,
+  "original_fabrication_assets": [
+    {
+      "hardware_key": "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8",
+      "material": "FR4 insulating laminate",
+      "thickness_mm": 0.8,
+      "flat_axis": "Z",
+      "files": {
+        "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8.step": "78cce84fd7ecedc0f769e6b062c86dfdfab4f5159d6e8954b04a2d1d69ee563f",
+        "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8.dxf": "265062843f7b50b69205f7f71ea2f10677f168bb22633cb4403d9769d9ce70d3"
+      },
+      "manufacturing_release": false
+    },
+    {
+      "hardware_key": "R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4",
+      "material": "electrically insulating silicone foam",
+      "stock_thickness_mm": 1.5,
+      "installed_thickness_mm": 1.4,
+      "flat_axis": "Z",
+      "manufacturing_note": "Cut the1.5mm foam blank outline and bores; STEP shows nominal installed compression/conformation, not a milled groove specification. Supplier compression curve and preload unverified",
+      "asset_role": "FLAT_RAW_STOCK_NOT_INSTALLED_CONTACT_ENVELOPE",
+      "stock_outline_mm": [
+        7.6000002000001246,
+        60.42700019999998
+      ],
+      "stock_hole_centers_xy_mm": [
+        [
+          3.8004687099220007,
+          18.699766926221002
+        ],
+        [
+          3.8004687099220007,
+          57.874815754346
+        ]
+      ],
+      "stock_hole_diameter_mm": 2.4,
+      "coordinate_frame": "Local stock XY, Z0..1.5",
+      "scope": "Original rectangle and two round holes only. Manufacturer-derived compressed contact surfaces are not distributed.",
+      "files": {
+        "R8_RISER_MALE_SILICONE_FOAM_FLAT_STOCK_1p5.step": "63e41c11c6e167be9f1eaf8408a06e9c8c1067b830d05746e08686b29abf0a44",
+        "R8_RISER_MALE_SILICONE_FOAM_FLAT_STOCK_1p5.dxf": "d2ef6c5eb53bfa9f7cf9c7679484b21e6391ae376bcdab7f0a553221af5efc32"
+      },
+      "manufacturing_release": false
+    },
+    {
+      "hardware_key": "MAINBOARD_MOUNT_R8_lower_2_FLUSH_OD9_STEEL_CSK_WASHER",
+      "material": "steel load washer",
+      "thickness_mm": 1.5,
+      "flat_axis": "X",
+      "manufacturing_notes": "Custom OD9 / bore3.2 / 90deg D6 countersink; STEP is the authoritative stepped profile. Verify material, tolerances, bearing and clamp load before manufacture.",
+      "files": {
+        "MAINBOARD_MOUNT_R8_lower_2_FLUSH_OD9_STEEL_CSK_WASHER.step": "6e7515fe6c27717c5fb793b6ec3936f729894648e30bc9e3f77b63905e8a0ab9"
+      },
+      "manufacturing_release": false
+    },
+    {
+      "hardware_key": "MAINBOARD_MOUNT_R8_lower_4_FLUSH_OD9_STEEL_CSK_WASHER",
+      "material": "steel load washer",
+      "thickness_mm": 1.5,
+      "flat_axis": "X",
+      "manufacturing_notes": "Custom OD9 / bore3.2 / 90deg D6 countersink; STEP is the authoritative stepped profile. Verify material, tolerances, bearing and clamp load before manufacture.",
+      "files": {
+        "MAINBOARD_MOUNT_R8_lower_4_FLUSH_OD9_STEEL_CSK_WASHER.step": "6f47688121cbc50896672f5a058eca8ec2724d9058d4684743430f9c3baffeb5"
+      },
+      "manufacturing_release": false
+    }
+  ],
   "measured_overall_mm": [
     250.0,
     250.0,
     275.0
   ],
   "public_geometry_audit": {
-    "source_report_sha256": "edcebf0cd989dfa29a0a849c3276fcdec4b13f24b496f5c8b771e2cf85699350",
-    "raw_glb_sha256": "07c0824512d99831c091342b711aeb78f8c83a4da8e9ad91985878ab61b15485",
-    "public_glb_sha256": "26563846d6d46786392eaee98349c791895ca5fd8a3361046dce5a722bbc3a99",
-    "public_nodes": 360,
+    "source_report_sha256": "ba4dd297f32b29356117de27b970dbf2806e9d80595a0c258c1f7f63e8f6e319",
+    "raw_glb_sha256": "825a7c5745f0c6991a10a8e2ddfc90de0a686b4ab3b049340e215b4c33c97f23",
+    "public_glb_sha256": "13aca9ccd52cdaffb63f03f0a126b5310e64fe3c1b02599807afcc2587317c4a",
+    "public_nodes": 370,
     "excluded_vendor_nodes": [
-      "R7_R23SR_OFFICIAL_x16_FEMALE_ASSEMBLED",
-      "R7_R23SR_OFFICIAL_x4_MALE_ASSEMBLED"
+      "R8_K83UP_TL_OFFICIAL_x8_MALE_ASSEMBLED_MODIFIED_CLAMP",
+      "R8_K83UP_TL_x16_FEMALE_FACTORY_LATCH_PARKED",
+      "R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4"
     ],
-    "selected_accessors_byte_matched": 16227,
+    "selected_accessors_byte_matched": 16494,
     "vendor_accessor_overlap": 0,
     "unused_binary_bytes_zero_only": true,
     "geometry_is_physical_acceptance": false
@@ -46,7 +115,7 @@
       390,
       844
     ],
-    "mesh_count": 5409,
+    "mesh_count": 5498,
     "shell_meshes": 1170,
     "shell_toggle": true,
     "reset_view": true,
@@ -57,5 +126,15 @@
     "physical_phone_test": false
   },
   "physical_thermal_acceptance": false,
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "airflow_projection": {
+    "projected_fraction": 0.09394346899421496,
+    "raster_step_mm": 0.25,
+    "geometry_is_thermal_validation": false
+  },
+  "public_geometry_exclusions": {
+    "manufacturer_endpoint_nodes": 2,
+    "manufacturer_derived_compressed_contact_nodes": 1,
+    "raw_foam_stock_geometry_independently_generated": true
+  }
 }

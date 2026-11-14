@@ -2,8 +2,8 @@
 """Bounded ATX/EPS/native-GPU routing corrections; base r6_power untouched.
 
 Named standard-end connectors and installed routes remain explicit geometry.
-Split source transitions and a bottom-open GPU arch separate wires from the
-PSU intake without removing cable shapes. Physical wire/fit gates remain.
+A shared split source gland and direct underfloor GPU route separate wires
+from the PSU intake. Physical wire/fit and full-stock packing gates remain.
 """
 from __future__ import annotations
 import math
@@ -11,6 +11,170 @@ import cadquery as cq
 from build import box,cylinder,bbox
 from r6_power import _tube
 
+
+def _apply_shared_factory_exit_channels(m):
+    """Model the whole ATX source and a finished-loom lay-in split gland.
+
+    The ATX/GPU insulated looms clear each other, but separate round tube
+    walls would overlap. A connected lobed interior removes that internal
+    wall physically. GPU is laid in first, then ATX through the upper opening;
+    their finished connectors stay outside the gland. The thin moving divider
+    guide fills its own release slot and preserves the cold-plenum boundary.
+    All source coordinates remain engineering assumptions pending a sample.
+    """
+    BASE='PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE'
+    ROOF='PSU_R6_fixed_wire_gutter_REMOVABLE_roof'
+    AIR='AIR_PSU_R6_front_and_ALL_FACE_cold_sleeve'
+    fixed=m['parts'][BASE]
+    flat=m['parts'][ROOF].cut(box((50,10,4),(0,4.5,242))).clean()
+    roof=flat
+    # EPS original split tube and sliding upper guide.
+    eo=cylinder(3.75,14,(37,82,218),(0,1,0));ei=cylinder(2.75,18,(37,79,218),(0,1,0))
+    ew=eo.cut(ei)
+    el=ew.intersect(box((9.5,18,4.75),(32.25,79,213.25)))
+    eu=ew.intersect(box((9.5,18,4.75),(32.25,79,218)))
+    en=box((2,4.2,23.5),(33.25,80,220)).cut(ei)
+    eg=box((7.5,4,27),(33.25,82,218)).cut(ei)
+    egs=box((7.5,4,34.5),(33.25,82,218)).cut(ei)
+    eu=eu.fuse(eg).clean();fixed=fixed.cut(egs).fuse(el).cut(ei).cut(eu).clean();roof=roof.fuse(eu).fuse(en).clean()
+    # ATX and GPU share one vertically connected, lobed channel. With the lid
+    # removed both finished looms lay in from above (GPU first, ATX second).
+    ao=cylinder(7,10.2,(24,85.8,215),(0,1,0));ai=cylinder(6,18,(24,79,215),(0,1,0))
+    go=cylinder(4.75,10.2,(26,85.8,205.5),(0,1,0));gi=cylinder(3.75,18,(26,79,205.5),(0,1,0))
+    bridge_outer=box((9.5,10.2,9.5),(21.25,85.8,205.5))
+    bridge_inner=box((7.5,12,9.5),(22.25,85,205.5))
+    outer=ao.fuse(go).fuse(bridge_outer).clean();inner=ai.fuse(gi).fuse(bridge_inner).clean()
+    wall=outer.cut(inner).clean()
+    low=wall.intersect(box((30,18,20),(10,79,195)))
+    upper=wall.intersect(box((30,18,30),(10,79,215)))
+    lower_anchor=box((7,5.8,3),(11,80,212)).cut(inner)
+    neck=box((14,1,30),(17,85.8,215)).cut(inner).clean()
+    fixed=fixed.cut(box((14,1,37.5),(17,85.8,215))).clean()
+    fixed=fixed.fuse(low).fuse(lower_anchor).cut(inner).cut(upper).clean()
+    roof=roof.fuse(upper).fuse(neck).clean()
+    # Exact continuous +Z7.5 sweep of original roof leading faces, two upper
+    # semicircles, their vertical guides and the new ATX neck.
+    shift=7.5;sw=flat
+    for f in flat.Faces():
+        if f.geomType()=='PLANE' and f.normalAt().z>.999999:
+            sw=sw.fuse(cq.Solid.extrudeLinear(f.outerWire(),f.innerWires(),cq.Vector(0,0,shift)))
+    for x,z,r,y0,ins in ((37,218,3.75,82,ei),(24,215,7,85.8,inner)):
+        o=cylinder(r,96-y0,(x,y0,z),(0,1,0))
+        cap=o.fuse(o.translate((0,0,shift))).fuse(box((2*r,96-y0,shift),(x-r,y0,z)))
+        sw=sw.fuse(cap.intersect(box((2*r+2,18,40),(x-r-1,79,z))).cut(ins))
+    for org,size,ins in (((33.25,82,218),(7.5,4,27),ei),((33.25,80,220),(2,4.2,23.5),ei),((17,85.8,215),(14,1,30),inner)):
+        sw=sw.fuse(box((size[0],size[1],size[2]+shift),org).cut(ins))
+    sw=sw.clean();air0=m['air'][AIR];env=outer.fuse(eo).fuse(neck);air=air0.cut(env).clean()
+    m['parts'][BASE]=fixed;m['parts'][ROOF]=roof;m['air'][AIR]=air
+    m['parts']['PSU_R6_cold_sleeve_REMOVABLE_roof']=m['parts']['PSU_R6_cold_sleeve_REMOVABLE_roof'].cut(box((14,1,37.5),(17,85.8,215))).clean()
+    m['service']['SERVICE_POWER_R8_SHARED_WIRE_ROOF_plusZ7p5']=sw
+    cold_roof='PSU_R6_cold_sleeve_REMOVABLE_roof'
+    cold_cap=m['parts'][cold_roof]
+    for label,shape in ((BASE,fixed),(ROOF,roof),(cold_roof,cold_cap)):
+        if not shape.isValid() or len(shape.Solids())!=1:
+            raise ValueError(label+' must remain one attached valid solid')
+    overlaps={'fixed_vs_wire_roof':fixed.intersect(roof).Volume(),
+      'wire_vs_cold_roof':roof.intersect(cold_cap).Volume()}
+    if any(volume>1e-4 for volume in overlaps.values()):
+        raise ValueError('Shared source-gland parts overlap')
+    if not air.isValid() or len(air.Solids())!=1:
+        raise ValueError('Shared source gland must preserve one cold-air region')
+    removed_air=air0.Volume()-air.Volume()
+    exact_air=air0.intersect(env).Volume()
+    if abs(removed_air-exact_air)>1e-4:
+        raise ValueError('Air change exceeds physical gland outer envelope/guide')
+    if not sw.isValid():
+        raise ValueError('Invalid continuous shared-gland roof sweep')
+    samples=23
+    if any(roof.translate((0,0,shift*i/(samples-1))).cut(sw).Volume()>1e-4
+           for i in range(samples)):
+        raise ValueError('Continuous shared-gland sweep misses a roof pose')
+    # The shared interior contains the complete vertical GPU lay-in capsule.
+    # Its upper end fits the ATX opening: 6-(2+3.25)=0.75mm radial allowance.
+    gpu_lift=cylinder(3.25,10.2,(26,85.8,205.5),(0,1,0))
+    gpu_lift=gpu_lift.fuse(gpu_lift.translate((0,0,9.5))).fuse(
+      box((6.5,10.2,9.5),(22.75,85.8,205.5))).clean()
+    lay_in_outside=gpu_lift.cut(inner).Volume()
+    if lay_in_outside>1e-4:
+        raise ValueError('GPU loom cannot pass through the shared upper opening')
+    service_key='SERVICE_POWER_R8_SHARED_WIRE_ROOF_plusZ7p5'
+    service={'sweep_key':service_key,'translation_mm':[0,0,shift],
+      'method':'Exact continuous leading-face and upper-semicircle construction',
+      'pose_containment_samples':samples,
+      'removed_parts_for_access':['TOP_R6_lid','SKIN_R6_left','top_fan_body','FRAME_R6_top'],
+      'remove_bolts_and_captured_nuts':[
+        'PSU_R6_WIRE_COVER_M3x8_9','PSU_R6_WIRE_COVER_M3x8_10',
+        'PSU_R6_WIRE_COVER_DIN562_M3_9','PSU_R6_WIRE_COVER_DIN562_M3_10',
+        'PSU_R6_TOP_M3x10_CSK_1','PSU_R6_TOP_M3x10_CSK_2',
+        'PSU_R6_TOP_DIN562_M3_1','PSU_R6_TOP_DIN562_M3_2',
+        'MAINBOARD_MOUNT_R6_frame_top_M3x10_1','MAINBOARD_MOUNT_R6_frame_top_M3x10_2',
+        'MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_1','MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_2'],
+      'remove_access_fastener_prefixes':['TOP_R6_lid_','PANEL_R6_left_'],
+      'top_frame_may_remain_for_opening':False,
+      'temporary_support_required':'Support PSU/mainboard; release GPU anchor and control leads before top-frame removal.',
+      'assembly_order':'Lay finished GPU loom first in shared lower opening, then ATX, and EPS in its independent opening; fit one shared roof. Never thread finished connectors through bores.',
+      'service_order':'AC off; support PSU/mainboard; remove access panels and top-frame attachments; remove top frame and two wire-roof fastener/nut pairs; lift roof +Z7.5. Lift ATX loom before GPU from shared opening.',
+      'whole_top_frame_extraction_verified':False,
+      'clip_strength_and_seal_verified':False,
+      'opens_without_PSU_disassembly_or_cable_cutting':True}
+    shared={'part':BASE,'removable_half_part':ROOF,
+      'modified_cold_roof_part':cold_roof,'service':service,
+      'channel_type':'Connected ATX/GPU lobed lay-in gland; separate EPS split bore',
+      'shared_split_plane_Z_mm':215.,'channel_Y_mm':[85.8,96.],
+      'ATX_bore_inner_outer_diameter_mm':[12.,14.],
+      'GPU_bore_inner_outer_diameter_mm':[7.5,9.5],
+      'vertical_connected_throat_inner_outer_width_mm':[7.5,9.5],
+      'vertical_connected_throat_Z_mm':[205.5,215.],
+      'nominal_wall_thickness_mm':1.,
+      'ATX_nominal_radial_wire_clearance_mm':.5,
+      'GPU_nominal_radial_wire_clearance_mm':.5,
+      'actual_ATX_wire_to_channel_wall_distance_mm':m['wires']['CABLE_R6_ATX_FACTORY300'].distance(wall),
+      'actual_GPU_wire_to_channel_wall_distance_mm':m['wires']['CABLE_R6_GPU_FACTORY300'].distance(wall),
+      'GPU_lay_in_sweep_outside_shared_inner_mm3':lay_in_outside,
+      'GPU_lay_in_upper_opening_allowance_mm':.75,
+      'common_outer_cross_section_area_mm2':outer.intersect(box((50,1,50),(0,90,190))).Volume(),
+      'common_inner_cross_section_area_mm2':inner.intersect(box((50,1,50),(0,90,190))).Volume(),
+      'factory_face_reference_area_mm2':81.5*40.5,
+      'divider_guide_nominal_origin_mm':[17.,85.8,215.],
+      'divider_guide_nominal_size_mm':[14.,1.,30.],
+      'cold_roof_front_notch_width_depth_mm':[14.,.8],
+      'protected_air_removed_mm3':removed_air,
+      'exact_physical_envelope_and_guide_air_overlap_mm3':exact_air,
+      'divider_guide_air_overlap_mm3':air0.intersect(neck).Volume(),
+      'air_change_scope':'Exact physical shared/EPS channel outer envelopes and roof-carried divider guide only; no cable shape excluded.',
+      'attached_single_solid':True,'removable_roof_single_solid':True,
+      'fixed_moving_parts_overlap_mm3':0.,
+      'source_exit_coordinates_status':'Engineering XYZ only, not measured manufacturer wire-exit positions.',
+      'thermal_or_physical_acceptance_completed':False}
+    transitions={}
+    for label,point,gland,key in (
+      ('ATX',[24.,96.,215.],[24.,82.,215.],'CABLE_R6_ATX_FACTORY300'),
+      ('GPU',[26.,96.,205.5],[26.,82.,205.5],'CABLE_R6_GPU_FACTORY300')):
+        record=dict(shared,source_face_point_engineering_xyz_mm=point,
+          native_gland_point_engineering_xyz_mm=gland,
+          complete_source_segment_modeled=True,
+          factory_face_transition_geometry_verified=True,
+          source_coordinates_received_hardware_verified=False,
+          wire_proxy_diameter_mm=m['power_meta']['routes'][key]['engineering_diameter_mm'])
+        transitions[label]=record
+        m['psu_meta'][label+'_isolated_factory_exit_transition']=record
+    eps={'part':BASE,'removable_half_part':ROOF,'service':service,
+      'centerline_xyz_mm':[[37.,82.,218.],[37.,96.,218.]],
+      'outer_diameter_mm':7.5,'inner_diameter_mm':5.5,
+      'wire_proxy_diameter_mm':4.5,'nominal_radial_clearance_mm':.5,
+      'minimum_wire_to_wall_distance_mm':m['wires']['CABLE_R6_EPS_FACTORY300'].distance(ew.fuse(en)),
+      'factory_face_reference_area_mm2':81.5*40.5,
+      'isolated_outer_envelope_projected_area_mm2':math.pi*3.75**2,
+      'cold_air_face_area_fraction_displaced':math.pi*3.75**2/(81.5*40.5),
+      'source_exit_coordinates_status':'Engineering XYZ only; factory exit requires measurement.',
+      'attached_single_solid':True,'removable_roof_single_solid':True,
+      'fixed_moving_parts_overlap_mm3':0.,
+      'complete_source_segment_modeled':True,
+      'thermal_or_physical_acceptance_completed':False}
+    transitions['EPS']=eps
+    m['psu_meta']['EPS_isolated_factory_exit_transition']=eps
+    m['psu_meta']['ATX_GPU_shared_factory_exit_gland']=shared
+    return transitions
 
 def apply_atx_refine(m):
     p=m['power_meta'];heads=m['heads'];wires=m['wires']
@@ -35,7 +199,7 @@ def apply_atx_refine(m):
     # from the rear between the DATA2/3 heads; the extension exits directly
     # toward the front floor, without crossing through either connector.
     k='CABLE_R6_ATX_FACTORY300'
-    replace(k,[[24,82,215],[28.5,60,215],[24.5,60,202],[24.5,60,184.5],
+    replace(k,[[24,96,215],[24,82,215],[28.5,60,215],[24.5,60,202],[24.5,60,184.5],
       [24.5,74.5,184.5],[60,74.5,184.5],[60,74.5,172],[60,45.5,172]],11,6,300)
     for key,origin in (
       ('POWER_R6_ATX_FACTORY24_STANDARD_MALE_PROXY',(34,33.5,165)),
@@ -50,10 +214,10 @@ def apply_atx_refine(m):
     # chassis. Include the previously omitted faceY96-to-glandY82 transition.
     # Rise outside the GPU inlet, then enter the vertical 4pin pair from below.
     replace('CABLE_R6_EPS_FACTORY300',[[37,96,218],[37,78,218],[37,42,218],
-      [22.5,42,218],[22.5,42,162],[22.5,24.75,162],[98,24.75,162],
+      [22.5,42,218],[22.5,42,162],[98,24.75,162],
       [98,24.75,188],[108.55,24.75,188],[108.55,24.75,193.5]],4.5,4,300)
     for key,origin in (
-      ('POWER_R6_GPU_FACTORY_UNUSED_SECOND6plus2_PARKED_PROXY',(178,42,130)),):
+      ('POWER_R6_GPU_FACTORY_UNUSED_SECOND6plus2_PARKED_PROXY',(106,110,198)),):
         old=heads[key].BoundingBox()
         heads[key]=box((old.xlen,old.ylen,old.zlen),origin)
         changed_heads.append(key)
@@ -62,7 +226,7 @@ def apply_atx_refine(m):
     # no second4pin branch. No PSU modification or private pinout is involved.
     active='POWER_R6_EPS_FACTORY4plus4_STANDARD_PROXY'
     heads[active]=box((9.5,9.5,12),(103.8,20,193.5));changed_heads.append(active)
-    female='POWER_R7_EPS_PHANTEKS_4PIN_FEMALE_PROXY'
+    female='POWER_R8_EPS_MODDIY_4PIN_FEMALE_PROXY'
     heads[female]=box((9.5,9.5,12),(103.8,20,205.5));changed_heads.append(female)
     for key in ('POWER_R6_EPS_EXT4plus4_STANDARD_PROXY',
                 'POWER_R6_EPS_EXTENSION_UNUSED4_HALF_PARKED_PROXY'):
@@ -72,14 +236,14 @@ def apply_atx_refine(m):
         wires.pop(key,None);p['routes'].pop(key,None)
         changed_wires.append(key);removed_wires.append(key)
     e=next(v['cable_exit_xyz_mm'] for v in m['mainboard_meta']['power'] if v['kind']=='ATX4_CPU')
-    extension='CABLE_R7_EPS_PHANTEKS_PH_CB4P_BK500'
+    extension='CABLE_R8_EPS_MODDIY_CO581_600'
     replace(extension,[[108.55,24.75,217.5],[108.55,24.75,225],
       [123,24.75,225],[123,9.8,225],[180,9.8,206],[215,9.8,206],
-      [237,39,204],[243.8,39,195],[243.8,80,115],[243.8,e[1],e[2]],e],6.5,7,500)
-    p['extensions']['EPS']='PhanteksPH-CB4P_BK500mm,standard4pinmotherboardextension'
+      [237,39,204],[243.8,39,195],[243.8,80,115],[243.8,e[1],e[2]],e],6.5,7,600)
+    p['extensions']['EPS']='MODDIY CO581 configured60cm standard4pinmotherboardextension'
     p['standard_EPS_coupling_heads']=[active,female]
     p['EPS_native_half_plan']='Oneoriginal4pinhalf-to-standard4pinextension;retainunusedfactory4pinhalf.NoPSUinternalpinoutmodification.'
-    eps_source='https://phanteks.com.tw/Extension-Cables.html'
+    eps_source='https://www.moddiy.com/products/2256/Premium-Custom-PSU-Extension-Cable-4-Pin-CPU-EPS-Power.html'
     budgets={}
     for key,connector_allowance,slack in (
       ('CABLE_R6_EPS_FACTORY300',24.,15.),(extension,48.,15.)):
@@ -96,207 +260,58 @@ def apply_atx_refine(m):
             checks.append({'route':key,'kind':'complete_stock_length_short',
               'required_mm':required,'available_mm':info['nominal_stock_mm']})
     p['EPS_complete_length_budgets']=budgets
-    p['native_factory_exit_points_engineering']={'EPS':[37,96,218]}
+    p['native_factory_exit_points_engineering']={'ATX':[24,96,215],'EPS':[37,96,218]}
 
-    # Pass above the HDD heads and GPU front brace, then turn down into the
-    # forward-facing standard coupling. The GPU card and fixed anchor stay put.
+    # Native GPU coupling stays left of the entire GPU lifting column. Both
+    # original factory branches remain installed while the card is removed.
     gpu_native='POWER_R6_GPU_FACTORY6plus2_STANDARD_PROXY'
-    heads[gpu_native]=box((14,18,18),(182,24.2,167));changed_heads.append(gpu_native)
-    replace('CABLE_R6_GPU_FACTORY300',[[26,96,205.5],[26,82,205.5],
-      [35,73,205.5],[35,73,193],[35,16,193],[112,16,193],
-      [126,13.5,193],[176.5,13.5,193],[185.5,18,193],
-      [185.5,18,176],[185.5,24.2,176]],6.5,6,300)
-    replace('CABLE_R6_GPU_FACTORY_SECOND150',[[192.5,24.2,176],[192.5,18,176],[192.5,18,120],
-      [185,51,120],[185,51,130]],6.5,6,150)
+    heads[gpu_native]=box((14,18,18),(106,62,193.5));changed_heads.append(gpu_native)
+    replace('CABLE_R6_GPU_FACTORY300',[[26, 96, 205.5], [26, 82, 205.5], [35, 73, 205.5], [35, 64, 190], [120, 64, 190], [109.5, 88, 190], [109.5, 88, 202.5], [109.5, 80, 202.5]],6.5,6,300)
+    replace('CABLE_R6_GPU_FACTORY_SECOND150',[[116.5, 80, 202.5], [116.5, 96, 202.5], [116.5, 96, 190], [113, 119, 190], [113, 119, 198]],6.5,6,150)
     joint=p['GPU_factory_joint']
-    joint.update(bbox_mm=bbox(heads[gpu_native]),nose_axis=[0,1,0],root_extension_mating_plane_Y_mm=42.2)
+    joint.update(bbox_mm=bbox(heads[gpu_native]),nose_axis=[0,-1,0],root_extension_mating_plane_Y_mm=62.)
     joint.pop('root_extension_mating_plane_Z_mm',None)
 
-    # Separate, physically modeled factory-wire transitions. Each lower half
-    # joins the fixed gutter, and each upper half joins the existing bolted
-    # roof. Finished connectors are laid into open channels, never threaded
-    # through undersized closed bores. Port XYZ remains an engineering fit-up.
-    base='PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE'
-    roof_key='PSU_R6_fixed_wire_gutter_REMOVABLE_roof'
-    air_key='AIR_PSU_R6_front_and_ALL_FACE_cold_sleeve'
-    fixed=m['parts'][base]
-    flat=m['parts'][roof_key].cut(box((50,10,4),(0,4.5,242))).clean()
-    roof=flat
-    transitions={}
-    components=[]
-    port_specs=(
-      ('EPS',37.,218.,3.75,2.75,82.,'CABLE_R6_EPS_FACTORY300',
-       (33.25,80.,220.,2.,4.2,23.5)),
-      ('GPU',26.,205.5,4.75,3.75,85.8,'CABLE_R6_GPU_FACTORY300',
-       (31.,81.5,206.5,2.,1.8,37.)),
-    )
-    outer_envelopes=[]
-    for label,x,z,ro,ri,y0,key,neck_box in port_specs:
-        outer=cylinder(ro,96-y0,(x,y0,z),(0,1,0))
-        inner=cylinder(ri,18,(x,79,z),(0,1,0))
-        wall=outer.cut(inner).clean()
-        lower=wall.intersect(box((2*ro+2,18,ro+1),(x-ro-1,79,z-ro-1))).clean()
-        upper=wall.intersect(box((2*ro+2,18,ro+1),(x-ro-1,79,z))).clean()
-        nx,ny,nz,nw,nd,nh=neck_box
-        neck=box((nw,nd,nh),(nx,ny,nz)).cut(inner).clean()
-        if label=='EPS':
-            # A roof-carried divider lip fills its own vertical release slot.
-            # This is a physical sliding joint, not a collision exemption. Its
-            # whole width stays inside the existing wire bay/partition atY<=86.
-            guide=box((7.5,4,27),(33.25,82,218)).cut(inner)
-            guide_sweep=box((7.5,4,34.5),(33.25,82,218)).cut(inner)
-            fixed=fixed.cut(guide_sweep)
-            upper=upper.fuse(guide).clean()
-            components.append(('neck',guide,(33.25,82,218,7.5,4,27,inner)))
-        if label=='GPU':
-            # Both small bridges stay beforeY86, inside the wire-only bay.
-            # The neck is right of the retained ATX loom; the pipe itself
-            # starts after that loom's outer end cap, avoiding service contact.
-            support=box((14.75,5.8,2),(26,80,199.75))
-            fixed=fixed.fuse(support)
-            bridge=box((3,2.5,1.5),(30,83.3,206.5))
-            upper=upper.fuse(bridge).clean()
-            components.append(('bridge',bridge,None))
-        # Seat the removable upper wall in the existing partition instead of
-        # overlapping that partition. The lower wall remains the fixed support.
-        fixed=fixed.fuse(lower).cut(inner).cut(upper).clean()
-        roof=roof.fuse(upper).fuse(neck).clean()
-        components.extend([('upper',outer,(x,z,ro,inner,y0)),('neck',neck,(nx,ny,nz,nw,nd,nh,inner))])
-        outer_envelopes.append(outer)
-        transitions[label]={'part':base,'removable_half_part':roof_key,
-          'centerline_xyz_mm':[[x,y0,z],[x,96,z]],
-          'outer_diameter_mm':2*ro,'inner_diameter_mm':2*ri,
-          'wire_proxy_diameter_mm':p['routes'][key]['engineering_diameter_mm'],
-          'nominal_radial_clearance_mm':ri-p['routes'][key]['engineering_diameter_mm']/2,
-          'minimum_wire_to_wall_distance_mm':wires[key].distance(wall.fuse(neck)),
-          'factory_face_reference_area_mm2':81.5*40.5,
-          'wall_material_projected_area_mm2':math.pi*(ro**2-ri**2),
-          'wall_material_fraction_of_reference_face':math.pi*(ro**2-ri**2)/(81.5*40.5),
-          'isolated_outer_envelope_projected_area_mm2':math.pi*ro**2,
-          'cold_air_face_area_fraction_displaced':math.pi*ro**2/(81.5*40.5),
-          'source_exit_coordinates_status':'EngineeringXYZassumption;measurefactorywireexitbeforemanufacture.',
-          'thermal_or_physical_acceptance_completed':False}
-    if any(not q.isValid() or len(q.Solids())!=1 for q in (fixed,roof)):
-        raise ValueError('Both split-wire-channel components must be attached single solids')
-    if fixed.intersect(roof).Volume()>1e-4:
-        raise ValueError('Fixed and removable wire-channel halves overlap')
-    m['parts'][base]=fixed;m['parts'][roof_key]=roof
-    # Exact continuous+Z translation: upper semicircular shells become an
-    # upward capsule clipped above their centers, minus the original inner
-    # circles. Every remaining neck/bridge lies above its void's upper branch.
-    # Extruding the flat roof's actual leading planar face preserves its holes.
-    shift=7.5
-    flat_sweep=flat
-    for face in flat.Faces():
-        if face.geomType()=='PLANE' and face.normalAt().z>.999999:
-            prism=cq.Solid.extrudeLinear(face.outerWire(),face.innerWires(),cq.Vector(0,0,shift))
-            flat_sweep=flat_sweep.fuse(prism)
-    sweep=flat_sweep
-    for kind,shape,data in components:
-        if kind=='upper':
-            x,z,ro,inner,y0=data
-            capsule=shape.fuse(shape.translate((0,0,shift))).fuse(
-              box((2*ro,96-y0,shift),(x-ro,y0,z)))
-            swept=capsule.intersect(box((2*ro+2,18,30),(x-ro-1,79,z))).cut(inner)
-        elif kind=='neck':
-            nx,ny,nz,nw,nd,nh,inner=data
-            swept=box((nw,nd,nh+shift),(nx,ny,nz)).cut(inner)
-        else:
-            b=shape.BoundingBox()
-            swept=box((b.xlen,b.ylen,b.zlen+shift),(b.xmin,b.ymin,b.zmin))
-        sweep=sweep.fuse(swept)
-    sweep=sweep.clean()
-    if not sweep.isValid() or any(q.cut(sweep).Volume()>1e-4 for q in (roof,roof.translate((0,0,shift)))):
-        raise ValueError('Invalid continuous wire-roof opening sweep')
-    service_key='SERVICE_POWER_R7_WIRE_ROOF_open_plusZ7p5'
-    m.setdefault('service',{})[service_key]=sweep
-    service={'sweep_key':service_key,'translation_mm':[0,0,shift],
-      'method':'Exactcontinuousleading-faceandsemicircularsliceconstruction;notdiscreteposes.',
-      'removed_parts_for_access':['TOP_R6_lid','SKIN_R6_left','top_fan_body','FRAME_R6_top'],
-      'remove_bolts_and_captured_nuts':[
-        'PSU_R6_WIRE_COVER_M3x8_9','PSU_R6_WIRE_COVER_M3x8_10',
-        'PSU_R6_WIRE_COVER_DIN562_M3_9','PSU_R6_WIRE_COVER_DIN562_M3_10',
-        'PSU_R6_TOP_M3x10_CSK_1','PSU_R6_TOP_M3x10_CSK_2',
-        'PSU_R6_TOP_DIN562_M3_1','PSU_R6_TOP_DIN562_M3_2',
-        'MAINBOARD_MOUNT_R6_frame_top_M3x10_1','MAINBOARD_MOUNT_R6_frame_top_M3x10_2',
-        'MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_1','MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_2'],
-      'remove_access_fastener_prefixes':['TOP_R6_lid_','PANEL_R6_left_'],
-      'top_frame_may_remain_for_opening':False,
-      'temporary_support_required':'SupportPSUandmainboardbeforeunfasteningtopframe;releaseGPUcableanchorandcontrolbuttonleadsbeforeliftingframe.',
-      'assembly_order':'LayfinishedfactoryEPS/GPUleadsintolowerhalvesbeforetopframeinstallation;lowerroofupperhalves,fitbothWIREFastener/nutpairs,sealjoinsafterfit-up.',
-      'service_order':'ACoff;supportPSUandmainboard;removeaccesspanelsandalltopframeconnectionsincludingGPUlacing/controlleads;removetopframe;removebothWIREbolt/nutpairs;liftwire-roof+Z7.5.',
-      'whole_top_frame_extraction_verified':False,
-      'clip_strength_and_seal_verified':False}
-    oldair=m['air'][air_key]
-    envelope=outer_envelopes[0].fuse(outer_envelopes[1])
-    newair=oldair.cut(envelope).clean()
-    removed_air=oldair.Volume()-newair.Volume()
-    exact_overlap=oldair.intersect(envelope).Volume()
-    if abs(removed_air-exact_overlap)>1e-4:
-        raise ValueError('Wire transitions changed protected air beyond their exact outer envelopes')
-    m['air'][air_key]=newair
-    for label in transitions:
-        transitions[label].update(attached_single_solid=True,removable_roof_single_solid=True,
-          fixed_moving_parts_overlap_mm3=0.,service=service,
-          total_protected_air_removed_mm3=removed_air,
-          exact_combined_outer_envelope_overlap_mm3=exact_overlap,
-          air_change_scope='Onlythetwoexplicitwiretransitionouterenvelopes;allbridges/necksintheexistingwire-onlybay.')
-    sleeve=transitions['EPS'];gpu_sleeve=transitions['GPU']
-    m['psu_meta']['EPS_isolated_factory_exit_transition']=sleeve
-    m['psu_meta']['GPU_isolated_factory_exit_transition']=gpu_sleeve
+    # One physical shared ATX/GPU channel keeps original engineering source
+    # coordinates and opens for finished looms; EPS retains its separate bore.
+    transitions=_apply_shared_factory_exit_channels(m)
+    sleeve=transitions['EPS'];gpu_sleeve=transitions['GPU'];atx_sleeve=transitions['ATX']
+    base=sleeve['part'];air_key='AIR_PSU_R6_front_and_ALL_FACE_cold_sleeve'
 
-    # Bottom-open raised arch: the finished factory lead is placed from below
-    # and held with removable soft straps. No terminal must pass a closed bore.
-    arch_points=[[35,65,193],[35,16,193],[103.3,16,193]]
-    arch_outer,_=_tube(arch_points,9.5,6)
-    arch_inner,_=_tube(arch_points,7.5,6)
-    upper_domain=box((110,85,12),(20,0,193))
-    arch_outer=arch_outer.intersect(upper_domain).clean()
-    arch_inner=arch_inner.intersect(upper_domain).clean()
-    arch_wall=arch_outer.cut(arch_inner).clean()
-    fixed=m['parts'][base].fuse(arch_wall).cut(arch_inner).clean()
-    ear_shapes=[]
-    for x in (43.,97.):
-        ear=box((6,5,2),(x-3,20,193)).cut(box((4,3,4),(x-2,21,192)))
-        fixed=fixed.fuse(ear).clean();ear_shapes.append(ear)
-    if not fixed.isValid() or len(fixed.Solids())!=1:
-        raise ValueError('Bottom-open GPU arch and strap ears must join the existing PSU base')
-    m['parts'][base]=fixed
-    old_arch_air=m['air'][air_key]
-    updated_arch_air=old_arch_air.cut(arch_outer).clean()
-    removed_arch_air=old_arch_air.Volume()-updated_arch_air.Volume()
-    exact_arch_overlap=old_arch_air.intersect(arch_outer).Volume()
-    if abs(removed_arch_air-exact_arch_overlap)>1e-4:
-        raise ValueError('GPU arch changed protected air outside its actual outer upper sweep')
-    m['air'][air_key]=updated_arch_air
-    arch_meta={'part':base,'centerline_mm':arch_points,'outer_diameter_mm':9.5,
-      'inner_diameter_mm':7.5,'opening':'bottom atZ193;finishedheadneednotthreadthroughbore',
-      'wall_thickness_mm':1.,'outer_upper_Z_mm':197.75,
-      'wire_proxy_diameter_mm':6.5,'minimum_wire_to_arch_wall_mm':wires['CABLE_R6_GPU_FACTORY300'].distance(arch_wall),
-      'fixed_attached_single_solid':True,
-      'soft_strap_ears':[{'center_X_mm':x,'slot_mm':[4,3,2],'bbox_mm':bbox(q)} for x,q in zip((43.,97.),ear_shapes)],
-      'strap_material_and_installed_retention_verified':False,
-      'protected_air_removed_mm3':removed_arch_air,'exact_outer_upper_overlap_mm3':exact_arch_overlap,
-      'inner_upper_overlap_with_protected_air_mm3':old_arch_air.intersect(arch_inner).Volume(),
-      'thermal_or_physical_acceptance_completed':False}
+    # Direct Z190 underfloor route replaces the long front arch. The intact
+    # cold-plenum floor now separates the loom from air; no arch air is cut.
+    arch_meta={'active':False,'retired_in':'R8',
+      'replacement':'Direct underfloor Z190 route; original lead remains left of GPU lift column.'}
     m['psu_meta']['GPU_factory_bottom_open_arch']=arch_meta
+    ears=[]
+    for x in (50.,90.):
+        for y in (57.5,68.):
+            ear=box((6,2.5,7),(x-3,y,190)).cut(box((4,3.5,2),(x-2,y-.5,192.5)))
+            m['parts'][base]=m['parts'][base].fuse(ear).clean();ears.append(ear)
+    m['psu_meta']['GPU_underfloor_retention']={'part':base,
+      'wire_center_Z_mm':190.,'wire_center_Y_mm':64.,'wire_diameter_mm':6.5,
+      'strap_pair_centers_X_mm':[50.,90.],
+      'ear_bboxes_mm':[bbox(ear) for ear in ears],
+      'nominal_lateral_wire_to_ear_gap_mm':.75,
+      'installed_straps_and_strain_relief_verified':False,
+      'retained_during_GPU_extraction':True}
 
     # Finished looms enter from the open left edge of the wire-bay floor.
     # These slots are outside the cold plenum and do not cut the GPU arch.
     floor_edges=[]
     for label,origin,size in (
       ('EPS',(10.5,39.25,195.3),(14.75,5.5,1.8)),
-      ('ATX',(14.,54.,195.3),(16.5,12.,1.8))):
+      ('ATX',(14.,54.,195.3),(16.5,12.,1.8)),
+      ('GPU',(10.5,59.,195.3),(29.,18.,1.8))):
         opening=box(size,origin)
         air_overlap=m['air'][air_key].intersect(opening).Volume()
-        arch_overlap=arch_wall.intersect(opening).Volume()
-        if air_overlap>1e-4 or arch_overlap>1e-4:
-            raise ValueError('Wire-bay open edges must preserve protected air and GPU arch walls')
+        if air_overlap>1e-4:
+            raise ValueError('Wire-bay open edges must preserve protected cold air')
         before=m['parts'][base].Volume()
         m['parts'][base]=m['parts'][base].cut(opening).clean()
         floor_edges.append({'loom':label,'origin_mm':list(origin),'size_mm':list(size),
           'actual_material_removed_mm3':before-m['parts'][base].Volume(),
-          'protected_air_removed_mm3':air_overlap,'GPU_arch_wall_removed_mm3':arch_overlap})
+          'protected_air_removed_mm3':air_overlap})
     if not m['parts'][base].isValid() or len(m['parts'][base].Solids())!=1:
         raise ValueError('Open-edge wire-bay floor must remain one attached solid')
     m['psu_meta']['wire_bay_floor_open_edges']={'part':base,'openings':floor_edges,
@@ -319,32 +334,11 @@ def apply_atx_refine(m):
     if required>300:checks.append({'route':'CABLE_R6_GPU_FACTORY300','kind':'complete_stock_length_short','required_mm':required,'available_mm':300})
 
     complete_budgets={**budgets,'CABLE_R6_GPU_FACTORY300':gpu_budget}
-    # Unlike the explicit EPS/GPU channels, the ATX loom's PSU-face transition
-    # has no measured exterior/isolated channel yet. Reserve its nominal14mm
-    # face-to-gland distance in the length calculation, and keep that geometry
-    # and the actual factory source coordinates as explicit physical gates.
+    # ATX now includes the explicit PSU face-to-gland segment in its actual
+    # curved centerline. No second unmodeled length allowance is added.
     atx_factory='CABLE_R6_ATX_FACTORY300'
-    info=p['routes'][atx_factory]
-    atx_face_allowance=14.
-    required=info['modeled_centerline_mm']+atx_face_allowance+24.+15.
-    atx_factory_budget={'modeled_complete_centerline_mm':info['modeled_centerline_mm'],
-      'modeled_connector_length_lower_bound_mm':12.,'connector_allowance_mm':24.,
-      'unmodeled_factory_face_to_gland_allowance_mm':atx_face_allowance,
-      'assembly_slack_mm':15.,'required_with_allowances_mm':required,
-      'nominal_stock_mm':300.,'remaining_length_margin_mm':300.-required,
-      'geometric_length_budget_passed':required<=300.,
-      'full_source_transition_geometry_modeled':False,
-      'source_transition_air_isolation_or_clearance_verified':False,
-      'source_transition_status':'14mmnominalfaceY96-to-engineeringglandY82reservedforlengthonly;actualfactoryexitandisolatedtransitiongeometryrequiremeasurement.',
-      'factory_measurement_origin_and_installed_flex_verified':False,
-      'connector_allowance_is_engineering_assumption':True}
-    info['complete_length_budget']=atx_factory_budget
-    complete_budgets[atx_factory]=atx_factory_budget
-    if required>300.:
-        checks.append({'route':atx_factory,'kind':'complete_stock_length_short',
-          'required_mm':required,'available_mm':300.})
     for key,head_allowance,head_lower_bound,exit_allowance in (
-      ('CABLE_R6_ATX_FACTORY300',24.,12.,14.),
+      ('CABLE_R6_ATX_FACTORY300',24.,12.,0.),
       ('CABLE_R6_ATX_PHANTEKS_PH_CB24P_BK500',40.,36.,0.),
       ('CABLE_R6_GPU_FACTORY_SECOND150',24.,18.,0.)):
         info=p['routes'][key]
@@ -358,9 +352,12 @@ def apply_atx_refine(m):
           'geometric_length_budget_passed':required<=info['nominal_stock_mm'],
           'factory_measurement_origin_and_installed_flex_verified':False,
           'connector_allowance_is_engineering_assumption':True}
-        if exit_allowance:
-            budget['factory_face_transition_geometry_verified']=False
-            budget['scope']='ATXface-to-engineeringglandtransitionhaslengthallowanceonly;itsroutingandisolationremainunmodeled.'
+        if key==atx_factory:
+            budget.update(factory_face_transition_geometry_verified=True,
+              complete_source_segment_modeled=True,
+              source_face_point_engineering_xyz_mm=[24.,96.,215.],
+              source_coordinates_received_hardware_verified=False,
+              scope='Complete CAD source segment included; factory exit dimensions still require received-hardware measurement.')
         complete_budgets[key]=budget;info['complete_length_budget']=budget
         if required>info['nominal_stock_mm']:
             checks.append({'route':key,'kind':'complete_stock_length_short',
@@ -384,15 +381,16 @@ def apply_atx_refine(m):
     meta={'changed_wire_keys':changed_wires,'changed_head_keys':changed_heads,
       'removed_wire_keys':removed_wires,'removed_head_keys':removed_heads,
       'routes':newroutes,'checks':checks,'exact_same_net_junction_spheres':[],
-      'EPS_standard_extension':{'SKU':'PhanteksPH-CB4P_BK','nominal_length_mm':500,
+      'EPS_standard_extension':{'SKU':'MODDIY CO581','nominal_length_mm':600,
         'source_url':eps_source,'connector':'4pinmotherboardfemale-to-4pinmotherboardmale',
         'stock_availability_confirmed':False,'not_PSU_proprietary_modular_cable':True},
       'EPS_complete_length_budgets':budgets,'EPS_isolated_factory_exit_transition':sleeve,
       'GPU_complete_length_budget':gpu_budget,'GPU_isolated_factory_exit_transition':gpu_sleeve,
+      'ATX_isolated_factory_exit_transition':atx_sleeve,
       'GPU_factory_bottom_open_arch':arch_meta,
       'complete_stock_length_budgets':complete_budgets,
-      'gland_y_status':'EPSY82/GPUY85.8areengineeringinletassumptions;bothfaceY96sourceXYZremainunmeasured.',
-      'SATA_coordination':'SATArefine owns all SATA shapes;DATA2/3 horizontal tailstationY53;DATA1front190/Y5.5,DATA2front184/Y11.2,DATA3front184/Y5.5;EPSgutterdropX28/Y62.',
+      'gland_y_status':'All ATX/EPS/GPU face-to-gland segments are modeled; face Y96 source XYZ remain engineering assumptions pending received hardware.',
+      'SATA_coordination':'SATArefine owns all SATA shapes; native GPU route is below the PSU floor at Z190/Y64; EPS low crossing is Z162.',
       'EPS_joint_bbox_mm':{k:bbox(heads[k]) for k in changed_heads},
       'GPU_factory_standard_joint':p['GPU_factory_joint'],
       'limits':['OriginalEPS4+4 halfseparation,keyed4pinextensionfitandreceived-cablelengthrequirephysicalverification;no PSUinternalpinout changes.',

@@ -4,14 +4,14 @@ FRAME_R6_corner_10_240,1,PETG／PETG HF,8.000 × 8.000 × 242.000,工程原型�
 FRAME_R6_corner_240_10,1,PETG／PETG HF,8.000 × 8.000 × 242.000,工程原型；切片／公差／刚度／蠕变／试装待验证
 FRAME_R6_corner_240_240,1,PETG／PETG HF,8.000 × 8.000 × 242.000,工程原型；切片／公差／刚度／蠕变／试装待验证
 FRAME_R6_feet20,1,PETG／PETG HF,246.000 × 246.000 × 20.000,工程原型；切片／公差／刚度／蠕变／试装待验证
-BOTTOM_R6_shim1mm_1,1,PETG／PETG HF,9.000 × 9.000 × 1.000,工程原型；切片／公差／刚度／蠕变／试装待验证
-BOTTOM_R6_shim1mm_2,1,PETG／PETG HF,9.000 × 9.000 × 1.000,工程原型；切片／公差／刚度／蠕变／试装待验证
-BOTTOM_R6_shim1mm_3,1,PETG／PETG HF,9.000 × 9.000 × 1.000,工程原型；切片／公差／刚度／蠕变／试装待验证
-BOTTOM_R6_shim1mm_4,1,PETG／PETG HF,9.000 × 9.000 × 1.000,工程原型；切片／公差／刚度／蠕变／试装待验证
-TOP_R6_spacer5mm_1,1,PETG／PETG HF,9.000 × 9.000 × 5.000,工程原型；切片／公差／刚度／蠕变／试装待验证
-TOP_R6_spacer5mm_2,1,PETG／PETG HF,9.000 × 9.000 × 5.000,工程原型；切片／公差／刚度／蠕变／试装待验证
-TOP_R6_spacer5mm_3,1,PETG／PETG HF,9.000 × 9.000 × 5.000,工程原型；切片／公差／刚度／蠕变／试装待验证
-TOP_R6_spacer5mm_4,1,PETG／PETG HF,9.000 × 9.000 × 5.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+BOTTOM_R6_shim1mm_1,1 CAD；25mm实扇配置每编号打印3片,PETG／PETG HF,9.000 × 9.000 × 1.000,同形M4垫片可复用：每孔底扇下方2片、顶扇上方补1片；四编号合计12片。保持底扇顶Z32、顶扇底Z221，实测后调整。
+BOTTOM_R6_shim1mm_2,1 CAD；25mm实扇配置每编号打印3片,PETG／PETG HF,9.000 × 9.000 × 1.000,同形M4垫片可复用：每孔底扇下方2片、顶扇上方补1片；四编号合计12片。保持底扇顶Z32、顶扇底Z221，实测后调整。
+BOTTOM_R6_shim1mm_3,1 CAD；25mm实扇配置每编号打印3片,PETG／PETG HF,9.000 × 9.000 × 1.000,同形M4垫片可复用：每孔底扇下方2片、顶扇上方补1片；四编号合计12片。保持底扇顶Z32、顶扇底Z221，实测后调整。
+BOTTOM_R6_shim1mm_4,1 CAD；25mm实扇配置每编号打印3片,PETG／PETG HF,9.000 × 9.000 × 1.000,同形M4垫片可复用：每孔底扇下方2片、顶扇上方补1片；四编号合计12片。保持底扇顶Z32、顶扇底Z221，实测后调整。
+TOP_R8_spacer4mm_1,1,PETG／PETG HF,9.000 × 9.000 × 4.000,26mm CAD风扇Z221..247配4mm上隔柱；25mm实扇Z221..246配总5mm上隔距（本4mm+一片上述1mm垫），保持底Z221。
+TOP_R8_spacer4mm_2,1,PETG／PETG HF,9.000 × 9.000 × 4.000,26mm CAD风扇Z221..247配4mm上隔柱；25mm实扇Z221..246配总5mm上隔距（本4mm+一片上述1mm垫），保持底Z221。
+TOP_R8_spacer4mm_3,1,PETG／PETG HF,9.000 × 9.000 × 4.000,26mm CAD风扇Z221..247配4mm上隔柱；25mm实扇Z221..246配总5mm上隔距（本4mm+一片上述1mm垫），保持底Z221。
+TOP_R8_spacer4mm_4,1,PETG／PETG HF,9.000 × 9.000 × 4.000,26mm CAD风扇Z221..247配4mm上隔柱；25mm实扇Z221..246配总5mm上隔距（本4mm+一片上述1mm垫），保持底Z221。
 TOP_R6_lid,1,PETG／PETG HF,250.000 × 250.000 × 4.000,工程原型；切片／公差／刚度／蠕变／试装待验证
 SKIN_R6_front,1,PETG／PETG HF,244.000 × 2.400 × 246.000,工程原型；切片／公差／刚度／蠕变／试装待验证
 SKIN_R6_back,1,PETG／PETG HF,244.000 × 2.400 × 246.000,工程原型；切片／公差／刚度／蠕变／试装待验证
@@ -31,11 +31,11 @@ GPU_R6_fixed_open_spine,1,PETG／PETG HF,54.000 × 234.000 × 213.000,工程原�
 GPU_R6_removable_IO_jaw,1,PETG／PETG HF,41.600 × 5.400 × 8.000,工程原型；切片／公差／刚度／蠕变／试装待验证
 PSU_R6_rear_TOP_ONLY_suspension,1,PETG／PETG HF,91.500 × 9.000 × 6.200,工程原型；切片／公差／刚度／蠕变／试装待验证
 PSU_R6_front_open_cradle_storage_bolted,1,PETG／PETG HF,97.000 × 26.500 × 49.000,工程原型；切片／公差／刚度／蠕变／试装待验证
-PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE,1,PETG／PETG HF,92.300 × 239.000 × 52.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE,1,PETG／PETG HF,91.500 × 239.000 × 55.000,工程原型；切片／公差／刚度／蠕变／试装待验证
 PSU_R6_cold_sleeve_REMOVABLE_roof,1,PETG／PETG HF,91.500 × 231.800 × 1.500,工程原型；切片／公差／刚度／蠕变／试装待验证
-PSU_R6_fixed_wire_gutter_REMOVABLE_roof,1,PETG／PETG HF,29.750 × 81.500 × 39.500,工程原型；切片／公差／刚度／蠕变／试装待验证
-R6_RISER_FEMALE_LOW_BRIDGE_FRAME_FEET,1,PETG／PETG HF,15.500 × 152.000 × 47.300,工程原型；切片／公差／刚度／蠕变／试装待验证
-R7_RISER_MALE_UPPER_REAR_FRAME_SUPPORT,1,PETG／PETG HF,41.858 × 106.000 × 10.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+PSU_R6_fixed_wire_gutter_REMOVABLE_roof,1,PETG／PETG HF,29.750 × 81.500 × 30.000,工程原型；切片／公差／刚度／蠕变／试装待验证
+R8_RISER_MALE_UPPER_REAR_FRAME_SUPPORT,1,PETG／PETG HF,37.000 × 80.000 × 19.400,工程原型；切片／公差／刚度／蠕变／试装待验证
+R6_RISER_FEMALE_LOW_BRIDGE_FRAME_FEET,1,PETG／PETG HF,28.800 × 152.000 × 47.068,工程原型；切片／公差／刚度／蠕变／试装待验证
 POWER_R6_front_fixed_lacing_ear_1,1,PETG／PETG HF,12.000 × 4.000 × 12.000,工程原型；切片／公差／刚度／蠕变／试装待验证
 POWER_R6_front_fixed_lacing_ear_2,1,PETG／PETG HF,12.000 × 4.000 × 12.000,工程原型；切片／公差／刚度／蠕变／试装待验证
 FRAME_R6_stock_lead_basket_FIXED,1,PETG／PETG HF,54.000 × 105.000 × 135.000,工程原型；切片／公差／刚度／蠕变／试装待验证

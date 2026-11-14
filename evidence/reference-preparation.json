@@ -1,0 +1,31 @@
+{
+  "source_archive": {
+    "url": "https://www.adtlink.cn/download/ADT_K83UP-TL_3D.zip",
+    "sha256": "1971eca32a1d68b7ef9b86890fe03d989d0ddb1659a6031c6fe1f2e425eb2c56"
+  },
+  "source_step_sha256": "e156ba5c03c742bebcb18983eb98ac41141be0d495ccd572c6015d496692b309",
+  "source_solids": 1012,
+  "method": "Exact serialized BREP SHA-256 identity only; natural PCB split; retain coax core stubs inside both complete factory sleeves",
+  "independent_full_source_preparation_completed": true,
+  "source_attribution_closed": true,
+  "endpoints": {
+    "male": {
+      "filename": "K83UP_TL_official_male_endpoint.step",
+      "sha256": "efe0e0981893caa81e23bfd5d9c85451c3022c014e44636c24b04776cbc1b469",
+      "brep_sha256": "a8798c21507f1633812d937aae0d13bb030f57a296d37983980b7d6bc6c50e2d",
+      "solids": 143,
+      "selected_before_dedup": 423
+    },
+    "female": {
+      "filename": "K83UP_TL_official_female_endpoint.step",
+      "sha256": "aea61556c078c22d89c444bc5b062640179f23913aa725e2c4b7c620448a8444",
+      "brep_sha256": "fe9beb64a0c16c685f6eb6713aeb310aa940db04a33788851e7b8a8e77bdb42e",
+      "solids": 219,
+      "selected_before_dedup": 587
+    }
+  },
+  "preparation_script_sha256": "f75df8a88d18436daf39cdd5f4515b7b7c928c776d01c646c842c11e3a666764",
+  "vendor_geometry_distributed": false,
+  "physical_acceptance": false,
+  "source_report_sha256": "ba4dd297f32b29356117de27b970dbf2806e9d80595a0c258c1f7f63e8f6e319"
+}

@@ -1,6 +1,6 @@
 {
-  "revision": "R7",
-  "source_report_sha256": "edcebf0cd989dfa29a0a849c3276fcdec4b13f24b496f5c8b771e2cf85699350",
+  "revision": "R8",
+  "source_report_sha256": "ba4dd297f32b29356117de27b970dbf2806e9d80595a0c258c1f7f63e8f6e319",
   "stage": "CAD_CHECKS_PASSED_PHYSICAL_VALIDATION_PENDING",
   "geometric_checks_passed": true,
   "thermal_or_physical_acceptance_completed": false,
@@ -30,6 +30,7 @@
     "heads_wires": [],
     "wires_wires": [],
     "stock_length_or_storage_volume": [],
+    "design_requirements": [],
     "CPU40_hard_clearance": [],
     "GPU_factory_cable_parking": [],
     "GPU_extension_cable_parking": [],
@@ -39,6 +40,7 @@
     "protected_air": [],
     "drive_forward_removal": [],
     "EPS_wire_roof_opening": [],
+    "riser_latch_park_service": [],
     "outside_target": []
   },
   "parts": {
@@ -402,14 +404,14 @@
         ]
       }
     },
-    "TOP_R6_spacer5mm_1": {
+    "TOP_R8_spacer4mm_1": {
       "valid": true,
       "solids": 1,
       "bbox_mm": {
         "min": [
           109.75,
           53.25,
-          246.0
+          247.0
         ],
         "max": [
           118.75,
@@ -419,10 +421,10 @@
         "size": [
           9.0,
           9.0,
-          5.0
+          4.0
         ]
       },
-      "volume_mm3": 227.60838775258043,
+      "volume_mm3": 182.0867102020643,
       "mesh": {
         "watertight": true,
         "winding_consistent": true,
@@ -432,7 +434,7 @@
           [
             109.7555923461914,
             53.251399993896484,
-            246.0
+            247.0
           ],
           [
             118.75,
@@ -442,14 +444,14 @@
         ]
       }
     },
-    "TOP_R6_spacer5mm_2": {
+    "TOP_R8_spacer4mm_2": {
       "valid": true,
       "solids": 1,
       "bbox_mm": {
         "min": [
           109.75,
           177.75,
-          246.0
+          247.0
         ],
         "max": [
           118.75,
@@ -459,10 +461,10 @@
         "size": [
           9.0,
           9.0,
-          5.0
+          4.0
         ]
       },
-      "volume_mm3": 227.60838775258054,
+      "volume_mm3": 182.0867102020644,
       "mesh": {
         "watertight": true,
         "winding_consistent": true,
@@ -472,7 +474,7 @@
           [
             109.7555923461914,
             177.75140380859375,
-            246.0
+            247.0
           ],
           [
             118.75,
@@ -482,14 +484,14 @@
         ]
       }
     },
-    "TOP_R6_spacer5mm_3": {
+    "TOP_R8_spacer4mm_3": {
       "valid": true,
       "solids": 1,
       "bbox_mm": {
         "min": [
           234.25,
           53.25,
-          246.0
+          247.0
         ],
         "max": [
           243.25,
@@ -499,10 +501,10 @@
         "size": [
           9.0,
           9.0,
-          5.0
+          4.0
         ]
       },
-      "volume_mm3": 227.60838775258017,
+      "volume_mm3": 182.08671020206415,
       "mesh": {
         "watertight": true,
         "winding_consistent": true,
@@ -512,7 +514,7 @@
           [
             234.25559997558594,
             53.251399993896484,
-            246.0
+            247.0
           ],
           [
             243.25,
@@ -522,14 +524,14 @@
         ]
       }
     },
-    "TOP_R6_spacer5mm_4": {
+    "TOP_R8_spacer4mm_4": {
       "valid": true,
       "solids": 1,
       "bbox_mm": {
         "min": [
           234.25,
           177.75,
-          246.0
+          247.0
         ],
         "max": [
           243.25,
@@ -539,10 +541,10 @@
         "size": [
           9.0,
           9.0,
-          5.0
+          4.0
         ]
       },
-      "volume_mm3": 227.60838775258034,
+      "volume_mm3": 182.08671020206427,
       "mesh": {
         "watertight": true,
         "winding_consistent": true,
@@ -552,7 +554,7 @@
           [
             234.25559997558594,
             177.75140380859375,
-            246.0
+            247.0
           ],
           [
             243.25,
@@ -1062,12 +1064,12 @@
           242.0
         ]
       },
-      "volume_mm3": 12629.288813236284,
+      "volume_mm3": 12316.031044616613,
       "mesh": {
         "watertight": true,
         "winding_consistent": true,
-        "vertices": 1964,
-        "faces": 3996,
+        "vertices": 2217,
+        "faces": 4502,
         "bounds_mm": [
           [
             172.0,
@@ -1328,34 +1330,34 @@
       "bbox_mm": {
         "min": [
           11.0,
-          4.9999999,
-          192.9999999
+          5.0,
+          190.0
         ],
         "max": [
-          103.30000000000001,
+          102.5,
           244.0,
-          245.0000001
+          245.0
         ],
         "size": [
-          92.30000000000001,
-          239.0000001,
-          52.00000019999999
+          91.5,
+          239.0,
+          55.0
         ]
       },
-      "volume_mm3": 75160.6577552099,
+      "volume_mm3": 74724.33237997307,
       "mesh": {
         "watertight": true,
         "winding_consistent": true,
-        "vertices": 3182,
-        "faces": 6420,
+        "vertices": 2161,
+        "faces": 4390,
         "bounds_mm": [
           [
             11.0,
             5.0,
-            193.0
+            190.0
           ],
           [
-            103.30000305175781,
+            102.5,
             244.0,
             245.0
           ]
@@ -1382,12 +1384,12 @@
           1.5
         ]
       },
-      "volume_mm3": 27768.63574006409,
+      "volume_mm3": 27751.835740064114,
       "mesh": {
         "watertight": true,
         "winding_consistent": true,
-        "vertices": 1088,
-        "faces": 2204,
+        "vertices": 1096,
+        "faces": 2220,
         "bounds_mm": [
           [
             11.0,
@@ -1409,7 +1411,7 @@
         "min": [
           11.0,
           14.5,
-          205.5
+          215.0
         ],
         "max": [
           40.75,
@@ -1419,20 +1421,20 @@
         "size": [
           29.75,
           81.5,
-          39.5
+          30.0
         ]
       },
-      "volume_mm3": 4207.632598758519,
+      "volume_mm3": 4478.313130145452,
       "mesh": {
         "watertight": true,
         "winding_consistent": true,
-        "vertices": 573,
-        "faces": 1150,
+        "vertices": 565,
+        "faces": 1134,
         "bounds_mm": [
           [
             11.0,
             14.5,
-            205.5
+            215.0
           ],
           [
             40.75,
@@ -1442,54 +1444,14 @@
         ]
       }
     },
-    "R6_RISER_FEMALE_LOW_BRIDGE_FRAME_FEET": {
+    "R8_RISER_MALE_UPPER_REAR_FRAME_SUPPORT": {
       "valid": true,
       "solids": 1,
       "bbox_mm": {
         "min": [
+          207.0,
           156.0,
-          64.0,
-          5.0
-        ],
-        "max": [
-          171.5,
-          216.0,
-          52.300000000000004
-        ],
-        "size": [
-          15.5,
-          152.0,
-          47.300000000000004
-        ]
-      },
-      "volume_mm3": 5998.475059198661,
-      "mesh": {
-        "watertight": true,
-        "winding_consistent": true,
-        "vertices": 624,
-        "faces": 1260,
-        "bounds_mm": [
-          [
-            156.0,
-            64.0,
-            5.0
-          ],
-          [
-            171.5,
-            216.0,
-            52.29999923706055
-          ]
-        ]
-      }
-    },
-    "R7_RISER_MALE_UPPER_REAR_FRAME_SUPPORT": {
-      "valid": true,
-      "solids": 1,
-      "bbox_mm": {
-        "min": [
-          202.142,
-          130.0,
-          209.0
+          199.6
         ],
         "max": [
           244.0,
@@ -1497,27 +1459,67 @@
           219.0
         ],
         "size": [
-          41.858000000000004,
-          106.0,
-          10.0
+          37.0,
+          80.0,
+          19.400000000000006
         ]
       },
-      "volume_mm3": 2390.801328988605,
+      "volume_mm3": 2684.5934446019314,
       "mesh": {
         "watertight": true,
         "winding_consistent": true,
-        "vertices": 552,
-        "faces": 1116,
+        "vertices": 808,
+        "faces": 1628,
         "bounds_mm": [
           [
-            202.14199829101562,
-            130.0,
-            209.0
+            207.0,
+            156.0,
+            199.60000610351562
           ],
           [
             244.0,
             236.0,
             219.0
+          ]
+        ]
+      }
+    },
+    "R6_RISER_FEMALE_LOW_BRIDGE_FRAME_FEET": {
+      "valid": true,
+      "solids": 1,
+      "bbox_mm": {
+        "min": [
+          143.5,
+          64.0,
+          5.0
+        ],
+        "max": [
+          172.3,
+          216.0,
+          52.06817100035224
+        ],
+        "size": [
+          28.80000000000001,
+          152.0,
+          47.06817100035224
+        ]
+      },
+      "volume_mm3": 7389.19537102179,
+      "mesh": {
+        "watertight": true,
+        "winding_consistent": true,
+        "vertices": 876,
+        "faces": 1776,
+        "bounds_mm": [
+          [
+            143.5,
+            64.0,
+            5.0
+          ],
+          [
+            172.3000030517578,
+            216.0,
+            52.068172454833984
           ]
         ]
       }
@@ -1614,20 +1616,20 @@
         "max": [
           98.0,
           244.0,
-          140.00000000000077
+          140.0
         ],
         "size": [
           54.0,
           105.0,
-          135.00000000000077
+          135.0
         ]
       },
-      "volume_mm3": 9495.960866069308,
+      "volume_mm3": 9498.116459549054,
       "mesh": {
         "watertight": true,
         "winding_consistent": true,
-        "vertices": 706,
-        "faces": 1456,
+        "vertices": 658,
+        "faces": 1360,
         "bounds_mm": [
           [
             44.0,
@@ -1645,19 +1647,27 @@
   },
   "source_step_roundtrip": {
     "valid": true,
-    "solids": 623,
-    "expected": 623,
+    "solids": 731,
+    "expected": 731,
     "passed": true
   },
   "original_print_meshes_watertight": true,
   "public_geometry": {
-    "nodes": 360,
+    "nodes": 370,
     "parts": 40,
     "excluded_vendor_nodes": [
-      "R7_R23SR_OFFICIAL_x16_FEMALE_ASSEMBLED",
-      "R7_R23SR_OFFICIAL_x4_MALE_ASSEMBLED"
+      "R8_K83UP_TL_OFFICIAL_x8_MALE_ASSEMBLED_MODIFIED_CLAMP",
+      "R8_K83UP_TL_x16_FEMALE_FACTORY_LATCH_PARKED",
+      "R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4"
     ],
-    "sha256": "26563846d6d46786392eaee98349c791895ca5fd8a3361046dce5a722bbc3a99",
+    "vendor_endpoint_nodes": [
+      "R8_K83UP_TL_OFFICIAL_x8_MALE_ASSEMBLED_MODIFIED_CLAMP",
+      "R8_K83UP_TL_x16_FEMALE_FACTORY_LATCH_PARKED"
+    ],
+    "vendor_derived_contact_nodes": [
+      "R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4"
+    ],
+    "sha256": "13aca9ccd52cdaffb63f03f0a126b5310e64fe3c1b02599807afcc2587317c4a",
     "scope": "Original chassis, hardware and cable planning proxies. Vendor endpoint geometry omitted. Not a new collision or manufacturing acceptance."
   },
   "remaining_physical_gates": [
@@ -1667,23 +1677,23 @@
   ],
   "EPS_complete_length_budgets": {
     "CABLE_R6_EPS_FACTORY300": {
-      "modeled_complete_centerline_mm": 247.2822971502571,
+      "modeled_complete_centerline_mm": 233.694657228206,
       "connector_allowance_mm": 24.0,
       "assembly_slack_mm": 15.0,
-      "required_with_allowances_mm": 286.28229715025714,
+      "required_with_allowances_mm": 272.694657228206,
       "nominal_stock_mm": 300,
-      "remaining_length_margin_mm": 13.717702849742864,
+      "remaining_length_margin_mm": 27.305342771794017,
       "geometric_length_budget_passed": true,
       "factory_measurement_origin_and_installed_flex_verified": false,
       "connector_allowance_is_engineering_assumption": true
     },
-    "CABLE_R7_EPS_PHANTEKS_PH_CB4P_BK500": {
+    "CABLE_R8_EPS_MODDIY_CO581_600": {
       "modeled_complete_centerline_mm": 434.320923152153,
       "connector_allowance_mm": 48.0,
       "assembly_slack_mm": 15.0,
       "required_with_allowances_mm": 497.320923152153,
-      "nominal_stock_mm": 500,
-      "remaining_length_margin_mm": 2.679076847847,
+      "nominal_stock_mm": 600,
+      "remaining_length_margin_mm": 102.679076847847,
       "geometric_length_budget_passed": true,
       "factory_measurement_origin_and_installed_flex_verified": false,
       "connector_allowance_is_engineering_assumption": true
@@ -1692,41 +1702,15 @@
   "EPS_isolated_factory_exit_transition": {
     "part": "PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE",
     "removable_half_part": "PSU_R6_fixed_wire_gutter_REMOVABLE_roof",
-    "centerline_xyz_mm": [
-      [
-        37.0,
-        82.0,
-        218.0
-      ],
-      [
-        37.0,
-        96,
-        218.0
-      ]
-    ],
-    "outer_diameter_mm": 7.5,
-    "inner_diameter_mm": 5.5,
-    "wire_proxy_diameter_mm": 4.5,
-    "nominal_radial_clearance_mm": 0.5,
-    "minimum_wire_to_wall_distance_mm": 0.4999999999999931,
-    "factory_face_reference_area_mm2": 3300.75,
-    "wall_material_projected_area_mm2": 20.420352248333657,
-    "wall_material_fraction_of_reference_face": 0.006186579489005122,
-    "isolated_outer_envelope_projected_area_mm2": 44.178646691106465,
-    "cold_air_face_area_fraction_displaced": 0.01338442677909762,
-    "source_exit_coordinates_status": "EngineeringXYZassumption;measurefactorywireexitbeforemanufacture.",
-    "thermal_or_physical_acceptance_completed": false,
-    "attached_single_solid": true,
-    "removable_roof_single_solid": true,
-    "fixed_moving_parts_overlap_mm3": 0.0,
     "service": {
-      "sweep_key": "SERVICE_POWER_R7_WIRE_ROOF_open_plusZ7p5",
+      "sweep_key": "SERVICE_POWER_R8_SHARED_WIRE_ROOF_plusZ7p5",
       "translation_mm": [
         0,
         0,
         7.5
       ],
-      "method": "Exactcontinuousleading-faceandsemicircularsliceconstruction;notdiscreteposes.",
+      "method": "Exact continuous leading-face and upper-semicircle construction",
+      "pose_containment_samples": 23,
       "removed_parts_for_access": [
         "TOP_R6_lid",
         "SKIN_R6_left",
@@ -1752,15 +1736,39 @@
         "PANEL_R6_left_"
       ],
       "top_frame_may_remain_for_opening": false,
-      "temporary_support_required": "SupportPSUandmainboardbeforeunfasteningtopframe;releaseGPUcableanchorandcontrolbuttonleadsbeforeliftingframe.",
-      "assembly_order": "LayfinishedfactoryEPS/GPUleadsintolowerhalvesbeforetopframeinstallation;lowerroofupperhalves,fitbothWIREFastener/nutpairs,sealjoinsafterfit-up.",
-      "service_order": "ACoff;supportPSUandmainboard;removeaccesspanelsandalltopframeconnectionsincludingGPUlacing/controlleads;removetopframe;removebothWIREbolt/nutpairs;liftwire-roof+Z7.5.",
+      "temporary_support_required": "Support PSU/mainboard; release GPU anchor and control leads before top-frame removal.",
+      "assembly_order": "Lay finished GPU loom first in shared lower opening, then ATX, and EPS in its independent opening; fit one shared roof. Never thread finished connectors through bores.",
+      "service_order": "AC off; support PSU/mainboard; remove access panels and top-frame attachments; remove top frame and two wire-roof fastener/nut pairs; lift roof +Z7.5. Lift ATX loom before GPU from shared opening.",
       "whole_top_frame_extraction_verified": false,
-      "clip_strength_and_seal_verified": false
+      "clip_strength_and_seal_verified": false,
+      "opens_without_PSU_disassembly_or_cable_cutting": true
     },
-    "total_protected_air_removed_mm3": 1150.6083093782072,
-    "exact_combined_outer_envelope_overlap_mm3": 1150.6083093772618,
-    "air_change_scope": "Onlythetwoexplicitwiretransitionouterenvelopes;allbridges/necksintheexistingwire-onlybay."
+    "centerline_xyz_mm": [
+      [
+        37.0,
+        82.0,
+        218.0
+      ],
+      [
+        37.0,
+        96.0,
+        218.0
+      ]
+    ],
+    "outer_diameter_mm": 7.5,
+    "inner_diameter_mm": 5.5,
+    "wire_proxy_diameter_mm": 4.5,
+    "nominal_radial_clearance_mm": 0.5,
+    "minimum_wire_to_wall_distance_mm": 0.4999999999999931,
+    "factory_face_reference_area_mm2": 3300.75,
+    "isolated_outer_envelope_projected_area_mm2": 44.178646691106465,
+    "cold_air_face_area_fraction_displaced": 0.01338442677909762,
+    "source_exit_coordinates_status": "Engineering XYZ only; factory exit requires measurement.",
+    "attached_single_solid": true,
+    "removable_roof_single_solid": true,
+    "fixed_moving_parts_overlap_mm3": 0.0,
+    "complete_source_segment_modeled": true,
+    "thermal_or_physical_acceptance_completed": false
   },
   "PSU_structural_air_boundaries": {
     "fixed_structural_boundaries": [
@@ -1783,19 +1791,26 @@
   },
   "complete_length_budgets": {
     "CABLE_R6_ATX_FACTORY300": {
-      "modeled_complete_centerline_mm": 131.79193191576223,
+      "modeled_complete_centerline_mm": 145.78780845398896,
       "modeled_connector_length_lower_bound_mm": 12.0,
       "connector_allowance_mm": 24.0,
       "assembly_slack_mm": 15.0,
-      "unmodeled_factory_face_transition_length_allowance_mm": 14.0,
-      "required_with_allowances_mm": 184.79193191576223,
+      "unmodeled_factory_face_transition_length_allowance_mm": 0.0,
+      "required_with_allowances_mm": 184.78780845398896,
       "nominal_stock_mm": 300,
-      "remaining_length_margin_mm": 115.20806808423777,
+      "remaining_length_margin_mm": 115.21219154601104,
       "geometric_length_budget_passed": true,
       "factory_measurement_origin_and_installed_flex_verified": false,
       "connector_allowance_is_engineering_assumption": true,
-      "factory_face_transition_geometry_verified": false,
-      "scope": "ATXface-to-engineeringglandtransitionhaslengthallowanceonly;itsroutingandisolationremainunmodeled."
+      "factory_face_transition_geometry_verified": true,
+      "complete_source_segment_modeled": true,
+      "source_face_point_engineering_xyz_mm": [
+        24.0,
+        96.0,
+        215.0
+      ],
+      "source_coordinates_received_hardware_verified": false,
+      "scope": "Complete CAD source segment included; factory exit dimensions still require received-hardware measurement."
     },
     "CABLE_R6_ATX_PHANTEKS_PH_CB24P_BK500": {
       "modeled_complete_centerline_mm": 423.2304059301588,
@@ -1811,58 +1826,239 @@
       "connector_allowance_is_engineering_assumption": true
     },
     "CABLE_R6_EPS_FACTORY300": {
-      "modeled_complete_centerline_mm": 247.2822971502571,
+      "modeled_complete_centerline_mm": 233.694657228206,
       "connector_allowance_mm": 24.0,
       "assembly_slack_mm": 15.0,
-      "required_with_allowances_mm": 286.28229715025714,
+      "required_with_allowances_mm": 272.694657228206,
       "nominal_stock_mm": 300,
-      "remaining_length_margin_mm": 13.717702849742864,
+      "remaining_length_margin_mm": 27.305342771794017,
       "geometric_length_budget_passed": true,
       "factory_measurement_origin_and_installed_flex_verified": false,
       "connector_allowance_is_engineering_assumption": true
     },
     "CABLE_R6_GPU_FACTORY300": {
-      "modeled_complete_centerline_mm": 258.0209413740893,
+      "modeled_complete_centerline_mm": 160.88318658891583,
       "connector_allowance_mm": 24.0,
       "assembly_slack_mm": 15.0,
-      "required_with_allowances_mm": 297.0209413740893,
+      "required_with_allowances_mm": 199.88318658891583,
       "nominal_stock_mm": 300,
-      "remaining_length_margin_mm": 2.9790586259106817,
+      "remaining_length_margin_mm": 100.11681341108417,
       "geometric_length_budget_passed": true,
       "factory_measurement_origin_and_installed_flex_verified": false,
       "connector_allowance_is_engineering_assumption": true
     },
     "CABLE_R6_GPU_FACTORY_SECOND150": {
-      "modeled_complete_centerline_mm": 98.31587640034358,
+      "modeled_complete_centerline_mm": 52.03911413057185,
       "modeled_connector_length_lower_bound_mm": 18.0,
       "connector_allowance_mm": 24.0,
       "assembly_slack_mm": 15.0,
       "unmodeled_factory_face_transition_length_allowance_mm": 0.0,
-      "required_with_allowances_mm": 137.3158764003436,
+      "required_with_allowances_mm": 91.03911413057185,
       "nominal_stock_mm": 150,
-      "remaining_length_margin_mm": 12.684123599656402,
+      "remaining_length_margin_mm": 58.960885869428154,
       "geometric_length_budget_passed": true,
       "factory_measurement_origin_and_installed_flex_verified": false,
       "connector_allowance_is_engineering_assumption": true
     },
-    "CABLE_R7_EPS_PHANTEKS_PH_CB4P_BK500": {
+    "CABLE_R6_SATA_A_FACTORY300": {
+      "modeled_complete_centerline_mm": 50.831252982133144,
+      "unmodeled_factory_face_to_gland_allowance_mm": 10.5,
+      "factory_face_to_gland_geometry_complete": false,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "nominal_stock_mm": 300,
+      "required_with_allowances_mm": 100.33125298213315,
+      "remaining_length_margin_mm": 199.66874701786685,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "CABLE_R6_SATA_A_NEXT150": {
+      "modeled_complete_centerline_mm": 87.23274122871833,
+      "unmodeled_factory_face_to_gland_allowance_mm": 0.0,
+      "factory_face_to_gland_geometry_complete": true,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "nominal_stock_mm": 150,
+      "required_with_allowances_mm": 126.23274122871833,
+      "remaining_length_margin_mm": 23.767258771281675,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "CABLE_R6_SATA_B_FACTORY300": {
+      "modeled_complete_centerline_mm": 211.90431184307752,
+      "unmodeled_factory_face_to_gland_allowance_mm": 10.5,
+      "factory_face_to_gland_geometry_complete": false,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "nominal_stock_mm": 300,
+      "required_with_allowances_mm": 261.4043118430775,
+      "remaining_length_margin_mm": 38.595688156922506,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "CABLE_R6_SATA_B_NEXT150_TO_NA_FH1": {
+      "modeled_complete_centerline_mm": 81.98248826554985,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "nominal_stock_mm": 150,
+      "required_with_allowances_mm": 120.98248826554985,
+      "remaining_length_margin_mm": 29.017511734450153,
+      "minimum_required_margin_mm": 20.0,
+      "geometric_length_budget_passed": true,
+      "minimum_margin_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "CABLE_R6_SATA_DATA_1_STARTECH_LSATA24_609p6": {
+      "modeled_complete_centerline_mm": 460.08769503390874,
+      "unmodeled_factory_face_to_gland_allowance_mm": 0.0,
+      "factory_face_to_gland_geometry_complete": true,
+      "connector_allowance_mm": 40.0,
+      "assembly_slack_mm": 15.0,
+      "nominal_stock_mm": 609.6,
+      "required_with_allowances_mm": 515.0876950339087,
+      "remaining_length_margin_mm": 94.51230496609128,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "CABLE_R6_SATA_DATA_2_STARTECH_LSATA24_609p6": {
+      "modeled_complete_centerline_mm": 442.92853707717313,
+      "unmodeled_factory_face_to_gland_allowance_mm": 0.0,
+      "factory_face_to_gland_geometry_complete": true,
+      "connector_allowance_mm": 40.0,
+      "assembly_slack_mm": 15.0,
+      "nominal_stock_mm": 609.6,
+      "required_with_allowances_mm": 497.92853707717313,
+      "remaining_length_margin_mm": 111.67146292282689,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "CABLE_R6_SATA_DATA_3_STARTECH_LSATA24_609p6": {
+      "modeled_complete_centerline_mm": 398.6743701455825,
+      "unmodeled_factory_face_to_gland_allowance_mm": 0.0,
+      "factory_face_to_gland_geometry_complete": true,
+      "connector_allowance_mm": 40.0,
+      "assembly_slack_mm": 15.0,
+      "nominal_stock_mm": 609.6,
+      "required_with_allowances_mm": 453.6743701455825,
+      "remaining_length_margin_mm": 155.92562985441754,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "CABLE_R8_EPS_MODDIY_CO581_600": {
       "modeled_complete_centerline_mm": 434.320923152153,
       "connector_allowance_mm": 48.0,
       "assembly_slack_mm": 15.0,
       "required_with_allowances_mm": 497.320923152153,
-      "nominal_stock_mm": 500,
-      "remaining_length_margin_mm": 2.679076847847,
+      "nominal_stock_mm": 600,
+      "remaining_length_margin_mm": 102.679076847847,
       "geometric_length_budget_passed": true,
       "factory_measurement_origin_and_installed_flex_verified": false,
       "connector_allowance_is_engineering_assumption": true
     },
-    "GPU8_R6_Phanteks_extension": {
-      "modeled_complete_centerline_mm": 413.34272190948786,
+    "CABLE_R8_SATA_STARTECH_SATAPOWEXT8_203p2": {
+      "modeled_complete_centerline_mm": 78.44367300309545,
+      "connector_allowance_mm": 30.0,
+      "assembly_slack_mm": 15.0,
+      "nominal_stock_mm": 203.2,
+      "required_with_allowances_mm": 123.44367300309545,
+      "remaining_length_margin_mm": 79.75632699690453,
+      "minimum_required_margin_mm": 20.0,
+      "geometric_length_budget_passed": true,
+      "minimum_margin_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "CABLE_R8_GPU_MODDIY_CAB534_700": {
+      "modeled_complete_centerline_mm": 602.916143430605,
       "connector_allowance_mm": 48.0,
       "assembly_slack_mm": 15.0,
+      "nominal_stock_mm": 700.0,
+      "required_with_allowances_mm": 665.916143430605,
+      "remaining_length_margin_mm": 34.08385656939504,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "PWM_R6_bottom_route": {
+      "modeled_complete_centerline_mm": 313.70796326794897,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 352.70796326794897,
+      "nominal_stock_mm": 400,
+      "remaining_length_margin_mm": 47.29203673205103,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "PWM_R6_top_route": {
+      "modeled_complete_centerline_mm": 288.63495408493617,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 327.63495408493617,
+      "nominal_stock_mm": 400,
+      "remaining_length_margin_mm": 72.36504591506383,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "PWM_R8_top_NA_EC1_300_extension": {
+      "modeled_complete_centerline_mm": 75.35398163397446,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 114.35398163397446,
+      "nominal_stock_mm": 300,
+      "remaining_length_margin_mm": 185.64601836602554,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "PWM_R8_SYS_NA_EC1_1_route": {
+      "modeled_complete_centerline_mm": 232.7809724509617,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 271.7809724509617,
+      "nominal_stock_mm": 300,
+      "remaining_length_margin_mm": 28.219027549038287,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "PWM_R8_SYS_NA_EC1_2_route": {
+      "modeled_complete_centerline_mm": 206.25398163397443,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 245.25398163397443,
+      "nominal_stock_mm": 300,
+      "remaining_length_margin_mm": 54.74601836602557,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "PWM_R8_SYS_NA_EC1_3_route": {
+      "modeled_complete_centerline_mm": 122.68097245096169,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 161.6809724509617,
+      "nominal_stock_mm": 300,
+      "remaining_length_margin_mm": 138.3190275490383,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "CONTROL_R6_ITW_original500mm_lead_route": {
+      "modeled_complete_centerline_mm": 208.38672286269278,
+      "connector_allowance_mm": 16.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 239.38672286269278,
       "nominal_stock_mm": 500,
-      "required_with_allowances_mm": 476.34272190948786,
-      "remaining_length_margin_mm": 23.657278090512136,
+      "remaining_length_margin_mm": 260.61327713730725,
       "geometric_length_budget_passed": true,
       "connector_allowance_is_engineering_assumption": true,
       "factory_measurement_origin_and_installed_flex_verified": false
@@ -1871,41 +2067,16 @@
   "GPU_isolated_factory_exit_transition": {
     "part": "PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE",
     "removable_half_part": "PSU_R6_fixed_wire_gutter_REMOVABLE_roof",
-    "centerline_xyz_mm": [
-      [
-        26.0,
-        85.8,
-        205.5
-      ],
-      [
-        26.0,
-        96,
-        205.5
-      ]
-    ],
-    "outer_diameter_mm": 9.5,
-    "inner_diameter_mm": 7.5,
-    "wire_proxy_diameter_mm": 6.5,
-    "nominal_radial_clearance_mm": 0.5,
-    "minimum_wire_to_wall_distance_mm": 0.08541601603159236,
-    "factory_face_reference_area_mm2": 3300.75,
-    "wall_material_projected_area_mm2": 26.703537555513243,
-    "wall_material_fraction_of_reference_face": 0.008090142408699005,
-    "isolated_outer_envelope_projected_area_mm2": 70.8821842466197,
-    "cold_air_face_area_fraction_displaced": 0.02147456918779662,
-    "source_exit_coordinates_status": "EngineeringXYZassumption;measurefactorywireexitbeforemanufacture.",
-    "thermal_or_physical_acceptance_completed": false,
-    "attached_single_solid": true,
-    "removable_roof_single_solid": true,
-    "fixed_moving_parts_overlap_mm3": 0.0,
+    "modified_cold_roof_part": "PSU_R6_cold_sleeve_REMOVABLE_roof",
     "service": {
-      "sweep_key": "SERVICE_POWER_R7_WIRE_ROOF_open_plusZ7p5",
+      "sweep_key": "SERVICE_POWER_R8_SHARED_WIRE_ROOF_plusZ7p5",
       "translation_mm": [
         0,
         0,
         7.5
       ],
-      "method": "Exactcontinuousleading-faceandsemicircularsliceconstruction;notdiscreteposes.",
+      "method": "Exact continuous leading-face and upper-semicircle construction",
+      "pose_containment_samples": 23,
       "removed_parts_for_access": [
         "TOP_R6_lid",
         "SKIN_R6_left",
@@ -1931,100 +2102,87 @@
         "PANEL_R6_left_"
       ],
       "top_frame_may_remain_for_opening": false,
-      "temporary_support_required": "SupportPSUandmainboardbeforeunfasteningtopframe;releaseGPUcableanchorandcontrolbuttonleadsbeforeliftingframe.",
-      "assembly_order": "LayfinishedfactoryEPS/GPUleadsintolowerhalvesbeforetopframeinstallation;lowerroofupperhalves,fitbothWIREFastener/nutpairs,sealjoinsafterfit-up.",
-      "service_order": "ACoff;supportPSUandmainboard;removeaccesspanelsandalltopframeconnectionsincludingGPUlacing/controlleads;removetopframe;removebothWIREbolt/nutpairs;liftwire-roof+Z7.5.",
+      "temporary_support_required": "Support PSU/mainboard; release GPU anchor and control leads before top-frame removal.",
+      "assembly_order": "Lay finished GPU loom first in shared lower opening, then ATX, and EPS in its independent opening; fit one shared roof. Never thread finished connectors through bores.",
+      "service_order": "AC off; support PSU/mainboard; remove access panels and top-frame attachments; remove top frame and two wire-roof fastener/nut pairs; lift roof +Z7.5. Lift ATX loom before GPU from shared opening.",
       "whole_top_frame_extraction_verified": false,
-      "clip_strength_and_seal_verified": false
+      "clip_strength_and_seal_verified": false,
+      "opens_without_PSU_disassembly_or_cable_cutting": true
     },
-    "total_protected_air_removed_mm3": 1150.6083093782072,
-    "exact_combined_outer_envelope_overlap_mm3": 1150.6083093772618,
-    "air_change_scope": "Onlythetwoexplicitwiretransitionouterenvelopes;allbridges/necksintheexistingwire-onlybay."
+    "channel_type": "Connected ATX/GPU lobed lay-in gland; separate EPS split bore",
+    "shared_split_plane_Z_mm": 215.0,
+    "channel_Y_mm": [
+      85.8,
+      96.0
+    ],
+    "ATX_bore_inner_outer_diameter_mm": [
+      12.0,
+      14.0
+    ],
+    "GPU_bore_inner_outer_diameter_mm": [
+      7.5,
+      9.5
+    ],
+    "vertical_connected_throat_inner_outer_width_mm": [
+      7.5,
+      9.5
+    ],
+    "vertical_connected_throat_Z_mm": [
+      205.5,
+      215.0
+    ],
+    "nominal_wall_thickness_mm": 1.0,
+    "ATX_nominal_radial_wire_clearance_mm": 0.5,
+    "GPU_nominal_radial_wire_clearance_mm": 0.5,
+    "actual_ATX_wire_to_channel_wall_distance_mm": 0.49999999999998884,
+    "actual_GPU_wire_to_channel_wall_distance_mm": 0.49999999999999534,
+    "GPU_lay_in_sweep_outside_shared_inner_mm3": 0.0,
+    "GPU_lay_in_upper_opening_allowance_mm": 0.75,
+    "common_outer_cross_section_area_mm2": 222.71206207497485,
+    "common_inner_cross_section_area_mm2": 168.1000205560053,
+    "factory_face_reference_area_mm2": 3300.75,
+    "divider_guide_nominal_origin_mm": [
+      17.0,
+      85.8,
+      215.0
+    ],
+    "divider_guide_nominal_size_mm": [
+      14.0,
+      1.0,
+      30.0
+    ],
+    "cold_roof_front_notch_width_depth_mm": [
+      14.0,
+      0.8
+    ],
+    "protected_air_removed_mm3": 2926.531871651241,
+    "exact_physical_envelope_and_guide_air_overlap_mm3": 2926.5318716504553,
+    "divider_guide_air_overlap_mm3": 273.961065788306,
+    "air_change_scope": "Exact physical shared/EPS channel outer envelopes and roof-carried divider guide only; no cable shape excluded.",
+    "attached_single_solid": true,
+    "removable_roof_single_solid": true,
+    "fixed_moving_parts_overlap_mm3": 0.0,
+    "source_exit_coordinates_status": "Engineering XYZ only, not measured manufacturer wire-exit positions.",
+    "thermal_or_physical_acceptance_completed": false,
+    "source_face_point_engineering_xyz_mm": [
+      26.0,
+      96.0,
+      205.5
+    ],
+    "native_gland_point_engineering_xyz_mm": [
+      26.0,
+      82.0,
+      205.5
+    ],
+    "complete_source_segment_modeled": true,
+    "factory_face_transition_geometry_verified": true,
+    "source_coordinates_received_hardware_verified": false,
+    "wire_proxy_diameter_mm": 6.5
   },
   "GPU_factory_bottom_open_arch": {
-    "part": "PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE",
-    "centerline_mm": [
-      [
-        35,
-        65,
-        193
-      ],
-      [
-        35,
-        16,
-        193
-      ],
-      [
-        103.3,
-        16,
-        193
-      ]
-    ],
-    "outer_diameter_mm": 9.5,
-    "inner_diameter_mm": 7.5,
-    "opening": "bottom atZ193;finishedheadneednotthreadthroughbore",
-    "wall_thickness_mm": 1.0,
-    "outer_upper_Z_mm": 197.75,
-    "wire_proxy_diameter_mm": 6.5,
-    "minimum_wire_to_arch_wall_mm": 0.4999999999999848,
-    "fixed_attached_single_solid": true,
-    "soft_strap_ears": [
-      {
-        "center_X_mm": 43.0,
-        "slot_mm": [
-          4,
-          3,
-          2
-        ],
-        "bbox_mm": {
-          "min": [
-            40.0,
-            20.0,
-            193.0
-          ],
-          "max": [
-            46.0,
-            25.0,
-            195.0
-          ],
-          "size": [
-            6.0,
-            5.0,
-            2.0
-          ]
-        }
-      },
-      {
-        "center_X_mm": 97.0,
-        "slot_mm": [
-          4,
-          3,
-          2
-        ],
-        "bbox_mm": {
-          "min": [
-            94.0,
-            20.0,
-            193.0
-          ],
-          "max": [
-            100.0,
-            25.0,
-            195.0
-          ],
-          "size": [
-            6.0,
-            5.0,
-            2.0
-          ]
-        }
-      }
-    ],
-    "strap_material_and_installed_retention_verified": false,
-    "protected_air_removed_mm3": 154.48422356758965,
-    "exact_outer_upper_overlap_mm3": 154.48422356546683,
-    "inner_upper_overlap_with_protected_air_mm3": 0.0,
-    "thermal_or_physical_acceptance_completed": false
+    "active": false,
+    "retired_in": "R8",
+    "replacement": "Direct underfloor Z190 route; original lead remains left of GPU lift column."
   },
   "wire_bay_floor_open_edges": {
     "part": "PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE",
@@ -2041,9 +2199,8 @@
           5.5,
           1.8
         ],
-        "actual_material_removed_mm3": 27.280001050356077,
-        "protected_air_removed_mm3": 0.0,
-        "GPU_arch_wall_removed_mm3": 0.0
+        "actual_material_removed_mm3": 27.27999999979511,
+        "protected_air_removed_mm3": 0.0
       },
       {
         "loom": "ATX",
@@ -2057,9 +2214,23 @@
           12.0,
           1.8
         ],
-        "actual_material_removed_mm3": 1.0186340659856796e-10,
-        "protected_air_removed_mm3": 0.0,
-        "GPU_arch_wall_removed_mm3": 0.0
+        "actual_material_removed_mm3": 1.7462298274040222e-10,
+        "protected_air_removed_mm3": 0.0
+      },
+      {
+        "loom": "GPU",
+        "origin_mm": [
+          10.5,
+          59.0,
+          195.3
+        ],
+        "size_mm": [
+          29.0,
+          18.0,
+          1.8
+        ],
+        "actual_material_removed_mm3": 103.6799999995128,
+        "protected_air_removed_mm3": 0.0
       }
     ],
     "assembly": "Layfinishedloomsfromopenleftedge;donotthreadconnectorsthroughsmallclosedholes.",
@@ -2068,12 +2239,228 @@
   },
   "PSU_final_cold_air_domain": {
     "connected_regions": 1,
-    "volume_mm3": 377018.8636770272,
+    "volume_mm3": 375397.4243383218,
+    "thermal_or_physical_acceptance_completed": false
+  },
+  "ATX_isolated_factory_exit_transition": {
+    "part": "PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE",
+    "removable_half_part": "PSU_R6_fixed_wire_gutter_REMOVABLE_roof",
+    "modified_cold_roof_part": "PSU_R6_cold_sleeve_REMOVABLE_roof",
+    "service": {
+      "sweep_key": "SERVICE_POWER_R8_SHARED_WIRE_ROOF_plusZ7p5",
+      "translation_mm": [
+        0,
+        0,
+        7.5
+      ],
+      "method": "Exact continuous leading-face and upper-semicircle construction",
+      "pose_containment_samples": 23,
+      "removed_parts_for_access": [
+        "TOP_R6_lid",
+        "SKIN_R6_left",
+        "top_fan_body",
+        "FRAME_R6_top"
+      ],
+      "remove_bolts_and_captured_nuts": [
+        "PSU_R6_WIRE_COVER_M3x8_9",
+        "PSU_R6_WIRE_COVER_M3x8_10",
+        "PSU_R6_WIRE_COVER_DIN562_M3_9",
+        "PSU_R6_WIRE_COVER_DIN562_M3_10",
+        "PSU_R6_TOP_M3x10_CSK_1",
+        "PSU_R6_TOP_M3x10_CSK_2",
+        "PSU_R6_TOP_DIN562_M3_1",
+        "PSU_R6_TOP_DIN562_M3_2",
+        "MAINBOARD_MOUNT_R6_frame_top_M3x10_1",
+        "MAINBOARD_MOUNT_R6_frame_top_M3x10_2",
+        "MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_1",
+        "MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_2"
+      ],
+      "remove_access_fastener_prefixes": [
+        "TOP_R6_lid_",
+        "PANEL_R6_left_"
+      ],
+      "top_frame_may_remain_for_opening": false,
+      "temporary_support_required": "Support PSU/mainboard; release GPU anchor and control leads before top-frame removal.",
+      "assembly_order": "Lay finished GPU loom first in shared lower opening, then ATX, and EPS in its independent opening; fit one shared roof. Never thread finished connectors through bores.",
+      "service_order": "AC off; support PSU/mainboard; remove access panels and top-frame attachments; remove top frame and two wire-roof fastener/nut pairs; lift roof +Z7.5. Lift ATX loom before GPU from shared opening.",
+      "whole_top_frame_extraction_verified": false,
+      "clip_strength_and_seal_verified": false,
+      "opens_without_PSU_disassembly_or_cable_cutting": true
+    },
+    "channel_type": "Connected ATX/GPU lobed lay-in gland; separate EPS split bore",
+    "shared_split_plane_Z_mm": 215.0,
+    "channel_Y_mm": [
+      85.8,
+      96.0
+    ],
+    "ATX_bore_inner_outer_diameter_mm": [
+      12.0,
+      14.0
+    ],
+    "GPU_bore_inner_outer_diameter_mm": [
+      7.5,
+      9.5
+    ],
+    "vertical_connected_throat_inner_outer_width_mm": [
+      7.5,
+      9.5
+    ],
+    "vertical_connected_throat_Z_mm": [
+      205.5,
+      215.0
+    ],
+    "nominal_wall_thickness_mm": 1.0,
+    "ATX_nominal_radial_wire_clearance_mm": 0.5,
+    "GPU_nominal_radial_wire_clearance_mm": 0.5,
+    "actual_ATX_wire_to_channel_wall_distance_mm": 0.49999999999998884,
+    "actual_GPU_wire_to_channel_wall_distance_mm": 0.49999999999999534,
+    "GPU_lay_in_sweep_outside_shared_inner_mm3": 0.0,
+    "GPU_lay_in_upper_opening_allowance_mm": 0.75,
+    "common_outer_cross_section_area_mm2": 222.71206207497485,
+    "common_inner_cross_section_area_mm2": 168.1000205560053,
+    "factory_face_reference_area_mm2": 3300.75,
+    "divider_guide_nominal_origin_mm": [
+      17.0,
+      85.8,
+      215.0
+    ],
+    "divider_guide_nominal_size_mm": [
+      14.0,
+      1.0,
+      30.0
+    ],
+    "cold_roof_front_notch_width_depth_mm": [
+      14.0,
+      0.8
+    ],
+    "protected_air_removed_mm3": 2926.531871651241,
+    "exact_physical_envelope_and_guide_air_overlap_mm3": 2926.5318716504553,
+    "divider_guide_air_overlap_mm3": 273.961065788306,
+    "air_change_scope": "Exact physical shared/EPS channel outer envelopes and roof-carried divider guide only; no cable shape excluded.",
+    "attached_single_solid": true,
+    "removable_roof_single_solid": true,
+    "fixed_moving_parts_overlap_mm3": 0.0,
+    "source_exit_coordinates_status": "Engineering XYZ only, not measured manufacturer wire-exit positions.",
+    "thermal_or_physical_acceptance_completed": false,
+    "source_face_point_engineering_xyz_mm": [
+      24.0,
+      96.0,
+      215.0
+    ],
+    "native_gland_point_engineering_xyz_mm": [
+      24.0,
+      82.0,
+      215.0
+    ],
+    "complete_source_segment_modeled": true,
+    "factory_face_transition_geometry_verified": true,
+    "source_coordinates_received_hardware_verified": false,
+    "wire_proxy_diameter_mm": 11
+  },
+  "ATX_GPU_shared_factory_exit_gland": {
+    "part": "PSU_R6_isolated_cold_sleeve_and_wire_gutter_BASE",
+    "removable_half_part": "PSU_R6_fixed_wire_gutter_REMOVABLE_roof",
+    "modified_cold_roof_part": "PSU_R6_cold_sleeve_REMOVABLE_roof",
+    "service": {
+      "sweep_key": "SERVICE_POWER_R8_SHARED_WIRE_ROOF_plusZ7p5",
+      "translation_mm": [
+        0,
+        0,
+        7.5
+      ],
+      "method": "Exact continuous leading-face and upper-semicircle construction",
+      "pose_containment_samples": 23,
+      "removed_parts_for_access": [
+        "TOP_R6_lid",
+        "SKIN_R6_left",
+        "top_fan_body",
+        "FRAME_R6_top"
+      ],
+      "remove_bolts_and_captured_nuts": [
+        "PSU_R6_WIRE_COVER_M3x8_9",
+        "PSU_R6_WIRE_COVER_M3x8_10",
+        "PSU_R6_WIRE_COVER_DIN562_M3_9",
+        "PSU_R6_WIRE_COVER_DIN562_M3_10",
+        "PSU_R6_TOP_M3x10_CSK_1",
+        "PSU_R6_TOP_M3x10_CSK_2",
+        "PSU_R6_TOP_DIN562_M3_1",
+        "PSU_R6_TOP_DIN562_M3_2",
+        "MAINBOARD_MOUNT_R6_frame_top_M3x10_1",
+        "MAINBOARD_MOUNT_R6_frame_top_M3x10_2",
+        "MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_1",
+        "MAINBOARD_MOUNT_R6_frame_top_M3_square_nut_2"
+      ],
+      "remove_access_fastener_prefixes": [
+        "TOP_R6_lid_",
+        "PANEL_R6_left_"
+      ],
+      "top_frame_may_remain_for_opening": false,
+      "temporary_support_required": "Support PSU/mainboard; release GPU anchor and control leads before top-frame removal.",
+      "assembly_order": "Lay finished GPU loom first in shared lower opening, then ATX, and EPS in its independent opening; fit one shared roof. Never thread finished connectors through bores.",
+      "service_order": "AC off; support PSU/mainboard; remove access panels and top-frame attachments; remove top frame and two wire-roof fastener/nut pairs; lift roof +Z7.5. Lift ATX loom before GPU from shared opening.",
+      "whole_top_frame_extraction_verified": false,
+      "clip_strength_and_seal_verified": false,
+      "opens_without_PSU_disassembly_or_cable_cutting": true
+    },
+    "channel_type": "Connected ATX/GPU lobed lay-in gland; separate EPS split bore",
+    "shared_split_plane_Z_mm": 215.0,
+    "channel_Y_mm": [
+      85.8,
+      96.0
+    ],
+    "ATX_bore_inner_outer_diameter_mm": [
+      12.0,
+      14.0
+    ],
+    "GPU_bore_inner_outer_diameter_mm": [
+      7.5,
+      9.5
+    ],
+    "vertical_connected_throat_inner_outer_width_mm": [
+      7.5,
+      9.5
+    ],
+    "vertical_connected_throat_Z_mm": [
+      205.5,
+      215.0
+    ],
+    "nominal_wall_thickness_mm": 1.0,
+    "ATX_nominal_radial_wire_clearance_mm": 0.5,
+    "GPU_nominal_radial_wire_clearance_mm": 0.5,
+    "actual_ATX_wire_to_channel_wall_distance_mm": 0.49999999999998884,
+    "actual_GPU_wire_to_channel_wall_distance_mm": 0.49999999999999534,
+    "GPU_lay_in_sweep_outside_shared_inner_mm3": 0.0,
+    "GPU_lay_in_upper_opening_allowance_mm": 0.75,
+    "common_outer_cross_section_area_mm2": 222.71206207497485,
+    "common_inner_cross_section_area_mm2": 168.1000205560053,
+    "factory_face_reference_area_mm2": 3300.75,
+    "divider_guide_nominal_origin_mm": [
+      17.0,
+      85.8,
+      215.0
+    ],
+    "divider_guide_nominal_size_mm": [
+      14.0,
+      1.0,
+      30.0
+    ],
+    "cold_roof_front_notch_width_depth_mm": [
+      14.0,
+      0.8
+    ],
+    "protected_air_removed_mm3": 2926.531871651241,
+    "exact_physical_envelope_and_guide_air_overlap_mm3": 2926.5318716504553,
+    "divider_guide_air_overlap_mm3": 273.961065788306,
+    "air_change_scope": "Exact physical shared/EPS channel outer envelopes and roof-carried divider guide only; no cable shape excluded.",
+    "attached_single_solid": true,
+    "removable_roof_single_solid": true,
+    "fixed_moving_parts_overlap_mm3": 0.0,
+    "source_exit_coordinates_status": "Engineering XYZ only, not measured manufacturer wire-exit positions.",
     "thermal_or_physical_acceptance_completed": false
   },
   "GPU_factory_service_parking": {
     "normal_wire": "CABLE_R6_GPU_FACTORY300",
-    "parked_service": "SERVICE_GPU_R7_factory300_FRONT_PARKED",
+    "parked_service": "SERVICE_GPU_R8_factory300_RETAINED_INSTALLED",
     "path_mm": [
       [
         26,
@@ -2092,63 +2479,46 @@
       ],
       [
         35,
-        73,
-        193
+        64,
+        190
       ],
       [
-        35,
-        16,
-        193
+        120,
+        64,
+        190
       ],
       [
-        110,
-        16,
-        193
+        109.5,
+        88,
+        190
       ],
       [
-        118,
-        16,
-        198.5
+        109.5,
+        88,
+        202.5
       ],
       [
-        126,
-        5.8,
-        198.5
-      ],
-      [
-        178,
-        5.8,
-        198.5
-      ],
-      [
-        185.5,
-        18,
-        198.5
-      ],
-      [
-        185.5,
-        18,
-        176
-      ],
-      [
-        185.5,
-        24.2,
-        176
+        109.5,
+        80,
+        202.5
       ]
     ],
-    "normal_centerline_mm": 258.0209413740893,
-    "parked_centerline_mm": 274.05083175725133,
+    "normal_centerline_mm": 160.88318658891583,
+    "parked_centerline_mm": 160.88318658891583,
     "connector_allowance_mm": 24.0,
     "normal_assembly_slack_mm": 15.0,
-    "required_stock_for_both_states_mm": 298.05083175725133,
+    "required_stock_for_both_states_mm": 199.88318658891583,
     "nominal_stock_mm": 300.0,
     "geometric_length_budget_passed": true,
-    "park_extra_uses_existing_assembly_slack": false,
-    "extra_centerline_for_park_mm": 16.029890383162012,
-    "park_extra_beyond_normal_assembly_slack_mm": 1.0298903831620123,
-    "remaining_stock_margin_for_both_states_mm": 1.9491682427486694,
+    "park_extra_uses_existing_assembly_slack": true,
+    "extra_centerline_for_park_mm": 0.0,
+    "park_extra_beyond_normal_assembly_slack_mm": 0.0,
+    "remaining_stock_margin_for_both_states_mm": 100.11681341108417,
     "normal_and_parked_states_share_the_same_factory_lead": true,
-    "prerequisite": "Releaseunderfloorsoftstrapsandfeedreservedslack;parkfreefactoryspanforwardbeforeliftingGPU.Originalcouplingstaysfixed.",
+    "native_lead_remains_in_installed_pose": true,
+    "service_replacement_is_exact_same_shape": true,
+    "requires_factory_cable_repositioning": false,
+    "prerequisite": "Keepfactory300mmandunused150mmleadscoupledandretainedatthePSU-sidecouplingduringGPUcardextraction.",
     "physical_flexible_deformation_verified": false,
     "factory_measurement_origin_and_usable_length_verified": false
   },
@@ -2156,23 +2526,53 @@
     "normal_paths": [
       [
         [
-          189,
-          60.5,
-          176
+          113,
+          43.7,
+          202.5
         ],
         [
-          189,
+          113,
+          35.5,
+          202.5
+        ],
+        [
+          113,
+          35.5,
+          234
+        ],
+        [
+          113,
+          9,
+          234
+        ],
+        [
+          180,
+          9,
+          234
+        ],
+        [
+          180,
+          30,
+          234
+        ],
+        [
+          180,
+          30,
+          190
+        ],
+        [
+          232,
+          30,
+          190
+        ],
+        [
+          232,
           68.6,
-          176
+          190
         ],
         [
           243.3,
-          68.6,
-          176
-        ],
-        [
-          243.3,
-          68.6,
+          80,
           214.5
         ],
         [
@@ -2234,7 +2634,7 @@
         ]
       ]
     ],
-    "modeled_wire_centerline_mm": 413.34272190948786,
+    "modeled_wire_centerline_mm": 602.916143430605,
     "free_tail_mm": 152.01548245743663,
     "parked_tail_mm": 152.01548245881793,
     "fixed_anchor_mm": [
@@ -2285,15 +2685,350 @@
     "physical_flexible_deformation_verified": false
   },
   "EPS_standard_extension": {
-    "SKU": "PhanteksPH-CB4P_BK",
-    "nominal_length_mm": 500,
-    "source_url": "https://phanteks.com.tw/Extension-Cables.html",
+    "SKU": "MODDIY CO581",
+    "nominal_length_mm": 600,
+    "source_url": "https://www.moddiy.com/products/2256/Premium-Custom-PSU-Extension-Cable-4-Pin-CPU-EPS-Power.html",
     "connector": "4pinmotherboardfemale-to-4pinmotherboardmale",
     "stock_availability_confirmed": false,
     "not_PSU_proprietary_modular_cable": true
   },
+  "SATA_hub_extension": {
+    "SKU": "StarTech SATAPOWEXT8",
+    "nominal_length_mm": 203.2,
+    "source_url": "https://media.startech.com/cms/pdfs/satapowext8_datasheet.pdf",
+    "type": "Standard15pinSATApower male-to-female extension;not a modularPSUcable",
+    "published_wire_gauge_AWG": 18,
+    "published_product_width_mm": 30.0,
+    "published_product_height_mm": 8.0,
+    "engineering_head_axial_length_mm": 14.5,
+    "engineering_head_height_mm": 12.0,
+    "engineering_wire_diameter_mm": 5.5,
+    "engineering_bend_radius_mm": 4.0,
+    "factory_fourth_SATA_head": "POWER_R8_SATA_FACTORY_FOURTH_STANDARD_COUPLING_PROXY",
+    "extension_female_head": "POWER_R8_SATAPOWEXT8_FEMALE_COUPLING_PROXY",
+    "extension_hub_head": "POWER_R6_NA_FH1_SATA_HEAD_ENGINEERING_PROXY",
+    "complete_length_budgets": {
+      "CABLE_R6_SATA_B_NEXT150_TO_NA_FH1": {
+        "modeled_complete_centerline_mm": 81.98248826554985,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 150,
+        "required_with_allowances_mm": 120.98248826554985,
+        "remaining_length_margin_mm": 29.017511734450153,
+        "minimum_required_margin_mm": 20.0,
+        "geometric_length_budget_passed": true,
+        "minimum_margin_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "CABLE_R8_SATA_STARTECH_SATAPOWEXT8_203p2": {
+        "modeled_complete_centerline_mm": 78.44367300309545,
+        "connector_allowance_mm": 30.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 203.2,
+        "required_with_allowances_mm": 123.44367300309545,
+        "remaining_length_margin_mm": 79.75632699690453,
+        "minimum_required_margin_mm": 20.0,
+        "geometric_length_budget_passed": true,
+        "minimum_margin_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      }
+    },
+    "cap_interface_intersections_mm3": {
+      "native_wire_to_fourth_head_mm3": 0.0,
+      "inline_head_pair_mm3": 0.0,
+      "extension_wire_to_female_mm3": 0.0,
+      "extension_wire_to_hub_head_mm3": 0.0
+    },
+    "drive3_service_scope": "ReleaseonlythedeclaredHDD3localfreetail;fourthheadinlinecouplingandextensionremainfixed.Nofactorystringisexcludedfromcollisionchecks.",
+    "stock_packing_connector_seating_retention_and_flex_verified": false
+  },
+  "controls_complete_length_budgets": {
+    "PWM_R6_bottom_route": {
+      "modeled_complete_centerline_mm": 313.70796326794897,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 352.70796326794897,
+      "nominal_stock_mm": 400,
+      "remaining_length_margin_mm": 47.29203673205103,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "PWM_R6_top_route": {
+      "modeled_complete_centerline_mm": 288.63495408493617,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 327.63495408493617,
+      "nominal_stock_mm": 400,
+      "remaining_length_margin_mm": 72.36504591506383,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "PWM_R8_top_NA_EC1_300_extension": {
+      "modeled_complete_centerline_mm": 75.35398163397446,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 114.35398163397446,
+      "nominal_stock_mm": 300,
+      "remaining_length_margin_mm": 185.64601836602554,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "PWM_R8_SYS_NA_EC1_1_route": {
+      "modeled_complete_centerline_mm": 232.7809724509617,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 271.7809724509617,
+      "nominal_stock_mm": 300,
+      "remaining_length_margin_mm": 28.219027549038287,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "PWM_R8_SYS_NA_EC1_2_route": {
+      "modeled_complete_centerline_mm": 206.25398163397443,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 245.25398163397443,
+      "nominal_stock_mm": 300,
+      "remaining_length_margin_mm": 54.74601836602557,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "PWM_R8_SYS_NA_EC1_3_route": {
+      "modeled_complete_centerline_mm": 122.68097245096169,
+      "connector_allowance_mm": 24.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 161.6809724509617,
+      "nominal_stock_mm": 300,
+      "remaining_length_margin_mm": 138.3190275490383,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    },
+    "CONTROL_R6_ITW_original500mm_lead_route": {
+      "modeled_complete_centerline_mm": 208.38672286269278,
+      "connector_allowance_mm": 16.0,
+      "assembly_slack_mm": 15.0,
+      "required_with_allowances_mm": 239.38672286269278,
+      "nominal_stock_mm": 500,
+      "remaining_length_margin_mm": 260.61327713730725,
+      "geometric_length_budget_passed": true,
+      "connector_allowance_is_engineering_assumption": true,
+      "factory_measurement_origin_and_installed_flex_verified": false
+    }
+  },
+  "retained_stock_packing": {
+    "per_route": [
+      {
+        "route": "CABLE_R6_ATX_FACTORY300",
+        "surplus_mm": 154.21219154601104,
+        "insulated_material_volume_mm3": 14655.27461366164
+      },
+      {
+        "route": "CABLE_R6_ATX_PHANTEKS_PH_CB24P_BK500",
+        "surplus_mm": 76.76959406984122,
+        "insulated_material_volume_mm3": 7295.658480653733
+      },
+      {
+        "route": "CABLE_R6_EPS_FACTORY300",
+        "surplus_mm": 66.30534277179399,
+        "insulated_material_volume_mm3": 1054.5409123372067
+      },
+      {
+        "route": "CABLE_R6_GPU_FACTORY300",
+        "surplus_mm": 139.11681341108417,
+        "insulated_material_volume_mm3": 4616.323291970075
+      },
+      {
+        "route": "CABLE_R6_GPU_FACTORY_SECOND150",
+        "surplus_mm": 97.96088586942815,
+        "insulated_material_volume_mm3": 3250.6431685203675
+      },
+      {
+        "route": "CABLE_R6_SATA_A_FACTORY300",
+        "surplus_mm": 249.16874701786685,
+        "insulated_material_volume_mm3": 5919.8244575872495
+      },
+      {
+        "route": "CABLE_R6_SATA_A_NEXT150",
+        "surplus_mm": 62.767258771281675,
+        "insulated_material_volume_mm3": 1491.2430152538243
+      },
+      {
+        "route": "CABLE_R6_SATA_B_FACTORY300",
+        "surplus_mm": 88.09568815692248,
+        "insulated_material_volume_mm3": 2093.003298370858
+      },
+      {
+        "route": "CABLE_R6_SATA_B_NEXT150_TO_NA_FH1",
+        "surplus_mm": 68.01751173445015,
+        "insulated_material_volume_mm3": 1615.9800710518214
+      },
+      {
+        "route": "CABLE_R6_SATA_DATA_1_STARTECH_LSATA24_609p6",
+        "surplus_mm": 149.51230496609128,
+        "insulated_material_volume_mm3": 3552.1573642020403
+      },
+      {
+        "route": "CABLE_R6_SATA_DATA_2_STARTECH_LSATA24_609p6",
+        "surplus_mm": 166.6714629228269,
+        "insulated_material_volume_mm3": 3959.829691328213
+      },
+      {
+        "route": "CABLE_R6_SATA_DATA_3_STARTECH_LSATA24_609p6",
+        "surplus_mm": 210.92562985441754,
+        "insulated_material_volume_mm3": 5011.233219608563
+      },
+      {
+        "route": "CABLE_R8_EPS_MODDIY_CO581_600",
+        "surplus_mm": 165.679076847847,
+        "insulated_material_volume_mm3": 5497.740802794137
+      },
+      {
+        "route": "CABLE_R8_SATA_STARTECH_SATAPOWEXT8_203p2",
+        "surplus_mm": 124.75632699690453,
+        "insulated_material_volume_mm3": 2963.9975503913047
+      },
+      {
+        "route": "CABLE_R8_GPU_MODDIY_CAB534_700",
+        "surplus_mm": 97.08385656939504,
+        "insulated_material_volume_mm3": 4879.966889289226
+      },
+      {
+        "route": "PWM_R6_bottom_route",
+        "surplus_mm": 86.29203673205103,
+        "insulated_material_volume_mm3": 609.9624644866021
+      },
+      {
+        "route": "PWM_R6_top_route",
+        "surplus_mm": 111.36504591506383,
+        "insulated_material_volume_mm3": 787.1931227552726
+      },
+      {
+        "route": "PWM_R8_top_NA_EC1_300_extension",
+        "surplus_mm": 224.64601836602554,
+        "insulated_material_volume_mm3": 1587.929132153033
+      },
+      {
+        "route": "PWM_R8_SYS_NA_EC1_1_route",
+        "surplus_mm": 67.21902754903829,
+        "insulated_material_volume_mm3": 475.14330704139434
+      },
+      {
+        "route": "PWM_R8_SYS_NA_EC1_2_route",
+        "surplus_mm": 93.74601836602557,
+        "insulated_material_volume_mm3": 662.6515558544995
+      },
+      {
+        "route": "PWM_R8_SYS_NA_EC1_3_route",
+        "surplus_mm": 177.3190275490383,
+        "insulated_material_volume_mm3": 1253.394347151926
+      },
+      {
+        "route": "CONTROL_R6_ITW_original500mm_lead_route",
+        "surplus_mm": 291.61327713730725,
+        "insulated_material_volume_mm3": 916.1301291438089
+      }
+    ],
+    "unused_Molex_FDD_nominal_segments_mm": [
+      300,
+      150,
+      150,
+      150
+    ],
+    "unused_original_EPS4_half_mm": 300,
+    "unused_heads": [
+      "POWER_R6_FACTORY_UNUSED_MOLEX_1_PARKED_PROXY",
+      "POWER_R6_FACTORY_UNUSED_MOLEX_2_PARKED_PROXY",
+      "POWER_R6_FACTORY_UNUSED_MOLEX_3_PARKED_PROXY",
+      "POWER_R6_FACTORY_UNUSED_FDD_PARKED_PROXY"
+    ],
+    "total_insulated_material_minimum_mm3": 96739.8355603259,
+    "reserved_box_volume_mm3": 577876.9494907283,
+    "suggested_packing_allowance_factor": 2,
+    "minimum_with_factor_mm3": 193479.6711206518,
+    "packing_accepted": false,
+    "note": "Materialvolumeisnotinstalledcoilvolume;unusedbranchesandextensionendsrequireactualpacking."
+  },
+  "original_fabrication_assets": [
+    {
+      "hardware_key": "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8",
+      "material": "FR4 insulating laminate",
+      "thickness_mm": 0.8,
+      "flat_axis": "Z",
+      "files": {
+        "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8.step": "78cce84fd7ecedc0f769e6b062c86dfdfab4f5159d6e8954b04a2d1d69ee563f",
+        "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8.dxf": "265062843f7b50b69205f7f71ea2f10677f168bb22633cb4403d9769d9ce70d3"
+      },
+      "manufacturing_release": false
+    },
+    {
+      "hardware_key": "R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4",
+      "material": "electrically insulating silicone foam",
+      "stock_thickness_mm": 1.5,
+      "installed_thickness_mm": 1.4,
+      "flat_axis": "Z",
+      "manufacturing_note": "Cut the1.5mm foam blank outline and bores; STEP shows nominal installed compression/conformation, not a milled groove specification. Supplier compression curve and preload unverified",
+      "asset_role": "FLAT_RAW_STOCK_NOT_INSTALLED_CONTACT_ENVELOPE",
+      "stock_outline_mm": [
+        7.6000002000001246,
+        60.42700019999998
+      ],
+      "stock_hole_centers_xy_mm": [
+        [
+          3.8004687099220007,
+          18.699766926221002
+        ],
+        [
+          3.8004687099220007,
+          57.874815754346
+        ]
+      ],
+      "stock_hole_diameter_mm": 2.4,
+      "coordinate_frame": "Local stock XY, Z0..1.5",
+      "scope": "Original rectangle and two round holes only. Manufacturer-derived compressed contact surfaces are not distributed.",
+      "files": {
+        "R8_RISER_MALE_SILICONE_FOAM_FLAT_STOCK_1p5.step": "63e41c11c6e167be9f1eaf8408a06e9c8c1067b830d05746e08686b29abf0a44",
+        "R8_RISER_MALE_SILICONE_FOAM_FLAT_STOCK_1p5.dxf": "d2ef6c5eb53bfa9f7cf9c7679484b21e6391ae376bcdab7f0a553221af5efc32"
+      },
+      "manufacturing_release": false
+    },
+    {
+      "hardware_key": "MAINBOARD_MOUNT_R8_lower_2_FLUSH_OD9_STEEL_CSK_WASHER",
+      "material": "steel load washer",
+      "thickness_mm": 1.5,
+      "flat_axis": "X",
+      "manufacturing_notes": "Custom OD9 / bore3.2 / 90deg D6 countersink; STEP is the authoritative stepped profile. Verify material, tolerances, bearing and clamp load before manufacture.",
+      "files": {
+        "MAINBOARD_MOUNT_R8_lower_2_FLUSH_OD9_STEEL_CSK_WASHER.step": "6e7515fe6c27717c5fb793b6ec3936f729894648e30bc9e3f77b63905e8a0ab9"
+      },
+      "manufacturing_release": false
+    },
+    {
+      "hardware_key": "MAINBOARD_MOUNT_R8_lower_4_FLUSH_OD9_STEEL_CSK_WASHER",
+      "material": "steel load washer",
+      "thickness_mm": 1.5,
+      "flat_axis": "X",
+      "manufacturing_notes": "Custom OD9 / bore3.2 / 90deg D6 countersink; STEP is the authoritative stepped profile. Verify material, tolerances, bearing and clamp load before manufacture.",
+      "files": {
+        "MAINBOARD_MOUNT_R8_lower_4_FLUSH_OD9_STEEL_CSK_WASHER.step": "6f47688121cbc50896672f5a058eca8ec2724d9058d4684743430f9c3baffeb5"
+      },
+      "manufacturing_release": false
+    }
+  ],
   "factory_exit_engineering_assumptions": {
     "source_points_mm": {
+      "ATX": [
+        24,
+        96,
+        215
+      ],
       "EPS": [
         37,
         96,
@@ -2305,7 +3040,7 @@
         205.5
       ]
     },
-    "gland_status": "EPSY82/GPUY85.8areengineeringinletassumptions;bothfaceY96sourceXYZremainunmeasured.",
+    "gland_status": "All ATX/EPS/GPU face-to-gland segments are modeled; face Y96 source XYZ remain engineering assumptions pending received hardware.",
     "received_hardware_verified": false
   },
   "measured_physical_bbox_mm": {
@@ -2327,20 +3062,20 @@
   },
   "measured_litres": 17.1875,
   "geometry_source_hashes": {
-    "design/build_r6.py": "08453087985c39a59a98405d8175f29332a3824ab3d6f0cb06e06864c1486bbc",
+    "design/build_r6.py": "79bcee535802d4c76ae45183d7da183bc42a8eb81eb95a15dc187d2527006eb9",
     "design/build.py": "7597eabfa096c507bc41d3308157119b9663146d60631f993d9ebf6d2fdada67",
-    "design/r6_export.py": "d9e933badc83570237655e4dab82fba827db1947672d63fbe96064b25537d368",
-    "design/r6_frame.py": "a27131ed066d9dc270f3df10b7fd19d08182c1b73f40dfb3228e0512852d25fd",
+    "design/r6_export.py": "0dc6322c8d2f5a9a16a3b832894f90d93699d3a7035b7e07a8e8a825bfbe5905",
+    "design/r6_frame.py": "36275ef32c4bbe57c44eada6601ebad6022fc30406465bb04bd1facf941f4f98",
     "design/r6_storage.py": "1ee68c5fe01bdb0268f65dee0ce23eb59b48181130e000d17e3d1a193c7ebf4c",
-    "design/r6_mainboard.py": "805c93cfc89463dc5208f61848274e15a21aa9d4e2d1a49c25852a0e791769cc",
+    "design/r6_mainboard.py": "77b962cf09d82226e7598f68d6cc2d5ae2990a6adf52c69a6cb8b82ab745b3cd",
     "design/r6_gpu.py": "e1fa31e59412396f3b8f7f08b7a87adf7698c971435db2b0fd81d5975ab34c0b",
     "design/r5_gpu.py": "45fe1a2d4443a63dacc41091f96521d67e62b48a4d3a2ed0f1001577337bef21",
     "design/r6_psu.py": "61b7d3a52c63b7fb6f62387c04ce468817c7542539004023e6c45a5ca3a3ec25",
-    "design/r6_riser.py": "2c9c26aa79fa3a7730c0af418c3525ef456bee0fda09e0fc6567e2302d4b44e9",
-    "design/r6_controls.py": "7985a97197d69e28f03e686e8caf6e62035a8a2ad2e8847c10edd896c5b83f4b",
+    "design/r6_riser.py": "eeab1bd370b435980e721bfa60a48c99095f0a6e14c3e1b2ddf505877751da24",
+    "design/r6_controls.py": "7dc001ad5bcdf00b1120f9021acddc16e450a1bd3f6a9bbf3fbd92371e66d4f0",
     "design/r6_power.py": "a90872aae0d776924a689375a3dcae46bd7dac409d2db5328f715e3873de0436",
-    "design/r6_atx_refine.py": "87063dc2d2c6cf1b73aaa996b73820cc3c16597f7bb9c0887e94e88fbfb9cefa",
-    "design/r6_sata_refine.py": "6d85481ba861185181a7367119b06af6844e4158fa861be9f8c78342a43a8502",
+    "design/r6_atx_refine.py": "1262b3573d94927478e67f4526a144f0fd8b3c7e94ceb3e616371c71368354d2",
+    "design/r6_sata_refine.py": "55d545e581c70b5ee9ec7161243e23271a0a718fceb98eb1fb670d1aef7c2a8b",
     "design/r6_packing.py": "ce9f650e74f6747949f351b977aba7ab0394b0f4dd20d7a0e84c9737eaba4bcd",
     "design/r2_cables.py": "ab486adc4451213ec1ffbba2270d05cc6ce28486ded86a7141d5d43b9b1a7f88",
     "design/r4_drive_mount.py": "690d8dc55b6986f55b74bc7f43c4b8d32d9c73a45331872c51a5aae48380f4a8",
@@ -2350,18 +3085,19 @@
     "references/original/GPU_R6_CEM_correct1p57_notch1p90_REFERENCE.step": "8959d6a505c77df5ddb30b2dad5a6710348539608edc82a1f00121526fbac76e",
     "references/original/native-mechanical.json": "5adb137fa587bdb3d7b5dd09045c24cce50593dcda64499afcaafc9ab099e211",
     "references/private/enp7660b-official-spec-20251008.pdf": "8df699a26d42f0849d06c9cd043733581196acea124f6a97b5c515b07cce7c4e",
-    "references/private/R23SR_official_male_endpoint.step": "9a9c4c3922584475a4eb0a9154a7f206620ee60fdc9eede7cdc18b1e7156bbdb",
-    "references/private/R23SR_official_female_endpoint.step": "06cd609341f778e7c4fdede2d0863f6c9ecf36aa996d715c77b8550295ab1328"
+    "references/private/K83UP_TL_official_male_endpoint.step": "efe0e0981893caa81e23bfd5d9c85451c3022c014e44636c24b04776cbc1b469",
+    "references/private/K83UP_TL_official_female_endpoint.step": "aea61556c078c22d89c444bc5b062640179f23913aa725e2c4b7c620448a8444"
   },
   "service_procedures": {
     "wire_roof": {
-      "sweep_key": "SERVICE_POWER_R7_WIRE_ROOF_open_plusZ7p5",
+      "sweep_key": "SERVICE_POWER_R8_SHARED_WIRE_ROOF_plusZ7p5",
       "translation_mm": [
         0,
         0,
         7.5
       ],
-      "method": "Exactcontinuousleading-faceandsemicircularsliceconstruction;notdiscreteposes.",
+      "method": "Exact continuous leading-face and upper-semicircle construction",
+      "pose_containment_samples": 23,
       "removed_parts_for_access": [
         "TOP_R6_lid",
         "SKIN_R6_left",
@@ -2387,11 +3123,12 @@
         "PANEL_R6_left_"
       ],
       "top_frame_may_remain_for_opening": false,
-      "temporary_support_required": "SupportPSUandmainboardbeforeunfasteningtopframe;releaseGPUcableanchorandcontrolbuttonleadsbeforeliftingframe.",
-      "assembly_order": "LayfinishedfactoryEPS/GPUleadsintolowerhalvesbeforetopframeinstallation;lowerroofupperhalves,fitbothWIREFastener/nutpairs,sealjoinsafterfit-up.",
-      "service_order": "ACoff;supportPSUandmainboard;removeaccesspanelsandalltopframeconnectionsincludingGPUlacing/controlleads;removetopframe;removebothWIREbolt/nutpairs;liftwire-roof+Z7.5.",
+      "temporary_support_required": "Support PSU/mainboard; release GPU anchor and control leads before top-frame removal.",
+      "assembly_order": "Lay finished GPU loom first in shared lower opening, then ATX, and EPS in its independent opening; fit one shared roof. Never thread finished connectors through bores.",
+      "service_order": "AC off; support PSU/mainboard; remove access panels and top-frame attachments; remove top frame and two wire-roof fastener/nut pairs; lift roof +Z7.5. Lift ATX loom before GPU from shared opening.",
       "whole_top_frame_extraction_verified": false,
-      "clip_strength_and_seal_verified": false
+      "clip_strength_and_seal_verified": false,
+      "opens_without_PSU_disassembly_or_cable_cutting": true
     },
     "GPU_card_only": {
       "moving_hardware": [
@@ -2429,7 +3166,6 @@
       "removal_order": [
         "断电拔显示器线，拆顶盖/顶扇及对应紧固件",
         "拔GPU8pin并解除线夹，将线头停到右后侧",
-        "松开电源底部软绑带，送出原厂300mm线预留余量，将自由段移至前侧停放；中转接头保持固定",
         "拆两颗IO螺钉，前夹与嵌件向-Y12再上提取出",
         "显卡+Z12脱槽，再上提300；三盘、电源和主板留位"
       ],
@@ -2464,7 +3200,7 @@
       "free_tail_park_condition": "Top/fan off;unplug40up,move75right then40rear; release tail tie,keep fixed vertical anchor; reserve open space above chassis for the equal-length free tail.",
       "native_power_parking": {
         "normal_wire": "CABLE_R6_GPU_FACTORY300",
-        "parked_service": "SERVICE_GPU_R7_factory300_FRONT_PARKED",
+        "parked_service": "SERVICE_GPU_R8_factory300_RETAINED_INSTALLED",
         "path_mm": [
           [
             26,
@@ -2483,80 +3219,3874 @@
           ],
           [
             35,
-            73,
-            193
+            64,
+            190
           ],
           [
-            35,
-            16,
-            193
+            120,
+            64,
+            190
           ],
           [
-            110,
-            16,
-            193
+            109.5,
+            88,
+            190
           ],
           [
-            118,
-            16,
-            198.5
+            109.5,
+            88,
+            202.5
           ],
           [
-            126,
-            5.8,
-            198.5
-          ],
-          [
-            178,
-            5.8,
-            198.5
-          ],
-          [
-            185.5,
-            18,
-            198.5
-          ],
-          [
-            185.5,
-            18,
-            176
-          ],
-          [
-            185.5,
-            24.2,
-            176
+            109.5,
+            80,
+            202.5
           ]
         ],
-        "normal_centerline_mm": 258.0209413740893,
-        "parked_centerline_mm": 274.05083175725133,
+        "normal_centerline_mm": 160.88318658891583,
+        "parked_centerline_mm": 160.88318658891583,
         "connector_allowance_mm": 24.0,
         "normal_assembly_slack_mm": 15.0,
-        "required_stock_for_both_states_mm": 298.05083175725133,
+        "required_stock_for_both_states_mm": 199.88318658891583,
         "nominal_stock_mm": 300.0,
         "geometric_length_budget_passed": true,
-        "park_extra_uses_existing_assembly_slack": false,
-        "extra_centerline_for_park_mm": 16.029890383162012,
-        "park_extra_beyond_normal_assembly_slack_mm": 1.0298903831620123,
-        "remaining_stock_margin_for_both_states_mm": 1.9491682427486694,
+        "park_extra_uses_existing_assembly_slack": true,
+        "extra_centerline_for_park_mm": 0.0,
+        "park_extra_beyond_normal_assembly_slack_mm": 0.0,
+        "remaining_stock_margin_for_both_states_mm": 100.11681341108417,
         "normal_and_parked_states_share_the_same_factory_lead": true,
-        "prerequisite": "Releaseunderfloorsoftstrapsandfeedreservedslack;parkfreefactoryspanforwardbeforeliftingGPU.Originalcouplingstaysfixed.",
+        "native_lead_remains_in_installed_pose": true,
+        "service_replacement_is_exact_same_shape": true,
+        "requires_factory_cable_repositioning": false,
+        "prerequisite": "Keepfactory300mmandunused150mmleadscoupledandretainedatthePSU-sidecouplingduringGPUcardextraction.",
         "physical_flexible_deformation_verified": false,
         "factory_measurement_origin_and_usable_length_verified": false
       }
     }
   },
   "riser_selection": {
-    "model": "ADT-Link R23SR30cm",
-    "electrical_lanes": 4,
+    "model": "ADT-Link K83UP-TL 50cm custom, custom insulating lower clamp",
+    "electrical_lanes": 8,
     "link_generation": 3,
-    "bandwidth_tradeoff": "DeliberatePCIe3x4 link in original physicalx8 motherboard slot;notx8performance",
     "release_status": "CAD_CANDIDATE_NOT_PHYSICALLY_OR_THERMALLY_ACCEPTED",
-    "actual_male_CPU_guard_minimum_distance_mm": 8.088873790384326,
+    "actual_male_CPU_guard_minimum_distance_mm": 2.490493633015241,
     "male_mount_CPU40_minimum_clearances_mm": {
-      "R6_RISER_MALE_M3x8_UP_1": 5.982905583979445,
-      "R6_RISER_MALE_M3_hex_1": 13.180472363769754,
-      "R6_RISER_MALE_M3x8_UP_2": 42.19006078849162,
-      "R6_RISER_MALE_M3_hex_2": 46.65946867324967
+      "R8_K83UP_TL_OFFICIAL_x8_MALE_ASSEMBLED_MODIFIED_CLAMP": 2.490493633015241,
+      "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8": 2.3114651842190703,
+      "R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4": 3.0238472106924936,
+      "R8_RISER_MALE_UPPER_REAR_FRAME_SUPPORT": 3.5519141288446665
+    },
+    "modified_factory_parts": {
+      "female_latch_detached_and_fully_parked_source_index": 2,
+      "removed_exact_endpoint_indices": [
+        138,
+        139,
+        140
+      ],
+      "removed_original_source_indices": [
+        999,
+        1002,
+        1003
+      ],
+      "removed_parts": [
+        "removable lower aluminum clamp",
+        "front removable M2 fastener (both slightly offset CAD representations)"
+      ],
+      "retained": "Full x8 PCB/gold fingers, all factory fanout/coax/sleeves/core stub/braid end, upper clamp and all slightly offset representations of middle/rear M2 fasteners",
+      "replacement_parts": [
+        "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8",
+        "R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4",
+        "R8_RISER_MALE_UPPER_REAR_FRAME_SUPPORT"
+      ],
+      "retained_middle_rear_fastener_axial_setting_mm": 0.399997425079,
+      "pad_stock_mm": 1.5,
+      "pad_installed_nominal_mm": 1.4,
+      "pad_preload_and_pullout_qualified": false
+    },
+    "spring_contact_proof": {
+      "source_fused_socket_index": 4,
+      "only_modified_source_indices": [
+        4
+      ],
+      "unchanged_source_solid_count": 218,
+      "before_sum_solid_volume_mm3": 14764.045245612233,
+      "after_sum_solid_volume_mm3": 14753.854350195805,
+      "cap_sum_solid_volume_mm3": 10.189434472137142,
+      "volume_conservation_error_mm3": 0.0014609442911055481,
+      "contact_count": 164,
+      "row_counts": [
+        82,
+        82
+      ],
+      "pitch_mm": 1.0,
+      "normal_contact_common_mm3": 10.19193403671941,
+      "contacts": [
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213659726131392,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              141.7738382698267,
+              60.66099156294646
+            ],
+            "max": [
+              166.0294077939647,
+              142.1261615322605,
+              62.19827428043606
+            ],
+            "size": [
+              0.26440789396471587,
+              0.3523232624337993,
+              1.537282717489603
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136742326584234,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              104.77383787791385,
+              60.66099249015501
+            ],
+            "max": [
+              166.0294082338546,
+              105.12616192417343,
+              62.19827686195343
+            ],
+            "size": [
+              0.26440833385461815,
+              0.35232404625958225,
+              1.537284371798421
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212464210214909,
+          "bbox_mm": {
+            "min": [
+              167.07059274118586,
+              104.77383876644654,
+              60.66099400864799
+            ],
+            "max": [
+              167.3350001,
+              105.12616108055025,
+              62.19827472468289
+            ],
+            "size": [
+              0.26440735881413957,
+              0.3523223141037022,
+              1.5372807160348998
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124641618165624,
+          "bbox_mm": {
+            "min": [
+              167.0705927290141,
+              105.77383875585433,
+              60.660993946284876
+            ],
+            "max": [
+              167.3350001,
+              106.12616109114246,
+              62.19827470703103
+            ],
+            "size": [
+              0.26440737098590716,
+              0.35232233528813595,
+              1.5372807607461567
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124660736096286,
+          "bbox_mm": {
+            "min": [
+              167.07059271788506,
+              106.77383874526207,
+              60.660993883921726
+            ],
+            "max": [
+              167.3350001,
+              107.12616110173472,
+              62.19827468937923
+            ],
+            "size": [
+              0.2644073821149391,
+              0.352322356472655,
+              1.537280805457506
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124657919262784,
+          "bbox_mm": {
+            "min": [
+              167.07059270516422,
+              107.77383873466984,
+              60.66099382155861
+            ],
+            "max": [
+              167.3350001,
+              108.12616111232694,
+              62.19827467172737
+            ],
+            "size": [
+              0.2644073948357857,
+              0.35232237765710295,
+              1.5372808501687558
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212466724055806,
+          "bbox_mm": {
+            "min": [
+              167.07059269418656,
+              108.77383872407758,
+              60.66099375919551
+            ],
+            "max": [
+              167.3350001,
+              109.12616112291919,
+              62.19827465407556
+            ],
+            "size": [
+              0.2644074058134436,
+              0.35232239884160776,
+              1.5372808948800483
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124675378375335,
+          "bbox_mm": {
+            "min": [
+              167.0705926818587,
+              109.77383871348533,
+              60.66099369683236
+            ],
+            "max": [
+              167.3350001,
+              110.12616113351142,
+              62.19827463642369
+            ],
+            "size": [
+              0.2644074181413032,
+              0.35232242002608416,
+              1.5372809395913336
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.0621246662815465,
+          "bbox_mm": {
+            "min": [
+              167.07059267033728,
+              110.7738387028931,
+              60.6609936344692
+            ],
+            "max": [
+              167.3350001,
+              111.12616114410368,
+              62.19827461877181
+            ],
+            "size": [
+              0.26440742966272524,
+              0.35232244121057477,
+              1.5372809843026118
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212467209636724,
+          "bbox_mm": {
+            "min": [
+              167.07059265771335,
+              111.77383869230086,
+              60.66099357210609
+            ],
+            "max": [
+              167.3350001,
+              112.1261611546959,
+              62.19827460111999
+            ],
+            "size": [
+              0.2644074422866538,
+              0.35232246239503695,
+              1.5372810290138972
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212466963454811,
+          "bbox_mm": {
+            "min": [
+              167.07059264539635,
+              112.77383868170864,
+              60.66099350974294
+            ],
+            "max": [
+              167.3350001,
+              113.12616116528817,
+              62.198274583468105
+            ],
+            "size": [
+              0.26440745460365633,
+              0.35232248357952756,
+              1.5372810737251683
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212468326200083,
+          "bbox_mm": {
+            "min": [
+              167.07059263280766,
+              113.77383867111637,
+              60.66099344737983
+            ],
+            "max": [
+              167.3350001,
+              114.12616117588041,
+              62.19827456581628
+            ],
+            "size": [
+              0.264407467192342,
+              0.3523225047640466,
+              1.5372811184364465
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212469339232899,
+          "bbox_mm": {
+            "min": [
+              167.07059262193863,
+              114.77383866052412,
+              60.660993385016674
+            ],
+            "max": [
+              167.3350001,
+              115.12616118647267,
+              62.19827454816444
+            ],
+            "size": [
+              0.2644074780613721,
+              0.3523225259485514,
+              1.5372811631477674
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124688602305085,
+          "bbox_mm": {
+            "min": [
+              167.07059260895758,
+              115.7738386499319,
+              60.66099332265357
+            ],
+            "max": [
+              167.3350001,
+              116.1261611970649,
+              62.19827453051254
+            ],
+            "size": [
+              0.26440749104241945,
+              0.3523225471329994,
+              1.5372812078589746
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212469010855699,
+          "bbox_mm": {
+            "min": [
+              167.070592598682,
+              116.77383863933967,
+              60.660993260290454
+            ],
+            "max": [
+              167.3350001,
+              117.12616120765713,
+              62.198274512860706
+            ],
+            "size": [
+              0.2644075013180043,
+              0.35232256831746156,
+              1.5372812525702528
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124691604120985,
+          "bbox_mm": {
+            "min": [
+              167.07059258727392,
+              117.77383862874741,
+              60.660993197927304
+            ],
+            "max": [
+              167.3350001,
+              118.12616121824938,
+              62.1982744952088
+            ],
+            "size": [
+              0.26440751272608054,
+              0.3523225895019664,
+              1.5372812972814955
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124691484912224,
+          "bbox_mm": {
+            "min": [
+              167.07059257423785,
+              118.7738386181552,
+              60.66099313556419
+            ],
+            "max": [
+              167.3350001,
+              119.12616122884161,
+              62.198274477556886
+            ],
+            "size": [
+              0.2644075257621523,
+              0.35232261068641435,
+              1.5372813419926956
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212471257971246,
+          "bbox_mm": {
+            "min": [
+              167.07059256182276,
+              119.77383860756295,
+              60.660993073201084
+            ],
+            "max": [
+              167.3350001,
+              120.12616123943383,
+              62.198274459905036
+            ],
+            "size": [
+              0.26440753817723817,
+              0.35232263187087653,
+              1.5372813867039525
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212471012289283,
+          "bbox_mm": {
+            "min": [
+              167.07059255038865,
+              120.77383859697069,
+              60.66099301083793
+            ],
+            "max": [
+              167.3350001,
+              121.12616125002609,
+              62.198274442253116
+            ],
+            "size": [
+              0.2644075496113487,
+              0.35232265305539556,
+              1.5372814314151881
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212470065497669,
+          "bbox_mm": {
+            "min": [
+              167.07059253713328,
+              121.77383858637845,
+              60.66099294847482
+            ],
+            "max": [
+              167.3350001,
+              122.12616126061829,
+              62.198274424601195
+            ],
+            "size": [
+              0.2644075628667224,
+              0.35232267423984354,
+              1.537281476126374
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124717784829135,
+          "bbox_mm": {
+            "min": [
+              167.0705925254834,
+              122.7738385757862,
+              60.660992886111664
+            ],
+            "max": [
+              167.3350001,
+              123.12616127121053,
+              62.19827440694933
+            ],
+            "size": [
+              0.26440757451661057,
+              0.35232269542433414,
+              1.5372815208376664
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212471299182824,
+          "bbox_mm": {
+            "min": [
+              167.07059251490895,
+              123.77383856519398,
+              60.660992823748565
+            ],
+            "max": [
+              167.3350001,
+              124.12616128180278,
+              62.1982743892974
+            ],
+            "size": [
+              0.26440758509104967,
+              0.3523227166087963,
+              1.537281565548838
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212472313418081,
+          "bbox_mm": {
+            "min": [
+              167.0705925029834,
+              124.77383855460172,
+              60.66099276138545
+            ],
+            "max": [
+              167.3350001,
+              125.126161292395,
+              62.19827437164553
+            ],
+            "size": [
+              0.2644075970166,
+              0.3523227377932727,
+              1.5372816102600808
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212473162617417,
+          "bbox_mm": {
+            "min": [
+              167.07059249076426,
+              125.7738385440095,
+              60.66099269902225
+            ],
+            "max": [
+              167.3350001,
+              126.12616130298728,
+              62.1982743539936
+            ],
+            "size": [
+              0.2644076092357466,
+              0.35232275897779175,
+              1.5372816549713448
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124739415062954,
+          "bbox_mm": {
+            "min": [
+              167.07059247913523,
+              126.77383853341725,
+              60.66099263665914
+            ],
+            "max": [
+              167.3350001,
+              127.12616131357952,
+              62.19827433634166
+            ],
+            "size": [
+              0.2644076208647732,
+              0.35232278016226815,
+              1.5372816996825236
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212472835119224,
+          "bbox_mm": {
+            "min": [
+              167.07059246833495,
+              127.77383852282503,
+              60.66099257429604
+            ],
+            "max": [
+              167.3350001,
+              128.12616132417173,
+              62.198274318689776
+            ],
+            "size": [
+              0.2644076316650512,
+              0.3523228013467019,
+              1.5372817443937379
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124749419563405,
+          "bbox_mm": {
+            "min": [
+              167.07059245421448,
+              128.77383851223274,
+              60.66099251193288
+            ],
+            "max": [
+              167.3350001,
+              129.126161334764,
+              62.19827430103789
+            ],
+            "size": [
+              0.2644076457855249,
+              0.35232282253124936,
+              1.537281789105009
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.0621247509256199,
+          "bbox_mm": {
+            "min": [
+              167.07059244417536,
+              129.7738385016405,
+              60.660992449569775
+            ],
+            "max": [
+              167.3350001,
+              130.12616134535622,
+              62.198274283385935
+            ],
+            "size": [
+              0.2644076558246411,
+              0.35232284371571154,
+              1.5372818338161593
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212475709792147,
+          "bbox_mm": {
+            "min": [
+              167.0705924325609,
+              130.7738384910483,
+              60.660992387206655
+            ],
+            "max": [
+              167.3350001,
+              131.12616135594845,
+              62.19827426573404
+            ],
+            "size": [
+              0.2644076674391158,
+              0.3523228649001453,
+              1.5372818785273878
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212474765310564,
+          "bbox_mm": {
+            "min": [
+              167.07059242063906,
+              131.77383848045602,
+              60.66099232484351
+            ],
+            "max": [
+              167.3350001,
+              132.12616136654069,
+              62.19827424808208
+            ],
+            "size": [
+              0.2644076793609429,
+              0.35232288608466433,
+              1.5372819232385666
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212476011916232,
+          "bbox_mm": {
+            "min": [
+              167.07059240758505,
+              132.7738384698638,
+              60.6609922624804
+            ],
+            "max": [
+              167.3350001,
+              133.12616137713295,
+              62.198274230430115
+            ],
+            "size": [
+              0.26440769241494877,
+              0.35232290726915494,
+              1.537281967949717
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212475999503129,
+          "bbox_mm": {
+            "min": [
+              167.0705923971024,
+              133.77383845927153,
+              60.66099220011724
+            ],
+            "max": [
+              167.3350001,
+              134.1261613877252,
+              62.1982742127782
+            ],
+            "size": [
+              0.26440770289761417,
+              0.35232292845367397,
+              1.5372820126609597
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124774790734597,
+          "bbox_mm": {
+            "min": [
+              167.07059238343973,
+              134.7738384486793,
+              60.660992137754135
+            ],
+            "max": [
+              167.3350001,
+              135.12616139831744,
+              62.19827419512623
+            ],
+            "size": [
+              0.26440771656027096,
+              0.35232294963813615,
+              1.5372820573720958
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124776270371315,
+          "bbox_mm": {
+            "min": [
+              167.07059237151657,
+              135.7738384380871,
+              60.66099207539102
+            ],
+            "max": [
+              167.3350001,
+              136.12616140890964,
+              62.19827417747432
+            ],
+            "size": [
+              0.26440772848343386,
+              0.3523229708225415,
+              1.5372821020832959
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212477148761071,
+          "bbox_mm": {
+            "min": [
+              167.07059236018614,
+              136.7738384274948,
+              60.66099201302787
+            ],
+            "max": [
+              167.3350001,
+              137.1261614195019,
+              62.19827415982233
+            ],
+            "size": [
+              0.264407739813862,
+              0.35232299200708894,
+              1.5372821467944604
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212477765472039,
+          "bbox_mm": {
+            "min": [
+              167.07059234661122,
+              137.77383841690258,
+              60.660991950664766
+            ],
+            "max": [
+              167.3350001,
+              138.12616143009416,
+              62.198274142170355
+            ],
+            "size": [
+              0.264407753388781,
+              0.35232301319157955,
+              1.5372821915055894
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212477682792256,
+          "bbox_mm": {
+            "min": [
+              167.0705923360351,
+              138.77383840631038,
+              60.66099188830166
+            ],
+            "max": [
+              167.3350001,
+              139.12616144068633,
+              62.198274124518434
+            ],
+            "size": [
+              0.26440776396489696,
+              0.35232303437595647,
+              1.5372822362167753
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212477832664903,
+          "bbox_mm": {
+            "min": [
+              167.07059232248534,
+              139.7738383957181,
+              60.66099182593846
+            ],
+            "max": [
+              167.3350001,
+              140.12616145127862,
+              62.198274106866435
+            ],
+            "size": [
+              0.2644077775146627,
+              0.35232305556053234,
+              1.5372822809279754
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212479080649149,
+          "bbox_mm": {
+            "min": [
+              167.07059231300352,
+              140.77383838512586,
+              60.66099176357535
+            ],
+            "max": [
+              167.3350001,
+              141.12616146187085,
+              62.19827408921444
+            ],
+            "size": [
+              0.26440778699648604,
+              0.3523230767449945,
+              1.5372823256390902
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212477738185423,
+          "bbox_mm": {
+            "min": [
+              167.07059230107814,
+              141.77383837453357,
+              60.6609917012122
+            ],
+            "max": [
+              167.3350001,
+              142.12616147246314,
+              62.198274071562565
+            ],
+            "size": [
+              0.26440779892186583,
+              0.3523230979295704,
+              1.5372823703503684
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212480943157685,
+          "bbox_mm": {
+            "min": [
+              167.07059228755168,
+              142.77383836394137,
+              60.66099163884909
+            ],
+            "max": [
+              167.3350001,
+              143.1261614830553,
+              62.19827405391056
+            ],
+            "size": [
+              0.2644078124483258,
+              0.3523231191139473,
+              1.537282415061469
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212480463336792,
+          "bbox_mm": {
+            "min": [
+              167.07059227641426,
+              143.77383835334913,
+              60.660991576485976
+            ],
+            "max": [
+              167.3350001,
+              144.12616149364754,
+              62.19827403625861
+            ],
+            "size": [
+              0.2644078235857421,
+              0.3523231402984095,
+              1.5372824597726336
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124797511477904,
+          "bbox_mm": {
+            "min": [
+              167.07059226341738,
+              144.77383834275687,
+              60.66099151412283
+            ],
+            "max": [
+              167.3350001,
+              145.12616150423983,
+              62.198274018606604
+            ],
+            "size": [
+              0.26440783658262035,
+              0.35232316148295695,
+              1.5372825044837768
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.0621248099778334,
+          "bbox_mm": {
+            "min": [
+              167.07059225286298,
+              145.77383833216464,
+              60.66099145175971
+            ],
+            "max": [
+              167.3350001,
+              146.12616151483206,
+              62.198274000954584
+            ],
+            "size": [
+              0.26440784713702215,
+              0.35232318266741913,
+              1.5372825491948703
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.0621247988975424,
+          "bbox_mm": {
+            "min": [
+              167.07059224034134,
+              146.77383832157238,
+              60.66099138939661
+            ],
+            "max": [
+              167.3350001,
+              147.12616152542427,
+              62.19827398330263
+            ],
+            "size": [
+              0.264407859658661,
+              0.3523232038518813,
+              1.5372825939060206
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212483957668471,
+          "bbox_mm": {
+            "min": [
+              167.07059222871231,
+              147.77383831098015,
+              60.66099132703345
+            ],
+            "max": [
+              167.3350001,
+              148.12616153601653,
+              62.1982739656506
+            ],
+            "size": [
+              0.2644078712876876,
+              0.3523232250363719,
+              1.5372826386171496
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.0621247932497356,
+          "bbox_mm": {
+            "min": [
+              167.07059221649254,
+              148.7738383003879,
+              60.66099126467034
+            ],
+            "max": [
+              167.3350001,
+              149.12616154660876,
+              62.19827394799857
+            ],
+            "size": [
+              0.2644078835074595,
+              0.35232324622086253,
+              1.537282683328229
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212481039320764,
+          "bbox_mm": {
+            "min": [
+              167.0705922045664,
+              149.77383828979563,
+              60.66099120230719
+            ],
+            "max": [
+              167.3350001,
+              150.12616155719803,
+              62.1982739303466
+            ],
+            "size": [
+              0.26440789543360665,
+              0.3523232674023973,
+              1.5372827280394148
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212482520164037,
+          "bbox_mm": {
+            "min": [
+              167.07059219264227,
+              150.7738382792034,
+              60.66099113994408
+            ],
+            "max": [
+              167.3350001,
+              151.12616156779023,
+              62.19827391269457
+            ],
+            "size": [
+              0.2644079073577359,
+              0.35232328858683104,
+              1.537282772750487
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124824365850796,
+          "bbox_mm": {
+            "min": [
+              167.0705921816178,
+              151.77383826860518,
+              60.66099107758097
+            ],
+            "max": [
+              167.3350001,
+              152.12616157838247,
+              62.19827389504259
+            ],
+            "size": [
+              0.26440791838220434,
+              0.3523233097772902,
+              1.537282817461623
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124828202546396,
+          "bbox_mm": {
+            "min": [
+              167.070592168793,
+              152.77383825801294,
+              60.66099101521782
+            ],
+            "max": [
+              167.3350001,
+              153.12616158897475,
+              62.19827387739054
+            ],
+            "size": [
+              0.26440793120698913,
+              0.35232333096180923,
+              1.5372828621727237
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124832046792845,
+          "bbox_mm": {
+            "min": [
+              167.07059215686814,
+              153.77383824742068,
+              60.66099095285466
+            ],
+            "max": [
+              167.3350001,
+              154.12616159956698,
+              62.19827385973849
+            ],
+            "size": [
+              0.26440794313185734,
+              0.35232335214629984,
+              1.5372829068838314
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124838209019526,
+          "bbox_mm": {
+            "min": [
+              167.07059214494342,
+              154.77383823682854,
+              60.660990890491554
+            ],
+            "max": [
+              167.3350001,
+              155.12616161015924,
+              62.19827384208651
+            ],
+            "size": [
+              0.26440795505658343,
+              0.3523233733307052,
+              1.5372829515949533
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212483810450524,
+          "bbox_mm": {
+            "min": [
+              167.07059213301721,
+              155.77383822623622,
+              60.6609908281284
+            ],
+            "max": [
+              167.3350001,
+              156.12616162075145,
+              62.19827382443445
+            ],
+            "size": [
+              0.26440796698278746,
+              0.3523233945152242,
+              1.537282996306054
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212484821468754,
+          "bbox_mm": {
+            "min": [
+              167.07059212220412,
+              156.773838215644,
+              60.66099076576529
+            ],
+            "max": [
+              167.3350001,
+              157.12616163134368,
+              62.19827380678246
+            ],
+            "size": [
+              0.26440797779588365,
+              0.3523234156996864,
+              1.5372830410171687
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212486068191545,
+          "bbox_mm": {
+            "min": [
+              167.07059210764697,
+              157.77383820505176,
+              60.66099070340218
+            ],
+            "max": [
+              167.3350001,
+              158.12616164193594,
+              62.198273789130454
+            ],
+            "size": [
+              0.2644079923530285,
+              0.352323436884177,
+              1.5372830857282764
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212486218735427,
+          "bbox_mm": {
+            "min": [
+              167.07059209618873,
+              158.7738381944595,
+              60.660990641039035
+            ],
+            "max": [
+              167.3350001,
+              159.12616165252817,
+              62.19827377147839
+            ],
+            "size": [
+              0.26440800381126905,
+              0.3523234580686676,
+              1.5372831304393557
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124840132114695,
+          "bbox_mm": {
+            "min": [
+              167.07059208642858,
+              159.77383818386727,
+              60.66099057867592
+            ],
+            "max": [
+              167.3350001,
+              160.1261616631204,
+              62.198273753826314
+            ],
+            "size": [
+              0.2644080135714262,
+              0.3523234792531298,
+              1.5372831751503924
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124854953993384,
+          "bbox_mm": {
+            "min": [
+              167.0705920748175,
+              160.77383817327504,
+              60.660990516312765
+            ],
+            "max": [
+              167.3350001,
+              161.12616167371263,
+              62.1982737361743
+            ],
+            "size": [
+              0.2644080251824903,
+              0.352323500437592,
+              1.5372832198615356
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.0621248806789091,
+          "bbox_mm": {
+            "min": [
+              167.07059206013744,
+              161.7738381626828,
+              60.66099045394966
+            ],
+            "max": [
+              167.3350001,
+              162.1261616843049,
+              62.19827371852222
+            ],
+            "size": [
+              0.264408039862559,
+              0.3523235216220826,
+              1.5372832645725651
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124868902106854,
+          "bbox_mm": {
+            "min": [
+              167.0705920518243,
+              162.77383815209055,
+              60.66099039158655
+            ],
+            "max": [
+              167.3350001,
+              163.12616169489712,
+              62.1982737008702
+            ],
+            "size": [
+              0.26440804817571006,
+              0.3523235428065732,
+              1.5372833092836515
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124877408165906,
+          "bbox_mm": {
+            "min": [
+              167.07059203732763,
+              163.77383814149832,
+              60.660990329223395
+            ],
+            "max": [
+              167.3350001,
+              164.12616170548935,
+              62.19827368321811
+            ],
+            "size": [
+              0.2644080626723735,
+              0.35232356399103537,
+              1.5372833539947166
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212488520155332,
+          "bbox_mm": {
+            "min": [
+              167.07059202463836,
+              164.77383813090603,
+              60.66099026686028
+            ],
+            "max": [
+              167.3350001,
+              165.12616171608158,
+              62.19827366556602
+            ],
+            "size": [
+              0.26440807536164357,
+              0.3523235851755544,
+              1.537283398705739
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212488274124136,
+          "bbox_mm": {
+            "min": [
+              167.07059201487866,
+              165.77383812031383,
+              60.660990204497175
+            ],
+            "max": [
+              167.3350001,
+              166.1261617266738,
+              62.198273647913986
+            ],
+            "size": [
+              0.26440808512134595,
+              0.35232360635998816,
+              1.5372834434168112
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.0621248905448756,
+          "bbox_mm": {
+            "min": [
+              167.070592001844,
+              166.77383810972157,
+              60.660990142134025
+            ],
+            "max": [
+              167.3350001,
+              167.12616173726607,
+              62.19827363026189
+            ],
+            "size": [
+              0.26440809815599664,
+              0.3523236275445072,
+              1.537283488127862
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212489436324813,
+          "bbox_mm": {
+            "min": [
+              167.07059198942764,
+              167.77383809912934,
+              60.66099007977087
+            ],
+            "max": [
+              167.3350001,
+              168.12616174785833,
+              62.19827361260979
+            ],
+            "size": [
+              0.26440811057236147,
+              0.3523236487289978,
+              1.53728353283892
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212489425376017,
+          "bbox_mm": {
+            "min": [
+              167.07059197829022,
+              168.7738380885371,
+              60.66099001740773
+            ],
+            "max": [
+              167.3350001,
+              169.12616175845056,
+              62.19827359495775
+            ],
+            "size": [
+              0.2644081217097778,
+              0.35232366991346,
+              1.5372835775500207
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124895746177605,
+          "bbox_mm": {
+            "min": [
+              167.07059196636476,
+              169.77383807794484,
+              60.66098995504461
+            ],
+            "max": [
+              167.3350001,
+              170.1261617690428,
+              62.198273577305635
+            ],
+            "size": [
+              0.26440813363524285,
+              0.3523236910979506,
+              1.5372836222610218
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.0621249168567295,
+          "bbox_mm": {
+            "min": [
+              167.07059195556832,
+              170.7738380673526,
+              60.6609898926815
+            ],
+            "max": [
+              167.3350001,
+              171.12616177963505,
+              62.19827355965364
+            ],
+            "size": [
+              0.2644081444316839,
+              0.3523237122824412,
+              1.5372836669721437
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212490343779767,
+          "bbox_mm": {
+            "min": [
+              167.0705919407001,
+              171.77383805676038,
+              60.66098983031835
+            ],
+            "max": [
+              167.3350001,
+              172.1261617902273,
+              62.19827354200152
+            ],
+            "size": [
+              0.26440815929990436,
+              0.3523237334669034,
+              1.5372837116831732
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212490258310376,
+          "bbox_mm": {
+            "min": [
+              167.07059192951928,
+              172.77383804616812,
+              60.66098976795524
+            ],
+            "max": [
+              167.3350001,
+              173.12616180081952,
+              62.1982735243494
+            ],
+            "size": [
+              0.26440817048072063,
+              0.352323754651394,
+              1.5372837563941602
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124908754645145,
+          "bbox_mm": {
+            "min": [
+              167.0705919175955,
+              173.77383803557592,
+              60.66098970559213
+            ],
+            "max": [
+              167.3350001,
+              174.12616181141175,
+              62.19827350669733
+            ],
+            "size": [
+              0.2644081824045088,
+              0.35232377583582775,
+              1.537283801105204
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212491260245943,
+          "bbox_mm": {
+            "min": [
+              167.07059190567105,
+              174.77383802498363,
+              60.66098964322897
+            ],
+            "max": [
+              167.3350001,
+              175.126161822004,
+              62.19827348904521
+            ],
+            "size": [
+              0.2644081943289507,
+              0.3523237970203752,
+              1.5372838458162335
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213645811768466,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              174.77383861936968,
+              60.66099073597671
+            ],
+            "max": [
+              166.02940739881808,
+              175.12616118270867,
+              62.19827197799716
+            ],
+            "size": [
+              0.26440749881808756,
+              0.35232256333898704,
+              1.5372812420204482
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213647215646175,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              173.77383860877745,
+              60.66099076103644
+            ],
+            "max": [
+              166.02940741103794,
+              174.1261611933009,
+              62.19827204776807
+            ],
+            "size": [
+              0.2644075110379447,
+              0.3523225845234492,
+              1.5372812867316341
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136472040395185,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              172.77383859818522,
+              60.66099078609605
+            ],
+            "max": [
+              166.02940742122718,
+              173.1261612038932,
+              62.19827211753904
+            ],
+            "size": [
+              0.26440752122718436,
+              0.35232260570796825,
+              1.5372813314429905
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213647822530853,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              171.77383858759296,
+              60.66099081115578
+            ],
+            "max": [
+              166.0294074356629,
+              172.1261612144854,
+              62.198272187309946
+            ],
+            "size": [
+              0.26440753566291164,
+              0.35232262689243043,
+              1.5372813761541693
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213650954921742,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              170.77383857700073,
+              60.66099083621543
+            ],
+            "max": [
+              166.02940744538995,
+              171.12616122507765,
+              62.198272257080845
+            ],
+            "size": [
+              0.2644075453899575,
+              0.35232264807692104,
+              1.537281420865412
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136489852688735,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              169.7738385664085,
+              60.66099086127515
+            ],
+            "max": [
+              166.02940745731635,
+              170.12616123566988,
+              62.19827232685181
+            ],
+            "size": [
+              0.26440755731636045,
+              0.3523226692613832,
+              1.5372814655766547
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213650464186355,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              168.77383855581627,
+              60.66099088633482
+            ],
+            "max": [
+              166.02940747036737,
+              169.1261612462621,
+              62.19827239662276
+            ],
+            "size": [
+              0.26440757036738205,
+              0.352322690445817,
+              1.53728151028794
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136519430743845,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              167.773838545224,
+              60.660990911394535
+            ],
+            "max": [
+              166.029407483364,
+              168.12616125685435,
+              62.198272466393654
+            ],
+            "size": [
+              0.2644075833640045,
+              0.352322711630336,
+              1.5372815549991188
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136514649495954,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              166.77383853463178,
+              60.660990936454205
+            ],
+            "max": [
+              166.02940749340092,
+              167.12616126744655,
+              62.1982725361646
+            ],
+            "size": [
+              0.26440759340093223,
+              0.3523227328147698,
+              1.537281599710397
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136516130658466,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              165.77383852403952,
+              60.66099096151392
+            ],
+            "max": [
+              166.02940750749235,
+              166.1261612780388,
+              62.19827260593548
+            ],
+            "size": [
+              0.2644076074923589,
+              0.3523227539992888,
+              1.5372816444215616
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213651134969548,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              164.77383851344732,
+              60.6609909865736
+            ],
+            "max": [
+              166.02940751913567,
+              165.12616128863107,
+              62.19827267570642
+            ],
+            "size": [
+              0.26440761913568167,
+              0.352322775183751,
+              1.5372816891328185
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213651914078551,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              163.77383850285506,
+              60.6609910116333
+            ],
+            "max": [
+              166.0294075299931,
+              164.12616129922327,
+              62.19827274547729
+            ],
+            "size": [
+              0.26440762999311573,
+              0.3523227963682132,
+              1.5372817338439901
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213652296883995,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              162.7738384922628,
+              60.66099103669296
+            ],
+            "max": [
+              166.02940754354108,
+              163.12616130981553,
+              62.19827281524816
+            ],
+            "size": [
+              0.2644076435410909,
+              0.3523228175527322,
+              1.5372817785551973
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213653147726822,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              161.77383848167057,
+              60.66099106175267
+            ],
+            "max": [
+              166.02940755354234,
+              162.12616132040776,
+              62.198272885019094
+            ],
+            "size": [
+              0.2644076535423494,
+              0.3523228387371944,
+              1.5372818232664258
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213653763811023,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              160.77383847107834,
+              60.66099108681239
+            ],
+            "max": [
+              166.0294075654668,
+              161.12616133099996,
+              62.19827295478995
+            ],
+            "size": [
+              0.2644076654668197,
+              0.35232285992162815,
+              1.537281867977562
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213654544145068,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              159.7738384604861,
+              60.660991111872036
+            ],
+            "max": [
+              166.02940757769204,
+              160.12616134159222,
+              62.198273024560805
+            ],
+            "size": [
+              0.26440767769204854,
+              0.35232288110611876,
+              1.5372819126887691
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213655394984594,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              158.77383844989382,
+              60.66099113693171
+            ],
+            "max": [
+              166.0294075888001,
+              159.12616135218448,
+              62.19827309433172
+            ],
+            "size": [
+              0.26440768880010523,
+              0.3523229022906662,
+              1.5372819574000047
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213655545399991,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              157.77383843930158,
+              60.660991161991426
+            ],
+            "max": [
+              166.02940760289124,
+              158.12616136277668,
+              62.19827316410257
+            ],
+            "size": [
+              0.2644077028912477,
+              0.35232292347509997,
+              1.5372820021111409
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136548327599433,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              156.77383842870933,
+              60.66099118705108
+            ],
+            "max": [
+              166.0294076142529,
+              157.12616137336897,
+              62.198273233873415
+            ],
+            "size": [
+              0.2644077142529113,
+              0.3523229446596474,
+              1.5372820468223338
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213653491400762,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              155.77383841811712,
+              60.66099121211081
+            ],
+            "max": [
+              166.02940762747616,
+              156.12616138396118,
+              62.19827330364432
+            ],
+            "size": [
+              0.2644077274761685,
+              0.35232296584405276,
+              1.5372820915335126
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213654971225903,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              154.77383840752486,
+              60.66099123717051
+            ],
+            "max": [
+              166.02940763760984,
+              155.12616139455344,
+              62.19827337341522
+            ],
+            "size": [
+              0.2644077376098437,
+              0.3523229870285718,
+              1.5372821362447127
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136559838543104,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              153.77383839693263,
+              60.660991262230176
+            ],
+            "max": [
+              166.02940765030922,
+              154.12616140514567,
+              62.19827344318612
+            ],
+            "size": [
+              0.2644077503092319,
+              0.352323008213034,
+              1.5372821809559412
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136563668333686,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              152.7738383863404,
+              60.660991287289875
+            ],
+            "max": [
+              166.02940766003937,
+              153.12616141573793,
+              62.198273512956945
+            ],
+            "size": [
+              0.2644077600393757,
+              0.3523230293975246,
+              1.5372822256670702
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136565162485405,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              151.77383837574814,
+              60.660991312349545
+            ],
+            "max": [
+              166.02940767278952,
+              152.12616142633016,
+              62.19827358272777
+            ],
+            "size": [
+              0.2644077727895251,
+              0.3523230505820152,
+              1.5372822703782276
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136579968085026,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              150.7738383651569,
+              60.66099133740925
+            ],
+            "max": [
+              166.02940768501455,
+              151.12616143692242,
+              62.198273652498656
+            ],
+            "size": [
+              0.264407785014555,
+              0.35232307176551103,
+              1.5372823150894064
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136564224074105,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              149.77383835456465,
+              60.66099136246897
+            ],
+            "max": [
+              166.02940769581284,
+              150.12616144751462,
+              62.19827372226948
+            ],
+            "size": [
+              0.26440779581284346,
+              0.3523230929499732,
+              1.537282359800507
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213657668956212,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              148.77383834397241,
+              60.66099138752865
+            ],
+            "max": [
+              166.02940770916007,
+              149.12616145811486,
+              62.19827379204029
+            ],
+            "size": [
+              0.2644078091600761,
+              0.3523231141424503,
+              1.537282404511643
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213658916530039,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              147.77383833338018,
+              60.66099141258833
+            ],
+            "max": [
+              166.02940772186085,
+              148.1261614687071,
+              62.19827386181115
+            ],
+            "size": [
+              0.264407821860857,
+              0.3523231353269125,
+              1.5372824492228219
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213659531439233,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              146.77383832278792,
+              60.66099143764806
+            ],
+            "max": [
+              166.02940773241434,
+              147.12616147929938,
+              62.19827393158196
+            ],
+            "size": [
+              0.2644078324143493,
+              0.35232315651145996,
+              1.5372824939339012
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136584244437465,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              145.77383831219572,
+              60.66099146270771
+            ],
+            "max": [
+              166.0294077431976,
+              146.12616148989162,
+              62.19827400135282
+            ],
+            "size": [
+              0.2644078431976027,
+              0.3523231776958937,
+              1.5372825386451083
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136605334556484,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              144.77383830160346,
+              60.66099148776738
+            ],
+            "max": [
+              166.02940775818962,
+              145.12616150048385,
+              62.19827407112362
+            ],
+            "size": [
+              0.2644078581896281,
+              0.3523231988803843,
+              1.5372825833562374
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213659587992997,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              143.77383829101117,
+              60.66099151282703
+            ],
+            "max": [
+              166.02940776927696,
+              144.12616151107608,
+              62.19827414089442
+            ],
+            "size": [
+              0.26440786927696536,
+              0.35232322006490335,
+              1.5372826280673877
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136602057599896,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              142.77383828041897,
+              60.66099153788675
+            ],
+            "max": [
+              166.0294077801166,
+              143.1261615216683,
+              62.19827421066527
+            ],
+            "size": [
+              0.26440788011660743,
+              0.3523232412493371,
+              1.5372826727785167
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213660970807719,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              140.7738382592345,
+              60.66099158800613
+            ],
+            "max": [
+              166.02940780561389,
+              141.12616154285283,
+              62.1982743502069
+            ],
+            "size": [
+              0.2644079056138935,
+              0.35232328361831833,
+              1.5372827622007748
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213661355806792,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              139.77383824864225,
+              60.66099161306585
+            ],
+            "max": [
+              166.02940781725837,
+              140.126161553445,
+              62.19827441997774
+            ],
+            "size": [
+              0.26440791725838153,
+              0.3523233048027521,
+              1.5372828069118896
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.0621366236949586,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              138.77383823805002,
+              60.66099163812555
+            ],
+            "max": [
+              166.02940782729823,
+              139.12616156403726,
+              62.19827448974852
+            ],
+            "size": [
+              0.2644079272982367,
+              0.3523233259872427,
+              1.5372828516229688
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213662356377588,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              137.77383822745776,
+              60.66099166318522
+            ],
+            "max": [
+              166.02940783922259,
+              138.12616157462952,
+              62.19827455951935
+            ],
+            "size": [
+              0.2644079392225933,
+              0.3523233471717617,
+              1.5372828963341263
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213663136054499,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              136.77383821686553,
+              60.66099168824493
+            ],
+            "max": [
+              166.02940785196168,
+              137.12616158522175,
+              62.19827462929012
+            ],
+            "size": [
+              0.26440795196168665,
+              0.3523233683562239,
+              1.5372829410451914
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213663520022545,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              135.77383820627327,
+              60.660991713304604
+            ],
+            "max": [
+              166.0294078619029,
+              136.12616159581404,
+              62.19827469906088
+            ],
+            "size": [
+              0.2644079619029185,
+              0.35232338954077136,
+              1.5372829857562778
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213662412487691,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              134.77383819568107,
+              60.66099173836429
+            ],
+            "max": [
+              166.02940787581508,
+              135.12616160640624,
+              62.1982747688317
+            ],
+            "size": [
+              0.26440797581508946,
+              0.3523234107251767,
+              1.5372830304674139
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213664286780351,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              133.77383818508883,
+              60.66099176342401
+            ],
+            "max": [
+              166.0294078900867,
+              134.12616161699847,
+              62.19827483860246
+            ],
+            "size": [
+              0.2644079900867098,
+              0.3523234319096389,
+              1.5372830751784505
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213664040222262,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              132.77383817449657,
+              60.66099178848369
+            ],
+            "max": [
+              166.02940789915493,
+              133.12616162759076,
+              62.19827490837321
+            ],
+            "size": [
+              0.2644079991549404,
+              0.35232345309418633,
+              1.5372831198895156
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136644239644497,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              131.77383816390434,
+              60.66099181354339
+            ],
+            "max": [
+              166.02940791159017,
+              132.12616163818296,
+              62.19827497814402
+            ],
+            "size": [
+              0.26440801159017724,
+              0.3523234742786201,
+              1.5372831646006304
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213665508243808,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              130.77383815331206,
+              60.66099183860307
+            ],
+            "max": [
+              166.0294079248629,
+              131.1261616487752,
+              62.19827504791476
+            ],
+            "size": [
+              0.2644080248629166,
+              0.3523234954631391,
+              1.5372832093116955
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213666287343923,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              129.77383814271982,
+              60.660991863662716
+            ],
+            "max": [
+              166.02940793602508,
+              130.12616165936745,
+              62.19827511768549
+            ],
+            "size": [
+              0.2644080360250882,
+              0.35232351664762973,
+              1.5372832540227748
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213665573923169,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              128.77383813212762,
+              60.66099188872243
+            ],
+            "max": [
+              166.02940794971252,
+              129.12616166995966,
+              62.19827518745629
+            ],
+            "size": [
+              0.26440804971252874,
+              0.35232353783203507,
+              1.5372832987338612
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213666192392311,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              127.77383812153536,
+              60.660991913782134
+            ],
+            "max": [
+              166.02940795928805,
+              128.12616168055192,
+              62.198275257227024
+            ],
+            "size": [
+              0.26440805928805844,
+              0.3523235590165541,
+              1.5372833434448907
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136676715693374,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              126.77383811094313,
+              60.660991938841796
+            ],
+            "max": [
+              166.02940796977086,
+              127.12616169114418,
+              62.19827532699787
+            ],
+            "size": [
+              0.26440806977086595,
+              0.3523235802010447,
+              1.5372833881560766
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213665863813373,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              125.77383810035089,
+              60.66099196390149
+            ],
+            "max": [
+              166.02940798232035,
+              126.12616170173641,
+              62.1982753967686
+            ],
+            "size": [
+              0.26440808232035806,
+              0.3523236013855211,
+              1.5372834328671132
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213666247501507,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              124.77383808975864,
+              60.66099198896117
+            ],
+            "max": [
+              166.0294079958497,
+              125.12616171232864,
+              62.198275466539314
+            ],
+            "size": [
+              0.26440809584971703,
+              0.3523236225699975,
+              1.5372834775781428
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.0621366662963195,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              123.7738380791664,
+              60.6609920140209
+            ],
+            "max": [
+              166.0294080069872,
+              124.12616172292088,
+              62.19827553631009
+            ],
+            "size": [
+              0.2644081069872186,
+              0.3523236437544881,
+              1.5372835222891936
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213668108496831,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              122.77383806857416,
+              60.6609920390806
+            ],
+            "max": [
+              166.02940802026166,
+              123.1261617335131,
+              62.198275606080806
+            ],
+            "size": [
+              0.26440812026166327,
+              0.3523236649389361,
+              1.537283567000209
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213667163192161,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              121.77383805798195,
+              60.660992064140274
+            ],
+            "max": [
+              166.0294080297099,
+              122.12616174410537,
+              62.19827567585151
+            ],
+            "size": [
+              0.26440812970992056,
+              0.3523236861234267,
+              1.5372836117112385
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213668642825265,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              120.77383804738972,
+              60.66099208919998
+            ],
+            "max": [
+              166.0294080413193,
+              121.12616175469762,
+              62.19827574562228
+            ],
+            "size": [
+              0.2644081413193078,
+              0.3523237073079031,
+              1.5372836564223036
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213669259348644,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              119.77383803679747,
+              60.66099211425969
+            ],
+            "max": [
+              166.02940805575693,
+              120.1261617652899,
+              62.19827581539298
+            ],
+            "size": [
+              0.2644081557569393,
+              0.3523237284924221,
+              1.5372837011332905
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136694107150704,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              118.77383802620524,
+              60.66099213931935
+            ],
+            "max": [
+              166.0294080669076,
+              119.12616177588212,
+              62.19827588516374
+            ],
+            "size": [
+              0.26440816690760016,
+              0.3523237496768843,
+              1.537283745844391
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213669794429029,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              117.773838015613,
+              60.66099216437905
+            ],
+            "max": [
+              166.02940807740987,
+              118.12616178647434,
+              62.198275954934424
+            ],
+            "size": [
+              0.26440817740987654,
+              0.3523237708613465,
+              1.537283790555371
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136695482298214,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              116.77383800502074,
+              60.66099218943868
+            ],
+            "max": [
+              166.02940809075733,
+              117.12616179706657,
+              62.19827602470511
+            ],
+            "size": [
+              0.26440819075733657,
+              0.3523237920458371,
+              1.5372838352664289
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213671422507587,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              115.77383799442849,
+              60.66099221449838
+            ],
+            "max": [
+              166.02940810268097,
+              116.12616180765883,
+              62.19827609447586
+            ],
+            "size": [
+              0.26440820268098264,
+              0.3523238132303419,
+              1.5372838799774797
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213671806713016,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              114.77383798383626,
+              60.660992239558105
+            ],
+            "max": [
+              166.0294081156609,
+              115.12616181825105,
+              62.198276164246536
+            ],
+            "size": [
+              0.26440821566092154,
+              0.35232383441478987,
+              1.5372839246884311
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213671561187115,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              113.773837973244,
+              60.66099226461776
+            ],
+            "max": [
+              166.02940812541937,
+              114.1261618288433,
+              62.198276234017214
+            ],
+            "size": [
+              0.26440822541937337,
+              0.3523238555992947,
+              1.5372839693994536
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213671397382091,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              112.77383796265178,
+              60.66099228967748
+            ],
+            "max": [
+              166.02940813816133,
+              113.12616183943551,
+              62.19827630378801
+            ],
+            "size": [
+              0.2644082381613373,
+              0.35232387678372845,
+              1.5372840141105328
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213671349265592,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              111.77383795205952,
+              60.66099231473717
+            ],
+            "max": [
+              166.02940815062775,
+              112.12616185002774,
+              62.19827637355868
+            ],
+            "size": [
+              0.26440825062775275,
+              0.35232389796821906,
+              1.5372840588215055
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136719307274026,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              110.77383794146729,
+              60.660992339796856
+            ],
+            "max": [
+              166.02940816201013,
+              111.12616186062,
+              62.198276443329405
+            ],
+            "size": [
+              0.2644082620101358,
+              0.35232391915270966,
+              1.5372841035325493
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136724308347824,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              109.77383793087508,
+              60.660992364856554
+            ],
+            "max": [
+              166.02940817322482,
+              110.12616187121225,
+              62.19827651310007
+            ],
+            "size": [
+              0.26440827322483074,
+              0.35232394033717185,
+              1.537284148243515
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136733634371936,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              108.77383792028283,
+              60.66099238991628
+            ],
+            "max": [
+              166.02940818600825,
+              109.1261618818045,
+              62.19827658287072
+            ],
+            "size": [
+              0.26440828600826194,
+              0.35232396152167667,
+              1.5372841929544379
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136733960327546,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              107.77383790969058,
+              60.66099241497593
+            ],
+            "max": [
+              166.0294081984717,
+              108.12616189239674,
+              62.19827665264144
+            ],
+            "size": [
+              0.26440829847172154,
+              0.35232398270615306,
+              1.53728423766551
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136741310391645,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              106.77383789909835,
+              60.660992440035635
+            ],
+            "max": [
+              166.02940820858353,
+              107.12616190298895,
+              62.19827672241208
+            ],
+            "size": [
+              0.2644083085835405,
+              0.35232400389060103,
+              1.5372842823764472
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213674280154093,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              105.7738378885061,
+              60.66099246509531
+            ],
+            "max": [
+              166.02940822123017,
+              106.12616191358123,
+              62.19827679218273
+            ],
+            "size": [
+              0.264408321230178,
+              0.3523240250751343,
+              1.53728432708742
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124906862488546,
+          "bbox_mm": {
+            "min": [
+              167.0705918686171,
+              177.77383799320688,
+              60.6609894561396
+            ],
+            "max": [
+              167.3350001,
+              178.12616185378067,
+              62.198273436088854
+            ],
+            "size": [
+              0.2644082313829017,
+              0.35232386057379017,
+              1.537283979949251
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124984408635314,
+          "bbox_mm": {
+            "min": [
+              167.07059175369915,
+              187.77383788728446,
+              60.660988832508295
+            ],
+            "max": [
+              167.3350001,
+              188.1261619597031,
+              62.19827325956752
+            ],
+            "size": [
+              0.2644083463008542,
+              0.3523240724186394,
+              1.5372844270592267
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212494607263737,
+          "bbox_mm": {
+            "min": [
+              167.07059176885085,
+              186.77383789787675,
+              60.66098889487144
+            ],
+            "max": [
+              167.3350001,
+              187.12616194911087,
+              62.19827327721964
+            ],
+            "size": [
+              0.26440833114915563,
+              0.35232405123412036,
+              1.5372843823482043
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212495479874467,
+          "bbox_mm": {
+            "min": [
+              167.07059177586655,
+              185.77383790846898,
+              60.66098895723455
+            ],
+            "max": [
+              167.3350001,
+              186.12616193851866,
+              62.19827329487181
+            ],
+            "size": [
+              0.2644083241334556,
+              0.3523240300496866,
+              1.53728433763726
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124950969372476,
+          "bbox_mm": {
+            "min": [
+              167.0705917877935,
+              184.7738379190612,
+              60.6609890195977
+            ],
+            "max": [
+              167.3350001,
+              185.1261619279264,
+              62.19827331252399
+            ],
+            "size": [
+              0.2644083122065126,
+              0.352324008865196,
+              1.5372842929262873
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212495178914626,
+          "bbox_mm": {
+            "min": [
+              167.07059179912025,
+              183.77383792965344,
+              60.660989081960814
+            ],
+            "max": [
+              167.3350001,
+              184.12616191733414,
+              62.198273330176036
+            ],
+            "size": [
+              0.26440830087975087,
+              0.3523239876807054,
+              1.5372842482152222
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124960552718426,
+          "bbox_mm": {
+            "min": [
+              167.07059181104714,
+              182.7738379402457,
+              60.66098914432392
+            ],
+            "max": [
+              167.3350001,
+              183.12616190674194,
+              62.1982733478282
+            ],
+            "size": [
+              0.2644082889528647,
+              0.3523239664962432,
+              1.537284203504278
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.0621249315550844,
+          "bbox_mm": {
+            "min": [
+              167.0705918235652,
+              181.77383795083796,
+              60.66098920668712
+            ],
+            "max": [
+              167.3350001,
+              182.12616189614965,
+              62.19827336548036
+            ],
+            "size": [
+              0.264408276434807,
+              0.35232394531169575,
+              1.5372841587932413
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124923061265845,
+          "bbox_mm": {
+            "min": [
+              167.07059183548927,
+              180.7738379614302,
+              60.66098926905023
+            ],
+            "max": [
+              167.3350001,
+              181.12616188555742,
+              62.19827338313246
+            ],
+            "size": [
+              0.2644082645107346,
+              0.35232392412723357,
+              1.537284114082226
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.062124949065180624,
+          "bbox_mm": {
+            "min": [
+              167.07059184741496,
+              179.7738379720224,
+              60.66098933141334
+            ],
+            "max": [
+              167.3350001,
+              180.1261618749652,
+              62.198273400784615
+            ],
+            "size": [
+              0.2644082525850422,
+              0.3523239029427998,
+              1.5372840693712746
+            ]
+          }
+        },
+        {
+          "bank": 1,
+          "volume_mm3": 0.06212496714103418,
+          "bbox_mm": {
+            "min": [
+              167.07059186168146,
+              178.77383798261468,
+              60.6609893937765
+            ],
+            "max": [
+              167.3350001,
+              179.12616186437293,
+              62.198273418436706
+            ],
+            "size": [
+              0.26440823831853777,
+              0.35232388175825236,
+              1.5372840246602095
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213648269166932,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              177.7738386511464,
+              60.66099066079766
+            ],
+            "max": [
+              166.02940736539222,
+              178.12616115093192,
+              62.19827176868433
+            ],
+            "size": [
+              0.2644074653922246,
+              0.3523224997855152,
+              1.5372811078866704
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136453669779955,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              187.77383875706883,
+              60.660990410200796
+            ],
+            "max": [
+              166.02940724560966,
+              188.12616104500952,
+              62.19827107097456
+            ],
+            "size": [
+              0.26440734560966916,
+              0.3523222879406944,
+              1.5372806607737672
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136435585159674,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              186.7738387464766,
+              60.660990435260395
+            ],
+            "max": [
+              166.02940725659494,
+              187.1261610556018,
+              62.198271140745526
+            ],
+            "size": [
+              0.2644073565949441,
+              0.35232230912521345,
+              1.5372807054851307
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213644408809154,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              185.77383873588434,
+              60.66099046032012
+            ],
+            "max": [
+              166.0294072699917,
+              186.12616106619402,
+              62.19827121051655
+            ],
+            "size": [
+              0.26440736999171577,
+              0.35232233030967564,
+              1.5372807501964303
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213643859351047,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              184.77383872529208,
+              60.66099048537982
+            ],
+            "max": [
+              166.02940727692922,
+              185.12616107678625,
+              62.19827128028751
+            ],
+            "size": [
+              0.26440737692922767,
+              0.35232235149416624,
+              1.5372807949076872
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213644708870134,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              183.77383871469988,
+              60.66099051043948
+            ],
+            "max": [
+              166.0294072895122,
+              184.12616108737848,
+              62.198271350058455
+            ],
+            "size": [
+              0.26440738951220055,
+              0.3523223726786,
+              1.5372808396189725
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136463539580626,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              182.77383870410762,
+              60.66099053549919
+            ],
+            "max": [
+              166.0294073052341,
+              183.12616109797074,
+              62.19827141982953
+            ],
+            "size": [
+              0.26440740523409545,
+              0.35232239386311903,
+              1.5372808843303432
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213645010680462,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              181.77383869351536,
+              60.660990560558915
+            ],
+            "max": [
+              166.02940731270422,
+              182.126161108563,
+              62.19827148960047
+            ],
+            "size": [
+              0.2644074127042302,
+              0.35232241504763806,
+              1.5372809290415574
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213643668903719,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              180.77383868292316,
+              60.66099058561858
+            ],
+            "max": [
+              166.02940732697087,
+              181.12616111915523,
+              62.19827155937148
+            ],
+            "size": [
+              0.2644074269708767,
+              0.3523224362320718,
+              1.5372809737528996
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.06213642327866781,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              179.7738386723309,
+              60.660990610678276
+            ],
+            "max": [
+              166.0294073410105,
+              180.12616112974746,
+              62.19827162914241
+            ],
+            "size": [
+              0.26440744101051905,
+              0.35232245741656243,
+              1.5372810184641352
+            ]
+          }
+        },
+        {
+          "bank": 0,
+          "volume_mm3": 0.062136478871163275,
+          "bbox_mm": {
+            "min": [
+              165.7649999,
+              178.77383866173864,
+              60.66099063573796
+            ],
+            "max": [
+              166.0294073508203,
+              179.1261611403397,
+              62.198271698913345
+            ],
+            "size": [
+              0.2644074508203005,
+              0.35232247860105304,
+              1.537281063175385
+            ]
+          }
+        }
+      ]
+    },
+    "validated_local_mechanical_contacts": [
+      {
+        "pair": [
+          "R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4",
+          "R8_K83UP_TL_OFFICIAL_x8_MALE_ASSEMBLED_MODIFIED_CLAMP"
+        ],
+        "domain_key": "CHECK_R8_SILICONE_PAD_LOCAL_ELASTIC_CONTACT_DOMAIN",
+        "overlap_mm3": 0.15079644737229622,
+        "outside_domain_mm3": 0.0,
+        "maximum_overlap_mm3": 0.5,
+        "physical_clamping_and_retention_verified": false
+      }
+    ],
+    "CPU_clearance_component_keys": [
+      "R8_K83UP_TL_OFFICIAL_x8_MALE_ASSEMBLED_MODIFIED_CLAMP",
+      "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8",
+      "R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4",
+      "R8_RISER_MALE_UPPER_REAR_FRAME_SUPPORT"
+    ],
+    "selected_model": "K83UP-TL",
+    "wire_paths": {
+      "CABLE_R8_K83_x8_SINGLE_BUNDLE_500mm_D9p4_PLANNING": {
+        "vertices_mm": [
+          [
+            170.75327763324424,
+            110.346318897128,
+            43.87137293917623
+          ],
+          [
+            170.75327763324424,
+            95,
+            43.87137293917623
+          ],
+          [
+            186,
+            95,
+            38
+          ],
+          [
+            233,
+            178,
+            38
+          ],
+          [
+            233,
+            208,
+            38
+          ],
+          [
+            233,
+            208,
+            125
+          ],
+          [
+            230.5,
+            241.2,
+            125
+          ],
+          [
+            230.5,
+            241.2,
+            190
+          ],
+          [
+            230.5,
+            200.5925623220789,
+            190
+          ],
+          [
+            213,
+            200.5925623220789,
+            190
+          ],
+          [
+            213,
+            241.2,
+            190
+          ],
+          [
+            213,
+            241.2,
+            217.4664906488225
+          ],
+          [
+            195.23006373431764,
+            241.2,
+            217.4664906488225
+          ],
+          [
+            195.23006373431764,
+            228.094469162773,
+            217.4664906488225
+          ]
+        ],
+        "centerline_mm": 463.9999999999724,
+        "wire_only_nominal_mm": 500.0,
+        "factory_sleeve_allowance_mm": 36.0,
+        "free_bundle_nominal_mm": 464.0,
+        "minimum_routed_centerline_mm": 414.78712464413013,
+        "geometric_service_loop_allocation_mm": 49.21287535586987,
+        "compact_reference_vertices_mm": [
+          [
+            170.75327763324424,
+            110.346318897128,
+            43.87137293917623
+          ],
+          [
+            170.75327763324424,
+            95,
+            43.87137293917623
+          ],
+          [
+            186,
+            95,
+            38
+          ],
+          [
+            233,
+            178,
+            38
+          ],
+          [
+            233,
+            208,
+            38
+          ],
+          [
+            233,
+            208,
+            125
+          ],
+          [
+            230.5,
+            241.2,
+            125
+          ],
+          [
+            230.5,
+            241.2,
+            190
+          ],
+          [
+            230.5,
+            225.199,
+            190
+          ],
+          [
+            213,
+            225.199,
+            190
+          ],
+          [
+            213,
+            241.2,
+            190
+          ],
+          [
+            213,
+            241.2,
+            217.4664906488225
+          ],
+          [
+            195.23006373431764,
+            241.2,
+            217.4664906488225
+          ],
+          [
+            195.23006373431764,
+            228.094469162773,
+            217.4664906488225
+          ]
+        ],
+        "tuning_parameter_bounds_mm": [
+          190.0,
+          225.199
+        ],
+        "length_definition_source_image": "https://img.alicdn.com/imgextra/i1/3004660323/O1CN01vQVioa1EFz0Y3fWij_!!3004660323.jpg",
+        "bundle_count": 1,
+        "outer_envelope_diameter_mm": 9.4,
+        "centerline_radius_mm": 8.0,
+        "source_core_cross_section_mm2": 21.47795,
+        "source_braid_cross_section_mm2": 3.17106,
+        "source_section_slice_thickness_mm": 0.01,
+        "source_core_envelope_section_mm": [
+          6.88238,
+          4.10938
+        ],
+        "model_kind": "CONSERVATIVE_OUTER_BUNDLE_ENVELOPE_RETAINS_FULL_LENGTH_AND_CROSS_SECTION",
+        "length_definition": "500mm nominal cable: 464mm free bundle plus two retained 18mm factory sleeves; factory PCB/fanout is separately retained. Confirm supplier measurement and tolerance before purchase",
+        "manufacturer_minimum_bend_radius_confirmed": false,
+        "installation_qualified": false,
+        "native_braid_transition": {
+          "original_source_index": 39,
+          "retained_endpoint_index": 2,
+          "volume_represented_by_factory_part_instead_of_duplicate_envelope_mm3": 0.04529109755387197,
+          "factory_material_preserved_in_male": true,
+          "complete_union_envelope_unchanged": true
+        }
+      }
+    },
+    "female_latch_pose": {
+      "original_source_index": 2,
+      "complete_factory_part_retained": true,
+      "mode": "DETACHED_AND_CAPTIVELY_PARKED_IN_INTEGRAL_BRIDGE_WELL",
+      "pin_hardware_key": "R8_RISER_LATCH_PARK_M2x25_PAN",
+      "pin_service_sweep_key": "SERVICE_R8_LATCH_PARK_PIN_WITHDRAW_MINUSX25",
+      "latch_service_sweep_key": "SERVICE_R8_DETACHED_FACTORY_LATCH_WITHDRAW_MINUSY25",
+      "retained_female_without_latch_check_key": "CHECK_R8_FEMALE_OTHER_218_FACTORY_SOLIDS_FOR_LATCH_SERVICE",
+      "service_prerequisites": "Open left/front access panel; tool-access clearance remains physically unverified",
+      "case_translation_from_stock_mm": [
+        -13.0,
+        -16.0,
+        -19.0
+      ],
+      "is_actual_detachability_verified": false,
+      "actual_hardware_modified": false,
+      "retention": "M2x25 cross pin and captive AF4x1.6 nut, integral well/floor/roof",
+      "GPU_retention": "existing GPU IO ears/guide rails/top clamp; factory connector latch is parked",
+      "service": [
+        "remove M2 cross pin toward -X25",
+        "withdraw complete parked latch -Y25"
+      ],
+      "requires_physical_validation": "Confirm reversible snap-latch detachment, parking fit and retention before build"
+    },
+    "male_mounts": {
+      "axes": [
+        [
+          210.257468609922,
+          164.199766826221,
+          205.2,
+          0,
+          0,
+          1
+        ],
+        [
+          210.257468609922,
+          203.374815654346,
+          205.2,
+          0,
+          0,
+          1
+        ]
+      ],
+      "bolts": "Retained original M2x8 middle/rear screws, factory heads downward",
+      "added_nuts": false,
+      "original_fastener_source_indices": [
+        993,
+        996,
+        1006,
+        1009
+      ],
+      "axial_setting_plusZ_mm": 0.399997425079,
+      "actual_head_bearing_z_mm": 205.2,
+      "head_diameter_mm": 4.0,
+      "carrier_head_relief_diameter_mm": 4.6,
+      "carrier_head_relief_floor_z_mm": 203.4,
+      "driver_relief_diameter_mm": 2.6,
+      "in_place_tool_access_verified": false,
+      "factory_shank_length_mm": 8.0,
+      "shank_overlap_with_original_upper_clamp_mm": 2.8,
+      "tip_above_upper_clamp_mm": 0.399997655884,
+      "CAD_upper_clamp_bore_diameter_mm": 2.2,
+      "actual_thread_retention_and_engagement_verified": false,
+      "retention_note": "Retain the factory upper-clamp fastening method; CAD omits threads and shows2.2mm clearance bores. Confirm actual retention and0.4mm added insertion on received hardware",
+      "status": "CPU40_CLEARANCE_VERIFIED_NOT_LOAD_QUALIFIED"
+    },
+    "limits": [
+      "Board-specific socket datum remains photo-derived with 1–2mm uncertainty; physical measurements required",
+      "R8 bend radius is an engineering candidate, not a manufacturer minimum certification",
+      "Custom FR4/silicone clamp requires preload, pullout, insulation, continuity and PCIe signal tests",
+      "Verify board PCIe power capacity and GPU slot power draw; no unknown auxiliary power pinout assumed",
+      "Physical fit, negotiated Gen3 x8, stability, printed load and thermal/noise acceptance incomplete"
+    ]
+  },
+  "mainboard_lower_flush_joints": [
+    {
+      "mount_index": 2,
+      "axis_yz_mm": [
+        208.98000000000002,
+        50.170000000000016
+      ],
+      "washer": "MAINBOARD_MOUNT_R8_lower_2_FLUSH_OD9_STEEL_CSK_WASHER",
+      "screw": "MAINBOARD_MOUNT_R8_rear_M3x8_CSK_2",
+      "flush_face_x_mm": 173.8,
+      "custom_steel_washer_OD_mm": 9.0,
+      "washer_thickness_mm": 1.5,
+      "washer_bore_mm": 3.2,
+      "washer_90deg_countersink_major_D_mm": 6.0,
+      "tray_recess_diameter_mm": 11.2,
+      "tray_recess_floor_x_mm": 175.3,
+      "remaining_tray_bearing_thickness_mm": 0.9,
+      "radial_adjustment_mm": 1.0,
+      "screw_nominal_length_including_head_mm": 8.0,
+      "nominal_standoff_engagement_mm": 5.1,
+      "factory_female_PCB_max_x_mm": 173.5572137,
+      "nominal_PCB_face_clearance_mm": 0.2427863,
+      "physical_fit_torque_creep_and_bearing_load_verified": false
+    },
+    {
+      "mount_index": 4,
+      "axis_yz_mm": [
+        76.9,
+        50.170000000000016
+      ],
+      "washer": "MAINBOARD_MOUNT_R8_lower_4_FLUSH_OD9_STEEL_CSK_WASHER",
+      "screw": "MAINBOARD_MOUNT_R8_rear_M3x8_CSK_4",
+      "flush_face_x_mm": 173.8,
+      "custom_steel_washer_OD_mm": 9.0,
+      "washer_thickness_mm": 1.5,
+      "washer_bore_mm": 3.2,
+      "washer_90deg_countersink_major_D_mm": 6.0,
+      "tray_recess_diameter_mm": 11.2,
+      "tray_recess_floor_x_mm": 175.3,
+      "remaining_tray_bearing_thickness_mm": 0.9,
+      "radial_adjustment_mm": 1.0,
+      "screw_nominal_length_including_head_mm": 8.0,
+      "nominal_standoff_engagement_mm": 5.1,
+      "factory_female_PCB_max_x_mm": 173.5572137,
+      "nominal_PCB_face_clearance_mm": 0.2427863,
+      "physical_fit_torque_creep_and_bearing_load_verified": false
     }
-  }
+  ]
 }
