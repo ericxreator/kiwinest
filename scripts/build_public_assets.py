@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 """Publish current original geometry while removing vendor models and bytes.
 
-Run after design/r6_export.py. Only the explicit original-part allowlist and
+Run after design/r9_export.py. Only the explicit original-part allowlist and
 original hardware/cable proxies are distributed. This is not a CAD check.
 """
 from __future__ import annotations
@@ -23,6 +23,57 @@ EXCLUDED = {
     'R6_R83SL_OFFICIAL_x8_MALE_ASSEMBLED',
 }
 PRESSED_FOAM = 'R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4'
+PUBLIC_FABRICATION_KEYS={
+    'R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8',
+    'MAINBOARD_MOUNT_R8_lower_2_FLUSH_OD9_STEEL_CSK_WASHER',
+    'MAINBOARD_MOUNT_R8_lower_4_FLUSH_OD9_STEEL_CSK_WASHER',
+    'PSU_R6_REPLACEABLE_1mm_METAL_FLANGE_NOT_PRINT',
+    'PSU_R9_REPLACEABLE_1mm_METAL_REAR_FLANGE_NOT_PRINT',
+    'PSU_R9_SPLIT_INSULATING_FOAM_LEFT_INSTALLED',
+    'PSU_R9_SPLIT_INSULATING_FOAM_RIGHT_INSTALLED',
+    'PSU_R9_LEFT_PANEL_SEAL_INSTALLED','PSU_R9_REAR_PANEL_SEAL_INSTALLED',
+    'R9_HDD_right_boundary_03mm_PC_SHEET',
+    'R9_HDD_chimney_right_boundary_03mm_PC_SHEET',
+    'R9_HDD_TOP_DIFFUSER_05mm_FOAM_EDGE_SEAL',
+    *[f'R9_HDD_HATCH_{i}_REMOVABLE_SLOT_FOAM_SEAL' for i in (1,2,3)],
+    *[f'R9_HDD_split_silicone_wire_seal_{i}' for i in range(1,7)],
+}
+
+
+def publication_preflight(source: Path,report: dict) -> None:
+    """Refuse failed/stale CAD or unreviewed fabrication before public writes."""
+    assert report['geometric_checks_passed'] and not any(report['checks'].values()), 'CAD checks are not clear'
+    assert report['step_roundtrip']['passed'] and report['all_prints_watertight'], 'Export integrity is not clear'
+    assert report['manufacturing_release'] is False
+    assert report['thermal_or_physical_acceptance_completed'] is False
+    for relative,digest in report.get('geometry_source_hashes',{}).items():
+        path=Path(relative)
+        assert not path.is_absolute() and '..' not in path.parts
+        assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest, 'Source/report mismatch: '+relative
+    flange=report['psu_meta']['metal_flange']
+    flange_key=flange['key'] if isinstance(flange,dict) else flange
+    assert flange_key in PUBLIC_FABRICATION_KEYS, 'Unreviewed metal flange'
+    riser=report['riser_meta']
+    assert set(report['external_geometry_names'])=={riser['male_hardware'],riser['female_hardware']}
+    for item in report.get('original_fabrication_assets',[]):
+        key=item['hardware_key']
+        assert key==PRESSED_FOAM or key in PUBLIC_FABRICATION_KEYS, 'Unreviewed fabrication: '+key
+        if report.get('params',{}).get('release_revision')=='R9' and key!=PRESSED_FOAM:
+            assert item.get('geometry_origin')=='ORIGINAL_PRIMITIVE_GEOMETRY', 'Unexpected fabrication provenance'
+        for name,digest in item['files'].items():
+            assert Path(name).name==name and Path(name).stem==key
+            assert Path(name).suffix in ('.step','.dxf')
+            assert hashlib.sha256((source/'fabrication'/name).read_bytes()).hexdigest()==digest
+    if report.get('params',{}).get('release_revision')=='R9':
+        for name,info in report['parts'].items():
+            assert hashlib.sha256((source/'parts'/(name+'.step')).read_bytes()).hexdigest()==info['step_sha256']
+            assert hashlib.sha256((source/'parts'/(name+'.stl')).read_bytes()).hexdigest()==info['mesh']['sha256']
+        expected=report['local_asset_sha256']['assembly.glb']
+        assert hashlib.sha256((source/'assembly.glb').read_bytes()).hexdigest()==expected
+        expected=report['local_asset_sha256']['PSU-flange-1mm-REVIEW.dxf']
+        assert hashlib.sha256((source/'PSU-flange-1mm-REVIEW.dxf').read_bytes()).hexdigest()==expected
+        expected=report['envelopes'][flange_key]['step_sha256']
+        assert hashlib.sha256((source/'envelopes'/(flange_key+'.step')).read_bytes()).hexdigest()==expected
 
 
 def publish_foam_stock(fabrication: Path, report: dict) -> dict:
@@ -68,6 +119,7 @@ def prune_glb(data: bytes, allowed: set[str]) -> tuple[bytes, dict]:
     # The CAD exporter emits one named node per part under one rotated root.
     selected = [node for node in source['nodes'] if node.get('name') in allowed]
     assert {node['name'] for node in selected} == allowed
+    assert len(selected)==len(allowed), 'Duplicate public node name'
     meshes = sorted({node['mesh'] for node in selected})
     mesh_map = {old: new for new, old in enumerate(meshes)}
     accessors = set()
@@ -95,6 +147,10 @@ def prune_glb(data: bytes, allowed: set[str]) -> tuple[bytes, dict]:
         width = widths[accessor['type']] * sizes[accessor['componentType']]
         stride = view.get('byteStride', width)
         offset = view.get('byteOffset', 0) + accessor.get('byteOffset', 0)
+        assert stride>=width and accessor['count']>=0
+        end=offset+(accessor['count']-1)*stride+width if accessor['count'] else offset
+        assert 0<=offset<=end<=len(binary)
+        assert end<=view.get('byteOffset',0)+view['byteLength']
         output.extend(b'\0' * (-len(output) % 4))
         start = len(output)
         if stride == width:
@@ -116,6 +172,7 @@ def prune_glb(data: bytes, allowed: set[str]) -> tuple[bytes, dict]:
             primitive['indices'] = accessor_map[primitive['indices']]
         result['meshes'].append(mesh)
     root = copy.deepcopy(source['nodes'][0])
+    assert 'mesh' not in root, 'Expected an assembly transform root'
     root['name'] = 'KiwiNest-original-geometry'
     root['children'] = list(range(1, len(selected) + 1))
     result['nodes'].append(root)
@@ -136,11 +193,12 @@ def prune_glb(data: bytes, allowed: set[str]) -> tuple[bytes, dict]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--input', type=Path, default=ROOT / 'out-r8')
+    parser.add_argument('--input', type=Path, default=ROOT / 'out-r9')
     args = parser.parse_args()
     source = args.input
     report_data = (source / 'report.json').read_bytes()
     report = json.loads(report_data)
+    publication_preflight(source,report)
     excluded = EXCLUDED | set(report.get('external_geometry_names', []))
     riser = report.get('riser_meta', {})
     excluded |= {riser[key] for key in ('female_hardware', 'male_hardware') if key in riser}
@@ -149,6 +207,7 @@ def main() -> None:
     allowed = set(report['parts']) | set(report['envelopes']) | set(report['cables'])
     excluded &= allowed
     allowed -= excluded
+    assert not any('_OFFICIAL_' in name for name in allowed), 'Unexpected manufacturer geometry remains public'
     revision = report.get('params', {}).get('release_revision', 'R6')
     cad = ROOT / 'cad'
     (cad / 'parts').mkdir(parents=True, exist_ok=True)
@@ -159,8 +218,13 @@ def main() -> None:
         for suffix in ('.step', '.stl'):
             shutil.copyfile(source / 'parts' / (name + suffix), cad / 'parts' / (name + suffix))
     shutil.copyfile(source / 'PSU-flange-1mm-REVIEW.dxf', cad / 'PSU-flange-1mm-REVIEW.dxf')
-    flange = 'PSU_R6_REPLACEABLE_1mm_METAL_FLANGE_NOT_PRINT.step'
+    flange_meta=report['psu_meta']['metal_flange']
+    flange_key = flange_meta['key'] if isinstance(flange_meta,dict) else flange_meta
+    assert flange_key in PUBLIC_FABRICATION_KEYS
+    flange = flange_key+'.step'
     shutil.copyfile(source / 'envelopes' / flange, cad / flange)
+    for old in cad.glob('PSU_R*_REPLACEABLE_1mm_METAL*step'):
+        if old.name != flange:old.unlink()
     fabrication = cad / 'fabrication'
     fabrication.mkdir(exist_ok=True)
     public_fabrication_assets = []
@@ -173,10 +237,14 @@ def main() -> None:
             continue
         for name, digest in item['files'].items():
             assert Path(name).name == name and Path(name).suffix in ('.step', '.dxf')
+            assert Path(name).stem==item['hardware_key']
             data = (source / 'fabrication' / name).read_bytes()
             assert hashlib.sha256(data).hexdigest() == digest
             (fabrication / name).write_bytes(data)
         public_fabrication_assets.append(item)
+    expected_fabrication={name for item in public_fabrication_assets for name in item['files']}
+    for old in fabrication.iterdir():
+        if old.suffix in ('.step','.dxf') and old.name not in expected_fabrication:old.unlink()
     glb, document = prune_glb((source / 'assembly.glb').read_bytes(), allowed)
     (cad / 'kiwinest-public.glb').write_bytes(glb)
     evidence = {
@@ -256,10 +324,21 @@ def main() -> None:
     evidence['riser_selection'] = {key: riser[key] for key in (
         'model', 'catalog_length_source', 'catalog_option_not_inventory_or_delivery_confirmation',
         'electrical_lanes', 'link_generation', 'bandwidth_tradeoff', 'release_status',
-        'actual_male_CPU_guard_minimum_distance_mm', 'male_mount_CPU40_minimum_clearances_mm',
+        'actual_male_CPU_guard_minimum_distance_mm', 'actual_male_CPU40_minimum_clearance_mm', 'male_mount_CPU40_minimum_clearances_mm',
         'modified_factory_parts','spring_contact_proof','validated_local_mechanical_contacts',
         'CPU_clearance_component_keys','selected_model','wire_paths','female_latch_pose',
         'native_braid_transition','male_mounts','limits') if key in riser}
+    evidence['HDD_airflow_layout'] = report.get('drive_meta', {}).get('airflow')
+    evidence['HDD_front_fan'] = report.get('drive_meta', {}).get('fan')
+    evidence['HDD_drive_service'] = report.get('drive_meta', {}).get('service')
+    evidence['HDD_front_fan_service'] = report.get('drive_meta', {}).get('front_fan_service')
+    evidence['HDD_rear_hatches'] = report.get('drive_meta', {}).get('rear_connector_hatches')
+    evidence['HDD_rear_data_cable_reliefs'] = report.get('frame_meta', {}).get('rear_data_cable_reliefs')
+    evidence['HDD_complete_tail_parking'] = report.get('power_meta', {}).get('HDD_service_tail_parking')
+    if report.get('incremental_validation_meta'):
+        evidence['incremental_validation_meta'] = report['incremental_validation_meta']
+    evidence['PSU_rolled_original_supply'] = {key:report.get('psu_meta', {}).get(key) for key in ('body_bbox_mm','body_axes','intake_face_scope','fixed_frame_support_implemented','complete_factory_source_material_proof','limits')}
+    evidence['independent_feet_and_filter'] = {key:report.get('frame_meta', {}).get(key) for key in ('feet_mm','filter','front_left_split_column','front_left_lower_post_service')}
     evidence['mainboard_lower_flush_joints'] = report.get('mainboard_meta', {}).get('mount', {}).get('lower_flush_joints')
     evidence_dir = ROOT / 'evidence'
     evidence_dir.mkdir(exist_ok=True)

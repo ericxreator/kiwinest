@@ -1,0 +1,59 @@
+{
+  "official_archive_url": "https://cdn.noctua.at/media/4d019b79/NF-A20_Public-CAD.zip?download=true",
+  "official_archive_sha256": "83021bdf2aaf15f97c705ac1a9f3a4c93725db18dcc828b4039a62b4becaf10b",
+  "official_step_sha256": "4dba51c63094d461351024ba1314afb87714d43e6bee220bdab2d93a21563498",
+  "geometry_source_hashes": {
+    "design/r9_frame.py": "c9149ca7cdefe8b30737dc8af01c5a633aa1ea1d0fac2a31cd1d2d45c2ac6b3f",
+    "design/r9_storage.py": "995cdd8b3b0c3492d68751ce93bdaacda680c427e726080609dbeab0b757c1c3"
+  },
+  "verification_software": {
+    "cadquery": "2.8.0",
+    "shapely": "2.1.2"
+  },
+  "fan_center_xy_mm": [
+    146.55,
+    125.0
+  ],
+  "official_no_AVP_solid_indices": [
+    0,
+    1,
+    9
+  ],
+  "official_material_outside_original_proxy_mm3": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "official_rotor_outside_R94_mm3": 0.0,
+  "frame_opening_radius_mm": 96.0,
+  "original_throat_radius_mm": 94.0,
+  "mouth_rectangle_xy_mm": [
+    [
+      47.2,
+      135.0
+    ],
+    [
+      104.7,
+      233.6
+    ]
+  ],
+  "mouth_gross_CAD_area_mm2": 2620.280807208449,
+  "inscribed_mouth_polygon_area_mm2": 2620.2738580731975,
+  "conservatively_projected_fixed_frame_obstruction_mm2": 427.76479188504686,
+  "clear_mouth_projection_lower_bound_mm2": 2192.5090661881513,
+  "four_passage_area_mm2": 1968.0,
+  "frame_mesh_linear_deflection_mm": 0.05,
+  "frame_mesh_angular_deflection_radians": 0.1,
+  "frame_projection_expansion_mm": 0.1,
+  "private_frame_mesh_triangles": 257142,
+  "dynamic_rotor_blades_excluded_from_fixed_obstruction": true,
+  "supplier_geometry_or_projected_polygons_exported": false,
+  "geometry_checks_passed": true,
+  "installed_airflow_or_pressure_drop_verified": false,
+  "thermal_or_physical_acceptance_completed": false,
+  "limits": [
+    "Mesh projection with an expanded stationary frame is a conservative engineering estimate, not certified metrology.",
+    "Clear area, proxy containment and connected passages do not establish installed airflow, temperature, noise or manufacturing acceptance."
+  ],
+  "source_report_sha256": "62dcfe9ad8be7149fdac37e775ba2ce49415a27f7b7266674cbf3485ebf5fa6d"
+}

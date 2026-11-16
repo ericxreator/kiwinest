@@ -38,7 +38,9 @@ def read_glb(path):
             for child in value:
                 inspect(child)
     inspect(doc)
-    return doc, data[28 + size:28 + size + length]
+    blob=data[28 + size:28 + size + length]
+    assert 0<=len(blob)-doc['buffers'][0]['byteLength']<=3
+    return doc, blob
 
 
 def accessor(doc, blob, index):
@@ -49,13 +51,17 @@ def accessor(doc, blob, index):
     width *= {5120: 1, 5121: 1, 5122: 2, 5123: 2, 5125: 4, 5126: 4}[a['componentType']]
     start = v.get('byteOffset', 0) + a.get('byteOffset', 0)
     stride = v.get('byteStride', width)
+    assert stride>=width and a['count']>=0
+    end=start+(a['count']-1)*stride+width if a['count'] else start
+    assert v.get('byteOffset',0)<=start<=end<=v.get('byteOffset',0)+v['byteLength']
+    assert end<=len(blob)
     ranges = [(start + row * stride, width) for row in range(a['count'])]
     return b''.join(blob[offset:offset + size] for offset, size in ranges), ranges
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--input', type=Path, default=ROOT / 'out-r8')
+    parser.add_argument('--input', type=Path, default=ROOT / 'out-r9')
     args = parser.parse_args()
     raw = args.input / 'assembly.glb'
     public = ROOT / 'cad/kiwinest-public.glb'
@@ -75,7 +81,15 @@ def main():
     assert excluded == set(review['public_geometry']['excluded_vendor_nodes'])
     sn = {n['name']: n for n in source['nodes'] if 'mesh' in n}
     tn = {n['name']: n for n in target['nodes'] if 'mesh' in n}
+    assert len(sn)==sum('mesh' in n for n in source['nodes']), 'Duplicate local node name'
+    assert len(tn)==sum('mesh' in n for n in target['nodes']), 'Duplicate public node name'
     assert set(tn) == set(sn) - excluded
+    transforms=('matrix','translation','rotation','scale')
+    for key in transforms:
+        assert source['nodes'][0].get(key)==target['nodes'][0].get(key), 'Changed assembly transform'
+    for name,node in tn.items():
+        for key in transforms:
+            assert sn[name].get(key)==node.get(key), (name,'Changed retained transform')
     selected_accessors, vendor_accessors = set(), set()
     for name, node in sn.items():
         for primitive in source['meshes'][node['mesh']]['primitives']:
@@ -115,6 +129,9 @@ def main():
         for before, after in zip(old, new):
             assert before.get('mode', 4) == after.get('mode', 4)
             assert set(before['attributes']) == set(after['attributes'])
+            old_material=source.get('materials',[])[before['material']] if 'material' in before else None
+            new_material=target.get('materials',[])[after['material']] if 'material' in after else None
+            assert old_material==new_material, (name,'Changed retained material')
             pairs = [(before['indices'], after['indices'])]
             pairs += [(before['attributes'][key], after['attributes'][key]) for key in before['attributes']]
             for oi, ni in pairs:
@@ -134,7 +151,9 @@ def main():
         'public_glb_sha256': hashlib.sha256(public.read_bytes()).hexdigest(),
         'public_nodes': len(tn), 'excluded_vendor_nodes': sorted(excluded),
         'selected_accessors_byte_matched': len(matched), 'vendor_accessor_overlap': 0,
-        'unused_binary_bytes_zero_only': True, 'geometry_is_physical_acceptance': False}
+        'unused_binary_bytes_zero_only': True,'retained_node_transforms_matched':True,
+        'assembly_root_transform_matched':True,'retained_material_properties_matched':True,
+        'geometry_is_physical_acceptance': False}
     (ROOT / 'evidence/public-geometry-audit.json').write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result))
 

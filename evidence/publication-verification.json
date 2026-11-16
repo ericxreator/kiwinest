@@ -1,35 +1,43 @@
 {
-  "revision": "R8",
-  "date": "2026-11-14",
+  "revision": "R9",
+  "date": "2026-11-16",
   "timezone": "UTC",
-  "verified_at_utc": "2026-11-14T18:13:41.570584+00:00",
-  "scope": "Fresh STEP-derived integrated CAD, source hashes, exports, public geometry audit and desktop/mobile browser checks; physical manufacturing acceptance remains pending",
-  "source_report_sha256": "ba4dd297f32b29356117de27b970dbf2806e9d80595a0c258c1f7f63e8f6e319",
-  "source_modules_hashed": 18,
+  "verified_at_utc": "2026-11-16T06:28:26.518510+00:00",
+  "scope": "Current actual39-group original-STEP R9 baseline, isolated plenum floor correction with exact delta revalidation, all final exports/STEP readback repeated, public-byte audit and current browser/fan proofs. The unchanged full geometry baseline was not rerun after the isolated correction; physical/manufacturing acceptance remains pending.",
+  "source_report_sha256": "62dcfe9ad8be7149fdac37e775ba2ce49415a27f7b7266674cbf3485ebf5fa6d",
+  "source_modules_hashed": 21,
   "all_source_hashes_match": true,
-  "full_integrated_CAD_rebuild_rerun": true,
   "geometry_checks_passed": true,
-  "check_groups": 25,
+  "check_groups": 41,
   "failed_groups": {},
+  "final_report_source_entrypoint": "design/r9_export.py",
+  "CAD_or_browser_reexecuted_by_evidence_generator": false,
   "step_roundtrip": {
     "valid": true,
-    "solids": 731,
-    "expected": 731,
+    "solids": 782,
+    "expected": 782,
     "passed": true
   },
-  "print_count": 40,
+  "print_count": 43,
   "all_print_meshes_watertight": true,
-  "original_part_files_sha256_match": 80,
+  "all_print_meshes_winding_consistent": true,
+  "original_part_files_sha256_match": 86,
   "original_fabrication_assets": [
     {
       "hardware_key": "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8",
       "material": "FR4 insulating laminate",
       "thickness_mm": 0.8,
       "flat_axis": "Z",
+      "export_flat_axis": "Z",
+      "flat_axis_inferred_from_uniform_prism": false,
+      "nominal_geometry_thickness_mm": 0.8058464793764983,
+      "uniform_prismatic_outline": false,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
       "files": {
-        "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8.step": "78cce84fd7ecedc0f769e6b062c86dfdfab4f5159d6e8954b04a2d1d69ee563f",
-        "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8.dxf": "265062843f7b50b69205f7f71ea2f10677f168bb22633cb4403d9769d9ce70d3"
+        "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8.step": "d52c1f0c2a99f9566412f2cd74da464ad648291b4cb6dc9987cef0fcf6430542",
+        "R8_RISER_MALE_CUSTOM_FR4_LOWER_CLAMP_0p8.dxf": "e306a5a661686e9e2417ca0dbe26ec3018bb9cca291199d242e97a171ffe0cb7"
       },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
       "manufacturing_release": false
     },
     {
@@ -58,8 +66,8 @@
       "coordinate_frame": "Local stock XY, Z0..1.5",
       "scope": "Original rectangle and two round holes only. Manufacturer-derived compressed contact surfaces are not distributed.",
       "files": {
-        "R8_RISER_MALE_SILICONE_FOAM_FLAT_STOCK_1p5.step": "63e41c11c6e167be9f1eaf8408a06e9c8c1067b830d05746e08686b29abf0a44",
-        "R8_RISER_MALE_SILICONE_FOAM_FLAT_STOCK_1p5.dxf": "d2ef6c5eb53bfa9f7cf9c7679484b21e6391ae376bcdab7f0a553221af5efc32"
+        "R8_RISER_MALE_SILICONE_FOAM_FLAT_STOCK_1p5.step": "b4790f1d33737638477255638e597abb6e8d9f9a388ddad82fb739c28a5bb98b",
+        "R8_RISER_MALE_SILICONE_FOAM_FLAT_STOCK_1p5.dxf": "48216478065cf66ee6504dfc038fbd208d8e26490c150d977f35e08707c3ef16"
       },
       "manufacturing_release": false
     },
@@ -69,9 +77,16 @@
       "thickness_mm": 1.5,
       "flat_axis": "X",
       "manufacturing_notes": "Custom OD9 / bore3.2 / 90deg D6 countersink; STEP is the authoritative stepped profile. Verify material, tolerances, bearing and clamp load before manufacture.",
+      "export_flat_axis": "X",
+      "flat_axis_inferred_from_uniform_prism": false,
+      "nominal_geometry_thickness_mm": 1.5,
+      "uniform_prismatic_outline": false,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
       "files": {
-        "MAINBOARD_MOUNT_R8_lower_2_FLUSH_OD9_STEEL_CSK_WASHER.step": "6e7515fe6c27717c5fb793b6ec3936f729894648e30bc9e3f77b63905e8a0ab9"
+        "MAINBOARD_MOUNT_R8_lower_2_FLUSH_OD9_STEEL_CSK_WASHER.step": "dc1ee7fa25b37f362033a24647519c751364b033466fb9f96985c662a916ffc5",
+        "MAINBOARD_MOUNT_R8_lower_2_FLUSH_OD9_STEEL_CSK_WASHER.dxf": "d4df4e18de839c76383422204f054d0dba1882b123a896fa8b90258785cd8b2b"
       },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
       "manufacturing_release": false
     },
     {
@@ -80,9 +95,338 @@
       "thickness_mm": 1.5,
       "flat_axis": "X",
       "manufacturing_notes": "Custom OD9 / bore3.2 / 90deg D6 countersink; STEP is the authoritative stepped profile. Verify material, tolerances, bearing and clamp load before manufacture.",
+      "export_flat_axis": "X",
+      "flat_axis_inferred_from_uniform_prism": false,
+      "nominal_geometry_thickness_mm": 1.5,
+      "uniform_prismatic_outline": false,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
       "files": {
-        "MAINBOARD_MOUNT_R8_lower_4_FLUSH_OD9_STEEL_CSK_WASHER.step": "6f47688121cbc50896672f5a058eca8ec2724d9058d4684743430f9c3baffeb5"
+        "MAINBOARD_MOUNT_R8_lower_4_FLUSH_OD9_STEEL_CSK_WASHER.step": "035d54dc8fe331f68305cad88fe11526979c03a81fc76e9b9326adce9cfe73d8",
+        "MAINBOARD_MOUNT_R8_lower_4_FLUSH_OD9_STEEL_CSK_WASHER.dxf": "b5edcab7b1a799c4a956bcbec7e1684494c5503369e1faf060f79028e759b236"
       },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "hardware_key": "PSU_R9_REPLACEABLE_1mm_METAL_REAR_FLANGE_NOT_PRINT",
+      "material": "1mm steel/aluminium",
+      "thickness_mm": 1.0,
+      "flat_axis": "Y",
+      "export_flat_axis": "Y",
+      "flat_axis_inferred_from_uniform_prism": false,
+      "nominal_geometry_thickness_mm": 1.0,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "PSU_R9_REPLACEABLE_1mm_METAL_REAR_FLANGE_NOT_PRINT.step": "71ab0a030aa0fa2720e9cf389e2de009a85334752336f591680ec7994acb3942",
+        "PSU_R9_REPLACEABLE_1mm_METAL_REAR_FLANGE_NOT_PRINT.dxf": "69897988a7ba36c7e81ef59274f2521b336f8adfde89c3ce482898c87548aca1"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "hardware_key": "PSU_R9_SPLIT_INSULATING_FOAM_LEFT_INSTALLED",
+      "material": "electrically insulating closed-cell silicone foam",
+      "nominal_installed_state": true,
+      "cut_and_fit_received_hardware_required": true,
+      "export_flat_axis": "Y",
+      "flat_axis_inferred_from_uniform_prism": true,
+      "nominal_geometry_thickness_mm": 4.0,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "PSU_R9_SPLIT_INSULATING_FOAM_LEFT_INSTALLED.step": "7a8e484506aeef14057c1dd1e89da1637711fe2d86f4952935d91dadf940e36e",
+        "PSU_R9_SPLIT_INSULATING_FOAM_LEFT_INSTALLED.dxf": "5845abaa21d20de180da8dcb117e9f79f10700ca15a9e51223e89e0324c345a6"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "hardware_key": "PSU_R9_SPLIT_INSULATING_FOAM_RIGHT_INSTALLED",
+      "material": "electrically insulating closed-cell silicone foam",
+      "nominal_installed_state": true,
+      "cut_and_fit_received_hardware_required": true,
+      "export_flat_axis": "Y",
+      "flat_axis_inferred_from_uniform_prism": true,
+      "nominal_geometry_thickness_mm": 4.0,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "PSU_R9_SPLIT_INSULATING_FOAM_RIGHT_INSTALLED.step": "b5d86ed389669c00f8deb125435295be6653b9d9e7ed6f3514c452b5a6e4df89",
+        "PSU_R9_SPLIT_INSULATING_FOAM_RIGHT_INSTALLED.dxf": "77c3ac316f800d71e8f854df3d5bfde959a5b7ec9bd296651764f988ed68b88d"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "hardware_key": "PSU_R9_LEFT_PANEL_SEAL_INSTALLED",
+      "material": "electrically insulating closed-cell silicone foam",
+      "nominal_installed_state": true,
+      "cut_and_fit_received_hardware_required": true,
+      "export_flat_axis": "X",
+      "flat_axis_inferred_from_uniform_prism": true,
+      "nominal_geometry_thickness_mm": 0.5000000000000098,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "PSU_R9_LEFT_PANEL_SEAL_INSTALLED.step": "e79ae72e08f733d50244fa1c430b8cfa548b6ce3a4698add4353ce9e2076fd16",
+        "PSU_R9_LEFT_PANEL_SEAL_INSTALLED.dxf": "99a271d8370ed7f224bdaa97820a0a493e56ac7b3fd2119361f3f171f7f280e4"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "hardware_key": "PSU_R9_REAR_PANEL_SEAL_INSTALLED",
+      "material": "electrically insulating closed-cell silicone foam",
+      "nominal_installed_state": true,
+      "cut_and_fit_received_hardware_required": true,
+      "export_flat_axis": "Y",
+      "flat_axis_inferred_from_uniform_prism": true,
+      "nominal_geometry_thickness_mm": 0.5999999999999943,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "PSU_R9_REAR_PANEL_SEAL_INSTALLED.step": "8cdf9c33083924d2c6de41b0ee0900ccc360916c2dc050be2cd3440b1c375a48",
+        "PSU_R9_REAR_PANEL_SEAL_INSTALLED.dxf": "5d42b908dfffa48554bfd5b7293ff51b40a69147b7a73ba9890c60b7f970e83d"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "material": "split insulating silicone foam engineering candidate",
+      "thickness_mm": 1.2,
+      "flat_axis": "Y",
+      "function": "two separately removable strips close power/data shutter keys outside split wire annuli",
+      "remove_before_hatch_motion": true,
+      "compression_and_leakage_verified": false,
+      "hardware_key": "R9_HDD_HATCH_1_REMOVABLE_SLOT_FOAM_SEAL",
+      "export_flat_axis": "Y",
+      "flat_axis_inferred_from_uniform_prism": false,
+      "nominal_geometry_thickness_mm": 1.1999999999999886,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "R9_HDD_HATCH_1_REMOVABLE_SLOT_FOAM_SEAL.step": "d12990f70709034eed41633d7a5fe4b0633b86946758db898052d823b49881d3",
+        "R9_HDD_HATCH_1_REMOVABLE_SLOT_FOAM_SEAL.dxf": "34d39366e8f1abf308cbd35f4c96e06b4ef0c8e7c0839ea397b1e58ce9a2e3a0"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "material": "split insulating silicone foam engineering candidate",
+      "thickness_mm": 1.2,
+      "flat_axis": "Y",
+      "function": "two separately removable strips close power/data shutter keys outside split wire annuli",
+      "remove_before_hatch_motion": true,
+      "compression_and_leakage_verified": false,
+      "hardware_key": "R9_HDD_HATCH_2_REMOVABLE_SLOT_FOAM_SEAL",
+      "export_flat_axis": "Y",
+      "flat_axis_inferred_from_uniform_prism": false,
+      "nominal_geometry_thickness_mm": 1.1999999999999886,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "R9_HDD_HATCH_2_REMOVABLE_SLOT_FOAM_SEAL.step": "2c73eb02e54e50243e659892e6f872dd26f607133e562114487dbf95544cbbd4",
+        "R9_HDD_HATCH_2_REMOVABLE_SLOT_FOAM_SEAL.dxf": "f8fc25e09f54de992a6513682525435f8cb2a9c7f67495cb897cf3c01943085f"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "material": "split insulating silicone foam engineering candidate",
+      "thickness_mm": 1.2,
+      "flat_axis": "Y",
+      "function": "two separately removable strips close power/data shutter keys outside split wire annuli",
+      "remove_before_hatch_motion": true,
+      "compression_and_leakage_verified": false,
+      "hardware_key": "R9_HDD_HATCH_3_REMOVABLE_SLOT_FOAM_SEAL",
+      "export_flat_axis": "Y",
+      "flat_axis_inferred_from_uniform_prism": false,
+      "nominal_geometry_thickness_mm": 1.1999999999999886,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "R9_HDD_HATCH_3_REMOVABLE_SLOT_FOAM_SEAL.step": "e596bcc81506e099a4c4fc87fd1b25f921d64057d22502911eb126b502405a6d",
+        "R9_HDD_HATCH_3_REMOVABLE_SLOT_FOAM_SEAL.dxf": "178cba60dd387dedbdbb0bfb787fdb7d784f9f707844f104d415393489b94694"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "material": "0.3mm PC sheet engineering candidate",
+      "thickness_mm": 0.3,
+      "flat_size_mm": [
+        174.8,
+        114.4
+      ],
+      "retention": "captured by front plenum/rear collector; stiffness and perimeter seal pending",
+      "hardware_key": "R9_HDD_right_boundary_03mm_PC_SHEET",
+      "export_flat_axis": "X",
+      "flat_axis_inferred_from_uniform_prism": true,
+      "nominal_geometry_thickness_mm": 0.30000000000001137,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "R9_HDD_right_boundary_03mm_PC_SHEET.step": "c9ccd5bb7a2b6f25d6c32ae6fbb06f1feaccd4bbbb5054c539c4c0043ca4e065",
+        "R9_HDD_right_boundary_03mm_PC_SHEET.dxf": "3e9e476a4d3eec7a0c99346e3634c3f15e7916422c35e6dd7fe4fc18f4fc28d7"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "material": "0.3mm PC sheet engineering candidate",
+      "thickness_mm": 0.3,
+      "flat_outline": "L shape,26.6x87.3 rear rise plus73.2x31.2 forward wing",
+      "retention": "captured chimney/diffuser edge; stiffness and seal pending",
+      "hardware_key": "R9_HDD_chimney_right_boundary_03mm_PC_SHEET",
+      "export_flat_axis": "X",
+      "flat_axis_inferred_from_uniform_prism": true,
+      "nominal_geometry_thickness_mm": 0.30000000000001137,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "R9_HDD_chimney_right_boundary_03mm_PC_SHEET.step": "20f5db00d836ecd1526f8adad61e6b7a2a1476c2555bec4d3990c45c2a266bd8",
+        "R9_HDD_chimney_right_boundary_03mm_PC_SHEET.dxf": "278ec13abe91fa5f6a2e51fa0fd1f79e79bd76edb6120950c8f212a6d03db2a4"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "material": "0.5mm closed-cell foam engineering candidate",
+      "thickness_mm": 0.5,
+      "function": "circular edge seal on R96 frame opening only; inner outlet edge remains open to shared fan inlet",
+      "compression_and_air_leakage_verified": false,
+      "hardware_key": "R9_HDD_TOP_DIFFUSER_05mm_FOAM_EDGE_SEAL",
+      "files": {
+        "R9_HDD_TOP_DIFFUSER_05mm_FOAM_EDGE_SEAL.step": "cfeb8007a452edbc315ddab11e12f3b928a46bff0007bacc93569a43b6a60e78"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "material": "split electrically insulating silicone engineering candidate",
+      "thickness_mm": 1.7,
+      "flat_axis": "Y",
+      "wire_bore_mm": 5.5,
+      "outer_diameter_mm": 6.5,
+      "radial_split_width_mm": 0.1,
+      "compression_and_air_leakage_verified": false,
+      "hardware_key": "R9_HDD_split_silicone_wire_seal_1",
+      "export_flat_axis": "Y",
+      "flat_axis_inferred_from_uniform_prism": false,
+      "nominal_geometry_thickness_mm": 1.6999999999999886,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "R9_HDD_split_silicone_wire_seal_1.step": "32fa0b885e8628f0ba73cae5be7457970c445c193ede888655cfd8e5cee59c32",
+        "R9_HDD_split_silicone_wire_seal_1.dxf": "52a694c726026594a04f919b19c68c5a1a0190a24ffb386af07d0155bfb8f4c0"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "material": "split electrically insulating silicone engineering candidate",
+      "thickness_mm": 1.7,
+      "flat_axis": "Y",
+      "wire_bore_mm": 5.5,
+      "outer_diameter_mm": 6.5,
+      "radial_split_width_mm": 0.1,
+      "compression_and_air_leakage_verified": false,
+      "hardware_key": "R9_HDD_split_silicone_wire_seal_2",
+      "export_flat_axis": "Y",
+      "flat_axis_inferred_from_uniform_prism": false,
+      "nominal_geometry_thickness_mm": 1.6999999999999886,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "R9_HDD_split_silicone_wire_seal_2.step": "f2b55381996b27c12e2c14730e7b2f8ed07a7e7768bb6c817c22295e469653d2",
+        "R9_HDD_split_silicone_wire_seal_2.dxf": "f16dbe00d474456b1659b4fdee491c1a7ad90b72a47f74cdb17f4c44d55e6653"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "material": "split electrically insulating silicone engineering candidate",
+      "thickness_mm": 1.7,
+      "flat_axis": "Y",
+      "wire_bore_mm": 5.5,
+      "outer_diameter_mm": 6.5,
+      "radial_split_width_mm": 0.1,
+      "compression_and_air_leakage_verified": false,
+      "hardware_key": "R9_HDD_split_silicone_wire_seal_3",
+      "export_flat_axis": "Y",
+      "flat_axis_inferred_from_uniform_prism": false,
+      "nominal_geometry_thickness_mm": 1.6999999999999886,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "R9_HDD_split_silicone_wire_seal_3.step": "9e7b145113d16e2fc6f731865a705218fa0665919e5216a991715c0d783957a9",
+        "R9_HDD_split_silicone_wire_seal_3.dxf": "dab8b336d06dbb885ae705b93d8df79e6d5c58cb2a15d7fc4536309cbf182144"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "material": "split electrically insulating silicone engineering candidate",
+      "thickness_mm": 1.7,
+      "flat_axis": "Y",
+      "wire_bore_mm": 5.5,
+      "outer_diameter_mm": 6.5,
+      "radial_split_width_mm": 0.1,
+      "compression_and_air_leakage_verified": false,
+      "hardware_key": "R9_HDD_split_silicone_wire_seal_4",
+      "export_flat_axis": "Y",
+      "flat_axis_inferred_from_uniform_prism": false,
+      "nominal_geometry_thickness_mm": 1.6999999999999886,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "R9_HDD_split_silicone_wire_seal_4.step": "abc345a2fc3fe19df59917686916f64ca5383bb78e4f4d48d1c46063f085c94e",
+        "R9_HDD_split_silicone_wire_seal_4.dxf": "6a892a1be36ac31fc398d081b438ef72aca43663ab8b8677ab1e6876788cf483"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "material": "split electrically insulating silicone engineering candidate",
+      "thickness_mm": 1.7,
+      "flat_axis": "Y",
+      "wire_bore_mm": 5.5,
+      "outer_diameter_mm": 6.5,
+      "radial_split_width_mm": 0.1,
+      "compression_and_air_leakage_verified": false,
+      "hardware_key": "R9_HDD_split_silicone_wire_seal_5",
+      "export_flat_axis": "Y",
+      "flat_axis_inferred_from_uniform_prism": false,
+      "nominal_geometry_thickness_mm": 1.6999999999999886,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "R9_HDD_split_silicone_wire_seal_5.step": "e9597bd8ec6965f157ae77373eb9ca98c76710790bc843ed597d235d622fe6d9",
+        "R9_HDD_split_silicone_wire_seal_5.dxf": "af0d98c6dfea8751a8c71c3f1e19e60c4c183878e84b225d5457006bab9d5cfd"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
+      "manufacturing_release": false
+    },
+    {
+      "material": "split electrically insulating silicone engineering candidate",
+      "thickness_mm": 1.7,
+      "flat_axis": "Y",
+      "wire_bore_mm": 5.5,
+      "outer_diameter_mm": 6.5,
+      "radial_split_width_mm": 0.1,
+      "compression_and_air_leakage_verified": false,
+      "hardware_key": "R9_HDD_split_silicone_wire_seal_6",
+      "export_flat_axis": "Y",
+      "flat_axis_inferred_from_uniform_prism": false,
+      "nominal_geometry_thickness_mm": 1.6999999999999886,
+      "uniform_prismatic_outline": true,
+      "DXF_scope": "Nominal planar face outline only; STEP and material metadata remain authoritative for thickness, steps, compression and fit.",
+      "files": {
+        "R9_HDD_split_silicone_wire_seal_6.step": "c1bd461a31f48e2103aa199f315912dec882adbf9b21dfddd805d3cc22059e66",
+        "R9_HDD_split_silicone_wire_seal_6.dxf": "742407446d038d2380ec46f05ff3d322c53c9ae55af7e23c94aa272734d79a40"
+      },
+      "geometry_origin": "ORIGINAL_PRIMITIVE_GEOMETRY",
       "manufacturing_release": false
     }
   ],
@@ -92,18 +436,21 @@
     275.0
   ],
   "public_geometry_audit": {
-    "source_report_sha256": "ba4dd297f32b29356117de27b970dbf2806e9d80595a0c258c1f7f63e8f6e319",
-    "raw_glb_sha256": "825a7c5745f0c6991a10a8e2ddfc90de0a686b4ab3b049340e215b4c33c97f23",
-    "public_glb_sha256": "13aca9ccd52cdaffb63f03f0a126b5310e64fe3c1b02599807afcc2587317c4a",
-    "public_nodes": 370,
+    "source_report_sha256": "62dcfe9ad8be7149fdac37e775ba2ce49415a27f7b7266674cbf3485ebf5fa6d",
+    "raw_glb_sha256": "fb518a9c59633c535b2426a2077499433d3502b7643c3f409b6cefd7348b1e7a",
+    "public_glb_sha256": "fb7eabd07650e5bca9f5d70a4db601b9b1fdee796807e4a43c635bbe535f5a57",
+    "public_nodes": 417,
     "excluded_vendor_nodes": [
       "R8_K83UP_TL_OFFICIAL_x8_MALE_ASSEMBLED_MODIFIED_CLAMP",
       "R8_K83UP_TL_x16_FEMALE_FACTORY_LATCH_PARKED",
       "R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4"
     ],
-    "selected_accessors_byte_matched": 16494,
+    "selected_accessors_byte_matched": 17142,
     "vendor_accessor_overlap": 0,
     "unused_binary_bytes_zero_only": true,
+    "retained_node_transforms_matched": true,
+    "assembly_root_transform_matched": true,
+    "retained_material_properties_matched": true,
     "geometry_is_physical_acceptance": false
   },
   "browser": {
@@ -115,26 +462,1236 @@
       390,
       844
     ],
-    "mesh_count": 5498,
-    "shell_meshes": 1170,
+    "mesh_count": 5714,
+    "shell_meshes": 1005,
     "shell_toggle": true,
+    "shell_toggle_changes_render": true,
+    "orbit_drag_changes_render": true,
     "reset_view": true,
+    "render_sha256": {
+      "initial": "39356f6b7ef7ebc582bed8da749d5103bf54a803b12a50886ffaa3e14c37f29e",
+      "after_drag": "3785991182220bcfc6a3a563b76e36ef835e56624844562dfb7fc3ef4db6c927",
+      "after_reset": "39356f6b7ef7ebc582bed8da749d5103bf54a803b12a50886ffaa3e14c37f29e"
+    },
     "mobile_shell_toggle": true,
+    "desktop_horizontal_overflow": false,
     "mobile_horizontal_overflow": false,
     "uncaught_errors": 0,
     "renderer": "Headless Chromium with SwiftShader",
-    "physical_phone_test": false
+    "physical_phone_test": false,
+    "verified_at_utc": "2026-11-16T06:25:32.579Z",
+    "source_report_sha256": "62dcfe9ad8be7149fdac37e775ba2ce49415a27f7b7266674cbf3485ebf5fa6d",
+    "public_glb_sha256": "fb7eabd07650e5bca9f5d70a4db601b9b1fdee796807e4a43c635bbe535f5a57",
+    "preview_html_sha256": "6f69ab30a4ddaa7b83b1955e79c841010f76f57d0a498d458d09fb3ae92b94cb"
   },
-  "physical_thermal_acceptance": false,
-  "manufacturing_release": false,
-  "airflow_projection": {
-    "projected_fraction": 0.09394346899421496,
-    "raster_step_mm": 0.25,
-    "geometry_is_thermal_validation": false
+  "complete_cable_length_review": {
+    "required_remaining_margin_mm": 25.0,
+    "routes_checked": 32,
+    "minimum_remaining_margin_mm": 25.43362938564084,
+    "limiting_route": "CABLE_R6_SATA_B_NEXT150_TO_NA_FH1",
+    "complete_length_budgets": {
+      "CABLE_R8_EPS_MODDIY_CO581_600": {
+        "modeled_complete_centerline_mm": 428.6888104904708,
+        "connector_allowance_mm": 48.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 600,
+        "required_with_allowances_mm": 491.6888104904708,
+        "remaining_length_margin_mm": 108.31118950952919,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true
+      },
+      "CABLE_R9_ATX_MODDIY_CAB529_600": {
+        "modeled_complete_centerline_mm": 454.8116266911882,
+        "connector_allowance_mm": 40.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 600,
+        "required_with_allowances_mm": 509.8116266911882,
+        "remaining_length_margin_mm": 90.18837330881178,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true
+      },
+      "CABLE_R6_ATX_FACTORY300": {
+        "modeled_complete_centerline_mm": 127.29911184307755,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 300,
+        "required_with_allowances_mm": 166.29911184307755,
+        "remaining_length_margin_mm": 133.70088815692245,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true
+      },
+      "CABLE_R6_EPS_FACTORY300": {
+        "modeled_complete_centerline_mm": 219.66112276733227,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 300,
+        "required_with_allowances_mm": 258.66112276733224,
+        "remaining_length_margin_mm": 41.338877232667755,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true
+      },
+      "CABLE_R6_GPU_FACTORY300": {
+        "modeled_complete_centerline_mm": 200.8429368710968,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 300,
+        "required_with_allowances_mm": 239.8429368710968,
+        "remaining_length_margin_mm": 60.15706312890319,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true
+      },
+      "CABLE_R6_GPU_FACTORY_SECOND150": {
+        "modeled_complete_centerline_mm": 32.04955592153878,
+        "connector_allowance_mm": 40.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 150,
+        "required_with_allowances_mm": 87.04955592153878,
+        "remaining_length_margin_mm": 62.95044407846122,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "modeled_connector_length_lower_bound_mm": 36.0
+      },
+      "CABLE_R6_SATA_A_FACTORY300": {
+        "modeled_complete_centerline_mm": 156.9642837113738,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 300,
+        "required_with_allowances_mm": 195.9642837113738,
+        "remaining_length_margin_mm": 104.03571628862619,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true
+      },
+      "CABLE_R6_SATA_A_NEXT150": {
+        "modeled_complete_centerline_mm": 71.13274122871832,
+        "connector_allowance_mm": 32.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 150,
+        "required_with_allowances_mm": 118.13274122871832,
+        "remaining_length_margin_mm": 31.867258771281683,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "modeled_connector_length_lower_bound_mm": 29.0
+      },
+      "CABLE_R6_SATA_B_FACTORY300": {
+        "modeled_complete_centerline_mm": 231.79911184307753,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 300,
+        "required_with_allowances_mm": 270.7991118430775,
+        "remaining_length_margin_mm": 29.200888156922474,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true
+      },
+      "CABLE_R6_SATA_B_NEXT150_TO_NA_FH1": {
+        "modeled_complete_centerline_mm": 77.56637061435916,
+        "connector_allowance_mm": 32.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 150,
+        "required_with_allowances_mm": 124.56637061435916,
+        "remaining_length_margin_mm": 25.43362938564084,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "modeled_connector_length_lower_bound_mm": 29.0
+      },
+      "CABLE_R9_SATA_HUB_STARTECH_SATAPOWEXT8_203p2": {
+        "modeled_complete_centerline_mm": 104.3230536351275,
+        "connector_allowance_mm": 40.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 203.2,
+        "required_with_allowances_mm": 159.3230536351275,
+        "remaining_length_margin_mm": 43.87694636487248,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "modeled_connector_length_lower_bound_mm": 29.0
+      },
+      "CABLE_R6_FACTORY_MOLEX_FDD_TO_PARK": {
+        "modeled_complete_centerline_mm": 185.84056982914845,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 300,
+        "required_with_allowances_mm": 224.84056982914845,
+        "remaining_length_margin_mm": 75.15943017085155,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true
+      },
+      "CABLE_R9_UNUSED_MOLEX_NEXT150_2": {
+        "modeled_complete_centerline_mm": 37.84955592153878,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 150,
+        "required_with_allowances_mm": 76.84955592153878,
+        "remaining_length_margin_mm": 73.15044407846122,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true
+      },
+      "CABLE_R9_UNUSED_MOLEX_NEXT150_3": {
+        "modeled_complete_centerline_mm": 23.0,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 150,
+        "required_with_allowances_mm": 62.0,
+        "remaining_length_margin_mm": 88.0,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true
+      },
+      "CABLE_R9_UNUSED_FDD_NEXT150": {
+        "modeled_complete_centerline_mm": 23.0,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 150,
+        "required_with_allowances_mm": 62.0,
+        "remaining_length_margin_mm": 88.0,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true
+      },
+      "CABLE_R9_SATA_POWER_1_MODDIY_CAB456_500": {
+        "modeled_complete_centerline_mm": 353.0704427233391,
+        "connector_allowance_mm": 40.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 500.0,
+        "required_with_allowances_mm": 408.0704427233391,
+        "remaining_length_margin_mm": 91.92955727666089,
+        "modeled_connector_length_lower_bound_mm": 34.5,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "CABLE_R9_SATA_DATA_1_STARTECH_LSATA24_609p6": {
+        "modeled_complete_centerline_mm": 507.1500797605259,
+        "connector_allowance_mm": 40.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 609.6,
+        "required_with_allowances_mm": 562.1500797605258,
+        "remaining_length_margin_mm": 47.44992023947418,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "modeled_connector_length_lower_bound_mm": 38.0
+      },
+      "CABLE_R9_SATA_POWER_2_MODDIY_CAB456_500": {
+        "modeled_complete_centerline_mm": 350.06670082346216,
+        "connector_allowance_mm": 40.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 500.0,
+        "required_with_allowances_mm": 405.06670082346216,
+        "remaining_length_margin_mm": 94.93329917653784,
+        "modeled_connector_length_lower_bound_mm": 34.5,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "CABLE_R9_SATA_DATA_2_STARTECH_LSATA24_609p6": {
+        "modeled_complete_centerline_mm": 495.98666512637953,
+        "connector_allowance_mm": 40.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 609.6,
+        "required_with_allowances_mm": 550.9866651263795,
+        "remaining_length_margin_mm": 58.61333487362049,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "modeled_connector_length_lower_bound_mm": 38.0
+      },
+      "CABLE_R9_SATA_POWER_3_MODDIY_CAB456_500": {
+        "modeled_complete_centerline_mm": 348.65431184307744,
+        "connector_allowance_mm": 40.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 500.0,
+        "required_with_allowances_mm": 403.65431184307744,
+        "remaining_length_margin_mm": 96.34568815692256,
+        "modeled_connector_length_lower_bound_mm": 34.5,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "CABLE_R9_SATA_DATA_3_STARTECH_LSATA24_609p6": {
+        "modeled_complete_centerline_mm": 446.9606566836028,
+        "connector_allowance_mm": 40.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 609.6,
+        "required_with_allowances_mm": 501.9606566836028,
+        "remaining_length_margin_mm": 107.63934331639723,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "modeled_connector_length_lower_bound_mm": 38.0
+      },
+      "CABLE_R9_GPU_MODDIY_CAB534_600": {
+        "modeled_complete_centerline_mm": 411.15216898893516,
+        "connector_allowance_mm": 48.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 600.0,
+        "required_with_allowances_mm": 474.15216898893516,
+        "remaining_length_margin_mm": 125.84783101106484,
+        "modeled_connector_length_lower_bound_mm": 36.3,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "geometric_length_budget_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "PWM_R9_bottom_factory400": {
+        "modeled_complete_centerline_mm": 334.9889357189107,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 400,
+        "required_with_allowances_mm": 373.9889357189107,
+        "remaining_length_margin_mm": 26.01106428108932,
+        "geometric_length_budget_passed": true,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "PWM_R9_bottom_NA_EC1_300": {
+        "modeled_complete_centerline_mm": 225.5119449019234,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 300,
+        "required_with_allowances_mm": 264.5119449019234,
+        "remaining_length_margin_mm": 35.488055098076586,
+        "geometric_length_budget_passed": true,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "PWM_R9_top_factory200": {
+        "modeled_complete_centerline_mm": 122.18495408493617,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 200,
+        "required_with_allowances_mm": 161.18495408493618,
+        "remaining_length_margin_mm": 38.81504591506382,
+        "geometric_length_budget_passed": true,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "PWM_R9_top_NA_EC1_300": {
+        "modeled_complete_centerline_mm": 154.45796326794894,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 300,
+        "required_with_allowances_mm": 193.45796326794894,
+        "remaining_length_margin_mm": 106.54203673205106,
+        "geometric_length_budget_passed": true,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "PWM_R9_HDD_factory200": {
+        "modeled_complete_centerline_mm": 99.05796326794896,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 200,
+        "required_with_allowances_mm": 138.05796326794896,
+        "remaining_length_margin_mm": 61.94203673205104,
+        "geometric_length_budget_passed": true,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "PWM_R9_SYS_NA_EC1_1_route": {
+        "modeled_complete_centerline_mm": 206.7809724509617,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 300,
+        "required_with_allowances_mm": 245.7809724509617,
+        "remaining_length_margin_mm": 54.21902754903829,
+        "geometric_length_budget_passed": true,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "PWM_R9_SYS_NA_EC1_2_route": {
+        "modeled_complete_centerline_mm": 129.7079632679489,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 300,
+        "required_with_allowances_mm": 168.7079632679489,
+        "remaining_length_margin_mm": 131.2920367320511,
+        "geometric_length_budget_passed": true,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "PWM_R9_SYS_NA_EC1_3_route": {
+        "modeled_complete_centerline_mm": 204.5619449019234,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 300,
+        "required_with_allowances_mm": 243.5619449019234,
+        "remaining_length_margin_mm": 56.4380550980766,
+        "geometric_length_budget_passed": true,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "PWM_R9_SYS_NA_EC1_4_route": {
+        "modeled_complete_centerline_mm": 232.81194490192348,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 300,
+        "required_with_allowances_mm": 271.8119449019235,
+        "remaining_length_margin_mm": 28.188055098076518,
+        "geometric_length_budget_passed": true,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      },
+      "CONTROL_R6_ITW_original500mm_lead_route": {
+        "modeled_complete_centerline_mm": 200.5097179439794,
+        "connector_allowance_mm": 16.0,
+        "assembly_slack_mm": 15.0,
+        "nominal_stock_mm": 500,
+        "required_with_allowances_mm": 231.5097179439794,
+        "remaining_length_margin_mm": 268.4902820560206,
+        "geometric_length_budget_passed": true,
+        "minimum_required_margin_mm": 25.0,
+        "minimum_margin_passed": true,
+        "connector_allowance_is_engineering_assumption": true,
+        "factory_measurement_origin_and_installed_flex_verified": false
+      }
+    },
+    "received_hardware_length_or_flex_verified": false
+  },
+  "HDD_shutter_and_rear_groove_review": {
+    "shutter_count": 6,
+    "drive_records": {
+      "1": {
+        "parts": [
+          "R9_HDD_rear_connector_hatch_1_power",
+          "R9_HDD_rear_connector_hatch_1_data"
+        ],
+        "bolts": [
+          "R9_HDD_HATCH_1_power_M3x6_CSK",
+          "R9_HDD_HATCH_1_data_M3x6_CSK"
+        ],
+        "nuts": [
+          "R9_HDD_HATCH_1_power_M3_square",
+          "R9_HDD_HATCH_1_data_M3_square"
+        ],
+        "shutters": {
+          "power": {
+            "part": "R9_HDD_rear_connector_hatch_1_power",
+            "bolt": "R9_HDD_HATCH_1_power_M3x6_CSK",
+            "nut": "R9_HDD_HATCH_1_power_M3_square",
+            "sweep_key": "SERVICE_R9_HDD_rear_hatch_1_power_STAGED_removal",
+            "staged_service_keys": [
+              "SERVICE_R9_HDD_rear_hatch_1_power_release_plusY1p5",
+              "SERVICE_R9_HDD_rear_hatch_1_power_release_plusX10_afterY1p5",
+              "SERVICE_R9_HDD_rear_hatch_1_power_raise_minZ90_afterY1p5_X10",
+              "SERVICE_R9_HDD_rear_hatch_1_power_align_leftX66p8_after_raise",
+              "SERVICE_R9_HDD_rear_hatch_1_power_draw_plusY50_after_raise_align"
+            ],
+            "stages_mm": [
+              [
+                0,
+                1.5,
+                0
+              ],
+              [
+                10,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                52.5
+              ],
+              [
+                52.199999999999996,
+                0,
+                0
+              ],
+              [
+                0,
+                50,
+                0
+              ]
+            ],
+            "body_z_mm": [
+              37.5,
+              66.2
+            ],
+            "fastener": "M3x6 90deg CSK, length including head",
+            "countersink_depth_mm": 1.5,
+            "countersink_continues_into_fixed_tab_mm": 0.3,
+            "normal_wire_slot_center_xz_mm": [
+              10.9052,
+              51.85
+            ],
+            "slot_seal_solid_index": 0,
+            "root_annulus_index": 1,
+            "remove_before_motion": [
+              "R9_HDD_rear_connector_hatch_1_power",
+              "R9_HDD_HATCH_1_power_M3x6_CSK"
+            ],
+            "remove_target_slot_foam_and_annulus_before_motion": true,
+            "all_other_shutters_and_complete_normal_wires_remain_installed": true,
+            "common_extraction_corridor_x_mm": [
+              66.8,
+              86.1
+            ],
+            "common_extraction_min_z_mm": 90.0,
+            "sweep_proxy_scope": "Exact keyed profile +Y; exact monotone-key +X domain; conservative full material boxes after key release",
+            "retained_other_slot_foam_service": "CHECK_R9_HDD_HATCH_1_power_OTHER_SLOT_FOAM_RETAINED"
+          },
+          "data": {
+            "part": "R9_HDD_rear_connector_hatch_1_data",
+            "bolt": "R9_HDD_HATCH_1_data_M3x6_CSK",
+            "nut": "R9_HDD_HATCH_1_data_M3_square",
+            "sweep_key": "SERVICE_R9_HDD_rear_hatch_1_data_STAGED_removal",
+            "staged_service_keys": [
+              "SERVICE_R9_HDD_rear_hatch_1_data_release_plusY1p5",
+              "SERVICE_R9_HDD_rear_hatch_1_data_release_plusX10_afterY1p5",
+              "SERVICE_R9_HDD_rear_hatch_1_data_raise_minZ90_afterY1p5_X10",
+              "SERVICE_R9_HDD_rear_hatch_1_data_align_leftX66p8_after_raise",
+              "SERVICE_R9_HDD_rear_hatch_1_data_draw_plusY50_after_raise_align"
+            ],
+            "stages_mm": [
+              [
+                0,
+                1.5,
+                0
+              ],
+              [
+                10,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                14.5
+              ],
+              [
+                52.199999999999996,
+                0,
+                0
+              ],
+              [
+                0,
+                50,
+                0
+              ]
+            ],
+            "body_z_mm": [
+              75.5,
+              94.2
+            ],
+            "fastener": "M3x6 90deg CSK, length including head",
+            "countersink_depth_mm": 1.5,
+            "countersink_continues_into_fixed_tab_mm": 0.3,
+            "normal_wire_slot_center_xz_mm": [
+              10.9052,
+              84.85
+            ],
+            "slot_seal_solid_index": 1,
+            "root_annulus_index": 2,
+            "remove_before_motion": [
+              "R9_HDD_rear_connector_hatch_1_data",
+              "R9_HDD_HATCH_1_data_M3x6_CSK"
+            ],
+            "remove_target_slot_foam_and_annulus_before_motion": true,
+            "all_other_shutters_and_complete_normal_wires_remain_installed": true,
+            "common_extraction_corridor_x_mm": [
+              66.8,
+              86.1
+            ],
+            "common_extraction_min_z_mm": 90.0,
+            "sweep_proxy_scope": "Exact keyed profile +Y; exact monotone-key +X domain; conservative full material boxes after key release",
+            "retained_other_slot_foam_service": "CHECK_R9_HDD_HATCH_1_data_OTHER_SLOT_FOAM_RETAINED"
+          }
+        },
+        "part": "R9_HDD_rear_connector_hatch_1_power",
+        "bolt": "R9_HDD_HATCH_1_power_M3x6_CSK",
+        "nut": "R9_HDD_HATCH_1_power_M3_square",
+        "sweep_key": "SERVICE_R9_HDD_rear_connector_hatch_1_STAGED_removal",
+        "slot_seal": "R9_HDD_HATCH_1_REMOVABLE_SLOT_FOAM_SEAL",
+        "staged_service_keys": [
+          "SERVICE_R9_HDD_rear_hatch_1_power_release_plusY1p5",
+          "SERVICE_R9_HDD_rear_hatch_1_power_release_plusX10_afterY1p5",
+          "SERVICE_R9_HDD_rear_hatch_1_power_raise_minZ90_afterY1p5_X10",
+          "SERVICE_R9_HDD_rear_hatch_1_power_align_leftX66p8_after_raise",
+          "SERVICE_R9_HDD_rear_hatch_1_power_draw_plusY50_after_raise_align",
+          "SERVICE_R9_HDD_rear_hatch_1_data_release_plusY1p5",
+          "SERVICE_R9_HDD_rear_hatch_1_data_release_plusX10_afterY1p5",
+          "SERVICE_R9_HDD_rear_hatch_1_data_raise_minZ90_afterY1p5_X10",
+          "SERVICE_R9_HDD_rear_hatch_1_data_align_leftX66p8_after_raise",
+          "SERVICE_R9_HDD_rear_hatch_1_data_draw_plusY50_after_raise_align"
+        ],
+        "wire_slot_centers_xz_mm": [
+          [
+            10.9052,
+            51.85
+          ],
+          [
+            10.9052,
+            84.85
+          ]
+        ],
+        "wire_slot_width_mm": 6.5,
+        "remove_before_head_withdrawal": [
+          "R9_HDD_rear_connector_hatch_1_power",
+          "R9_HDD_rear_connector_hatch_1_data",
+          "R9_HDD_HATCH_1_power_M3x6_CSK",
+          "R9_HDD_HATCH_1_data_M3x6_CSK",
+          "R9_HDD_HATCH_1_REMOVABLE_SLOT_FOAM_SEAL"
+        ],
+        "prerequisites": [
+          "remove_back_skin",
+          "remove only target shutter slot foam and split wire annulus",
+          "remove only target shutter M3x6",
+          "move one shutter at a time; other five remain installed"
+        ],
+        "finished_connector_threading_required": false,
+        "retained": "all other drive shutters, fixed nuts, complete normal heads and wires during shutter motion",
+        "perimeter_air_seal_physical_acceptance": false
+      },
+      "2": {
+        "parts": [
+          "R9_HDD_rear_connector_hatch_2_power",
+          "R9_HDD_rear_connector_hatch_2_data"
+        ],
+        "bolts": [
+          "R9_HDD_HATCH_2_power_M3x6_CSK",
+          "R9_HDD_HATCH_2_data_M3x6_CSK"
+        ],
+        "nuts": [
+          "R9_HDD_HATCH_2_power_M3_square",
+          "R9_HDD_HATCH_2_data_M3_square"
+        ],
+        "shutters": {
+          "power": {
+            "part": "R9_HDD_rear_connector_hatch_2_power",
+            "bolt": "R9_HDD_HATCH_2_power_M3x6_CSK",
+            "nut": "R9_HDD_HATCH_2_power_M3_square",
+            "sweep_key": "SERVICE_R9_HDD_rear_hatch_2_power_STAGED_removal",
+            "staged_service_keys": [
+              "SERVICE_R9_HDD_rear_hatch_2_power_release_plusY1p5",
+              "SERVICE_R9_HDD_rear_hatch_2_power_release_plusX10_afterY1p5",
+              "SERVICE_R9_HDD_rear_hatch_2_power_raise_minZ90_afterY1p5_X10",
+              "SERVICE_R9_HDD_rear_hatch_2_power_align_leftX66p8_after_raise",
+              "SERVICE_R9_HDD_rear_hatch_2_power_draw_plusY50_after_raise_align"
+            ],
+            "stages_mm": [
+              [
+                0,
+                1.5,
+                0
+              ],
+              [
+                10,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                52.5
+              ],
+              [
+                19.099999999999994,
+                0,
+                0
+              ],
+              [
+                0,
+                50,
+                0
+              ]
+            ],
+            "body_z_mm": [
+              37.5,
+              66.2
+            ],
+            "fastener": "M3x6 90deg CSK, length including head",
+            "countersink_depth_mm": 1.5,
+            "countersink_continues_into_fixed_tab_mm": 0.3,
+            "normal_wire_slot_center_xz_mm": [
+              44.0052,
+              51.85
+            ],
+            "slot_seal_solid_index": 0,
+            "root_annulus_index": 3,
+            "remove_before_motion": [
+              "R9_HDD_rear_connector_hatch_2_power",
+              "R9_HDD_HATCH_2_power_M3x6_CSK"
+            ],
+            "remove_target_slot_foam_and_annulus_before_motion": true,
+            "all_other_shutters_and_complete_normal_wires_remain_installed": true,
+            "common_extraction_corridor_x_mm": [
+              66.8,
+              86.1
+            ],
+            "common_extraction_min_z_mm": 90.0,
+            "sweep_proxy_scope": "Exact keyed profile +Y; exact monotone-key +X domain; conservative full material boxes after key release",
+            "retained_other_slot_foam_service": "CHECK_R9_HDD_HATCH_2_power_OTHER_SLOT_FOAM_RETAINED"
+          },
+          "data": {
+            "part": "R9_HDD_rear_connector_hatch_2_data",
+            "bolt": "R9_HDD_HATCH_2_data_M3x6_CSK",
+            "nut": "R9_HDD_HATCH_2_data_M3_square",
+            "sweep_key": "SERVICE_R9_HDD_rear_hatch_2_data_STAGED_removal",
+            "staged_service_keys": [
+              "SERVICE_R9_HDD_rear_hatch_2_data_release_plusY1p5",
+              "SERVICE_R9_HDD_rear_hatch_2_data_release_plusX10_afterY1p5",
+              "SERVICE_R9_HDD_rear_hatch_2_data_raise_minZ90_afterY1p5_X10",
+              "SERVICE_R9_HDD_rear_hatch_2_data_align_leftX66p8_after_raise",
+              "SERVICE_R9_HDD_rear_hatch_2_data_draw_plusY50_after_raise_align"
+            ],
+            "stages_mm": [
+              [
+                0,
+                1.5,
+                0
+              ],
+              [
+                10,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                14.5
+              ],
+              [
+                19.099999999999994,
+                0,
+                0
+              ],
+              [
+                0,
+                50,
+                0
+              ]
+            ],
+            "body_z_mm": [
+              75.5,
+              94.2
+            ],
+            "fastener": "M3x6 90deg CSK, length including head",
+            "countersink_depth_mm": 1.5,
+            "countersink_continues_into_fixed_tab_mm": 0.3,
+            "normal_wire_slot_center_xz_mm": [
+              44.0052,
+              84.85
+            ],
+            "slot_seal_solid_index": 1,
+            "root_annulus_index": 4,
+            "remove_before_motion": [
+              "R9_HDD_rear_connector_hatch_2_data",
+              "R9_HDD_HATCH_2_data_M3x6_CSK"
+            ],
+            "remove_target_slot_foam_and_annulus_before_motion": true,
+            "all_other_shutters_and_complete_normal_wires_remain_installed": true,
+            "common_extraction_corridor_x_mm": [
+              66.8,
+              86.1
+            ],
+            "common_extraction_min_z_mm": 90.0,
+            "sweep_proxy_scope": "Exact keyed profile +Y; exact monotone-key +X domain; conservative full material boxes after key release",
+            "retained_other_slot_foam_service": "CHECK_R9_HDD_HATCH_2_data_OTHER_SLOT_FOAM_RETAINED"
+          }
+        },
+        "part": "R9_HDD_rear_connector_hatch_2_power",
+        "bolt": "R9_HDD_HATCH_2_power_M3x6_CSK",
+        "nut": "R9_HDD_HATCH_2_power_M3_square",
+        "sweep_key": "SERVICE_R9_HDD_rear_connector_hatch_2_STAGED_removal",
+        "slot_seal": "R9_HDD_HATCH_2_REMOVABLE_SLOT_FOAM_SEAL",
+        "staged_service_keys": [
+          "SERVICE_R9_HDD_rear_hatch_2_power_release_plusY1p5",
+          "SERVICE_R9_HDD_rear_hatch_2_power_release_plusX10_afterY1p5",
+          "SERVICE_R9_HDD_rear_hatch_2_power_raise_minZ90_afterY1p5_X10",
+          "SERVICE_R9_HDD_rear_hatch_2_power_align_leftX66p8_after_raise",
+          "SERVICE_R9_HDD_rear_hatch_2_power_draw_plusY50_after_raise_align",
+          "SERVICE_R9_HDD_rear_hatch_2_data_release_plusY1p5",
+          "SERVICE_R9_HDD_rear_hatch_2_data_release_plusX10_afterY1p5",
+          "SERVICE_R9_HDD_rear_hatch_2_data_raise_minZ90_afterY1p5_X10",
+          "SERVICE_R9_HDD_rear_hatch_2_data_align_leftX66p8_after_raise",
+          "SERVICE_R9_HDD_rear_hatch_2_data_draw_plusY50_after_raise_align"
+        ],
+        "wire_slot_centers_xz_mm": [
+          [
+            44.0052,
+            51.85
+          ],
+          [
+            44.0052,
+            84.85
+          ]
+        ],
+        "wire_slot_width_mm": 6.5,
+        "remove_before_head_withdrawal": [
+          "R9_HDD_rear_connector_hatch_2_power",
+          "R9_HDD_rear_connector_hatch_2_data",
+          "R9_HDD_HATCH_2_power_M3x6_CSK",
+          "R9_HDD_HATCH_2_data_M3x6_CSK",
+          "R9_HDD_HATCH_2_REMOVABLE_SLOT_FOAM_SEAL"
+        ],
+        "prerequisites": [
+          "remove_back_skin",
+          "remove only target shutter slot foam and split wire annulus",
+          "remove only target shutter M3x6",
+          "move one shutter at a time; other five remain installed"
+        ],
+        "finished_connector_threading_required": false,
+        "retained": "all other drive shutters, fixed nuts, complete normal heads and wires during shutter motion",
+        "perimeter_air_seal_physical_acceptance": false
+      },
+      "3": {
+        "parts": [
+          "R9_HDD_rear_connector_hatch_3_power",
+          "R9_HDD_rear_connector_hatch_3_data"
+        ],
+        "bolts": [
+          "R9_HDD_HATCH_3_power_M3x6_CSK",
+          "R9_HDD_HATCH_3_data_M3x6_CSK"
+        ],
+        "nuts": [
+          "R9_HDD_HATCH_3_power_M3_square",
+          "R9_HDD_HATCH_3_data_M3_square"
+        ],
+        "shutters": {
+          "power": {
+            "part": "R9_HDD_rear_connector_hatch_3_power",
+            "bolt": "R9_HDD_HATCH_3_power_M3x6_CSK",
+            "nut": "R9_HDD_HATCH_3_power_M3_square",
+            "sweep_key": "SERVICE_R9_HDD_rear_hatch_3_power_STAGED_removal",
+            "staged_service_keys": [
+              "SERVICE_R9_HDD_rear_hatch_3_power_release_plusY1p5",
+              "SERVICE_R9_HDD_rear_hatch_3_power_release_plusX10_afterY1p5",
+              "SERVICE_R9_HDD_rear_hatch_3_power_raise_minZ90_afterY1p5_X10",
+              "SERVICE_R9_HDD_rear_hatch_3_power_align_leftX66p8_after_raise",
+              "SERVICE_R9_HDD_rear_hatch_3_power_draw_plusY50_after_raise_align"
+            ],
+            "stages_mm": [
+              [
+                0,
+                1.5,
+                0
+              ],
+              [
+                10,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                52.5
+              ],
+              [
+                -14.0,
+                0,
+                0
+              ],
+              [
+                0,
+                50,
+                0
+              ]
+            ],
+            "body_z_mm": [
+              37.5,
+              66.2
+            ],
+            "fastener": "M3x6 90deg CSK, length including head",
+            "countersink_depth_mm": 1.5,
+            "countersink_continues_into_fixed_tab_mm": 0.3,
+            "normal_wire_slot_center_xz_mm": [
+              77.1052,
+              51.85
+            ],
+            "slot_seal_solid_index": 0,
+            "root_annulus_index": 5,
+            "remove_before_motion": [
+              "R9_HDD_rear_connector_hatch_3_power",
+              "R9_HDD_HATCH_3_power_M3x6_CSK"
+            ],
+            "remove_target_slot_foam_and_annulus_before_motion": true,
+            "all_other_shutters_and_complete_normal_wires_remain_installed": true,
+            "common_extraction_corridor_x_mm": [
+              66.8,
+              86.1
+            ],
+            "common_extraction_min_z_mm": 90.0,
+            "sweep_proxy_scope": "Exact keyed profile +Y; exact monotone-key +X domain; conservative full material boxes after key release",
+            "retained_other_slot_foam_service": "CHECK_R9_HDD_HATCH_3_power_OTHER_SLOT_FOAM_RETAINED"
+          },
+          "data": {
+            "part": "R9_HDD_rear_connector_hatch_3_data",
+            "bolt": "R9_HDD_HATCH_3_data_M3x6_CSK",
+            "nut": "R9_HDD_HATCH_3_data_M3_square",
+            "sweep_key": "SERVICE_R9_HDD_rear_hatch_3_data_STAGED_removal",
+            "staged_service_keys": [
+              "SERVICE_R9_HDD_rear_hatch_3_data_release_plusY1p5",
+              "SERVICE_R9_HDD_rear_hatch_3_data_release_plusX10_afterY1p5",
+              "SERVICE_R9_HDD_rear_hatch_3_data_raise_minZ90_afterY1p5_X10",
+              "SERVICE_R9_HDD_rear_hatch_3_data_align_leftX66p8_after_raise",
+              "SERVICE_R9_HDD_rear_hatch_3_data_draw_plusY50_after_raise_align"
+            ],
+            "stages_mm": [
+              [
+                0,
+                1.5,
+                0
+              ],
+              [
+                10,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                14.5
+              ],
+              [
+                -14.0,
+                0,
+                0
+              ],
+              [
+                0,
+                50,
+                0
+              ]
+            ],
+            "body_z_mm": [
+              75.5,
+              94.2
+            ],
+            "fastener": "M3x6 90deg CSK, length including head",
+            "countersink_depth_mm": 1.5,
+            "countersink_continues_into_fixed_tab_mm": 0.3,
+            "normal_wire_slot_center_xz_mm": [
+              77.1052,
+              84.85
+            ],
+            "slot_seal_solid_index": 1,
+            "root_annulus_index": 6,
+            "remove_before_motion": [
+              "R9_HDD_rear_connector_hatch_3_data",
+              "R9_HDD_HATCH_3_data_M3x6_CSK"
+            ],
+            "remove_target_slot_foam_and_annulus_before_motion": true,
+            "all_other_shutters_and_complete_normal_wires_remain_installed": true,
+            "common_extraction_corridor_x_mm": [
+              66.8,
+              86.1
+            ],
+            "common_extraction_min_z_mm": 90.0,
+            "sweep_proxy_scope": "Exact keyed profile +Y; exact monotone-key +X domain; conservative full material boxes after key release",
+            "retained_other_slot_foam_service": "CHECK_R9_HDD_HATCH_3_data_OTHER_SLOT_FOAM_RETAINED"
+          }
+        },
+        "part": "R9_HDD_rear_connector_hatch_3_power",
+        "bolt": "R9_HDD_HATCH_3_power_M3x6_CSK",
+        "nut": "R9_HDD_HATCH_3_power_M3_square",
+        "sweep_key": "SERVICE_R9_HDD_rear_connector_hatch_3_STAGED_removal",
+        "slot_seal": "R9_HDD_HATCH_3_REMOVABLE_SLOT_FOAM_SEAL",
+        "staged_service_keys": [
+          "SERVICE_R9_HDD_rear_hatch_3_power_release_plusY1p5",
+          "SERVICE_R9_HDD_rear_hatch_3_power_release_plusX10_afterY1p5",
+          "SERVICE_R9_HDD_rear_hatch_3_power_raise_minZ90_afterY1p5_X10",
+          "SERVICE_R9_HDD_rear_hatch_3_power_align_leftX66p8_after_raise",
+          "SERVICE_R9_HDD_rear_hatch_3_power_draw_plusY50_after_raise_align",
+          "SERVICE_R9_HDD_rear_hatch_3_data_release_plusY1p5",
+          "SERVICE_R9_HDD_rear_hatch_3_data_release_plusX10_afterY1p5",
+          "SERVICE_R9_HDD_rear_hatch_3_data_raise_minZ90_afterY1p5_X10",
+          "SERVICE_R9_HDD_rear_hatch_3_data_align_leftX66p8_after_raise",
+          "SERVICE_R9_HDD_rear_hatch_3_data_draw_plusY50_after_raise_align"
+        ],
+        "wire_slot_centers_xz_mm": [
+          [
+            77.1052,
+            51.85
+          ],
+          [
+            77.1052,
+            84.85
+          ]
+        ],
+        "wire_slot_width_mm": 6.5,
+        "remove_before_head_withdrawal": [
+          "R9_HDD_rear_connector_hatch_3_power",
+          "R9_HDD_rear_connector_hatch_3_data",
+          "R9_HDD_HATCH_3_power_M3x6_CSK",
+          "R9_HDD_HATCH_3_data_M3x6_CSK",
+          "R9_HDD_HATCH_3_REMOVABLE_SLOT_FOAM_SEAL"
+        ],
+        "prerequisites": [
+          "remove_back_skin",
+          "remove only target shutter slot foam and split wire annulus",
+          "remove only target shutter M3x6",
+          "move one shutter at a time; other five remain installed"
+        ],
+        "finished_connector_threading_required": false,
+        "retained": "all other drive shutters, fixed nuts, complete normal heads and wires during shutter motion",
+        "perimeter_air_seal_physical_acceptance": false
+      }
+    },
+    "rear_data_cable_reliefs": {
+      "part": "SKIN_R6_back",
+      "routes": [
+        {
+          "route": "CABLE_R9_SATA_DATA_1_STARTECH_LSATA24_609p6",
+          "wire_diameter_mm": 5.5,
+          "radial_clearance_mm": 0.2,
+          "clearance_diameter_mm": 5.9,
+          "removed_material_mm3": 112.61507826839807,
+          "minimum_nominal_outer_wall_mm": 1.8499999000000287,
+          "maximum_pocket_depth_from_inner_Y247p6_mm": 0.550000099999977,
+          "through_skin": false
+        },
+        {
+          "route": "CABLE_R9_SATA_DATA_2_STARTECH_LSATA24_609p6",
+          "wire_diameter_mm": 5.5,
+          "radial_clearance_mm": 0.2,
+          "clearance_diameter_mm": 5.9,
+          "removed_material_mm3": 112.6151255301811,
+          "minimum_nominal_outer_wall_mm": 1.8499999000000287,
+          "maximum_pocket_depth_from_inner_Y247p6_mm": 0.550000099999977,
+          "through_skin": false
+        },
+        {
+          "route": "CABLE_R9_SATA_DATA_3_STARTECH_LSATA24_609p6",
+          "wire_diameter_mm": 5.5,
+          "radial_clearance_mm": 0.2,
+          "clearance_diameter_mm": 5.9,
+          "removed_material_mm3": 108.76484522419923,
+          "minimum_nominal_outer_wall_mm": 1.8499999000000287,
+          "maximum_pocket_depth_from_inner_Y247p6_mm": 0.550000099999977,
+          "through_skin": false
+        }
+      ],
+      "method": "Full actual centerlines with enlarged5.9mm sections; no bounding-box removal or air-domain exception",
+      "minimum_outer_wall_mm": 1.8499999000000287,
+      "actual_cable_flex_surface_fit_and_print_strength_physically_verified": false
+    },
+    "full_normal_modeled_wires_retained_for_shutter_motion": true,
+    "physical_flexible_wire_motion_verified": false
+  },
+  "top_fan_verification": {
+    "official_archive_url": "https://cdn.noctua.at/media/4d019b79/NF-A20_Public-CAD.zip?download=true",
+    "official_archive_sha256": "83021bdf2aaf15f97c705ac1a9f3a4c93725db18dcc828b4039a62b4becaf10b",
+    "official_step_sha256": "4dba51c63094d461351024ba1314afb87714d43e6bee220bdab2d93a21563498",
+    "geometry_source_hashes": {
+      "design/r9_frame.py": "c9149ca7cdefe8b30737dc8af01c5a633aa1ea1d0fac2a31cd1d2d45c2ac6b3f",
+      "design/r9_storage.py": "995cdd8b3b0c3492d68751ce93bdaacda680c427e726080609dbeab0b757c1c3"
+    },
+    "verification_software": {
+      "cadquery": "2.8.0",
+      "shapely": "2.1.2"
+    },
+    "fan_center_xy_mm": [
+      146.55,
+      125.0
+    ],
+    "official_no_AVP_solid_indices": [
+      0,
+      1,
+      9
+    ],
+    "official_material_outside_original_proxy_mm3": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "official_rotor_outside_R94_mm3": 0.0,
+    "frame_opening_radius_mm": 96.0,
+    "original_throat_radius_mm": 94.0,
+    "mouth_rectangle_xy_mm": [
+      [
+        47.2,
+        135.0
+      ],
+      [
+        104.7,
+        233.6
+      ]
+    ],
+    "mouth_gross_CAD_area_mm2": 2620.280807208449,
+    "inscribed_mouth_polygon_area_mm2": 2620.2738580731975,
+    "conservatively_projected_fixed_frame_obstruction_mm2": 427.76479188504686,
+    "clear_mouth_projection_lower_bound_mm2": 2192.5090661881513,
+    "four_passage_area_mm2": 1968.0,
+    "frame_mesh_linear_deflection_mm": 0.05,
+    "frame_mesh_angular_deflection_radians": 0.1,
+    "frame_projection_expansion_mm": 0.1,
+    "private_frame_mesh_triangles": 257142,
+    "dynamic_rotor_blades_excluded_from_fixed_obstruction": true,
+    "supplier_geometry_or_projected_polygons_exported": false,
+    "geometry_checks_passed": true,
+    "installed_airflow_or_pressure_drop_verified": false,
+    "thermal_or_physical_acceptance_completed": false,
+    "limits": [
+      "Mesh projection with an expanded stationary frame is a conservative engineering estimate, not certified metrology.",
+      "Clear area, proxy containment and connected passages do not establish installed airflow, temperature, noise or manufacturing acceptance."
+    ],
+    "source_report_sha256": "62dcfe9ad8be7149fdac37e775ba2ce49415a27f7b7266674cbf3485ebf5fa6d"
+  },
+  "pressed_pad_actual_contact_review": {
+    "installed_pad_volume_mm3": 584.1021924961525,
+    "local_installed_pad_STEP_sha256": "bf85d5d2a44211c6a8fc52aaa0a1543a1a4ea0d18441336fb57da5626636091a",
+    "validated_actual_common_contacts": [
+      {
+        "pair": [
+          "R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4",
+          "R8_K83UP_TL_OFFICIAL_x8_MALE_ASSEMBLED_MODIFIED_CLAMP"
+        ],
+        "domain_key": "CHECK_R8_SILICONE_PAD_LOCAL_ELASTIC_CONTACT_DOMAIN",
+        "overlap_mm3": 0.15079644737229622,
+        "outside_domain_mm3": 0.0,
+        "maximum_overlap_mm3": 0.5,
+        "physical_clamping_and_retention_verified": false
+      }
+    ],
+    "public_flat_stock_is_independent": true,
+    "supplier_derived_installed_surface_distributed": false,
+    "physical_preload_verified": false
   },
   "public_geometry_exclusions": {
     "manufacturer_endpoint_nodes": 2,
     "manufacturer_derived_compressed_contact_nodes": 1,
     "raw_foam_stock_geometry_independently_generated": true
+  },
+  "input_record_sha256": {
+    "current_review": "e2c04368a82e8b831601295e10fa4c35d0c6c251bc64b15d939ad01fb5f695fc",
+    "public_geometry_audit": "c6939a43eccf4628b7ec063f0e361a203f8453d03c92567518cd479d1ea9deeb",
+    "local_browser": "479f424c0da7c57976155fcf95d18257f4a8b403da1ed469de7272eb1290cb01",
+    "reference_receipt": "730db2043f619ecb05cdfef45591486b4b00c48be440ca5e44ae1568e4a92aa2",
+    "top_fan_proof": "4cf20dfd4f54e5910dc3fd9f7d64ebbc8e704f124a836d43d351318314690f89"
+  },
+  "remaining_physical_gates": [
+    "Photo-derived board/socket dimensions and revision require measured fit-up",
+    "Factory cable exit, usable lengths, bend behavior, surplus packing and pin grouping require received-hardware verification",
+    "Printed strength, creep, vibration, electrical insulation, thermal and noise tests remain incomplete"
+  ],
+  "physical_thermal_acceptance": false,
+  "manufacturing_release": false,
+  "incremental_validation_meta": {
+    "scope": "Actual original-STEP R9 rebuild and39 integrated check groups, followed by one isolated plenum floor correction and exact delta revalidation; complete exports are regenerated. Unchanged x8/other geometry checks are retained from this current fresh run, not repeated or imported from an older revision.",
+    "base_actual_fresh_geometry_check_groups": 39,
+    "base_actual_fresh_geometry_checks_sha256": "15a78c1ce99bad4a40dbe34ceadb3a567893702853d955bff1746ec0a135d044",
+    "base_blocked_mesh_export_report_sha256": "ba5fead6b508c5e3c0d26de9adfb34533025b7fd923894bf33fd83aa4787baa2",
+    "delta_report_sha256": "45422b4b2dae2aac77c2ec8f764081147a65a7c159a1bd46854770f5bbffe3e0",
+    "changed_shape_keys": [
+      "parts/R9_HDD_removable_front_fan_distribution_plenum",
+      "service/SERVICE_R9_HDD_plenum_release_minusY6",
+      "service/SERVICE_R9_HDD_front_fan_plenum_STAGED_removal"
+    ],
+    "local_source_change": {
+      "file": "design/r9_storage.py",
+      "before_sha256": "f8b611b476f06d2d66013e4448561f46806db1c57606e41f85fed8d5f791cfb0",
+      "after_sha256": "995cdd8b3b0c3492d68751ce93bdaacda680c427e726080609dbeab0b757c1c3",
+      "description": "Only plenum bottom floor Y length15.3->16.5; original carrier cuts, air domains and every other shape retained."
+    },
+    "delta_checks": {
+      "plenum_geometry_and_mesh": [],
+      "unexpected_native_geometry_changes": [],
+      "changed_plenum_vs_all_retained_physical": [],
+      "changed_plenum_vs_all_air": [],
+      "changed_plenum_vs_reference_material": [],
+      "changed_plenum_vs_CPU40": [],
+      "fan_stage_1": [],
+      "fan_stage_2": [],
+      "fan_stage_3": [],
+      "fan_stage_4": [],
+      "fan_stage_5": [],
+      "drive_1_draw": [],
+      "drive_1_Lkey": [],
+      "drive_2_draw": [],
+      "drive_2_Lkey": [],
+      "drive_3_draw": [],
+      "drive_3_Lkey": [],
+      "lower_post_service": [],
+      "all_other_retained_plenum_service_sweeps_and_poses": [],
+      "complete_filter_service_vs_changed_plenum": [],
+      "changed_part_physical_bounds": [],
+      "changed_print_build_volume": [],
+      "all_new_or_changed_shapes_valid": []
+    },
+    "unchanged_native_shapes": 176,
+    "all_other_native_shapes_exactly_unchanged": true,
+    "full_integrated_geometry_rebuild_repeated_after_local_fix": false,
+    "original_exporter_source_unchanged": true,
+    "all_final_exports_and_STEP_roundtrip_reexecuted": true,
+    "physical_or_thermal_acceptance": false
+  },
+  "geometry_check_group_accounting": {
+    "actual_fresh_integrated_geometry_groups": 39,
+    "local_changed_part_delta_groups": 23,
+    "final_report_records": 41,
+    "final_report_records_are_not_independent_fresh_rebuilds": true
   }
 }

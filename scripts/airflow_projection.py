@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def project_cables(
     paths: list[Path],
-    center: tuple[float, float] = (170.0, 136.0),
+    center: tuple[float, float] = (169.0, 136.0),
     radius: float = 56.0,
     z_min: float = 32.0,
     z_max: float = 65.0,
@@ -114,10 +114,10 @@ def project_cables(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--cables-dir', type=Path, default=ROOT / 'out-r8/cables')
+    parser.add_argument('--cables-dir', type=Path, default=ROOT / 'out-r9/cables')
     parser.add_argument('--pattern', default='CABLE_R8_K83*.step')
     parser.add_argument('--output', type=Path)
-    parser.add_argument('--center-x', type=float, default=170.0)
+    parser.add_argument('--center-x', type=float, default=169.0)
     parser.add_argument('--center-y', type=float, default=136.0)
     parser.add_argument('--radius', type=float, default=56.0)
     parser.add_argument('--z-min', type=float, default=32.0)

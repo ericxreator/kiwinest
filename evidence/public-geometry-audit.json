@@ -1,15 +1,18 @@
 {
-  "source_report_sha256": "ba4dd297f32b29356117de27b970dbf2806e9d80595a0c258c1f7f63e8f6e319",
-  "raw_glb_sha256": "825a7c5745f0c6991a10a8e2ddfc90de0a686b4ab3b049340e215b4c33c97f23",
-  "public_glb_sha256": "13aca9ccd52cdaffb63f03f0a126b5310e64fe3c1b02599807afcc2587317c4a",
-  "public_nodes": 370,
+  "source_report_sha256": "62dcfe9ad8be7149fdac37e775ba2ce49415a27f7b7266674cbf3485ebf5fa6d",
+  "raw_glb_sha256": "fb518a9c59633c535b2426a2077499433d3502b7643c3f409b6cefd7348b1e7a",
+  "public_glb_sha256": "fb7eabd07650e5bca9f5d70a4db601b9b1fdee796807e4a43c635bbe535f5a57",
+  "public_nodes": 417,
   "excluded_vendor_nodes": [
     "R8_K83UP_TL_OFFICIAL_x8_MALE_ASSEMBLED_MODIFIED_CLAMP",
     "R8_K83UP_TL_x16_FEMALE_FACTORY_LATCH_PARKED",
     "R8_RISER_MALE_INSULATING_SILICONE_PAD_1p5_COMPRESSED_1p4"
   ],
-  "selected_accessors_byte_matched": 16494,
+  "selected_accessors_byte_matched": 17142,
   "vendor_accessor_overlap": 0,
   "unused_binary_bytes_zero_only": true,
+  "retained_node_transforms_matched": true,
+  "assembly_root_transform_matched": true,
+  "retained_material_properties_matched": true,
   "geometry_is_physical_acceptance": false
 }

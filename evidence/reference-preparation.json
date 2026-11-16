@@ -24,8 +24,26 @@
       "selected_before_dedup": 587
     }
   },
-  "preparation_script_sha256": "f75df8a88d18436daf39cdd5f4515b7b7c928c776d01c646c842c11e3a666764",
+  "preparation_script_sha256": "656a6edbe8906f80d7bc96323750afb5cfc706dc1678986083e28cf52d018c5c",
   "vendor_geometry_distributed": false,
   "physical_acceptance": false,
-  "source_report_sha256": "ba4dd297f32b29356117de27b970dbf2806e9d80595a0c258c1f7f63e8f6e319"
+  "revision": "R9",
+  "verified_at_utc": "2026-11-16T04:35:57.828025+00:00",
+  "pinned_inputs_byte_verified_now": true,
+  "prepared_STEP_endpoints_byte_verified_now": true,
+  "matching_existing_preparation_reused": true,
+  "verification_scope": "Read-only byte verification of original pinned archive, source STEP member, PSU PDF, complete endpoint STEP and BRep sidecars; full R9 reconstruction uses these STEP inputs, not prior CAD check results.",
+  "source_report_sha256": "62dcfe9ad8be7149fdac37e775ba2ce49415a27f7b7266674cbf3485ebf5fa6d",
+  "evidence_bound_at_utc": "2026-11-16T06:28:26.518510+00:00",
+  "reference_files_rechecked_at_evidence_finalization": true,
+  "pinned_psu_input": {
+    "filename": "enp7660b-official-spec-20251008.pdf",
+    "url": "https://www.enhanceusa.com/upload/DM/202510080638420.pdf",
+    "sha256": "8df699a26d42f0849d06c9cd043733581196acea124f6a97b5c515b07cce7c4e",
+    "bytes": 325319
+  },
+  "source_STEP_verified_directly_in_archive": true,
+  "source_STEP_member": "K83UP-TL 5.0 20260707.step",
+  "source_STEP_bytes": 96869926,
+  "manufacturer_source_extracted_or_copied": false
 }

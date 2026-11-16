@@ -147,7 +147,7 @@ def main() -> None:
     receipt['redistribution'] = 'VENDOR_INPUTS_LOCAL_ONLY_NOT_COVERED_BY_PROJECT_LICENSES'
     (PRIVATE / 'preparation-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
     print('Verified manufacturer inputs prepared in references/private/ (gitignored).')
-    print('Next: python design/r6_export.py. CAD export does not establish physical/manufacturing acceptance.')
+    print('Next: python design/r9_export.py. CAD export does not establish physical/manufacturing acceptance.')
 
 
 if __name__ == '__main__':

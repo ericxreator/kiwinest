@@ -1,0 +1,415 @@
+{
+  "description": "Original KiwiNest R8 engineering routes retained as R9 connector-side baselines; not supplier CAD.",
+  "routes": {
+    "CABLE_R6_ATX_PHANTEKS_PH_CB24P_BK500": {
+      "keys": [
+        "CABLE_R6_ATX_PHANTEKS_PH_CB24P_BK500"
+      ],
+      "vertices_mm": [
+        [
+          60,
+          21.5,
+          172
+        ],
+        [
+          60,
+          8,
+          172
+        ],
+        [
+          193,
+          8,
+          174.5
+        ],
+        [
+          220,
+          20,
+          110
+        ],
+        [
+          241,
+          80,
+          38
+        ],
+        [
+          241,
+          118,
+          38
+        ],
+        [
+          241,
+          144,
+          48.5
+        ],
+        [
+          241,
+          178.65,
+          48.5
+        ],
+        [
+          225.3,
+          178.65,
+          48.5
+        ]
+      ],
+      "modeled_centerline_mm": 423.2304059301588,
+      "engineering_diameter_mm": 11,
+      "engineering_bend_R_mm": 6,
+      "full_length_installed_and_flex_verified": false,
+      "nominal_stock_mm": 500,
+      "unmodeled_surplus_mm": 76.76959406984122,
+      "surplus_insulated_material_mm3": 7295.658480653733,
+      "complete_length_budget": {
+        "modeled_complete_centerline_mm": 423.2304059301588,
+        "modeled_connector_length_lower_bound_mm": 36.0,
+        "connector_allowance_mm": 40.0,
+        "assembly_slack_mm": 15.0,
+        "unmodeled_factory_face_transition_length_allowance_mm": 0.0,
+        "required_with_allowances_mm": 478.2304059301588,
+        "nominal_stock_mm": 500,
+        "remaining_length_margin_mm": 21.76959406984122,
+        "geometric_length_budget_passed": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "connector_allowance_is_engineering_assumption": true
+      }
+    },
+    "CABLE_R8_EPS_MODDIY_CO581_600": {
+      "keys": [
+        "CABLE_R8_EPS_MODDIY_CO581_600"
+      ],
+      "vertices_mm": [
+        [
+          108.55,
+          24.75,
+          217.5
+        ],
+        [
+          108.55,
+          24.75,
+          225
+        ],
+        [
+          123,
+          24.75,
+          225
+        ],
+        [
+          123,
+          9.8,
+          225
+        ],
+        [
+          180,
+          9.8,
+          206
+        ],
+        [
+          215,
+          9.8,
+          206
+        ],
+        [
+          237,
+          39,
+          204
+        ],
+        [
+          243.8,
+          39,
+          195
+        ],
+        [
+          243.8,
+          80,
+          115
+        ],
+        [
+          243.8,
+          219.0,
+          48.5
+        ],
+        [
+          219.3,
+          219.0,
+          48.5
+        ]
+      ],
+      "modeled_centerline_mm": 434.320923152153,
+      "engineering_diameter_mm": 6.5,
+      "engineering_bend_R_mm": 7,
+      "full_length_installed_and_flex_verified": false,
+      "nominal_stock_mm": 600,
+      "unmodeled_surplus_mm": 165.679076847847,
+      "surplus_insulated_material_mm3": 5497.740802794137,
+      "complete_length_budget": {
+        "modeled_complete_centerline_mm": 434.320923152153,
+        "connector_allowance_mm": 48.0,
+        "assembly_slack_mm": 15.0,
+        "required_with_allowances_mm": 497.320923152153,
+        "nominal_stock_mm": 600,
+        "remaining_length_margin_mm": 102.679076847847,
+        "geometric_length_budget_passed": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "connector_allowance_is_engineering_assumption": true
+      }
+    },
+    "CABLE_R6_GPU_FACTORY_SECOND150": {
+      "keys": [
+        "CABLE_R6_GPU_FACTORY_SECOND150"
+      ],
+      "vertices_mm": [
+        [
+          116.5,
+          80,
+          202.5
+        ],
+        [
+          116.5,
+          96,
+          202.5
+        ],
+        [
+          116.5,
+          96,
+          190
+        ],
+        [
+          113,
+          119,
+          190
+        ],
+        [
+          113,
+          119,
+          198
+        ]
+      ],
+      "modeled_centerline_mm": 52.03911413057185,
+      "engineering_diameter_mm": 6.5,
+      "engineering_bend_R_mm": 6,
+      "full_length_installed_and_flex_verified": false,
+      "nominal_stock_mm": 150,
+      "unmodeled_surplus_mm": 97.96088586942815,
+      "surplus_insulated_material_mm3": 3250.6431685203675,
+      "complete_length_budget": {
+        "modeled_complete_centerline_mm": 52.03911413057185,
+        "modeled_connector_length_lower_bound_mm": 18.0,
+        "connector_allowance_mm": 24.0,
+        "assembly_slack_mm": 15.0,
+        "unmodeled_factory_face_transition_length_allowance_mm": 0.0,
+        "required_with_allowances_mm": 91.03911413057185,
+        "nominal_stock_mm": 150,
+        "remaining_length_margin_mm": 58.960885869428154,
+        "geometric_length_budget_passed": true,
+        "factory_measurement_origin_and_installed_flex_verified": false,
+        "connector_allowance_is_engineering_assumption": true
+      }
+    }
+  },
+  "heads": {
+    "POWER_R6_ATX_FACTORY24_STANDARD_MALE_PROXY": {
+      "min": [
+        34.0,
+        33.5,
+        165.0
+      ],
+      "max": [
+        86.0,
+        45.5,
+        179.0
+      ],
+      "size": [
+        52.0,
+        12.0,
+        14.0
+      ]
+    },
+    "POWER_R6_ATX_EXT24_STANDARD_FEMALE_PROXY": {
+      "min": [
+        34.0,
+        21.5,
+        165.0
+      ],
+      "max": [
+        86.0,
+        33.5,
+        179.0
+      ],
+      "size": [
+        52.0,
+        12.0,
+        14.0
+      ]
+    },
+    "POWER_R6_EPS_FACTORY4plus4_STANDARD_PROXY": {
+      "min": [
+        103.8,
+        20.0,
+        193.5
+      ],
+      "max": [
+        113.3,
+        29.5,
+        205.5
+      ],
+      "size": [
+        9.5,
+        9.5,
+        12.0
+      ]
+    },
+    "POWER_R6_EPS_FACTORY_UNUSED4_HALF_PARKED_PROXY": {
+      "min": [
+        24.0,
+        60.0,
+        229.0
+      ],
+      "max": [
+        34.0,
+        69.5,
+        238.5
+      ],
+      "size": [
+        10.0,
+        9.5,
+        9.5
+      ]
+    },
+    "POWER_R6_GPU_FACTORY6plus2_STANDARD_PROXY": {
+      "min": [
+        106.0,
+        62.0,
+        193.5
+      ],
+      "max": [
+        120.0,
+        80.0,
+        211.5
+      ],
+      "size": [
+        14.0,
+        18.0,
+        18.0
+      ]
+    },
+    "POWER_R6_GPU_FACTORY_UNUSED_SECOND6plus2_PARKED_PROXY": {
+      "min": [
+        106.0,
+        110.0,
+        198.0
+      ],
+      "max": [
+        120.0,
+        128.0,
+        216.0
+      ],
+      "size": [
+        14.0,
+        18.0,
+        18.0
+      ]
+    },
+    "POWER_R6_NA_FH1_SATA_HEAD_ENGINEERING_PROXY": {
+      "min": [
+        28.5,
+        142.0,
+        96.0
+      ],
+      "max": [
+        43.0,
+        172.0,
+        108.0
+      ],
+      "size": [
+        14.5,
+        30.0,
+        12.0
+      ]
+    },
+    "POWER_R6_FACTORY_UNUSED_MOLEX_1_PARKED_PROXY": {
+      "min": [
+        12.6,
+        24.0,
+        199.0
+      ],
+      "max": [
+        30.6,
+        36.0,
+        209.0
+      ],
+      "size": [
+        18.0,
+        12.0,
+        10.0
+      ]
+    },
+    "POWER_R6_FACTORY_UNUSED_MOLEX_2_PARKED_PROXY": {
+      "min": [
+        12.6,
+        24.0,
+        210.0
+      ],
+      "max": [
+        30.6,
+        36.0,
+        220.0
+      ],
+      "size": [
+        18.0,
+        12.0,
+        10.0
+      ]
+    },
+    "POWER_R6_FACTORY_UNUSED_MOLEX_3_PARKED_PROXY": {
+      "min": [
+        12.6,
+        24.0,
+        221.0
+      ],
+      "max": [
+        30.6,
+        36.0,
+        231.0
+      ],
+      "size": [
+        18.0,
+        12.0,
+        10.0
+      ]
+    },
+    "POWER_R6_FACTORY_UNUSED_FDD_PARKED_PROXY": {
+      "min": [
+        14.0,
+        39.0,
+        234.0
+      ],
+      "max": [
+        26.0,
+        47.0,
+        240.0
+      ],
+      "size": [
+        12.0,
+        8.0,
+        6.0
+      ]
+    },
+    "POWER_R8_EPS_MODDIY_4PIN_FEMALE_PROXY": {
+      "min": [
+        103.8,
+        20.0,
+        205.5
+      ],
+      "max": [
+        113.3,
+        29.5,
+        217.5
+      ],
+      "size": [
+        9.5,
+        9.5,
+        12.0
+      ]
+    }
+  }
+}

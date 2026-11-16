@@ -1,42 +1,56 @@
 # KiwiNest
 
-A compact parametric three-drive home-server chassis: 250 × 250 × 275mm including feet, approximately 17.19L. Mini-ITX reference board, discrete GPU, fixed-wire Flex PSU, direct SATA cabling and independent cooling.
+A compact home-server chassis that gives three 3.5-inch drives their own cooling path. The R9 layout adds a dedicated 92mm front fan, four passages across the drive faces and a sealed collector feeding a 200mm top exhaust. The motherboard, GPU, complete x8 riser endpoints and 40mm CPU clearance datum stay fixed.
 
-![KiwiNest R8 CAD preview](docs/kiwinest-r8.png)
+[中文说明](README.md) · [Interactive model](https://ericxreator.github.io/kiwinest/) · [Downloads](https://github.com/ericxreator/kiwinest/releases) · [Design](docs/design.md) · [Known issues](docs/known-issues.md)
 
-**Current version: `v0.3.0-r8` engineering prototype. All 25 CAD check groups pass; physical and manufacturing acceptance remain pending.** It retains the 5825U reference board, 40mm CPU envelope and x8 electrical requirement, using K83UP-TL endpoints with a custom insulating clamp. Minimum nominal CPU-envelope clearance across the male and its mounts is 2.311mm. The selected 50cm cable comprises a complete 464mm free bundle and two retained 18mm sleeves, including 49.213mm of geometric loop allocation relative to a compact route in the same family. The complete factory ATX transition starts at the engineering PSU-face datum. All 22 power, PWM/control and SATA budgets retain at least 20mm after connector allowances and assembly slack, with a minimum of 21.770mm; all extension surplus enters shared storage calculations. See the [actual checks](evidence/current-review.json) and [R8 changes](docs/r8-changes.md) for scope and bounded contact allowances.
+![KiwiNest R9 CAD preview](docs/kiwinest-r9.png)
 
-Full STEP readback is valid at 731/731 solids, and all 40 printable meshes are watertight. Public geometry byte checks and desktop/mobile viewport browser checks pass; the mobile check is not a physical-phone test. The PCIe x8 bundle's geometric projection onto the bottom-fan disk is 9.3943%, which does not measure airflow loss, pressure drop or thermal performance. See the [publication checks](evidence/publication-verification.json).
+**The R9 `v0.4.0-r9` prototype has passed its recorded CAD and public-geometry checks. Physical and manufacturing acceptance remain pending.** Validation combines a 39-group assembly baseline rebuilt from manufacturer STEP inputs, 23 focused checks after a local plenum-floor correction, and regeneration of all exports. The 41 final records consist of 39 baseline groups, one focused revalidation summary and one export-integrity record; all are clear. All 43 printable CAD items have closed meshes with consistent winding, and STEP readback validates 782/782 solids. The local correction was not followed by another complete assembly rebuild. See the [actual report](evidence/current-review.json) and [publication record](evidence/publication-verification.json). CAD passages do not establish installed airflow, drive temperatures or negotiated PCIe lanes.
 
-The earlier R83 front mounting ear/fastener entered the CPU clearance volume because of its shape and orientation. Eight electrical lanes do not inherently cause that collision. The custom clamp preserves the vendor PCB, contacts, complete fanout and upper bar, retaining the middle/rear M2 fasteners while replacing the lower bar/front fastener with an original FR4/electrically insulating silicone foam assembly. The retained M2 fasteners point upward with their heads below and require bench preassembly. Both lower motherboard mounts 2/4 use original OD9 × 1.5mm steel countersunk bearing washers and M3x8 countersunk screws, preserving the board/standoff datum and adjustment bores. Local PCB geometry is checked; bearing loads, tolerances, clamp preload and x8 negotiation still require validation.
+| Item | R9 reference layout |
+| --- | --- |
+| Size | 250 × 250 × 257mm body plus four 18mm feet; 250 × 250 × 275mm overall envelope, approximately 17.19L |
+| Drives | Three independent SATA drives, rear-facing connectors, four native 6-32 screws per drive, no backplane |
+| Drive cooling | 92mm front fan, distribution plenum, four broad-face passages, rear collector and top diffuser |
+| Passages | Nominal widths 5 / 7 / 7 / 5mm with 82mm continuous height; native mounting bands sit above and below |
+| Top fan | Noctua NF-A20 PWM, 200 × 200 × 30mm housing without removable anti-vibration pads; motor-label projection retained |
+| Other airflow | 120mm bottom intake, CPU side intake, separate GPU supply; bottom filter withdraws to the right |
+| PSU | Original fixed-wire Enhance ENP-7660B rolled 90°; AC socket and exhaust remain directly rear-facing; known louvered side opens to exterior air |
+| Board / GPU | DS_2501 / Ryzen 7 5825U photo-derived board reference; Zotac ZT-B50620H-10M GPU envelope |
+| Riser | K83UP-TL 50cm, complete original endpoints and cable material; target PCIe 3.0 x8, hardware negotiation unverified |
 
-Cut only the outline and two holes in 1.5mm foam stock. Public fabrication assets provide an independently generated flat-stock STEP/DXF. Its nominal 1.4mm compressed envelope incorporates vendor-derived surfaces and stays local to the fit checks; it is not a machining profile for grooves. Checks allow bounded local soft-pad preload, rather than claiming every contact volume is zero. Foam compression, preload and rebound remain unverified. Retained factory M2 fasteners move only about 0.400mm along their original axes; the upper-bar CAD has unthreaded 2.2mm bores, so actual retention and insertion require inspection. Male-clamp service requires releasing the carrier and cable restraints and moving the assembly out before accessing the screw heads. In-place tool access and the complete combined removal path remain unverified.
+After subtracting the projected stationary manufacturer fan frame, the conservative geometric diffuser mouth is approximately 2192.51mm², above the four main passages' combined 1968mm²; see the [top-fan verification](evidence/top-fan-verification.json). The front inlet currently has a grille. The removable filter is under the bottom fan; this does not make the front inlet filtered. Passage dimensions and connectivity remain distinct from pressure drop, sealing, dust loading and thermal tests.
 
-The complete factory socket latch must be reversibly removed and stored in a keeper integrated into the bridge, secured by an M2x25 cross-pin and captured M2 nut. All factory latch material is retained; the GPU is held by its I/O ears, guides and upper clamp. This requires modified assembly, with physical disassembly, retention, load and link tests still pending.
+The front fan and plenum come out in separate stages while the upper front-left column, hub and stock-cable basket remain installed. Drive service requires power-off, removal of the target power and data access shutters, one panel at a time, unplugging and parking only that drive's two heads/tails, then releasing its tray. Drive 1 additionally needs the removable lower column segment to move forward. Open cable slots and removable seals avoid threading finished connectors through closed holes. See the [assembly notes](docs/design.md); hot-swap capability is unverified.
 
-- [Download STEP/STL and source](https://github.com/ericxreator/kiwinest/releases)
-- [Interactive model](https://ericxreator.github.io/kiwinest/)
-- Original printable parts: [`cad/parts/`](cad/parts/); separate FR4, insulating silicone foam, steel bearing-washer and sheet-metal fabrication: [CAD notes](cad/README.md) and [`bom/`](bom/).
-- Download and open [`docs/preview.html`](docs/preview.html). It needs a network connection for pinned Three.js modules.
-- [Source](design/), [known issues](docs/known-issues.md), [third-party references](THIRD_PARTY.md), [Chinese documentation](README.md).
+The complete bottom-fan PWM coupling sits to the right of the plenum extraction path. The factory fan lead and final SYS extension span route around the tray-lock L-key envelope, with their complete heads and wire runs retained for service checks. Actual tools and hand access still require fit-up.
 
-Use Python 3.13 and the locked dependencies. The stable source-module names still use `r6_`, while revision is recorded in the exported parameters:
+All original factory branches and purchased cable surplus remain accounted for. The 32 complete power, data and PWM route budgets include centerline, connector allowances and assembly slack; their minimum remaining length is 25.434mm against R9's 25mm requirement. These are engineering budgets; received cable lengths remain unverified. Unused EPS-half/Molex/FDD stock and loose surplus remain stock-volume allocations, rather than individually measured conductor or coil geometry. Shared free volume does not prove that real coils fit or remain serviceable.
+
+Use Python 3.13 and the locked dependencies:
 
 ```sh
 python3.13 -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.lock
 python scripts/prepare_references.py
-python design/r6_export.py --out-dir out-r8
-python scripts/build_public_assets.py --input out-r8
-python scripts/build_public_bom.py --input out-r8/report.json
-python scripts/airflow_projection.py --cables-dir out-r8/cables --pattern 'CABLE_R8_K83*.step' --output evidence/airflow-current.json
+python design/r9_export.py --out-dir out-r9
+python scripts/build_public_assets.py --input out-r9
+python scripts/build_public_bom.py --input out-r9/report.json
 ```
 
-Manufacturer inputs are checksum-verified and remain in ignored `references/private/`. Full local outputs in `out-r8/` contain those inputs and are not distributable artifacts. Public previews omit three nodes: both manufacturer endpoints and the vendor-derived compressed-foam surface, including all their unused binary data. Public foam fabrication files instead describe an independent 1.5mm flat blank. Checks use the actual complete local geometry; public omissions never establish clearance.
+The optional top-fan verifier accepts an independently obtained [official Noctua STEP](references/README.md#风扇参考) and outputs numeric evidence only. Install `shapely==2.1.2`, supply its local path and bind the result to the passed R9 report:
 
-GPU removal still requires power-off, removal of the top cover/fan and parking of the unplugged card-side 8pin head/free extension tail before releasing the bracket and lifting the card. The factory 300mm lead and its fixed coupling stay outside the extraction space; R7's factory-lead forward-parking step is retired. Disk3 service releases its local flexible tail while the fourth SATA coupling and the hub extension remain fixed.
+```sh
+pip install shapely==2.1.2
+python scripts/verify_top_fan.py --official-step /path/to/NF-A20_Public-CAD.stp --source-report out-r9/report.json --output evidence/top-fan-verification.json
+```
 
-Received board dimensions, factory exit coordinates, cables, surplus packing, custom-clamp loads, PCIe slot power/link stability, printed load/creep, temperature and noise remain unaccepted. Complete ATX CAD does not certify a measured factory exit. Each first SATA factory A/B segment reserves 10.5mm for its unmodeled PSU-face transition; its source geometry/isolation is not certified by the completed ATX model. Manufacturing and physical acceptance remain separate from CAD results. Earlier releases are retained at `v0.1.0-r6` and `v0.2.0-r7`.
+Original printable STEP/STL files are in [`cad/parts/`](cad/parts/). Thin PC sheet, foam, FR4, steel washers and the PSU metal flange are separate fabrication items; see [CAD notes](cad/README.md) and [`bom/`](bom/). Open [`docs/preview.html`](docs/preview.html) for the model; pinned Three.js modules require a network connection.
 
-Inspired by [QNAS7](https://github.com/thunder439/QNAS7) / [QNAS8](https://github.com/thunder439/QNAS8); their files are not redistributed. Original source code: MIT. Original CAD/design documentation: CC BY 4.0. Copyright © 2026 ericxreator. See [`LICENSES/README.md`](LICENSES/README.md) for scope.
+Full local outputs contain independently downloaded manufacturer references and are not public release assets. Public GLB/HTML omits both manufacturer riser endpoints and the vendor-derived compressed foam surface, including unused binary data. Public foam fabrication instead uses an independent flat blank. Noctua manufacturer CAD stays local to proxy/clearance verification. These omissions never establish physical compatibility. See [third-party references](THIRD_PARTY.md).
+
+Received board dimensions, factory loom exits, connector fit, usable cable lengths, surplus packing, printed load/creep, insulation, PCIe power/link stability, per-drive temperature and noise still require real hardware. Earlier releases remain available: [R8](https://github.com/ericxreator/kiwinest/releases/tag/v0.3.0-r8), [R7](https://github.com/ericxreator/kiwinest/releases/tag/v0.2.0-r7), [R6](https://github.com/ericxreator/kiwinest/releases/tag/v0.1.0-r6).
+
+Inspired by [QNAS7](https://github.com/thunder439/QNAS7) / [QNAS8](https://github.com/thunder439/QNAS8); their files are not redistributed. Original code: MIT. Original CAD/design data: CC BY 4.0. Copyright © 2026 ericxreator. See [license scope](LICENSES/README.md).

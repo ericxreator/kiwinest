@@ -15,11 +15,14 @@ def size_text(v):return ' × '.join(f'{x:.3f}' for x in v['bbox_mm']['size'])
 def fabrication_parts(meta):
     """Merge only explicitly declared original nonprinted fabrication parts."""
     parts=[];seen=set()
-    for group in ('riser_meta','mainboard_meta'):
+    for group in ('riser_meta','mainboard_meta','psu_meta'):
         for item in meta.get(group,{}).get('original_fabrication_parts',[]):
             key=item['hardware_key']
             if key in seen:raise ValueError('Duplicate original fabrication hardware key: '+key)
             seen.add(key);parts.append(item)
+    for key,info in meta.get('drive_meta',{}).get('own_fabrication_parts',{}).items():
+        if key in seen:raise ValueError('Duplicate own fabricated hardware '+key)
+        parts.append(dict(info,hardware_key=key));seen.add(key)
     return parts
 
 def lower_flush_joints(meta):
@@ -38,7 +41,7 @@ def fastener_spec(n,v,meta):
             thickness=fabrication.get('thickness_mm')
             label='自制FR4绝缘下压条'+(f' 厚{thickness:g}mm' if thickness is not None else ' 厚度待确认')
             return (label,'独立自有加工件，孔位/形状按最终CAD；不作为PETG打印件。绝缘、预压、拉脱、线束应变和x8链路均待实物验收')
-        if 'silicone' in material:
+        if 'silicone' in material and n.startswith('R8_RISER_'):
             raw=fabrication.get('stock_thickness_mm');installed=fabrication.get('installed_thickness_mm')
             label='自制绝缘硅胶压垫'
             label+=f' 原片{raw:g}mm' if raw is not None else ' 原片厚度待确认'
@@ -47,7 +50,10 @@ def fastener_spec(n,v,meta):
         if 'steel' in material and n==joint.get('washer'):
             label=f'自制钢制沉头承载垫 OD{joint["custom_steel_washer_OD_mm"]:g}×{joint["washer_thickness_mm"]:g}mm／孔{joint["washer_bore_mm"]:g}／90°D{joint["washer_90deg_countersink_major_D_mm"]:g}'
             return (label,'主板下位安装轴专用，STEP为沉头/台阶加工依据，不是普通平垫或打印件；材料、头/孔配合、托盘承压/蠕变和夹持强度未验收')
-        return ('自制加工件 '+fabrication.get('material','材料待确认')+' '+size_text(v)+'mm','仅按最终模块metadata中的自有加工件分类；不得从厂商端头推导采购/加工规格')
+        pieces=v.get('solids',1)
+        label='自制加工件 '+fabrication.get('material','材料待确认')+' '+size_text(v)+'mm'
+        if pieces>1:label+=f'（每CAD组{pieces}个独立实体）'
+        return (label,'数量按CAD组，包含全部独立轮廓。名义装配形状不自动等于原片厚度或压缩量；材料/裁切/密封待实配，仅按本次自有加工metadata分类')
     if n==joint.get('screw'):
         length=joint['screw_nominal_length_including_head_mm']
         return (f'M3x{length:g} 90°沉头（长度含头）','只替换主板下位原rear M3x6盘头，与自制钢制沉头承载垫配套；最终头径/工具、进入量/扭矩和强度待实配')
@@ -56,9 +62,9 @@ def fastener_spec(n,v,meta):
         return (f'M2六角螺母 AF{af:g}×{thickness:g}mm','新增螺母数量来自真实CAD实例；原厂中/后位M2螺钉保留，不按厂商STEP重复表示加购。捕获腔、预紧/扭矩及防松待实配')
     if n in pm.get('native_screw_hardware',[]):
         return ('PSU原生6-32螺钉：优先随包，长度/进入量待实测','随包优先；CAD 3/16in只是参考，未核厂家允许进入量，不照代理长度盲买')
-    if n.startswith('R6_STORAGE_NATIVE_') and '6_32' in n:
+    if n.startswith(('R6_STORAGE_NATIVE_','R9_STORAGE_NATIVE_')) and '6_32' in n:
         return ('HDD McMaster99926A106 6-32UNC×6.35mm，100°沉头','native底孔；2.8mm承壁+0.8垫，进入2.75≤Seagate3.56mm上限，其他硬盘需另核')
-    if n.startswith('R6_STORAGE_NATIVE_') and 'spacer' in low:
+    if n.startswith(('R6_STORAGE_NATIVE_','R9_STORAGE_NATIVE_')) and 'spacer' in low:
         return ('HDD隔垫 ID3.8/OD6×0.8mm','按原生螺接模型；材料/压缩及振动待实物')
     if 'M3_FF_10mm_standoff' in n:
         return ('M3内内铜柱10mm，AF5.5','名义参考；采购SKU未锁，不沿用旧6mm Harwin柱')
@@ -138,10 +144,75 @@ def refresh_components(rows,report):
         row['specification']='真实CAD实例'+str(len(nuts))+'颗；'+ '；'.join(labels)+'；螺纹与夹持性能仍待实物核验'
     return rows
 
+def refresh_r9_components(rows,report):
+    """R9 selected catalog parts; every stated length comes from actual routes."""
+    rows=[dict(row) for row in rows];by_id={row['id']:row for row in rows}
+    def update(identifier,**fields):
+        if identifier not in by_id:
+            row={key:'' for key in rows[0]};row.update(id=identifier,unit='条',plan_status='工程选型；实配待验',purchase_status='未由本仓库采购',unit_price='未知')
+            rows.append(row);by_id[identifier]=row
+        by_id[identifier].update(fields)
+    routes=report['power_meta']['routes']
+    def selected_route(fragment):
+        found=[value for name,value in routes.items() if fragment in name]
+        if len(found)!=1:raise ValueError('Expected one selected route for '+fragment)
+        return found[0]
+    def budget_text(route):
+        budget=route['complete_length_budget']
+        return (f'完整预算{budget["required_with_allowances_mm"]:.3f}mm／'
+                f'标称{budget["nominal_stock_mm"]:g}mm，剩余{budget["remaining_length_margin_mm"]:.3f}mm')
+    update('top_fan',sku='Noctua NF-A20 PWM',quantity='1',
+      specification='200×200×30mm；拆下可卸防震垫；30.5mm含motor label代理；原线200mm＋随附NA-EC1 300mm',
+      source='https://www.noctua.at/en/products/nf-a20-pwm/specifications',
+      notes='完整厂商框/转子/标签在本地验证被原创代理包含；顶盖直接固定170×170轴。实际公差、端线位置、噪声/风量须实物。')
+    update('hdd_fan',category='散热',sku='Noctua NF-A9 PWM',quantity='1',unit='个',
+      specification='92×92×25mm裸框；含防震垫93×93×27mm完整代理；原线200mm＋随附NA-EC1 300mm',
+      source='https://www.noctua.at/en/products/nf-a9-pwm/specifications',
+      notes='独立前进风，四通道过三盘后接顶扇；不以额定自由风量代替实装流量或温升。')
+    alloc=report['controls_meta']['NA_EC1_stock_allocation']
+    total=sum(alloc.get(key,0) for key in ('NA_FH1_included_300mm','NF_A20_included_300mm','NF_A9_included_300mm','NA_SEC1_kit_300mm'))
+    update('hub_control_extensions',specification=f'NA-SEC1套装3×300mm；加NA-FH1/NF-A20/NF-A9随附线，共{total}根；逐段用途见完整预算',
+      notes=f'SYS链{alloc.get("used_SYS","未知")}段，top{alloc.get("used_top","未知")}段，bottom{alloc.get("used_bottom","未知")}段；未用300mm线{alloc.get("unused_300mm","未知")}根。不同标称段不可合并掩盖某段短线。')
+    update('fan_hub',specification='93×43×12.5mm；SATA12V供3个机箱扇，SYS只接PWM/转速；随包1条NA-EC1 300mm',
+      notes='固定在前上机架，CPU原风扇留原CPUFAN；按实际三款风扇核集线器电流、主板针序与PWM模式，不沿用R8两扇功耗总数。')
+    gpu=report['gpu_power_meta']
+    update('gpu_extension',sku='MODDIY CAB534 配置'+str(int(gpu['nominal_stock_mm']))+'mm',
+      specification='标准PCIe8pin公母延长；全长/成品头/15mm装配余量和等长停放按当前CAD，余线完整计入共享篮',
+      source=gpu['source'],notes=budget_text(routes[gpu['route_key']])+'；仅标准端延长，不改PSU原厂线；实际可用线长、直径、弯曲/锁扣/导通需实配。')
+    atx=selected_route('ATX_MODDIY_CAB529')
+    atx_stock=atx['nominal_stock_mm']
+    update('atx_extension',sku=f'MODDIY CAB529 配置{atx_stock:g}mm',
+      specification=f'标准24pin公母延长；{atx_stock:g}mm完整预算，保留原厂300mm源段与两端成品接头',
+      source='https://www.moddiy.com/products/3246/Premium-Custom-PSU-Extension-Cable-24-Pin-Main-Power.html',
+      notes=budget_text(atx)+'；官网长度选项为选型来源，不代表库存/交期确认；不采用私有PSU模块端接线。')
+    eps=selected_route('EPS_MODDIY_CO581')
+    update('eps_extension',specification=f'{eps["nominal_stock_mm"]:g}mm标准CPU/EPS4pin成品公母延长；实际外径和弯曲按本次工程模型及实物核对',
+      notes=budget_text(eps)+'；原厂EPS4+4只用匹配半头，未用半头完整保留；不替换PSU内部模组端。')
+    update('hdd_power_extensions',category='供电',sku='MODDIY CAB456 500mm SATA15pin延长',quantity='3',unit='条',
+      specification='每盘独立标准SATA15pin公母500mm；原厂两串300/150与4个原生头全部保留在标准耦合处',
+      source='https://www.moddiy.com/products/1662/SATA-Power-Extension-Cable-50cm.html',
+      notes='只动目标盘延长线的自由尾段，其他盘和原厂串固定；拔头/软线变形/实物线长仍待验。')
+    disk_power=[value for name,value in routes.items() if name.startswith('CABLE_R9_SATA_POWER_')]
+    if len(disk_power)!=3 or any(value['nominal_stock_mm']!=500 for value in disk_power):
+        raise ValueError('Unreviewed HDD power-extension quantity or catalog length')
+    update('psu',specification='原厂81.5×150×40.5mm刚体滚转，安装40.5X×150Y×81.5Z；AC/风扇仍向后、原线完整',
+      notes='左侧厂家百叶以独立外气窗直接进气；右侧未画面是否有孔、0.6mm间隙、实际出线/原生螺钉进入量须收到原件后验证。')
+    hub=selected_route('SATA_HUB_STARTECH_SATAPOWEXT8')
+    update('sata_hub_power_extension',notes=budget_text(hub)+'；R9第四原厂SATA头经此线接前上NA-FH1。每盘只释放其独立500mm延长线尾段，原厂串线及固定耦合头保留；成品头、可用线长和盘线待验。')
+    data=[r for n,r in routes.items() if n.startswith('CABLE_R9_SATA_DATA_')]
+    if len(data)!=3:raise ValueError('Expected three independent R9 SATA data leads')
+    update('sata_data',quantity=str(len(data)),notes='三根独立数据线直接接主板，无背板；最小完整预算余量'+f'{min(r["complete_length_budget"]["remaining_length_margin_mm"] for r in data):.3f}mm。当前全部路径与单盘尾段停放见报告，余线存放上方L形篮，实线弯曲与收纳未验收。')
+    update('gpu',notes='参考尺寸不是通用兼容认证；R9保持x8设计目标，须核实实板插槽供电、通道协商、实线与负载稳定性。')
+    return rows
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--input',type=Path,default=ROOT/'out-r8/report.json')
+    parser.add_argument('--input',type=Path,default=ROOT/'out-r9/report.json')
     args=parser.parse_args();report=json.loads(args.input.read_text())
+    if not report['geometric_checks_passed'] or any(report['checks'].values()):
+        raise ValueError('Refusing public BOM from failed CAD checks')
+    if not report['step_roundtrip']['passed'] or not report['all_prints_watertight']:
+        raise ValueError('Refusing public BOM from failed export integrity')
     groups=defaultdict(list);conditions={};details=[['实际CAD五金／自制非打印件实例','数量','采购／加工规格','包络mm','条件']]
     fabricated_keys={q['hardware_key'] for q in fabrication_parts(report)}
     for name,value in report['envelopes'].items():
@@ -158,18 +229,19 @@ def main():
         material='TPU' if 'TPU' in name else 'PETG／PETG HF'
         quantity=1;note='工程原型；切片／公差／刚度／蠕变／试装待验证'
         if name.startswith('BOTTOM_R6_shim1mm_'):
-            quantity='1 CAD；25mm实扇配置每编号打印3片'
-            note='同形M4垫片可复用：每孔底扇下方2片、顶扇上方补1片；四编号合计12片。保持底扇顶Z32、顶扇底Z221，实测后调整。'
+            quantity='1 CAD；25mm底扇配置每编号打印2片'
+            note='底扇名义25mm时每孔2片1mm垫，保持底Z7、顶Z32；R9顶扇30mm直接装顶盖，不复用底扇垫片。实配后核对。'
         elif name.startswith('TOP_R8_spacer4mm_'):
             note='26mm CAD风扇Z221..247配4mm上隔柱；25mm实扇Z221..246配总5mm上隔距（本4mm+一片上述1mm垫），保持底Z221。'
         printed.append([name,quantity,material,size_text(value),note])
-    write_csv(ROOT/'bom/fasteners-detailed.csv',details)
-    write_csv(ROOT/'bom/fasteners.csv',summary)
-    write_csv(ROOT/'bom/printed-parts.csv',printed)
     component_path=ROOT/'bom/components.csv'
     with component_path.open(encoding='utf-8-sig',newline='') as stream:
         reader=csv.DictReader(stream);fields=reader.fieldnames;components=list(reader)
     components=refresh_components(components,report)
+    if report.get('params',{}).get('release_revision')=='R9':components=refresh_r9_components(components,report)
+    write_csv(ROOT/'bom/fasteners-detailed.csv',details)
+    write_csv(ROOT/'bom/fasteners.csv',summary)
+    write_csv(ROOT/'bom/printed-parts.csv',printed)
     write_csv(component_path,[fields]+[[row.get(field,'') for field in fields] for row in components])
     print(json.dumps({'fastener_instances':len(details)-1,'fastener_groups':len(groups),'printed_parts':len(printed)-1}))
 
